@@ -1,4 +1,4 @@
-package org.openjfx;
+package com.programutvikling.com.programutvikling.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +12,7 @@ public class FXMLController {
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        label.setText("Morra di er mann!");
     }
 
     public void initialize() {
