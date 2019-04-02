@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/MainFXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/MainFXMLController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/View2ExampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/StartPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/scene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/view2Example.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/startpage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/semesteroppgave-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/semesteroppgave-1.0-SNAPSHOT.jar" afterDir="false" />
-    </list>
+    <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning." />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/controller/StartPageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="409">
+              <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,8 +136,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/views/view2Example.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/views/scene.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/MainFXMLController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/StartPageController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/views/secondpage.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/StartPageController.java" />
       </list>
     </option>
   </component>
@@ -301,7 +293,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26710000" />
+    <option name="totallyTimeSpent" value="26987000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="573" width="1920" height="1053" extended-state="6" />
@@ -573,8 +565,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/controller/StartPageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="409">
+          <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
