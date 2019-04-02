@@ -1,4 +1,4 @@
 package com.programutvikling.models.filehandlers.reader;
 
-public class CsvReader {
+public class CsvReader implements FileReader{
 }

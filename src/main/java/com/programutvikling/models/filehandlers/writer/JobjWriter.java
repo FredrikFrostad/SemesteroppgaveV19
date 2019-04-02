@@ -1,4 +1,4 @@
 package com.programutvikling.models.filehandlers.writer;
 
-public class JobjWriter {
+public class JobjWriter implements FileWriter {
 }

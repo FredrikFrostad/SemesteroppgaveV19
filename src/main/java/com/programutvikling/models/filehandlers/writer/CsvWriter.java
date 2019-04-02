@@ -1,4 +1,4 @@
 package com.programutvikling.models.filehandlers.writer;
 
-public class CsvWriter {
+public class CsvWriter implements FileWriter {
 }

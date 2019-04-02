@@ -1,4 +1,4 @@
 package com.programutvikling.models.filehandlers.reader;
 
-public class JobjReader {
+public class JobjReader implements FileReader {
 }
