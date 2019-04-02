@@ -1,3 +1,3 @@
-org/openjfx/MainApp.class
-org/openjfx/FXMLController.class
+com/programutvikling/controller/FXMLController.class
+com/programutvikling/mainapp/MainApp.class
 module-info.class
