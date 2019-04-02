@@ -48,6 +48,13 @@ public class MainFXMLController {
     @FXML private void open() {}
 
     @FXML
+    /**
+     * //TODO: Denne metoden skal etterhvert fjernes. Kun brukt for å teste path-hælvete i java
+     * Det ser ut som om filpather er litt annerledes enn det jag er vant til i maven. Dersom jeg har forstått
+     * det riktig så er resource-path relativ til class-path. I dette tilfellet er classpath lokasjonen til .class-filene
+     * i target folderen. Denne genereres av maven når prosjektet bygges. Dersom en resource ikke er tilgjengelig der
+     * man forventer å finne den, kan det være en ide å rebuilde prosjektet.
+     */
     private void handleButtonAction(ActionEvent event) {
         try {
 
