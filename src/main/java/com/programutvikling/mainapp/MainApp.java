@@ -17,8 +17,10 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("SemesteroppgaveV2019");
         stage.setScene(scene);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
         stage.show();
     }
 

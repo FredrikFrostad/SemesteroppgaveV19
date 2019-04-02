@@ -20,6 +20,23 @@ public class MainFXMLController {
     private Label label;
 
     @FXML
+    private void exit() {
+        System.exit(0);
+    }
+
+    @FXML
+    private void save() {}
+
+    @FXML
+    private void saveAs() {}
+
+    @FXML
+    private void newFile() {}
+
+    @FXML private void open() {}
+
+
+    @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Morra di er mann!");
