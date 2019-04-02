@@ -1,4 +1,4 @@
-package com.programutvikling.models.tesklasser.forsikringer;
+package com.programutvikling.data.tesklasser.forsikringer;
 
 import java.util.Date;
 

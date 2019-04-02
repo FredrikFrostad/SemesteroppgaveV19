@@ -1,7 +1,7 @@
-package com.programutvikling.models.tesklasser;
+package com.programutvikling.data.tesklasser;
 
-import com.programutvikling.models.tesklasser.forsikringer.Forsikring;
-import com.programutvikling.models.tesklasser.forsikringer.Skademelding;
+import com.programutvikling.data.tesklasser.forsikringer.Forsikring;
+import com.programutvikling.data.tesklasser.forsikringer.Skademelding;
 
 import java.util.Date;
 import java.util.List;

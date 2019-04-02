@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/tesklasser/Kunde.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/tesklasser/forsikringer/Båt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/tesklasser/forsikringer/Forsikring.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/tesklasser/forsikringer/Fritidsbolig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/tesklasser/forsikringer/Reise.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/tesklasser/forsikringer/Skademelding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/tesklasser/forsikringer/VillaInnbo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -219,27 +210,6 @@
               <item name="Semesteroppgave" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="tesklasser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Semesteroppgave" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Semesteroppgave" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="tesklasser" type="462c0819:PsiDirectoryNode" />
-              <item name="forsikringer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Semesteroppgave" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Semesteroppgave" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -298,16 +268,15 @@
       <updated>1553631835304</updated>
       <workItem from="1553631836524" duration="2622000" />
       <workItem from="1553715725836" duration="130000" />
-      <workItem from="1554188040819" duration="9673000" />
+      <workItem from="1554188040819" duration="10030000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12425000" />
+    <option name="totallyTimeSpent" value="12782000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="573" width="1920" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25453576" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
