@@ -5,6 +5,7 @@ com/programutvikling/models/filehandlers/writer/FileWriter.class
 com/programutvikling/models/filehandlers/reader/CsvReader.class
 com/programutvikling/models/filehandlers/writer/CsvWriter.class
 com/programutvikling/data/tesklasser/forsikringer/Forsikring.class
+com/programutvikling/controller/View2ExampleController.class
 com/programutvikling/data/tesklasser/forsikringer/Fritidsbolig.class
 com/programutvikling/data/tesklasser/forsikringer/Skademelding.class
 com/programutvikling/data/tesklasser/Kunde.class
