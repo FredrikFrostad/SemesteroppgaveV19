@@ -9,9 +9,11 @@ import java.io.File;
 public class MainFXMLController {
 
     private File projectFilePath;
+    private final String PROJECTFOLDER = "SemesteroppgaveV19";
 
     public void initialize() {
-        // TODO
+        findOSTypeAndCreateProjectFolder();
+        System.out.println("Du er her!!!");
     }
 
     @FXML
@@ -30,8 +32,10 @@ public class MainFXMLController {
     private void findOSTypeAndCreateProjectFolder() {
         String userHome = System.getProperty("user.home");
 
-        if (OSType.getOsType() == OSType.OS.WINDOWS || OSType.getOsType() == OSType.OS.MAC) {
-            projectFilePath = new File(userHome + File.separator + "SemesteroppgaveGruppe8");
+        if (OSType.getOsType() == OSType.OS.WINDOWS ||
+                    OSType.getOsType() == OSType.OS.MAC ||
+                        OSType.getOsType() == OSType.OS.LINUX) {
+            projectFilePath = new File(userHome + File.separator + PROJECTFOLDER);
             {
                 if (projectFilePath.exists()) {
                     System.out.println("Mappen finnes allerede: " + projectFilePath); //TODO: Fjerne testkode ved endelig implementering
@@ -44,6 +48,7 @@ public class MainFXMLController {
                     }
                 }
             }
+
         }
     }
 }

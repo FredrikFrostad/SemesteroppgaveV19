@@ -1,3 +1,11 @@
-com/programutvikling/controller/FXMLController.class
-com/programutvikling/mainapp/MainApp.class
+com/programutvikling/models/filehandlers/writer/JobjWriter.class
+com/programutvikling/models/filehandlers/writer/FileWriter.class
+com/programutvikling/models/filehandlers/reader/CsvReader.class
+com/programutvikling/models/filehandlers/writer/CsvWriter.class
+com/programutvikling/controller/MainFXMLController.class
+com/programutvikling/models/filehandlers/reader/JobjReader.class
+com/programutvikling/models/osType/OSType$OS.class
+com/programutvikling/models/filehandlers/reader/FileReader.class
 module-info.class
+com/programutvikling/mainapp/MainApp.class
+com/programutvikling/models/osType/OSType.class
