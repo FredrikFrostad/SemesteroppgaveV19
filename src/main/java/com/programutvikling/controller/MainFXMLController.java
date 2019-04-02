@@ -68,6 +68,10 @@ public class MainFXMLController {
 
     }
 
+    public void setChildFXML() {
+
+    }
+
 
     /**
      * Metoden finner os typen som maskinen kjører på, og oppretter en prosjektmappe under current user home.
