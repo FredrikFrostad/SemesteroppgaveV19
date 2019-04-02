@@ -5,12 +5,12 @@
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/data/tesklasser/forsikringer/Forsikring.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/data/tesklasser/forsikringer/Reise.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/models/osType/OSType.java
-/home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/controller/View2ExampleController.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/models/filehandlers/writer/JobjWriter.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/models/filehandlers/reader/JobjReader.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/controller/MainFXMLController.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/mainapp/MainApp.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/data/tesklasser/forsikringer/VillaInnbo.java
+/home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/controller/StartPageController.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/module-info.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/data/tesklasser/forsikringer/Fritidsbolig.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/Semesteroppgave/src/main/java/com/programutvikling/data/tesklasser/Kunde.java
