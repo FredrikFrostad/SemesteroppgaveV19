@@ -12,6 +12,10 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.file.Path;
 
 
 public class MainFXMLController {
@@ -43,13 +47,12 @@ public class MainFXMLController {
 
     @FXML private void open() {}
 
-
     @FXML
     private void handleButtonAction(ActionEvent event) {
         try {
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("controller/view2Example.fxml"));
-            Scene scene2 = new Scene(scene2Parent);
 
+            Parent scene2Parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/view2Example.fxml"));
+            Scene scene2 = new Scene(scene2Parent);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene2);
 
@@ -57,8 +60,17 @@ public class MainFXMLController {
             e.printStackTrace();
         } catch (NullPointerException e) {
             e.printStackTrace();
-            System.out.println("FØØØKKKK JAVA PATH HÆLVETTE");
         }
+
+    }
+
+    /**
+     * Denne metodensignaturen kan fylles med ting som er greie å teste via en knapp.
+     * //TODO: Fjern denne metoden så fort den er overflødig
+     * @param event
+     */
+    @FXML
+    private void handleTestAction(ActionEvent event) {
 
     }
 
