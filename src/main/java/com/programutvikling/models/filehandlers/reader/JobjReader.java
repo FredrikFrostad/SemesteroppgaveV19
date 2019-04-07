@@ -1,4 +1,12 @@
 package com.programutvikling.models.filehandlers.reader;
 
-public class JobjReader implements FileReader {
+import java.io.File;
+import java.io.IOException;
+
+public class JobjReader extends FileReader {
+    @Override
+    public File getFile() throws IOException {
+        return null;
+    }
+
 }
