@@ -3,10 +3,11 @@ package com.programutvikling.data.tesklasser;
 import com.programutvikling.data.tesklasser.forsikringer.Forsikring;
 import com.programutvikling.data.tesklasser.forsikringer.Skademelding;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Kunde {
+public class Kunde implements Serializable {
 
     private Date kundeOpprettet;
     private String fornavn;
@@ -23,6 +24,19 @@ public class Kunde {
         this.mellomnavn = mellomnavn;
         this.etternavn = etternavn;
         this.forsikrNr = forsikrNr;
+    }
 
+    @Override
+    public String toString() {
+        return "Kunde{" +
+                "kundeOpprettet=" + kundeOpprettet +
+                ", fornavn='" + fornavn + '\'' +
+                ", mellomnavn='" + mellomnavn + '\'' +
+                ", etternavn='" + etternavn + '\'' +
+                ", forsikrNr='" + forsikrNr + '\'' +
+                ", forsikringer=" + forsikringer +
+                ", skademeldinger=" + skademeldinger +
+                ", ubetaltErstatning=" + ubetaltErstatning +
+                '}';
     }
 }

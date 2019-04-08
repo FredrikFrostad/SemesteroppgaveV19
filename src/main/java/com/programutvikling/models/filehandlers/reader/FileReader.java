@@ -12,18 +12,18 @@ public interface FileReader {
      * Exceptions skal ikke håndteres i denne metoden, men kastes til kallende metode/klasse
      * @return File
      */
-    public File getFile() throws IOException;
+    public File getFile() throws Exception;
 
 
     /**
      * Metode som leser data fra en fil
      * @throws Exception
      */
-    public void readDataFromFile(File file) throws Exception;
+    public Object readDataFromFile(File file) throws Exception;
 
     /**
      * Metode som leser data fra en URL
      * @param url Url til data som skal leses
      */
-    public void readDataFromURL(String url);
+    public Object readDataFromURL(String url);
 }
