@@ -6,13 +6,8 @@ import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class AddClientController {
@@ -47,7 +42,7 @@ public class AddClientController {
             e.printStackTrace();
         }
 
-
+        MainApp.getClientList().add(kunde);
     }
 
     @FXML
