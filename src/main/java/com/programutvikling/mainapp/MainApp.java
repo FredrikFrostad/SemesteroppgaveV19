@@ -1,6 +1,8 @@
 package com.programutvikling.mainapp;
 
 import com.programutvikling.controller.MainFXMLController;
+import com.programutvikling.data.tesklasser.Kunde;
+import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,16 @@ import java.util.ArrayList;
 
 
 public class MainApp extends Application {
+
+    private static ArrayList<Kunde> clientList = new ArrayList<>();
+
+    public static ArrayList<Kunde> getClientList() {
+        return clientList;
+    }
+
+    public static void setClientList(ArrayList<Kunde> clientList) {
+        MainApp.clientList = clientList;
+    }
 
     /**
      * Enum for å sette forskjellige testmoduser under utvikling.
@@ -38,7 +50,7 @@ public class MainApp extends Application {
 
         switch (mode) {
             case NORMAL:
-                out = "../../../views/scene.fxml";
+                out = "../../../views/startpage.fxml";
                 break;
             case TEST_ADDCLIENT:
                 //out = "../../../views/NOTDEFINED.fxml";
@@ -66,7 +78,10 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
-        //Parent root = FXMLLoader.load(getClass().getResource("../../../views/scene.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("../../../views/startpage.fxml"));
+
+        // Legger til view i viewmap for å forhindre senere instansiering
+        ViewChanger.viewMap.putIfAbsent("startpage", root);
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../../../views/styles.css").toExternalForm());

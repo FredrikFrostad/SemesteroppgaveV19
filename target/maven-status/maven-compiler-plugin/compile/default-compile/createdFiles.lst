@@ -1,3 +1,4 @@
+com/programutvikling/models/viewChanger/ViewChanger.class
 com/programutvikling/models/filehandlers/writer/JobjWriter.class
 com/programutvikling/models/filehandlers/writer/FileWriter.class
 com/programutvikling/models/filehandlers/writer/CsvWriter.class
@@ -8,6 +9,7 @@ com/programutvikling/controller/StartPageController.class
 com/programutvikling/models/filehandlers/reader/FileReader.class
 module-info.class
 com/programutvikling/models/osType/OSType.class
+com/programutvikling/controller/ClientsController.class
 com/programutvikling/data/tesklasser/forsikringer/Reise.class
 com/programutvikling/data/tesklasser/forsikringer/Båt.class
 com/programutvikling/models/filehandlers/reader/CsvReader.class

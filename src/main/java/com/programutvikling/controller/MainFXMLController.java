@@ -55,7 +55,7 @@ public class MainFXMLController {
     public void loadNewFXML() {
         try {
 
-            Parent scene2Parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/startpage.fxml"));
+            Parent scene2Parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/startpageInclude.fxml"));
             Scene scene2 = new Scene(scene2Parent);
             Stage window = (Stage)apane.getScene().getWindow();
             window.setScene(scene2);

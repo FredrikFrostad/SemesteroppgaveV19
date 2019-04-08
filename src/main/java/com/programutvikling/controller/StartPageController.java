@@ -1,6 +1,7 @@
 package com.programutvikling.controller;
 
 import com.programutvikling.data.tesklasser.Kunde;
+import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,11 +31,23 @@ public class StartPageController {
 
     @FXML
     private void listClients(ActionEvent event) {
-
+        Parent parent = null;
+        try {
+            parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/clients.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene2 = new Scene(parent);
+        Stage stage = (Stage)startpageparent.getParent().getScene().getWindow();
+        stage.setScene(scene2);
     }
 
     @FXML
     private void newClient(ActionEvent event) {
+
+        ViewChanger vc = new ViewChanger();
+        vc.setView(startpageparent, "newClient", "views/newClient.fxml");
+        /*
         Parent parent = null;
         try {
             parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/newClient.fxml"));
@@ -44,6 +57,8 @@ public class StartPageController {
         Scene scene2 = new Scene(parent);
         Stage stage = (Stage)startpageparent.getParent().getScene().getWindow();
         stage.setScene(scene2);
+
+         */
     }
 
     @FXML
