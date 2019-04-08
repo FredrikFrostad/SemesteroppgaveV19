@@ -80,11 +80,12 @@ public class MainApp extends Application {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
         //Parent root = FXMLLoader.load(getClass().getResource("../../../views/startpage.fxml"));
 
-        // Legger til view i viewmap for å forhindre senere instansiering
-        ViewChanger.viewMap.putIfAbsent("startpage", root);
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../../../views/styles.css").toExternalForm());
+
+        // Legger til view i viewmap for å forhindre senere instansiering
+        ViewChanger.viewMap.putIfAbsent("startpage", scene);
 
         stage.setTitle("SemesteroppgaveV2019");
         stage.setScene(scene);

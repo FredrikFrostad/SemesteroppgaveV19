@@ -3,6 +3,7 @@ package com.programutvikling.controller;
 import com.programutvikling.data.tesklasser.Kunde;
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
+import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,14 +52,7 @@ public class AddClientController {
 
     @FXML
     private void abortButton(ActionEvent event) {
-        Parent parent = null;
-        try {
-            parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/startpage.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene2 = new Scene(parent);
-        Stage stage = (Stage)secondpageparent.getParent().getScene().getWindow();
-        stage.setScene(scene2);
+        ViewChanger vc = new ViewChanger();
+        vc.setView(secondpageparent, "startpage", "views/startpage.fxml");
     }
 }

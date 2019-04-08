@@ -14,7 +14,7 @@ public class ViewChanger {
     // Denne listen skal inneholde instanser av views i applikasjonen
     // TODO: Endre type fra Parent til noe annet dersom hensiktsmessig
     public static ArrayList<Parent> viewList = new ArrayList();
-    public static HashMap<String, Parent> viewMap = new HashMap<>();
+    public static HashMap<String, Scene> viewMap = new HashMap<>();
 
     /**
      * TODO: Vi trenger funskjonalitet som bytter view uten å instansiere controller på nytt hver gang!!
@@ -32,23 +32,22 @@ public class ViewChanger {
      */
     public void setView(Parent currentParent, String viewName, String path) {
         Parent parent = null;
+        Stage stage = (Stage)currentParent.getParent().getScene().getWindow();
 
         if (viewMap.containsKey(viewName)) {
-            parent = viewMap.get(viewName);
+            stage.setScene(viewMap.get(viewName));
         } else {
 
             try {
-                parent = FXMLLoader.load(getClass().getClassLoader().getResource(path));
-                viewMap.putIfAbsent(viewName, parent);
+                parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/newClient.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            viewMap.putIfAbsent(viewName, scene);
         }
-
-        Scene scene2 = new Scene(parent);
-        Stage stage = (Stage)currentParent.getParent().getScene().getWindow();
-        stage.setScene(scene2);
     }
 
 }
