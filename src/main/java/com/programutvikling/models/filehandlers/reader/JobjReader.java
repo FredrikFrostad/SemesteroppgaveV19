@@ -11,7 +11,7 @@ public class JobjReader implements FileReader {
 
     @Override
     public void readDataFromFile(File file) throws Exception {
-        
+
     }
 
     @Override
