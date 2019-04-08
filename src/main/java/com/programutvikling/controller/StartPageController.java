@@ -20,6 +20,26 @@ public class StartPageController {
     Label label;
 
     @FXML
+    private void listActive(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void listClients(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void newClient(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void newPolicy(ActionEvent event) {
+
+    }
+
+    @FXML
     private void handleButtonAction(ActionEvent event) {
         label.setText("Morra di er mann!");
         Parent parent = null;

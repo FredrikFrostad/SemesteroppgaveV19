@@ -1,6 +1,7 @@
 com/programutvikling/models/filehandlers/writer/JobjWriter.class
 com/programutvikling/models/filehandlers/writer/FileWriter.class
 com/programutvikling/models/filehandlers/writer/CsvWriter.class
+com/programutvikling/mainapp/MainApp$1.class
 com/programutvikling/data/tesklasser/forsikringer/Forsikring.class
 com/programutvikling/data/tesklasser/forsikringer/Skademelding.class
 com/programutvikling/controller/StartPageController.class
@@ -15,5 +16,6 @@ com/programutvikling/data/tesklasser/Kunde.class
 com/programutvikling/controller/MainFXMLController.class
 com/programutvikling/models/filehandlers/reader/JobjReader.class
 com/programutvikling/models/osType/OSType$OS.class
+com/programutvikling/mainapp/MainApp$runMode.class
 com/programutvikling/mainapp/MainApp.class
 com/programutvikling/data/tesklasser/forsikringer/VillaInnbo.class
