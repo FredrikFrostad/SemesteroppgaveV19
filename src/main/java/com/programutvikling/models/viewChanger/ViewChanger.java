@@ -31,15 +31,15 @@ public class ViewChanger {
      * @param path Path til nytt view i resourcemappe
      */
     public void setView(Parent currentParent, String viewName, String path) {
-        Parent parent = null;
         Stage stage = (Stage)currentParent.getParent().getScene().getWindow();
 
         if (viewMap.containsKey(viewName)) {
             stage.setScene(viewMap.get(viewName));
         } else {
 
+            Parent parent = null;
             try {
-                parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/newClient.fxml"));
+                parent = FXMLLoader.load(getClass().getClassLoader().getResource(path));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -50,4 +50,8 @@ public class ViewChanger {
         }
     }
 
+    //TODO: Denne metoden er for testing, husk å slette dersom den ikke trengs lenger
+    public static HashMap<String, Scene> getViewMap() {
+        return viewMap;
+    }
 }

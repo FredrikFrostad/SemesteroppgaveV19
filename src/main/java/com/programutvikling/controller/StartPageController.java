@@ -4,15 +4,13 @@ import com.programutvikling.data.tesklasser.Kunde;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StartPageController {
 
@@ -31,38 +29,29 @@ public class StartPageController {
 
     @FXML
     private void listClients(ActionEvent event) {
-        Parent parent = null;
-        try {
-            parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/clients.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene2 = new Scene(parent);
-        Stage stage = (Stage)startpageparent.getParent().getScene().getWindow();
-        stage.setScene(scene2);
+        ViewChanger vc = new ViewChanger();
+        vc.setView(startpageparent, "clients", "views/clients.fxml");
     }
 
     @FXML
     private void newClient(ActionEvent event) {
-
         ViewChanger vc = new ViewChanger();
         vc.setView(startpageparent, "newClient", "views/newClient.fxml");
-        /*
-        Parent parent = null;
-        try {
-            parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/newClient.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene2 = new Scene(parent);
-        Stage stage = (Stage)startpageparent.getParent().getScene().getWindow();
-        stage.setScene(scene2);
-
-         */
     }
 
     @FXML
     private void newPolicy(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void test(ActionEvent event) {
+        HashMap<String, Scene> map = ViewChanger.getViewMap();
+        for (Map.Entry m : map.entrySet()) {
+            System.out.println(m.getKey()+ " " + m.getValue());
+        }
+        System.out.println();
+
 
     }
 
