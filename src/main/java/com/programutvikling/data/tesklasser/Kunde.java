@@ -4,6 +4,8 @@ import com.programutvikling.data.tesklasser.forsikringer.Forsikring;
 import com.programutvikling.data.tesklasser.forsikringer.Skademelding;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -14,16 +16,22 @@ public class Kunde implements Serializable {
     private String mellomnavn;
     private String etternavn;
     private String forsikrNr;
-    private List<Forsikring> forsikringer;
-    private List<Skademelding> skademeldinger;
-    private List<Double> ubetaltErstatning; //TODO: Denne listen har feil type. Mulig vi bør lage en egen klasse for dette også
+    private String Fakturaadresse;
 
-    public Kunde(Date kundeOpprettet, String fornavn, String mellomnavn, String etternavn, String forsikrNr) {
-        this.kundeOpprettet = kundeOpprettet;
+    private static final DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
+
+    //TODO: Kommenterer ut disse feltene for å unngå trøbbel med serialisering. Må hånderes senere!!
+    //private List<Forsikring> forsikringer;
+    //private List<Skademelding> skademeldinger;
+    //private List<Double> ubetaltErstatning; //TODO: Denne listen har feil type. Mulig vi bør lage en egen klasse for dette også
+
+    public Kunde(String fornavn, String mellomnavn, String etternavn, String forsikrNr, String fakturaadresse) {
+        this.kundeOpprettet = new Date();
         this.fornavn = fornavn;
         this.mellomnavn = mellomnavn;
         this.etternavn = etternavn;
         this.forsikrNr = forsikrNr;
+        this.Fakturaadresse = fakturaadresse;
     }
 
     @Override
@@ -34,9 +42,7 @@ public class Kunde implements Serializable {
                 ", mellomnavn='" + mellomnavn + '\'' +
                 ", etternavn='" + etternavn + '\'' +
                 ", forsikrNr='" + forsikrNr + '\'' +
-                ", forsikringer=" + forsikringer +
-                ", skademeldinger=" + skademeldinger +
-                ", ubetaltErstatning=" + ubetaltErstatning +
+                ", Fakturaadresse='" + Fakturaadresse + '\'' +
                 '}';
     }
 }

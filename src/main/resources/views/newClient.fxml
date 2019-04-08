@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="apane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.MainFXMLController">
     <children>
-      <fx:include source="secondpage.fxml" />
+      <fx:include source="newClientInclude.fxml" />
       <MenuBar prefWidth="1200.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">

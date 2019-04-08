@@ -7,9 +7,16 @@ import java.io.*;
 public class JobjWriter implements FileWriter {
     @Override
     public File getFile() throws IOException {
+        //String usrHome = System.getProperty("user.home");
+        File userDir = new File(System.getProperty("user.home"));
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("jobj"));
-        return fileChooser.showOpenDialog(null);
+
+        //Set extensionfilter for jobj files
+        FileChooser.ExtensionFilter extFltr = new FileChooser.ExtensionFilter("jobj files (*.jobj)", "*.jobj");
+        fileChooser.getExtensionFilters().add(extFltr);
+        fileChooser.setInitialDirectory(userDir);
+        fileChooser.setInitialFileName("newClient.jobj");
+        return fileChooser.showSaveDialog(null);
     }
 
     @Override

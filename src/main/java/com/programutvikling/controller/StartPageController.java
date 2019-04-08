@@ -1,5 +1,6 @@
 package com.programutvikling.controller;
 
+import com.programutvikling.data.tesklasser.Kunde;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class StartPageController {
+
+    private ArrayList<Kunde> clientList;
 
     @FXML
     AnchorPane startpageparent;
@@ -31,7 +35,15 @@ public class StartPageController {
 
     @FXML
     private void newClient(ActionEvent event) {
-
+        Parent parent = null;
+        try {
+            parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/newClient.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene2 = new Scene(parent);
+        Stage stage = (Stage)startpageparent.getParent().getScene().getWindow();
+        stage.setScene(scene2);
     }
 
     @FXML
@@ -39,18 +51,7 @@ public class StartPageController {
 
     }
 
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        label.setText("Morra di er mann!");
-        Parent parent = null;
-        try {
-            parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/scene2.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene2 = new Scene(parent);
-        Stage stage = (Stage)startpageparent.getParent().getScene().getWindow();
-        stage.setScene(scene2);
-
+    public void addToClientList(Kunde kunde) {
+        clientList.add(kunde);
     }
 }

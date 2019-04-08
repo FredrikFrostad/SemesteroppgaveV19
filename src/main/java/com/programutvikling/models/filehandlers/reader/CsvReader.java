@@ -15,13 +15,13 @@ public class CsvReader implements FileReader{
     }
 
     @Override
-    public void readDataFromFile(File file) throws Exception {
-
+    public Object readDataFromFile(File file) throws Exception {
+        return null;
     }
 
     @Override
-    public void readDataFromURL(String url) {
-
+    public Object readDataFromURL(String url) {
+        return null;
     }
 
 }
