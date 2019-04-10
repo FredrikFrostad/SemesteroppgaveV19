@@ -50,22 +50,22 @@ public class MainApp extends Application {
 
         switch (mode) {
             case NORMAL:
-                out = "../../../views/startpage.fxml";
+                out = "/views/startpage.fxml";
                 break;
             case TEST_ADDCLIENT:
-                //out = "../../../views/NOTDEFINED.fxml";
+                //out = "/views/NOTDEFINED.fxml";
                 break;
             case TEST_ADDPOLICY:
-                //out = "../../../views/NOTDEFINED.fxml";
+                //out = "/views/NOTDEFINED.fxml";
                 break;
             case TEST_STARTPAGE:
-                //out = "../../../views/NOTDEFINED.fxml";
+                //out = "/views/NOTDEFINED.fxml";
                 break;
             case TEST_FREDRIK:
-                //out = "../../../views/NOTDEFINED.fxml";
+                //out = "/views/NOTDEFINED.fxml";
                 break;
             case TEST_JACOB:
-                //out = "../../../views/NOTDEFINED.fxml";
+                //out = "/views/NOTDEFINED.fxml";
             default:
                 out = null;
 
@@ -77,12 +77,12 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
-        //Parent root = FXMLLoader.load(getClass().getResource("../../../views/startpage.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/startpage.fxml"));
 
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../../../views/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/views/styles.css").toExternalForm());
 
         // Legger til view i viewmap for å forhindre senere instansiering
         ViewChanger.viewMap.putIfAbsent("startpage", scene);

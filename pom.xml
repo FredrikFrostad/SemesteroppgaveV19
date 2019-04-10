@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mainClass>com.programutvikling.mainapp.MainApp</mainClass>
+        <mainClass>com.programutvikling.mainapp.Morradi</mainClass>
     </properties>
 
     <organization>
@@ -55,8 +55,33 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.programutvikling.mainapp.MainApp</mainClass>
+                    <mainClass>com.programutvikling.mainapp.Morradi</mainClass>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        com.programutvikling.mainapp.Morradi
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>

@@ -1,6 +1,6 @@
 com/programutvikling/models/viewChanger/ViewChanger.class
-com/programutvikling/models/filehandlers/writer/JobjWriter.class
 com/programutvikling/models/filehandlers/writer/FileWriter.class
+com/programutvikling/models/filehandlers/writer/JobjWriter.class
 com/programutvikling/models/filehandlers/writer/CsvWriter.class
 com/programutvikling/mainapp/MainApp$1.class
 com/programutvikling/data/tesklasser/forsikringer/Forsikring.class
@@ -22,3 +22,4 @@ com/programutvikling/models/osType/OSType$OS.class
 com/programutvikling/mainapp/MainApp$runMode.class
 com/programutvikling/mainapp/MainApp.class
 com/programutvikling/data/tesklasser/forsikringer/VillaInnbo.class
+com/programutvikling/mainapp/Morradi.class
