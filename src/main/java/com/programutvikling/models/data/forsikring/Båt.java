@@ -13,10 +13,14 @@ public class Båt extends Forsikring{
     private String motorType;
     private String effekt;
 
-    public Båt(String eier, String regNr, String typeBåt, String modell, int lengde, int årsmodell,
-                String motorType, String effekt, double premieAnnum, double forsikringsSum, Date avtaleOpprettet,
-                    String betingelser) {
-        super(premieAnnum, forsikringsSum, avtaleOpprettet, betingelser);
+    public Båt() {
+        super();
+    }
+
+
+    public Båt(double premieAnnum, double forsikringsSum, String betingelser, String eier, String regNr,
+               String typeBåt, String modell, int lengde, int årsmodell, String motorType, String effekt) {
+        super(premieAnnum, forsikringsSum, betingelser);
         this.eier = eier;
         this.regNr = regNr;
         this.typeBåt = typeBåt;
@@ -31,33 +35,77 @@ public class Båt extends Forsikring{
         return eier;
     }
 
+    public void setEier(String eier) {
+        this.eier = eier;
+    }
+
     public String getRegNr() {
         return regNr;
+    }
+
+    public void setRegNr(String regNr) {
+        this.regNr = regNr;
     }
 
     public String getTypeBåt() {
         return typeBåt;
     }
 
+    public void setTypeBåt(String typeBåt) {
+        this.typeBåt = typeBåt;
+    }
+
     public String getModell() {
         return modell;
+    }
+
+    public void setModell(String modell) {
+        this.modell = modell;
     }
 
     public int getLengde() {
         return lengde;
     }
 
+    public void setLengde(int lengde) {
+        this.lengde = lengde;
+    }
+
     public int getÅrsmodell() {
         return årsmodell;
+    }
+
+    public void setÅrsmodell(int årsmodell) {
+        this.årsmodell = årsmodell;
     }
 
     public String getMotorType() {
         return motorType;
     }
 
+    public void setMotorType(String motorType) {
+        this.motorType = motorType;
+    }
+
     public String getEffekt() {
         return effekt;
     }
 
+    public void setEffekt(String effekt) {
+        this.effekt = effekt;
+    }
 
+    @Override
+    public String toString() {
+        return "Båt{" +
+                "eier='" + eier + '\'' +
+                ", regNr='" + regNr + '\'' +
+                ", typeBåt='" + typeBåt + '\'' +
+                ", modell='" + modell + '\'' +
+                ", lengde=" + lengde +
+                ", årsmodell=" + årsmodell +
+                ", motorType='" + motorType + '\'' +
+                ", effekt='" + effekt + '\'' +
+                '}';
+    }
 }

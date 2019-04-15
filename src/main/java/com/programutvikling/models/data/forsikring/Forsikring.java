@@ -9,10 +9,14 @@ public abstract class Forsikring {
     private Date avtaleOpprettet;
     private String betingelser;
 
-    public Forsikring(double premieAnnum, double forsikringsSum, Date avtaleOpprettet, String betingelser) {
+    public Forsikring() {
+        this.avtaleOpprettet = new Date();
+    }
+
+    public Forsikring(double premieAnnum, double forsikringsSum, String betingelser) {
         this.premieAnnum = premieAnnum;
         this.forsikringsSum = forsikringsSum;
-        this.avtaleOpprettet = avtaleOpprettet;
+        this.avtaleOpprettet = new Date();
         this.betingelser = betingelser;
     }
 

@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Fritidsbolig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Reise.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Skademelding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/VillaInnbo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/skademelding/Skademelding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/com/programutvikling/models/data/kunde/KundeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/AddClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/AddClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/StartPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/StartPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/data/tesklasser/Kunde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/data/tesklasser/forsikringer/Båt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/data/tesklasser/forsikringer/Forsikring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Forsikring.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/data/tesklasser/forsikringer/Fritidsbolig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/data/tesklasser/forsikringer/Reise.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/data/tesklasser/forsikringer/Skademelding.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/data/tesklasser/forsikringer/VillaInnbo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/mainapp/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/mainapp/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Forsikring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Forsikring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Fritidsbolig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Fritidsbolig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Reise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Reise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/JobjReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/JobjReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/semesteroppgave-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/semesteroppgave-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,19 +28,177 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="585">
               <caret line="39" selection-start-line="39" selection-end-line="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/JobjReader.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Forsikring.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="344">
+              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+              <folding>
+                <element signature="e#272#273#0" expanded="true" />
+                <element signature="e#320#321#0" expanded="true" />
+                <element signature="e#748#749#0" expanded="true" />
+                <element signature="e#785#786#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/skademelding/Skademelding.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+              <folding>
+                <element signature="e#853#854#0" expanded="true" />
+                <element signature="e#885#886#0" expanded="true" />
+                <element signature="e#933#934#0" expanded="true" />
+                <element signature="e#975#976#0" expanded="true" />
+                <element signature="e#1006#1007#0" expanded="true" />
+                <element signature="e#1036#1037#0" expanded="true" />
+                <element signature="e#1079#1080#0" expanded="true" />
+                <element signature="e#1117#1118#0" expanded="true" />
+                <element signature="e#1153#1154#0" expanded="true" />
+                <element signature="e#1185#1186#0" expanded="true" />
+                <element signature="e#1235#1236#0" expanded="true" />
+                <element signature="e#1277#1278#0" expanded="true" />
+                <element signature="e#1320#1321#0" expanded="true" />
+                <element signature="e#1359#1360#0" expanded="true" />
+                <element signature="e#1423#1424#0" expanded="true" />
+                <element signature="e#1479#1480#0" expanded="true" />
+                <element signature="e#1523#1524#0" expanded="true" />
+                <element signature="e#1563#1564#0" expanded="true" />
+                <element signature="e#1629#1630#0" expanded="true" />
+                <element signature="e#1687#1688#0" expanded="true" />
+                <element signature="e#1729#1730#0" expanded="true" />
+                <element signature="e#1767#1768#0" expanded="true" />
+                <element signature="e#1829#1830#0" expanded="true" />
+                <element signature="e#1883#1884#0" expanded="true" />
+                <element signature="e#1928#1929#0" expanded="true" />
+                <element signature="e#1969#1970#0" expanded="true" />
+                <element signature="e#2037#2038#0" expanded="true" />
+                <element signature="e#2097#2098#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+              <folding>
+                <element signature="e#511#512#0" expanded="true" />
+                <element signature="e#531#532#0" expanded="true" />
+                <element signature="e#889#890#0" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
+                <element signature="e#956#957#0" expanded="true" />
+                <element signature="e#988#989#0" expanded="true" />
+                <element signature="e#1020#1021#0" expanded="true" />
+                <element signature="e#1048#1049#0" expanded="true" />
+                <element signature="e#1090#1091#0" expanded="true" />
+                <element signature="e#1124#1125#0" expanded="true" />
+                <element signature="e#1158#1159#0" expanded="true" />
+                <element signature="e#1188#1189#0" expanded="true" />
+                <element signature="e#1234#1235#0" expanded="true" />
+                <element signature="e#1272#1273#0" expanded="true" />
+                <element signature="e#1305#1306#0" expanded="true" />
+                <element signature="e#1334#1335#0" expanded="true" />
+                <element signature="e#1378#1379#0" expanded="true" />
+                <element signature="e#1414#1415#0" expanded="true" />
+                <element signature="e#1444#1445#0" expanded="true" />
+                <element signature="e#1473#1474#0" expanded="true" />
+                <element signature="e#1514#1515#0" expanded="true" />
+                <element signature="e#1550#1551#0" expanded="true" />
+                <element signature="e#1583#1584#0" expanded="true" />
+                <element signature="e#1615#1616#0" expanded="true" />
+                <element signature="e#1662#1663#0" expanded="true" />
+                <element signature="e#1704#1705#0" expanded="true" />
+                <element signature="e#1740#1741#0" expanded="true" />
+                <element signature="e#1772#1773#0" expanded="true" />
+                <element signature="e#1822#1823#0" expanded="true" />
+                <element signature="e#1864#1865#0" expanded="true" />
+                <element signature="e#1897#1898#0" expanded="true" />
+                <element signature="e#1926#1927#0" expanded="true" />
+                <element signature="e#1970#1971#0" expanded="true" />
+                <element signature="e#2006#2007#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Fritidsbolig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1440">
+              <caret line="96" column="18" selection-start-line="96" selection-start-column="18" selection-end-line="96" selection-end-column="18" />
+              <folding>
+                <element signature="e#398#399#0" expanded="true" />
+                <element signature="e#421#422#0" expanded="true" />
+                <element signature="e#1151#1152#0" expanded="true" />
+                <element signature="e#1181#1182#0" expanded="true" />
+                <element signature="e#1227#1228#0" expanded="true" />
+                <element signature="e#1265#1266#0" expanded="true" />
+                <element signature="e#1297#1298#0" expanded="true" />
+                <element signature="e#1328#1329#0" expanded="true" />
+                <element signature="e#1373#1374#0" expanded="true" />
+                <element signature="e#1413#1414#0" expanded="true" />
+                <element signature="e#1449#1450#0" expanded="true" />
+                <element signature="e#1481#1482#0" expanded="true" />
+                <element signature="e#1531#1532#0" expanded="true" />
+                <element signature="e#1573#1574#0" expanded="true" />
+                <element signature="e#1614#1615#0" expanded="true" />
+                <element signature="e#1651#1652#0" expanded="true" />
+                <element signature="e#1711#1712#0" expanded="true" />
+                <element signature="e#1763#1764#0" expanded="true" />
+                <element signature="e#1798#1799#0" expanded="true" />
+                <element signature="e#1829#1830#0" expanded="true" />
+                <element signature="e#1877#1878#0" expanded="true" />
+                <element signature="e#1917#1918#0" expanded="true" />
+                <element signature="e#1946#1947#0" expanded="true" />
+                <element signature="e#1974#1975#0" expanded="true" />
+                <element signature="e#2013#2014#0" expanded="true" />
+                <element signature="e#2047#2048#0" expanded="true" />
+                <element signature="e#2098#2099#0" expanded="true" />
+                <element signature="e#2145#2146#0" expanded="true" />
+                <element signature="e#2345#2346#0" expanded="true" />
+                <element signature="e#2389#2390#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Reise.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+              <folding>
+                <element signature="e#595#596#0" expanded="true" />
+                <element signature="e#663#664#0" expanded="true" />
+                <element signature="e#723#724#0" expanded="true" />
+                <element signature="e#778#779#0" expanded="true" />
+                <element signature="e#815#816#0" expanded="true" />
+                <element signature="e#889#890#0" expanded="true" />
+                <element signature="e#941#942#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,6 +212,7 @@
         <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -97,7 +250,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/views/secondpage.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/FileReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/writer/FileWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/JobjReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/writer/CsvWriter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/CsvReader.java" />
         <option value="$PROJECT_DIR$/src/main/resources/views/newClientInclude.fxml" />
@@ -113,6 +265,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/mainapp/MainApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/viewChanger/ViewChanger.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/JobjReader.java" />
+        <option value="$PROJECT_DIR$/src/main/test/com/programutvikling/models/filehandlers/reader/JobjReaderTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/com/programutvikling/models/data/kunde/KundeTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Forsikring.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Fritidsbolig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Reise.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/skademelding/Skademelding.java" />
       </list>
     </option>
   </component>
@@ -206,18 +367,23 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="filehandlers" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="skademelding" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
               <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="filehandlers" type="462c0819:PsiDirectoryNode" />
-              <item name="reader" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="kunde" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
@@ -237,16 +403,28 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553634531968" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Programutvikling/SemesteroppgaveV18" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/test/com/programutvikling/models/filehandlers/reader" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.programutvikling.models.data.kunde" />
+      <recent name="com.programutvikling.models.filehandlers.reader" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
       <recent name="com.programutvikling" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/test/com/programutvikling/models/filehandlers/reader" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/views" />
@@ -267,7 +445,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.hellofx">
+  <component name="RunManager" selected="JUnit.KundeTest.objectIntegrityWhenSerializing">
     <configuration name="Morradi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.programutvikling.mainapp.Morradi" />
       <module name="semesteroppgave" />
@@ -281,8 +459,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="KundeTest.objectIntegrityWhenSerializing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="semesteroppgave" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.programutvikling.models.data.kunde.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.programutvikling.models.data.kunde" />
+      <option name="MAIN_CLASS_NAME" value="com.programutvikling.models.data.kunde.KundeTest" />
+      <option name="METHOD_NAME" value="objectIntegrityWhenSerializing" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.KundeTest.objectIntegrityWhenSerializing" />
         <item itemvalue="Application.Morradi" />
       </list>
     </recent_temporary>
@@ -307,7 +502,7 @@
       <workItem from="1554974906993" duration="628000" />
       <workItem from="1555320705186" duration="4828000" />
       <workItem from="1555336031719" duration="941000" />
-      <workItem from="1555344423326" duration="1800000" />
+      <workItem from="1555344423326" duration="6277000" />
     </task>
     <task id="LOCAL-00001" summary="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
       <created>1554202940060</created>
@@ -319,8 +514,19 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="KundeTest_objectIntegrityWhenSerializing - 2019.04.15 at 19h 10m 29s.xml">
+      <configuration name="KundeTest.objectIntegrityWhenSerializing" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="KundeTest_objectIntegrityWhenSerializing - 2019.04.15 at 19h 14m 03s.xml">
+      <configuration name="KundeTest.objectIntegrityWhenSerializing" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="KundeTest_objectIntegrityWhenSerializing - 2019.04.15 at 19h 19m 39s.xml">
+      <configuration name="KundeTest.objectIntegrityWhenSerializing" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66840000" />
+    <option name="totallyTimeSpent" value="71317000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -335,7 +541,7 @@
     <frame x="0" y="604" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23852721" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2796158" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -344,7 +550,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293348" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27371866" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27371866" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -463,49 +669,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Fritidsbolig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Skademelding.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Forsikring.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-          <folding>
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#908#909#0" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#968#969#0" expanded="true" />
-            <element signature="e#1002#1003#0" expanded="true" />
-            <element signature="e#1032#1033#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1094#1095#0" expanded="true" />
-            <element signature="e#1124#1125#0" expanded="true" />
-            <element signature="e#1153#1154#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1254#1255#0" expanded="true" />
-            <element signature="e#1286#1287#0" expanded="true" />
-            <element signature="e#1319#1320#0" expanded="true" />
-            <element signature="e#1348#1349#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -523,13 +690,6 @@
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/module-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/FileReader.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -691,13 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Reise.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/writer/FileWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -818,29 +971,198 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java">
+    <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/filehandlers/reader/JobjReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="105">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/JobjReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/module-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/data/kunde/KundeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="96" selection-start-line="16" selection-start-column="96" selection-end-line="16" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="585">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/JobjReader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="780">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#956#957#0" expanded="true" />
+            <element signature="e#988#989#0" expanded="true" />
+            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#1048#1049#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1124#1125#0" expanded="true" />
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1188#1189#0" expanded="true" />
+            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1272#1273#0" expanded="true" />
+            <element signature="e#1305#1306#0" expanded="true" />
+            <element signature="e#1334#1335#0" expanded="true" />
+            <element signature="e#1378#1379#0" expanded="true" />
+            <element signature="e#1414#1415#0" expanded="true" />
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#1473#1474#0" expanded="true" />
+            <element signature="e#1514#1515#0" expanded="true" />
+            <element signature="e#1550#1551#0" expanded="true" />
+            <element signature="e#1583#1584#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
+            <element signature="e#1662#1663#0" expanded="true" />
+            <element signature="e#1704#1705#0" expanded="true" />
+            <element signature="e#1740#1741#0" expanded="true" />
+            <element signature="e#1772#1773#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
+            <element signature="e#1864#1865#0" expanded="true" />
+            <element signature="e#1897#1898#0" expanded="true" />
+            <element signature="e#1926#1927#0" expanded="true" />
+            <element signature="e#1970#1971#0" expanded="true" />
+            <element signature="e#2006#2007#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Fritidsbolig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="96" column="18" selection-start-line="96" selection-start-column="18" selection-end-line="96" selection-end-column="18" />
+          <folding>
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+            <element signature="e#1181#1182#0" expanded="true" />
+            <element signature="e#1227#1228#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1297#1298#0" expanded="true" />
+            <element signature="e#1328#1329#0" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="e#1413#1414#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1481#1482#0" expanded="true" />
+            <element signature="e#1531#1532#0" expanded="true" />
+            <element signature="e#1573#1574#0" expanded="true" />
+            <element signature="e#1614#1615#0" expanded="true" />
+            <element signature="e#1651#1652#0" expanded="true" />
+            <element signature="e#1711#1712#0" expanded="true" />
+            <element signature="e#1763#1764#0" expanded="true" />
+            <element signature="e#1798#1799#0" expanded="true" />
+            <element signature="e#1829#1830#0" expanded="true" />
+            <element signature="e#1877#1878#0" expanded="true" />
+            <element signature="e#1917#1918#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+            <element signature="e#1974#1975#0" expanded="true" />
+            <element signature="e#2013#2014#0" expanded="true" />
+            <element signature="e#2047#2048#0" expanded="true" />
+            <element signature="e#2098#2099#0" expanded="true" />
+            <element signature="e#2145#2146#0" expanded="true" />
+            <element signature="e#2345#2346#0" expanded="true" />
+            <element signature="e#2389#2390#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Reise.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding>
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
+            <element signature="e#815#816#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Forsikring.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+          <folding>
+            <element signature="e#272#273#0" expanded="true" />
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#785#786#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/skademelding/Skademelding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+          <folding>
+            <element signature="e#853#854#0" expanded="true" />
+            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#933#934#0" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
+            <element signature="e#1006#1007#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1079#1080#0" expanded="true" />
+            <element signature="e#1117#1118#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+            <element signature="e#1235#1236#0" expanded="true" />
+            <element signature="e#1277#1278#0" expanded="true" />
+            <element signature="e#1320#1321#0" expanded="true" />
+            <element signature="e#1359#1360#0" expanded="true" />
+            <element signature="e#1423#1424#0" expanded="true" />
+            <element signature="e#1479#1480#0" expanded="true" />
+            <element signature="e#1523#1524#0" expanded="true" />
+            <element signature="e#1563#1564#0" expanded="true" />
+            <element signature="e#1629#1630#0" expanded="true" />
+            <element signature="e#1687#1688#0" expanded="true" />
+            <element signature="e#1729#1730#0" expanded="true" />
+            <element signature="e#1767#1768#0" expanded="true" />
+            <element signature="e#1829#1830#0" expanded="true" />
+            <element signature="e#1883#1884#0" expanded="true" />
+            <element signature="e#1928#1929#0" expanded="true" />
+            <element signature="e#1969#1970#0" expanded="true" />
+            <element signature="e#2037#2038#0" expanded="true" />
+            <element signature="e#2097#2098#0" expanded="true" />
           </folding>
         </state>
       </provider>
