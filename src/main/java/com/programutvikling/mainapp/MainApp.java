@@ -1,7 +1,6 @@
 package com.programutvikling.mainapp;
 
-import com.programutvikling.controller.MainFXMLController;
-import com.programutvikling.data.tesklasser.Kunde;
+import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;

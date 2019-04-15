@@ -1,6 +1,6 @@
 package com.programutvikling.controller;
 
-import com.programutvikling.data.tesklasser.Kunde;
+import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

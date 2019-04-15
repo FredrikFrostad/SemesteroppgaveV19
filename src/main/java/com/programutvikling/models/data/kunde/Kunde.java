@@ -1,13 +1,8 @@
-package com.programutvikling.data.tesklasser;
-
-import com.programutvikling.data.tesklasser.forsikringer.Forsikring;
-import com.programutvikling.data.tesklasser.forsikringer.Skademelding;
+package com.programutvikling.models.data.kunde;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 
 public class Kunde implements Serializable {
 
@@ -21,7 +16,7 @@ public class Kunde implements Serializable {
     private static final DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
 
     //TODO: Kommenterer ut disse feltene for å unngå trøbbel med serialisering. Må hånderes senere!!
-    //private List<Forsikring> forsikringer;
+    //private List<Forsikring> forsikring;
     //private List<Skademelding> skademeldinger;
     //private List<Double> ubetaltErstatning; //TODO: Denne listen har feil type. Mulig vi bør lage en egen klasse for dette også
 
