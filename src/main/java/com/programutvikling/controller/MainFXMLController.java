@@ -16,13 +16,8 @@ import java.util.ArrayList;
 
 public class MainFXMLController {
 
-    private File projectFilePath;
-    private ArrayList<Scene> sceneList;
-    private final String PROJECTFOLDER = "SemesteroppgaveV19";
-
 
     public void initialize() {
-        findOSTypeAndCreateProjectFolder();
     }
 
     @FXML
@@ -55,7 +50,7 @@ public class MainFXMLController {
     public void loadNewFXML() {
         try {
 
-            Parent scene2Parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/startpageInclude.fxml"));
+            Parent scene2Parent = FXMLLoader.load(getClass().getClassLoader().getResource("views/startpage.fxml"));
             Scene scene2 = new Scene(scene2Parent);
             Stage window = (Stage)apane.getScene().getWindow();
             window.setScene(scene2);
@@ -70,32 +65,5 @@ public class MainFXMLController {
 
     public void setChildFXML() {
 
-    }
-
-
-    /**
-     * Metoden finner os typen som maskinen kjører på, og oppretter en prosjektmappe under current user home.
-     */
-    private void findOSTypeAndCreateProjectFolder() {
-        String userHome = System.getProperty("user.home");
-
-        if (OSType.getOsType() == OSType.OS.WINDOWS ||
-                    OSType.getOsType() == OSType.OS.MAC ||
-                        OSType.getOsType() == OSType.OS.LINUX) {
-            projectFilePath = new File(userHome + File.separator + PROJECTFOLDER);
-            {
-                if (projectFilePath.exists()) {
-                    System.out.println("Mappen finnes allerede: " + projectFilePath); //TODO: Fjerne testkode ved endelig implementering
-                } else {
-                    System.out.println("Oppretter mappe: " + projectFilePath); //TODO: Fjerne testkode ved endelig implementering
-                    boolean isPathCreated = projectFilePath.mkdirs();
-
-                    if (isPathCreated) {
-                        System.out.println("Mappa er laget!"); //TODO: Fjerne testkode ved endelig implementering
-                    }
-                }
-            }
-
-        }
     }
 }

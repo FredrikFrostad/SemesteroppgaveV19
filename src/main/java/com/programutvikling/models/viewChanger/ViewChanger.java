@@ -31,7 +31,7 @@ public class ViewChanger {
      * @param path Path til nytt view i resourcemappe
      */
     public void setView(Parent currentParent, String viewName, String path) {
-        Stage stage = (Stage)currentParent.getParent().getScene().getWindow();
+        Stage stage = (Stage)currentParent.getScene().getWindow();
 
         if (viewMap.containsKey(viewName)) {
             stage.setScene(viewMap.get(viewName));
