@@ -1,4 +1,3 @@
-/home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/mainapp/Morradi.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/filehandlers/reader/CsvReader.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/controller/StartPageController.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/module-info.java
@@ -14,9 +13,10 @@
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/osType/OSType.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/data/forsikring/Skademelding.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/filehandlers/writer/CsvWriter.java
-/home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/controller/MainFXMLController.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/data/forsikring/Reise.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/data/kunde/Kunde.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/data/forsikring/Forsikring.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/filehandlers/writer/FileWriter.java
 /home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/filehandlers/reader/FileReader.java
+/home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/models/data/skademelding/Skademelding.java
+/home/fredrik/Documents/HIOA/Programutvikling2/SemesteroppgaveV19/src/main/java/com/programutvikling/mainapp/MainAppWrapper.java
