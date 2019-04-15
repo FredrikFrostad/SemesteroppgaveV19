@@ -12,8 +12,6 @@ import java.util.HashMap;
 public class ViewChanger {
 
     // Denne listen skal inneholde instanser av views i applikasjonen
-    // TODO: Endre type fra Parent til noe annet dersom hensiktsmessig
-    public static ArrayList<Parent> viewList = new ArrayList();
     public static HashMap<String, Scene> viewMap = new HashMap<>();
 
     /**
