@@ -17,12 +17,16 @@ import java.util.ArrayList;
 public class MainApp extends Application {
 
     private File projectFilePath;
-    private final String PROJECTFOLDER = "SemesteroppgaveV19";
+    private static final String PROJECTFOLDER = "SemesteroppgaveV19";
 
     private static ArrayList<Kunde> clientList = new ArrayList<>();
 
     public static ArrayList<Kunde> getClientList() {
         return clientList;
+    }
+
+    public static String getPROJECTFOLDER() {
+        return PROJECTFOLDER;
     }
 
     public static void setClientList(ArrayList<Kunde> clientList) {

@@ -1,5 +1,6 @@
 package com.programutvikling.models.filehandlers.writer;
 
+import com.programutvikling.mainapp.MainApp;
 import javafx.stage.FileChooser;
 
 import java.io.*;
