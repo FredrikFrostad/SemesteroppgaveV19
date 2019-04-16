@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
-      <change afterPath="$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,83 +17,14 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6603646">
+    <splitter split-orientation="horizontal" split-proportion="0.60364616">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidEmailException.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
-                  <folding>
-                    <element signature="e#154#155#0" expanded="true" />
-                    <element signature="e#184#185#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="396">
-                  <caret line="34" selection-start-line="34" selection-end-line="34" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/controller/AddClientController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="400">
-                  <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/data/kunde/KundeTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="16" column="89" selection-start-line="16" selection-start-column="89" selection-end-line="16" selection-end-column="89" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="36" selection-start-line="36" selection-end-line="36" />
-                  <folding>
-                    <element signature="e#511#512#0" expanded="true" />
-                    <element signature="e#534#535#0" expanded="true" />
-                    <element signature="e#1158#1159#0" expanded="true" />
-                    <element signature="e#1190#1191#0" expanded="true" />
-                    <element signature="e#1864#1865#0" expanded="true" />
-                    <element signature="e#1906#1907#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="204">
+                  <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
                 </state>
               </provider>
             </entry>
@@ -102,13 +34,10 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java">
+            <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="494">
+                  <caret line="91" column="70" selection-start-line="91" selection-start-column="70" selection-end-line="91" selection-end-column="70" />
                 </state>
               </provider>
             </entry>
@@ -232,83 +161,6 @@
               <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
               <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="forsikring" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="kunde" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="programutvikling" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -407,6 +259,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="InputhandlerTest.checkValidForsikrNr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="semesteroppgave" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.programutvikling.models.inputhandler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.programutvikling.models.inputhandler" />
+      <option name="MAIN_CLASS_NAME" value="com.programutvikling.models.inputhandler.InputhandlerTest" />
+      <option name="METHOD_NAME" value="checkValidForsikrNr" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="KundeTest.objectIntegrityWhenSerializing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="semesteroppgave" />
       <extension name="coverage">
@@ -427,6 +295,7 @@
       <list>
         <item itemvalue="JUnit.InputhandlerTest" />
         <item itemvalue="Application.Inputhandler" />
+        <item itemvalue="JUnit.InputhandlerTest.checkValidForsikrNr" />
         <item itemvalue="JUnit.KundeTest.objectIntegrityWhenSerializing" />
         <item itemvalue="Application.MainAppWrapper" />
       </list>
@@ -465,39 +334,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 43m 51s.xml">
+    <history-entry file="InputhandlerTest - 2019.04.16 at 11h 46m 39s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 47m 44s.xml">
+    <history-entry file="InputhandlerTest - 2019.04.16 at 11h 58m 43s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 48m 17s.xml">
+    <history-entry file="InputhandlerTest - 2019.04.16 at 11h 59m 03s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 49m 25s.xml">
+    <history-entry file="InputhandlerTest - 2019.04.16 at 11h 59m 52s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 54m 28s.xml">
+    <history-entry file="InputhandlerTest - 2019.04.16 at 12h 00m 44s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 55m 25s.xml">
+    <history-entry file="InputhandlerTest - 2019.04.16 at 12h 01m 29s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 55m 48s.xml">
+    <history-entry file="InputhandlerTest - 2019.04.16 at 12h 05m 29s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="InputhandlerTest_checkValidEmailFormat - 2019.04.16 at 10h 55m 59s.xml">
-      <configuration name="InputhandlerTest.checkValidEmailFormat" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 56m 02s.xml">
+    <history-entry file="InputhandlerTest - 2019.04.16 at 12h 06m 36s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 56m 55s.xml">
+    <history-entry file="InputhandlerTest - 2019.04.16 at 12h 10m 47s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InputhandlerTest - 2019.04.16 at 12h 12m 52s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81545000" />
+    <option name="totallyTimeSpent" value="85021000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -627,9 +496,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java</url>
-          <line>42</line>
+          <line>41</line>
           <properties />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java</url>
+          <line>77</line>
+          <properties />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -708,24 +583,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/views/startpage.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="205" selection-start-line="7" selection-start-column="155" selection-end-line="7" selection-end-column="205" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/views/startpage.fxml">
-      <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" lean-forward="true" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/views/clients.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -863,10 +722,6 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/views/newClient.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/views/newClient.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="8" column="217" selection-start-line="8" selection-start-column="217" selection-end-line="8" selection-end-column="217" />
@@ -906,8 +761,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="6" lean-forward="true" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+        <state relative-caret-position="315">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
@@ -934,13 +789,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/filehandlers/reader/JobjReaderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/filehandlers/reader/JobjReaderTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/filehandlers/reader/JobjReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1063,16 +912,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/controller/MainFXMLController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/controller/MainFXMLController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1115,17 +955,6 @@
           <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
           <folding>
             <element signature="e#185#186#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidForsikrNrException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-          <folding>
-            <element signature="e#181#182#0" expanded="true" />
-            <element signature="e#211#212#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1174,7 +1003,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidEmailException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
           <folding>
             <element signature="e#154#155#0" expanded="true" />
             <element signature="e#184#185#0" expanded="true" />
@@ -1182,17 +1011,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidForsikrNrException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#211#212#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+        <state relative-caret-position="204">
+          <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        <state relative-caret-position="494">
+          <caret line="91" column="70" selection-start-line="91" selection-start-column="70" selection-end-line="91" selection-end-column="70" />
         </state>
       </provider>
     </entry>

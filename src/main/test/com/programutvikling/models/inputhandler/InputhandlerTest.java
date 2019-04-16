@@ -10,7 +10,6 @@ public class InputhandlerTest {
 
     @Test
     public void checkValidEmailFormat() {
-        Inputhandler handler = new Inputhandler();
         boolean b = false;
 
         String valid = "test.testing@testmail.com";
@@ -23,19 +22,19 @@ public class InputhandlerTest {
         };
 
         try {
-            b = handler.checkValidEmailFormat(valid);
+            b = Inputhandler.checkValidEmailFormat(valid);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        assertTrue(b);
+        assertTrue(valid,b);
 
         b = false;
         int index = 0;
         for (String s : invalid) {
 
             try {
-                b = handler.checkValidEmailFormat(s);
+                b = Inputhandler.checkValidEmailFormat(s);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println(e.getMessage());
@@ -49,10 +48,62 @@ public class InputhandlerTest {
 
     @Test
     public void checkValidNameFormat() {
+
     }
 
     @Test
     public void checkValidForsikrNr() {
+        boolean b = false;
+
+        String[] valid = {
+                "1",
+                "12",
+                "123",
+                "1234",
+                "12345",
+                "123456",
+                "1234567",
+                "12345678"};
+        String[] invalid = {
+                " ",
+                "123d345",
+                "123456789",
+                "asdf",
+                "",
+                "-12344"};
+
+        //Checking list of valid numbers
+        System.out.println("\nChecking list of valid forsikrNumbers:");
+        int index = 0;
+        for (String s : valid) {
+            try {
+                b = Inputhandler.checkValidForsikrNr(s);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+
+            assertTrue("Failed string: " + s, b);
+            System.out.println("Passed at index " + index++);
+            b = false;
+        }
+
+        //Checking list of invalid numbers
+        System.out.println("\nChecking list of invalid forsikrNumbers:");
+        index = 0;
+        b = false;
+        for (String s : invalid) {
+            try {
+                b = Inputhandler.checkValidForsikrNr(s);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+
+            assertFalse("Failed string: " + s, b);
+            System.out.println("Passed at index " + index++);
+            b = false;
+        }
     }
 
     @Test

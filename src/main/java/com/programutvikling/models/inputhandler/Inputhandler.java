@@ -58,11 +58,18 @@ public class Inputhandler {
      * @throws InvalidNumberFormatException Exception is thrown when the parameter String is illegally formatted
      */
     public static boolean checkValidForsikrNr(String forsikrNr) throws InvalidNumberFormatException{
+        //Check if the field is blank
         if (forsikrNr.isBlank()) {
             throw new InvalidNumberFormatException("This field cannot be empty. Please enter a valid forsikrNr");
         }
-        if (forsikrNr.matches("[a-åA-Å]") || !forsikrNr.matches("[0-9]")) {
+        //Check if is number
+        if (!forsikrNr.matches("-?\\d+(\\.\\d+)?")) {
             throw new InvalidForsikrNrException("Illegal forsikrNr entered. Please enter a valid number");
+        }
+        //Check if positive number
+        int test = Integer.parseInt(forsikrNr);
+        if (test < 0) {
+            throw new InvalidForsikrNrException("Illegal number entered, the forsikrNr cannot be negative");
         }
         if (forsikrNr.length() > 8) {
             throw new InvalidForsikrNrException("The number entered cannot be longer than 8 digits");
@@ -70,6 +77,12 @@ public class Inputhandler {
         return true;
     }
 
+    /**
+     * Method for validating the billing adress
+     * @param fakturaAdresse String containing the adress to be verified
+     * @return true if the parameter String passes all checks
+     * @throws InvalidAddressException Exception is thrown when the parameter String is illegally formatted
+     */
     public static boolean checkValidFakturaAdresse(String fakturaAdresse) throws InvalidAddressException {
         String addressFormatMsg = "Adress must be on the form of. Streetname Streetnumber Zipcode Location";
 
@@ -92,11 +105,8 @@ public class Inputhandler {
     }
 
     public static void main(String[] args) {
-        String adr = "Elfgfaret 11 2022 Gjerdrum";
-        String[] arr = adr.split("[0-9]{4}");
 
-        for (String s : arr) {
-            System.out.println(s);
-        }
+        String s = "123d234";
+        System.out.println(s.matches("-?\\d+(\\.\\d+)?"));
     }
 }
