@@ -104,9 +104,16 @@ public class Inputhandler {
         return true;
     }
 
+    public static boolean checkIfValidNumber(String numberString) throws NumberFormatException {
+        if (!numberString.matches("-?\\d+(\\.\\d+)?")) {
+            throw new NumberFormatException("Not a valid number");
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
 
-        String s = "123d234";
+        String s = "123234";
         System.out.println(s.matches("-?\\d+(\\.\\d+)?"));
     }
 }

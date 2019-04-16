@@ -13,13 +13,12 @@ public class InputhandlerTest {
         boolean b = false;
 
         String valid = "test.testing@testmail.com";
-        String[] invalid =
-        {"test.testing.testmail.com",
-        "test.testing@testmail",
-        "test..testing@testmail.com",
-        "fdurovrj904wej8@fjdlkjfklasdf",
-        "test@@testmail.com"
-        };
+        String[] invalid = {
+            "test.testing.testmail.com",
+            "test.testing@testmail",
+            "test..testing@testmail.com",
+            "fdurovrj904wej8@fjdlkjfklasdf",
+            "test@@testmail.com"};
 
         try {
             b = Inputhandler.checkValidEmailFormat(valid);
@@ -112,5 +111,52 @@ public class InputhandlerTest {
 
     @Test
     public void main() {
+    }
+
+    @Test
+    public void checkIfValidNumber() {
+        String[] valid = {
+            "1",
+            "324348908",
+            "000",
+            "-1234",
+            "12.34",
+            "0.123456"
+        };
+        String[] invalid = {
+            "a",
+            "123s",
+            "a.12",
+            " ",
+            ""
+        };
+
+        //Checking list of valid numbers
+        boolean b = false;
+        for (String s : valid) {
+            try {
+                b = Inputhandler.checkIfValidNumber(s);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+
+            assertTrue("Failed at string: " + s, b);
+            b = false;
+        }
+
+        //Checking list of invalid numbers
+        b = false;
+        for (String s : invalid) {
+            try {
+                b = Inputhandler.checkIfValidNumber(s);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+
+            assertFalse("Failed at string: " + s, b);
+        }
+
     }
 }
