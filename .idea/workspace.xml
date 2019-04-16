@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidForsikrNrException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidNumberFormatException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -15,49 +18,91 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="28" column="110" selection-start-line="28" selection-start-column="110" selection-end-line="28" selection-end-column="110" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="e#511#512#0" expanded="true" />
-                <element signature="e#534#535#0" expanded="true" />
-                <element signature="e#1158#1159#0" expanded="true" />
-                <element signature="e#1190#1191#0" expanded="true" />
-                <element signature="e#1864#1865#0" expanded="true" />
-                <element signature="e#1906#1907#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.6603646">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="524">
+                  <caret line="63" column="81" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidAdressException.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="30">
+                  <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidForsikrNrException.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#181#182#0" expanded="true" />
+                    <element signature="e#211#212#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="389">
+                  <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Båt.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="510">
+                  <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+                  <folding>
+                    <element signature="e#511#512#0" expanded="true" />
+                    <element signature="e#534#535#0" expanded="true" />
+                    <element signature="e#1158#1159#0" expanded="true" />
+                    <element signature="e#1190#1191#0" expanded="true" />
+                    <element signature="e#1864#1865#0" expanded="true" />
+                    <element signature="e#1906#1907#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="389">
+                  <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -129,6 +174,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidEmailException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidNameFormatException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidNumberFormatException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidForsikrNrException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" />
       </list>
     </option>
@@ -359,7 +406,7 @@
       <workItem from="1554974906993" duration="628000" />
       <workItem from="1555320705186" duration="4828000" />
       <workItem from="1555336031719" duration="941000" />
-      <workItem from="1555344423326" duration="11366000" />
+      <workItem from="1555344423326" duration="12560000" />
     </task>
     <task id="LOCAL-00001" summary="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
       <created>1554202940060</created>
@@ -383,7 +430,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76406000" />
+    <option name="totallyTimeSpent" value="77600000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -398,7 +445,7 @@
     <frame x="0" y="604" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2796158" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20971185" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1017,13 +1064,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidForsikrNrException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+          <folding>
+            <element signature="e#181#182#0" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidNumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+          <folding>
+            <element signature="e#198#199#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="28" column="110" selection-start-line="28" selection-start-column="110" selection-end-line="28" selection-end-column="110" />
+        <state relative-caret-position="524">
+          <caret line="63" column="81" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidAdressException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
         </state>
       </provider>
     </entry>

@@ -1,7 +1,6 @@
 package com.programutvikling.models.inputhandler;
 
-import com.programutvikling.models.exceptions.InvalidEmailException;
-import com.programutvikling.models.exceptions.InvalidNameFormatException;
+import com.programutvikling.models.exceptions.*;
 
 public class Inputhandler {
 
@@ -43,7 +42,24 @@ public class Inputhandler {
             throw new InvalidNameFormatException("Pleace enter a valid Name");
         }
          */
+        return true;
+    }
 
+    public static boolean checkValidForsikrNr(String forsikrNr) throws InvalidNumberFormatException{
+        if (forsikrNr.isBlank()) {
+            throw new InvalidNumberFormatException("This field cannot be empty. Please enter a valid forsikrNr");
+        }
+        if (forsikrNr.matches("[a-åA-Å]") || !forsikrNr.matches("[0-9]")) {
+            throw new InvalidForsikrNrException("Illegal forsikrNr entered. Please enter a valid number");
+        }
+        if (forsikrNr.length() > 8) {
+            throw new InvalidForsikrNrException("The number entered cannot be longer than 8 digits");
+        }
+        return true;
+    }
+
+    public static boolean checkValidFakturaAdresse(String fakturaAdresse) throws InvalidAddressException {
+        
         return true;
     }
 }
