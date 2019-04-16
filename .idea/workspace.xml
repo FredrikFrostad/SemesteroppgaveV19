@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidEmailException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidNameFormatException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/kunde/Kunde.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="103" selection-start-line="26" selection-start-column="103" selection-end-line="26" selection-end-column="103" />
+            <state relative-caret-position="374">
+              <caret line="28" column="110" selection-start-line="28" selection-start-column="110" selection-end-line="28" selection-end-column="110" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -363,7 +359,7 @@
       <workItem from="1554974906993" duration="628000" />
       <workItem from="1555320705186" duration="4828000" />
       <workItem from="1555336031719" duration="941000" />
-      <workItem from="1555344423326" duration="10729000" />
+      <workItem from="1555344423326" duration="11366000" />
     </task>
     <task id="LOCAL-00001" summary="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
       <created>1554202940060</created>
@@ -387,7 +383,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75769000" />
+    <option name="totallyTimeSpent" value="76406000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1023,8 +1019,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="103" selection-start-line="26" selection-start-column="103" selection-end-line="26" selection-end-column="103" />
+        <state relative-caret-position="374">
+          <caret line="28" column="110" selection-start-line="28" selection-start-column="110" selection-end-line="28" selection-end-column="110" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
