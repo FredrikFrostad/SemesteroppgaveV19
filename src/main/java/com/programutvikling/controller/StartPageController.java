@@ -47,6 +47,9 @@ public class StartPageController {
 
     }
 
+    /**
+     * Method for loading a client from file
+     */
     @FXML
     private void loadClient() {
         Kunde k = null;
@@ -69,10 +72,14 @@ public class StartPageController {
 
         if (k != null) {
             MainApp.getClientList().add(k);
-
+            addClientToListView(k);
         }
     }
 
+    /**
+     * This method adds a client to the clientsListView
+     * @param k The client to be added
+     */
     private void addClientToListView(Kunde k) {
         clientsList.getItems().addAll(k);
     }
