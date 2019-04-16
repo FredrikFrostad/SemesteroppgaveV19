@@ -1,6 +1,7 @@
 package com.programutvikling.models.data.kunde;
 
 import com.programutvikling.models.data.forsikring.Forsikring;
+import com.programutvikling.models.data.skademelding.Skademelding;
 
 import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
@@ -14,16 +15,12 @@ public class Kunde implements Serializable {
     private String etternavn;
     private String forsikrNr;
     private String Fakturaadresse;
-
     private ArrayList<Forsikring> forsikringer = new ArrayList<>();
+    private ArrayList<Skademelding> skademeldinger = new ArrayList<>();
+    private ArrayList<Double> utbetaltErstatn = new ArrayList<>();
 
     private static final DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
 
-
-    //TODO: Kommenterer ut disse feltene for å unngå trøbbel med serialisering. Må hånderes senere!!
-    //private List<Forsikring> forsikring;
-    //private List<Skademelding> skademeldinger;
-    //private List<Double> ubetaltErstatning; //TODO: Denne listen har feil type. Mulig vi bør lage en egen klasse for dette også
     public Kunde(String fornavn, String etternavn, String forsikrNr, String fakturaadresse) {
         this.kundeOpprettet = new Date();
         this.fornavn = fornavn;
@@ -32,8 +29,53 @@ public class Kunde implements Serializable {
         this.Fakturaadresse = fakturaadresse;
     }
 
+
+    public Date getKundeOpprettet() {
+        return kundeOpprettet;
+    }
+
+    public String getFornavn() {
+        return fornavn;
+    }
+
+    public void setFornavn(String fornavn) {
+        this.fornavn = fornavn;
+    }
+
+    public String getEtternavn() {
+        return etternavn;
+    }
+
+    public void setEtternavn(String etternavn) {
+        this.etternavn = etternavn;
+    }
+
+    public String getForsikrNr() {
+        return forsikrNr;
+    }
+
+    public void setForsikrNr(String forsikrNr) {
+        this.forsikrNr = forsikrNr;
+    }
+
+    public String getFakturaadresse() {
+        return Fakturaadresse;
+    }
+
+    public void setFakturaadresse(String fakturaadresse) {
+        Fakturaadresse = fakturaadresse;
+    }
+
     public ArrayList<Forsikring> getForsikringer() {
         return forsikringer;
+    }
+
+    public ArrayList<Skademelding> getSkademeldinger() {
+        return skademeldinger;
+    }
+
+    public ArrayList<Double> getUtbetaltErstatn() {
+        return utbetaltErstatn;
     }
 
     @Override

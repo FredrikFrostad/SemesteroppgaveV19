@@ -5,14 +5,7 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.IOException;
 
-public class CsvReader implements FileReader{
-
-    @Override
-    public File getFile() throws IOException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("csv"));
-        return fileChooser.showOpenDialog(null);
-    }
+public class CsvReader extends FileReader{
 
     @Override
     public Object readDataFromFile(File file) throws Exception {

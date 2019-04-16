@@ -7,14 +7,7 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
 
-public class JobjReader implements FileReader {
-    @Override
-    //TODO: Se på unntak i denne metoden, tror ikke det kastes noen av Filechooser, mulig vi må implementere egne...
-    public File getFile() throws Exception {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("jobj"));
-        return fileChooser.showOpenDialog(null);
-    }
+public class JobjReader extends FileReader {
 
     @Override
     public Object readDataFromFile(File file) throws Exception {
