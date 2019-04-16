@@ -14,7 +14,7 @@ public class KundeTest {
 
     @Test
     public void objectIntegrityWhenSerializing() {
-        Kunde kunde = new Kunde("Knut", "Ivar", "Hagen", "123456", "Testerudlia 5 9999 Etsted");
+        Kunde kunde = new Kunde("Knut", "Hagen", "123456", "Testerudbakke 3 9989 Nordpå");
         Kunde kundeFromFile = null;
         JobjWriter writer = new JobjWriter();
         JobjReader reader = new JobjReader();

@@ -26,7 +26,6 @@ public class AddClientController {
 
         Kunde kunde = new Kunde(
                 fx_fornavn.getText(),
-                fx_mellomnavn.getText(),
                 fx_etternavn.getText(),
                 fx_forsikringsnummer.getText(),
                 fx_fakturaadresse.getText()

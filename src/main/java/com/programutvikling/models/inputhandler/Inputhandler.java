@@ -45,6 +45,12 @@ public class Inputhandler {
         return true;
     }
 
+    /**
+     * Method for validating the formatting of insurance policy numbers
+     * @param forsikrNr String containing the number to be verified
+     * @return true if the parameter String passes all checks
+     * @throws InvalidNumberFormatException Exception is thrown when the parameter String is illegally formatted
+     */
     public static boolean checkValidForsikrNr(String forsikrNr) throws InvalidNumberFormatException{
         if (forsikrNr.isBlank()) {
             throw new InvalidNumberFormatException("This field cannot be empty. Please enter a valid forsikrNr");
@@ -59,7 +65,32 @@ public class Inputhandler {
     }
 
     public static boolean checkValidFakturaAdresse(String fakturaAdresse) throws InvalidAddressException {
-        
+        String addressFormatMsg = "Adress must be on the form of. Streetname Streetnumber Zipcode Location";
+
+        //Splitting address string on zip code
+        String[] splitZip = fakturaAdresse.split("[0-9]{4}");
+
+        //Checking location validity
+        if (splitZip.length != 2 || splitZip[2].contains("[0-9]") || !splitZip[2].contains("[a-åA-Å]")) {
+            throw new InvalidAddressException(addressFormatMsg);
+        }
+
+        //Checking street address validity
+        String[] splitWhtSpc = splitZip[1].split(" ");
+        int i = splitWhtSpc.length;
+        if (!splitWhtSpc[i-1].contains("[0-9]") || splitWhtSpc[i-1].length() > 5) {
+            throw new InvalidAddressException(addressFormatMsg);
+        }
+
         return true;
+    }
+
+    public static void main(String[] args) {
+        String adr = "Elfgfaret 11 2022 Gjerdrum";
+        String[] arr = adr.split("[0-9]{4}");
+
+        for (String s : arr) {
+            System.out.println(s);
+        }
     }
 }
