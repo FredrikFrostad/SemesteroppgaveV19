@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/semesteroppgave-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/semesteroppgave-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,21 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
+            <state relative-caret-position="2174">
               <caret line="157" column="53" selection-start-line="157" selection-start-column="53" selection-end-line="157" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/data/forsikring/Forsikring.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-              <folding>
-                <element signature="e#272#273#0" expanded="true" />
-                <element signature="e#321#322#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -168,6 +158,11 @@
             <path>
               <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
               <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SemesteroppgaveV19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SemesteroppgaveV19" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -272,21 +267,21 @@
       <recent name="com.programutvikling.models.data.kunde" />
       <recent name="com.programutvikling.models.filehandlers.reader" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-      <recent name="com.programutvikling" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/test/com/programutvikling/models/filehandlers/reader" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/views" />
       <recent name="$PROJECT_DIR$/src/main/resources/views/temp" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/programutvikling/mainapp" />
       <recent name="$PROJECT_DIR$/src/main/resources/com.programutvikling.controller" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="com.programutvikling" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/test/com/programutvikling/models/filehandlers/reader" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -301,7 +296,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.InputhandlerTest">
+  <component name="RunManager" selected="Maven.hellofx">
     <configuration name="Inputhandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.programutvikling.models.inputhandler.Inputhandler" />
       <module name="semesteroppgave" />
@@ -418,9 +413,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="InputhandlerTest - 2019.04.16 at 11h 59m 03s.xml">
-      <configuration name="InputhandlerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="InputhandlerTest - 2019.04.16 at 11h 59m 52s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
@@ -448,9 +440,12 @@
     <history-entry file="InputhandlerTest - 2019.04.16 at 12h 24m 08s.xml">
       <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="InputhandlerTest - 2019.04.16 at 12h 42m 07s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86107000" />
+    <option name="totallyTimeSpent" value="86172000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1110,9 +1105,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="118" column="104" lean-forward="true" selection-start-line="118" selection-start-column="104" selection-end-line="118" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
+        <state relative-caret-position="2174">
           <caret line="157" column="53" selection-start-line="157" selection-start-column="53" selection-end-line="157" selection-end-column="53" />
         </state>
       </provider>
