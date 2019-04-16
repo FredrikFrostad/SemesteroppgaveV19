@@ -98,8 +98,8 @@ public class Båt extends Forsikring{
     @Override
     public String toString() {
         return "Båt{" +
-                super.toString() +
-                "eier='" + eier + '\'' +
+                super.toString() + '\'' +
+                ", eier='" + eier + '\'' +
                 ", regNr='" + regNr + '\'' +
                 ", typeBåt='" + typeBåt + '\'' +
                 ", modell='" + modell + '\'' +
