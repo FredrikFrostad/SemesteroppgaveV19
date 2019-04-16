@@ -1,8 +1,14 @@
 package com.programutvikling.controller;
 
+import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.exceptions.InvalidFileFormatException;
+import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
+import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.viewChanger.ViewChanger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -17,8 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StartPageController {
-
-    private ArrayList<Kunde> clients;
 
     @FXML
     AnchorPane startpageparent;
@@ -45,12 +49,32 @@ public class StartPageController {
 
     @FXML
     private void loadClient() {
+        Kunde k = null;
         try {
             File file = FileReader.getFile();
+            String ext = FileReader.getExtension(file);
 
+            if (ext.equals(".jobj")) {
+                k = (Kunde) new JobjReader().readDataFromFile(file);
+            } else if (ext.equals(".csv")) {
+                k = (Kunde) new CsvReader().readDataFromFile(file);
+            }
+        } catch (InvalidFileFormatException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
+            e.getMessage();
         }
+
+        if (k != null) {
+            MainApp.getClientList().add(k);
+
+        }
+    }
+
+    private void addClientToListView(Kunde k) {
+        clientsList.getItems().addAll(k);
     }
 
 
@@ -63,8 +87,5 @@ public class StartPageController {
         System.out.println();
 
 
-    }
-
-    public void addClient(Kunde kunde) {clients.add(kunde);
     }
 }

@@ -1,5 +1,6 @@
 package com.programutvikling.models.filehandlers.reader;
 
+import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
 import javafx.stage.FileChooser;
 
@@ -14,9 +15,14 @@ public abstract class FileReader {
      */
     public static File getFile() throws Exception {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("jobj"));
-        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("csv"));
+
+        FileChooser.ExtensionFilter jobj = new FileChooser.ExtensionFilter("jobj files (*.jobj)", "*.jobj");
+        FileChooser.ExtensionFilter csv = new FileChooser.ExtensionFilter("csv files (*.csv)", "*.csv");
+        fileChooser.getExtensionFilters().add(jobj);
+        fileChooser.getExtensionFilters().add(csv);
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/" + MainApp.getPROJECTFOLDER()));
         return fileChooser.showOpenDialog(null);
+
     }
 
     /**

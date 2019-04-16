@@ -10,7 +10,7 @@
       <Button layoutX="45.0" layoutY="219.0" onAction="#listClients" prefWidth="120.0" text="Clients" />
       <Button layoutX="45.0" layoutY="257.0" onAction="#newClient" prefWidth="120.0" text="New Client" />
       <Button layoutX="45.0" layoutY="295.0" onAction="#newPolicy" prefWidth="120.0" text="New Policy" />
-      <Button fx:id="loadClient" layoutX="45.0" layoutY="331.0" onAction="#test" prefWidth="120.0" text="Load Client" />
+      <Button fx:id="loadClient" layoutX="45.0" layoutY="331.0" onAction="#loadClient" prefWidth="120.0" text="Load Client" />
     <Text layoutX="370.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Insure-O-Matic 5000" textAlignment="CENTER" wrappingWidth="459.7294921875">
         <font>
             <Font size="42.0" />

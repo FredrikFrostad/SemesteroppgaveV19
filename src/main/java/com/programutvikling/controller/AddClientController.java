@@ -39,6 +39,9 @@ public class AddClientController {
             writer.writeDataToFile(writer.getFile(), kunde);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         MainApp.getClientList().add(kunde);
