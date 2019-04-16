@@ -15,8 +15,14 @@ public class Inputhandler {
         if (splitAlpha.length != 2) {
             throw new InvalidEmailException("Not a valid email adress, does not contain @");
         }
-        if (!splitAlpha[1].contains(".") || splitAlpha[1].contains("..") || splitAlpha[0].contains("..")) {
+        if (!splitAlpha[1].contains(".") || splitAlpha[1].contains("..") ||
+                splitAlpha[0].contains("..") || splitAlpha[1].contains("@")) {
             throw new InvalidEmailException("Not a vaild email adress");
+        }
+
+        String[] splitDomain = splitAlpha[1].split(".");
+        if (splitDomain.length > 0 && splitDomain[splitDomain.length - 1].contains("[0-9]")) {
+            throw new InvalidEmailException(splitDomain[splitDomain.length - 1 ] + " is not a valid domain");
         }
         return true;
     }

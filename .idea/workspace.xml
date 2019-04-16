@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1c28294-bfc5-4c36-b52e-fc5a859875c5" name="Default Changelist" comment="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/AddClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/AddClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/programutvikling/models/data/kunde/KundeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/programutvikling/models/data/kunde/KundeTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,11 +19,42 @@
     <splitter split-orientation="horizontal" split-proportion="0.6603646">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+                <state relative-caret-position="330">
+                  <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidEmailException.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+                  <folding>
+                    <element signature="e#154#155#0" expanded="true" />
+                    <element signature="e#184#185#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="396">
+                  <caret line="34" selection-start-line="34" selection-end-line="34" />
                 </state>
               </provider>
             </entry>
@@ -93,8 +122,8 @@
       <list>
         <option value="Interface" />
         <option value="FxmlFile" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -112,7 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/MainApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/com/programutvikling/controller/FXMLController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/FXMLController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/FXMLController.java" />
@@ -163,6 +191,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/controller/AddClientController.java" />
         <option value="$PROJECT_DIR$/src/main/test/com/programutvikling/models/data/kunde/KundeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java" />
+        <option value="$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java" />
       </list>
     </option>
   </component>
@@ -303,6 +332,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.programutvikling.models.inputhandler" />
       <recent name="com.programutvikling.models.data.kunde" />
       <recent name="com.programutvikling.models.filehandlers.reader" />
     </key>
@@ -335,7 +365,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Inputhandler">
+  <component name="RunManager" selected="JUnit.InputhandlerTest">
     <configuration name="Inputhandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.programutvikling.models.inputhandler.Inputhandler" />
       <module name="semesteroppgave" />
@@ -362,6 +392,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="InputhandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="semesteroppgave" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.programutvikling.models.inputhandler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.programutvikling.models.inputhandler" />
+      <option name="MAIN_CLASS_NAME" value="com.programutvikling.models.inputhandler.InputhandlerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="KundeTest.objectIntegrityWhenSerializing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="semesteroppgave" />
       <extension name="coverage">
@@ -380,6 +425,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.InputhandlerTest" />
         <item itemvalue="Application.Inputhandler" />
         <item itemvalue="JUnit.KundeTest.objectIntegrityWhenSerializing" />
         <item itemvalue="Application.MainAppWrapper" />
@@ -406,7 +452,7 @@
       <workItem from="1554974906993" duration="628000" />
       <workItem from="1555320705186" duration="4828000" />
       <workItem from="1555336031719" duration="941000" />
-      <workItem from="1555344423326" duration="14431000" />
+      <workItem from="1555344423326" duration="16505000" />
     </task>
     <task id="LOCAL-00001" summary="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning.">
       <created>1554202940060</created>
@@ -419,18 +465,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="KundeTest_objectIntegrityWhenSerializing - 2019.04.15 at 19h 10m 29s.xml">
-      <configuration name="KundeTest.objectIntegrityWhenSerializing" configurationId="JUnit" />
+    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 43m 51s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KundeTest_objectIntegrityWhenSerializing - 2019.04.15 at 19h 14m 03s.xml">
-      <configuration name="KundeTest.objectIntegrityWhenSerializing" configurationId="JUnit" />
+    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 47m 44s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KundeTest_objectIntegrityWhenSerializing - 2019.04.15 at 19h 19m 39s.xml">
-      <configuration name="KundeTest.objectIntegrityWhenSerializing" configurationId="JUnit" />
+    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 48m 17s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 49m 25s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 54m 28s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 55m 25s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 55m 48s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InputhandlerTest_checkValidEmailFormat - 2019.04.16 at 10h 55m 59s.xml">
+      <configuration name="InputhandlerTest.checkValidEmailFormat" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 56m 02s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InputhandlerTest - 2019.04.16 at 10h 56m 55s.xml">
+      <configuration name="InputhandlerTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79471000" />
+    <option name="totallyTimeSpent" value="81545000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -455,7 +522,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293348" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27371866" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991276" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32956573" />
@@ -554,6 +621,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning." />
     <option name="LAST_COMMIT_MESSAGE" value="Lagt til ny controller eog metode for å bytte scene. Har problemer med&#10;resourcepath. Er heller ikke fornøyd med metode for scenebytte. Det er &#10;hackete, finnes sikkert en bedre løsning." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/osType/OSType.java">
@@ -1020,16 +1099,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidEmailException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="50" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
-          <folding>
-            <element signature="e#184#185#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidNumberFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1095,10 +1164,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/exceptions/InvalidEmailException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#154#155#0" expanded="true" />
+            <element signature="e#184#185#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/programutvikling/models/inputhandler/Inputhandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+        <state relative-caret-position="330">
+          <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/com/programutvikling/models/inputhandler/InputhandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
         </state>
       </provider>
     </entry>
