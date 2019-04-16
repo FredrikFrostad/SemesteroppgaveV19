@@ -47,14 +47,14 @@ public class KundeTest {
             e.printStackTrace();
         }
 
-        assertEquals(kunde.toString(), kundeFromFile.toString());
 
         Båt b2 = (Båt)kunde.getForsikringer().get(0);
         Båt b3 = (Båt)kundeFromFile.getForsikringer().get(0);
-
+        
+        assertEquals(kunde.toString(), kundeFromFile.toString());
         assertEquals(b2.toString(), b3.toString());
-        System.out.println(b2.toString());
-        System.out.println(b3.toString());
+
+
 
         file.delete();
     }
