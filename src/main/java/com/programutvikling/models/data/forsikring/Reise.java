@@ -31,4 +31,13 @@ public class Reise extends Forsikring{
     public void setForsikringsSum(double forsikringsSum) {
         this.forsikringsSum = forsikringsSum;
     }
+
+    @Override
+    public String toString() {
+        return "Reise{" +
+                super.toString() +
+                "forisikringOmraade='" + forisikringOmraade + '\'' +
+                ", forsikringsSum=" + forsikringsSum +
+                '}';
+    }
 }

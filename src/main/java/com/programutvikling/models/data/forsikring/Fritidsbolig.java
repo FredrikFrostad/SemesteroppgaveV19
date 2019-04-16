@@ -1,6 +1,10 @@
 package com.programutvikling.models.data.forsikring;
 
-public class Fritidsbolig extends Forsikring {
+import java.io.Serializable;
+
+public class Fritidsbolig extends Forsikring implements Serializable {
+
+
 
     private String adresse;
     private int byggeaar;
@@ -96,6 +100,7 @@ public class Fritidsbolig extends Forsikring {
     @Override
     public String toString() {
         return "Fritidsbolig{" +
+                super.toString() +
                 "adresse='" + adresse + '\'' +
                 ", byggeaar=" + byggeaar +
                 ", boligtype='" + boligtype + '\'' +

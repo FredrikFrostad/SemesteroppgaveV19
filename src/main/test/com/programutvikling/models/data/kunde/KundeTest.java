@@ -29,5 +29,6 @@ public class KundeTest {
 
         assertEquals(kunde.toString(), kundeFromFile.toString());
 
+        file.delete();
     }
 }

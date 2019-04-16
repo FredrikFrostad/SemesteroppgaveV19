@@ -1,8 +1,9 @@
 package com.programutvikling.models.data.forsikring;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Forsikring {
+public abstract class Forsikring implements Serializable {
 
     private double premieAnnum;
     private double forsikringsSum;
@@ -50,5 +51,13 @@ public abstract class Forsikring {
 
     public void setBetingelser(String betingelser) {
         this.betingelser = betingelser;
+    }
+
+    @Override
+    public String toString() {
+        return "premieAnnum=" + premieAnnum +
+                ", forsikringsSum=" + forsikringsSum +
+                ", avtaleOpprettet=" + avtaleOpprettet +
+                ", betingelser='" + betingelser;
     }
 }
