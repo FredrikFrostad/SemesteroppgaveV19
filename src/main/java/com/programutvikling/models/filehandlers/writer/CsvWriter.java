@@ -25,9 +25,6 @@ public class CsvWriter extends FileWriter {
         String[] objData = obj.toString().split("\\,");
         objData = trimHeadTail(objData);
 
-        //String[] temp = objData[0].split("\\{");
-        //objData[0] = temp[1];
-
         //Generating header
         fWriter.append(getHeaderCsv(objData));
         fWriter.append("\n");
@@ -58,14 +55,6 @@ public class CsvWriter extends FileWriter {
         for (Kunde k : list) {
             String[] objData = k.toString().split("\\,");
             objData = trimHeadTail(objData);
-            /*
-            String[] temp = objData[0].split("\\{");
-            objData[0] = temp[1];
-
-            int last = objData.length -1;
-            temp = objData[last].split("\\}");
-            objData[last] = temp[0];
-            */
 
             //Getting header for datafields
             if (isFirstLine) {
@@ -92,7 +81,7 @@ public class CsvWriter extends FileWriter {
      * @param data String array containing all datafields, this must be comma separated
      * @return A comma separated string containing all datafield names
      */
-    public String getHeaderCsv(String[] data) {
+    private String getHeaderCsv(String[] data) {
         StringJoiner header = new StringJoiner(",");
         for (int i = 0; i < data.length; i++) {
 
@@ -106,7 +95,12 @@ public class CsvWriter extends FileWriter {
         return header.toString();
     }
 
-    public String[] trimHeadTail(String[] data) {
+    /**
+     * Helper method for trimming garbage from head and tail end of a string split into an array
+     * @param data String[] where the first and last element is to be processed
+     * @return A correctly formatted String[]
+     */
+    private String[] trimHeadTail(String[] data) {
         String[] temp = data[0].split("\\{");
         data[0] = temp[1];
 
@@ -122,7 +116,7 @@ public class CsvWriter extends FileWriter {
      * @param data String array containing the objects datafields
      * @return String containing comma separated datafields
      */
-    public String getDataCsv(String[] data) {
+    private String getDataCsv(String[] data) {
         StringJoiner out = new StringJoiner(",");
 
         for (int i = 0; i < data.length; i++) {
@@ -143,50 +137,5 @@ public class CsvWriter extends FileWriter {
 
     public static void main(String[] args) {
 
-        for (int i = 0; i < 10; i++) {
-            MainApp.getClientList().add(new Kunde(
-                    "Knut" + i,
-                    "Hagen",
-                    "123456",
-                    "Testerudbakke 3 9989 Nordpå"));
-        }
-
-        for (int i = 0; i < 10; i++) {
-            MainApp.getClientList().get(i).getForsikringer().add(new Båt(
-                    1000,
-                    2000,
-                    "Betingelser",
-                    "Kunde Kundesen",
-                    "AB1234",
-                    "Jolle",
-                    "Model 3",
-                    12,
-                    1997,
-                    "Ingen",
-                    "0"));
-        }
-
-        try {
-            new CsvWriter().writeDataToFile(new File("testfile.csv"), MainApp.getClientList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            new CsvWriter().writeDataToFile(new File("testfileforsikring.csv"), new Båt(
-                    1000,
-                    2000,
-                    "Betingelser",
-                    "Kunde Kundesen",
-                    "AB1234",
-                    "Jolle",
-                    "Model 3",
-                    12,
-                    1997,
-                    "Ingen",
-                    "0"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

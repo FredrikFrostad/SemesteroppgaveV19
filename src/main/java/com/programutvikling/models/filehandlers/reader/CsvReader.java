@@ -13,6 +13,12 @@ import java.util.List;
 
 public class CsvReader extends FileReader{
 
+    /**
+     * Method for reading data from a CSV-file.
+     * @param file Csv file to parse and read
+     * @return An arraylist containing one string array pr line in the CSV file
+     * @throws Exception
+     */
     @Override
     public Object readDataFromFile(File file) throws Exception {
         BufferedReader reader = null;

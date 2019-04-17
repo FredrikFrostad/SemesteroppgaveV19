@@ -29,10 +29,6 @@ public class MainApp extends Application {
         return PROJECTFOLDER;
     }
 
-    public static void setClientList(ArrayList<Kunde> clientList) {
-        MainApp.clientList = clientList;
-    }
-
     /**
      * Enum for å sette forskjellige testmoduser under utvikling.
      * Dette for å direkte kunne teste relevante fxml-komponenter uten å måtte ta ensyn til kontrolflyt i GUI
@@ -85,6 +81,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        findOSTypeAndCreateProjectFolder();
         //Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
         Parent root = FXMLLoader.load(getClass().getResource("/views/startpage.fxml"));
 
