@@ -139,6 +139,8 @@ public class CsvWriter extends FileWriter {
         return out.toString();
     }
 
+    //TODO: Everything below is testing garbage, remove when working as planned
+
     public static void main(String[] args) {
 
         for (int i = 0; i < 10; i++) {

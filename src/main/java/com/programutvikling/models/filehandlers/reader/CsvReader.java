@@ -34,11 +34,6 @@ public class CsvReader extends FileReader{
         return objLst;
     }
 
-    @Override
-    public Object readDataFromURL(String url) {
-        return null;
-    }
-
     public static void main(String[] args) {
 
         try {
@@ -54,4 +49,9 @@ public class CsvReader extends FileReader{
         }
     }
 
+
+    @Override
+    public Object readDataFromURL(String url) {
+        return null;
+    }
 }
