@@ -1,6 +1,8 @@
 package com.programutvikling.models.filehandlers.writer;
 
 import com.programutvikling.mainapp.MainApp;
+import com.programutvikling.models.data.forsikring.Båt;
+import com.programutvikling.models.data.forsikring.Reise;
 import com.programutvikling.models.data.kunde.Kunde;
 
 import java.io.File;
@@ -12,7 +14,23 @@ public class CsvWriter extends FileWriter {
 
     @Override
     public void writeDataToFile(File file, Object obj) throws IOException {
+        java.io.FileWriter fWriter = new java.io.FileWriter(file);
 
+        String[] objData = obj.toString().split("\\,");
+        String[] temp = objData[0].split("\\{");
+        objData[0] = temp[1];
+
+        //Generating header
+        fWriter.append(getHeaderCsv(objData));
+        fWriter.append("\n");
+        //TODO: remove test print
+        System.out.println(getHeaderCsv(objData));
+
+        //Generating data
+        fWriter.append(getDataCsv(objData));
+        fWriter.append("\n");
+        //TODO: remove test print
+        System.out.println(getDataCsv(objData));
     }
 
     @Override
@@ -90,14 +108,46 @@ public class CsvWriter extends FileWriter {
 
         for (int i = 0; i < 10; i++) {
             MainApp.getClientList().add(new Kunde(
-                    "Knut"+i,
+                    "Knut" + i,
                     "Hagen",
                     "123456",
                     "Testerudbakke 3 9989 Nordpå"));
         }
 
+        for (int i = 0; i < 10; i++) {
+            MainApp.getClientList().get(i).getForsikringer().add(new Båt(
+                    1000,
+                    2000,
+                    "Betingelser",
+                    "Kunde Kundesen",
+                    "AB1234",
+                    "Jolle",
+                    "Model 3",
+                    12,
+                    1997,
+                    "Ingen",
+                    "0"));
+        }
+
         try {
-        new CsvWriter().writeDataToFile(new File("testfile.csv"), MainApp.getClientList());
+            new CsvWriter().writeDataToFile(new File("testfile.csv"), MainApp.getClientList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            new CsvWriter().writeDataToFile(new File("testfileforsikring.csv"), new Båt(
+                    1000,
+                    2000,
+                    "Betingelser",
+                    "Kunde Kundesen",
+                    "AB1234",
+                    "Jolle",
+                    "Model 3",
+                    12,
+                    1997,
+                    "Ingen",
+                    "0"));
         } catch (IOException e) {
             e.printStackTrace();
         }
