@@ -81,7 +81,7 @@ public class CsvWriter extends FileWriter {
      * @param data String array containing all datafields, this must be comma separated
      * @return A comma separated string containing all datafield names
      */
-    public String getHeaderCsv(String[] data) {
+    private String getHeaderCsv(String[] data) {
         StringJoiner header = new StringJoiner(",");
         for (int i = 0; i < data.length; i++) {
 
@@ -95,7 +95,12 @@ public class CsvWriter extends FileWriter {
         return header.toString();
     }
 
-    public String[] trimHeadTail(String[] data) {
+    /**
+     * Helper method for trimming garbage from head and tail end of a string split into an array
+     * @param data String[] where the first and last element is to be processed
+     * @return A correctly formatted String[]
+     */
+    private String[] trimHeadTail(String[] data) {
         String[] temp = data[0].split("\\{");
         data[0] = temp[1];
 
@@ -111,7 +116,7 @@ public class CsvWriter extends FileWriter {
      * @param data String array containing the objects datafields
      * @return String containing comma separated datafields
      */
-    public String getDataCsv(String[] data) {
+    private String getDataCsv(String[] data) {
         StringJoiner out = new StringJoiner(",");
 
         for (int i = 0; i < data.length; i++) {
