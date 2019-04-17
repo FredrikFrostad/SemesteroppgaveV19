@@ -137,5 +137,12 @@ public class CsvWriter extends FileWriter {
 
     public static void main(String[] args) {
 
+        Kunde k = new Kunde("Kjell", "Olsen", "123456", "Elgfaret 11 2022 Gjerdrum");
+
+        try {
+            new CsvWriter().writeDataToFile(new File("testfileKunde.csv"), k);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -7,38 +7,48 @@ import com.programutvikling.models.data.forsikring.VillaInnbo;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidObjectTypeException;
 
+import java.time.LocalDate;
+
 public class CsvObjectBuilder extends CsvReader {
 
     public Object buildObjectFromString(String[] objData) throws Exception{
         int lastIndex = objData.length - 1;
         String type = objData[lastIndex];
+        Object out = null;
 
         switch (type) {
             case("KUNDE"):
-                buildKundeFromCsv(objData);
+                out = buildKundeFromCsv(objData);
                 break;
             case("BÅT"):
-                buildBåtFromCsv(objData);
+                out = buildBåtFromCsv(objData);
                 break;
             case("FRITIDSBOLIG"):
-                buildFritidsboligFromCsv(objData);
+                out = buildFritidsboligFromCsv(objData);
                 break;
             case ("REISE"):
-                buildReiseFromcsv(objData);
+                out = buildReiseFromcsv(objData);
                 break;
             case ("VILLAINNBO"):
-                buildVillaInnboFromCsv(objData);
+                out = buildVillaInnboFromCsv(objData);
                 break;
             default:
                 throw new InvalidObjectTypeException("Object type not found.");
 
         }
 
-        return null;
+        return out;
     }
 
     private Kunde buildKundeFromCsv(String[] objData) throws Exception{
-        throw new NoSuchMethodException();
+
+        Kunde k = new Kunde();
+        k.setKundeOpprettet(LocalDate.parse(objData[0]));
+        k.setFornavn(objData[1]);
+        k.setEtternavn(objData[2]);
+        k.setForsikrNr(objData[3]);
+        k.setFakturaadresse(objData[4]);
+        return k;
     }
 
     private Båt buildBåtFromCsv(String[] objData) throws Exception {

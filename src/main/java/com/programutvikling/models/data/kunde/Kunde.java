@@ -5,6 +5,7 @@ import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.skademelding.Skademelding;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +13,7 @@ import java.util.Date;
 public class Kunde implements Serializable {
 
     private static ObjectType type = ObjectType.KUNDE;
-    private Date kundeOpprettet;
+    private LocalDate kundeOpprettet;
     private String fornavn;
     private String etternavn;
     private String forsikrNr;
@@ -21,23 +22,26 @@ public class Kunde implements Serializable {
     private ArrayList<Skademelding> skademeldinger = new ArrayList<>();
     private ArrayList<Double> utbetaltErstatn = new ArrayList<>();
 
-    private static final DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
+    public static final DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
 
-    public Kunde() {};
+    public Kunde() {}
 
     public Kunde(String fornavn, String etternavn, String forsikrNr, String fakturaadresse) {
-        this.kundeOpprettet = new Date();
+        this.kundeOpprettet = LocalDate.now();
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.forsikrNr = forsikrNr;
         this.Fakturaadresse = fakturaadresse;
     }
 
-    public void setKundeOpprettet(Date kundeOpprettet) {
+    public void setKundeOpprettet(LocalDate kundeOpprettet) throws IllegalAccessException {
+        if (this.kundeOpprettet != null) {
+            throw new IllegalAccessException("The date cannot be changed once it is set");
+        }
         this.kundeOpprettet = kundeOpprettet;
     }
 
-    public Date getKundeOpprettet() {
+    public LocalDate getKundeOpprettet() {
         return kundeOpprettet;
     }
 
@@ -89,10 +93,10 @@ public class Kunde implements Serializable {
     public String toString() {
         return "Kunde{" +
                 "kundeOpprettet=" + kundeOpprettet +
-                ", fornavn='" + fornavn + '\'' +
-                ", etternavn='" + etternavn + '\'' +
-                ", forsikrNr='" + forsikrNr + '\'' +
-                ", Fakturaadresse='" + Fakturaadresse + '\'' +
+                ", fornavn=" + fornavn +
+                ", etternavn=" + etternavn +
+                ", forsikrNr=" + forsikrNr +
+                ", Fakturaadresse=" + Fakturaadresse  +
                 ", type=" + type +
                 '}';
     }
