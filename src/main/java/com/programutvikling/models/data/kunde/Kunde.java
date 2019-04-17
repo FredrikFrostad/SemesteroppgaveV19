@@ -21,6 +21,8 @@ public class Kunde implements Serializable {
 
     private static final DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
 
+    public Kunde() {};
+
     public Kunde(String fornavn, String etternavn, String forsikrNr, String fakturaadresse) {
         this.kundeOpprettet = new Date();
         this.fornavn = fornavn;
@@ -29,6 +31,9 @@ public class Kunde implements Serializable {
         this.Fakturaadresse = fakturaadresse;
     }
 
+    public void setKundeOpprettet(Date kundeOpprettet) {
+        this.kundeOpprettet = kundeOpprettet;
+    }
 
     public Date getKundeOpprettet() {
         return kundeOpprettet;
