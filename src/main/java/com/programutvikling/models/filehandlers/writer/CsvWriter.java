@@ -23,8 +23,10 @@ public class CsvWriter extends FileWriter {
         java.io.FileWriter fWriter = new java.io.FileWriter(file);
 
         String[] objData = obj.toString().split("\\,");
-        String[] temp = objData[0].split("\\{");
-        objData[0] = temp[1];
+        objData = trimHeadTail(objData);
+
+        //String[] temp = objData[0].split("\\{");
+        //objData[0] = temp[1];
 
         //Generating header
         fWriter.append(getHeaderCsv(objData));
@@ -55,8 +57,15 @@ public class CsvWriter extends FileWriter {
 
         for (Kunde k : list) {
             String[] objData = k.toString().split("\\,");
+            objData = trimHeadTail(objData);
+            /*
             String[] temp = objData[0].split("\\{");
             objData[0] = temp[1];
+
+            int last = objData.length -1;
+            temp = objData[last].split("\\}");
+            objData[last] = temp[0];
+            */
 
             //Getting header for datafields
             if (isFirstLine) {
@@ -95,6 +104,17 @@ public class CsvWriter extends FileWriter {
             header.add(tmp[0]);
         }
         return header.toString();
+    }
+
+    public String[] trimHeadTail(String[] data) {
+        String[] temp = data[0].split("\\{");
+        data[0] = temp[1];
+
+        int last = data.length -1;
+        temp = data[last].split("\\}");
+        data[last] = temp[0];
+
+        return data;
     }
 
     /**
