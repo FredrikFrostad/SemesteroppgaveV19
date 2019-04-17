@@ -132,4 +132,8 @@ public class CsvWriter extends FileWriter {
         }
         return out.toString();
     }
+
+    public static void main(String[] args) {
+
+    }
 }

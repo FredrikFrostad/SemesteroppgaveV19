@@ -1,5 +1,6 @@
 package com.programutvikling.models.data.kunde;
 
+import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.skademelding.Skademelding;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 
 public class Kunde implements Serializable {
 
+    private static ObjectType type = ObjectType.KUNDE;
     private Date kundeOpprettet;
     private String fornavn;
     private String etternavn;
@@ -91,6 +93,12 @@ public class Kunde implements Serializable {
                 ", etternavn='" + etternavn + '\'' +
                 ", forsikrNr='" + forsikrNr + '\'' +
                 ", Fakturaadresse='" + Fakturaadresse + '\'' +
+                ", type=" + type +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        Kunde k = new Kunde();
+        System.out.println(k.toString());
     }
 }
