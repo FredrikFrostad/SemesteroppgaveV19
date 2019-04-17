@@ -5,24 +5,24 @@ import com.programutvikling.models.data.ObjectType;
 public class Reise extends Forsikring{
 
     private static ObjectType type = ObjectType.REISE;
-    private String forisikringOmraade;
+    private String forsikringOmraade;
     private double forsikringsSum;
 
     public Reise() {};
 
     public Reise(double premieAnnum, double forsikringsSum, String betingelser,
-                 String forisikringOmraade, double forsikringsSum1) {
+                 String forsikringOmraade, double forsikringsSum1) {
         super(premieAnnum, forsikringsSum, betingelser);
-        this.forisikringOmraade = forisikringOmraade;
+        this.forsikringOmraade = forsikringOmraade;
         this.forsikringsSum = forsikringsSum1;
     }
 
-    public String getForisikringOmraade() {
-        return forisikringOmraade;
+    public String getforsikringOmraade() {
+        return forsikringOmraade;
     }
 
-    public void setForisikringOmraade(String forisikringOmraade) {
-        this.forisikringOmraade = forisikringOmraade;
+    public void setforsikringOmraade(String forsikringOmraade) {
+        this.forsikringOmraade = forsikringOmraade;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class Reise extends Forsikring{
     public String toString() {
         return "Reise{" +
                 super.toString() +
-                "forisikringOmraade=" + forisikringOmraade +
+                "forsikringOmraade=" + forsikringOmraade +
                 ", forsikringsSum=" + forsikringsSum +
                 ", type=" + type +
                 '}';

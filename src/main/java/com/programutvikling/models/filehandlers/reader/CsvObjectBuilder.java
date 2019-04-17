@@ -52,14 +52,33 @@ public class CsvObjectBuilder extends CsvReader {
     }
 
     private Båt buildBåtFromCsv(String[] objData) throws Exception {
-        throw new NoSuchMethodException();
+        Båt b = new Båt();
+        b.setEier(objData[0]);
+        b.setRegNr(objData[1]);
+        b.setTypeBåt(objData[2]);
+        b.setModell(objData[3]);
+        b.setLengde(Integer.parseInt(objData[4]));
+        b.setÅrsmodell(Integer.parseInt(objData[5]));
+        b.setMotorType(objData[6]);
+        b.setEffekt(objData[7]);
+        return b;
     }
 
     private Fritidsbolig buildFritidsboligFromCsv(String[] objData) throws Exception {
-        throw new NoSuchMethodException();
+        Fritidsbolig f = new Fritidsbolig();
+        f.setAdresse(objData[0]);
+        f.setByggeaar(Integer.parseInt(objData[1]));
+        f.setBoligtype(objData[2]);
+        f.setByggemateriale(objData[3]);
+        f.setStandard(objData[4]);
+        f.setAreal(Integer.parseInt(objData[5]));
+        f.setForsikringsbeløpByggning(Double.parseDouble(objData[6]));
+        f.setForsikringsbeløpInnbo(Double.parseDouble(objData[7]));
+        return f;
     }
 
     private Reise buildReiseFromcsv(String[] objData) throws Exception {
+        Reise r = new Reise();
         throw new Exception();
     }
 

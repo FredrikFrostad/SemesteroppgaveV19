@@ -5,7 +5,7 @@ package com.programutvikling.mainapp;
  * jar file fails if the mainClass defined in mavens pom.xml file is the class extending javafxs Application class
  */
 public class MainAppWrapper {
-    
+
     public static void main(String[] args) {
         MainApp.main(args);
     }
