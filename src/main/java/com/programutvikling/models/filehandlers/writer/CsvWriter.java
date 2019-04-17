@@ -12,6 +12,12 @@ import java.util.StringJoiner;
 
 public class CsvWriter extends FileWriter {
 
+    /**
+     * Method for generating a csv file from a single objekt
+     * @param file The file to be written
+     * @param obj The objekt containing data to be written
+     * @throws IOException
+     */
     @Override
     public void writeDataToFile(File file, Object obj) throws IOException {
         java.io.FileWriter fWriter = new java.io.FileWriter(file);
@@ -33,6 +39,12 @@ public class CsvWriter extends FileWriter {
         System.out.println(getDataCsv(objData));
     }
 
+    /**
+     * Method for generating a csv file from a list of objects.
+     * @param file The file to be written
+     * @param list List containing all objekts to be writte
+     * @throws IOException
+     */
     @Override
     public void writeDataToFile(File file, ArrayList<Kunde> list ) throws IOException {
         boolean isFirstLine = true;
