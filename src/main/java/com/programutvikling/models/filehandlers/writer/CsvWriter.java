@@ -25,9 +25,6 @@ public class CsvWriter extends FileWriter {
         String[] objData = obj.toString().split("\\,");
         objData = trimHeadTail(objData);
 
-        //String[] temp = objData[0].split("\\{");
-        //objData[0] = temp[1];
-
         //Generating header
         fWriter.append(getHeaderCsv(objData));
         fWriter.append("\n");
@@ -58,14 +55,6 @@ public class CsvWriter extends FileWriter {
         for (Kunde k : list) {
             String[] objData = k.toString().split("\\,");
             objData = trimHeadTail(objData);
-            /*
-            String[] temp = objData[0].split("\\{");
-            objData[0] = temp[1];
-
-            int last = objData.length -1;
-            temp = objData[last].split("\\}");
-            objData[last] = temp[0];
-            */
 
             //Getting header for datafields
             if (isFirstLine) {
@@ -137,54 +126,5 @@ public class CsvWriter extends FileWriter {
             out.add(tmp[1]);
         }
         return out.toString();
-    }
-
-    public static void main(String[] args) {
-
-        for (int i = 0; i < 10; i++) {
-            MainApp.getClientList().add(new Kunde(
-                    "Knut" + i,
-                    "Hagen",
-                    "123456",
-                    "Testerudbakke 3 9989 Nordpå"));
-        }
-
-        for (int i = 0; i < 10; i++) {
-            MainApp.getClientList().get(i).getForsikringer().add(new Båt(
-                    1000,
-                    2000,
-                    "Betingelser",
-                    "Kunde Kundesen",
-                    "AB1234",
-                    "Jolle",
-                    "Model 3",
-                    12,
-                    1997,
-                    "Ingen",
-                    "0"));
-        }
-
-        try {
-            new CsvWriter().writeDataToFile(new File("testfile.csv"), MainApp.getClientList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            new CsvWriter().writeDataToFile(new File("testfileforsikring.csv"), new Båt(
-                    1000,
-                    2000,
-                    "Betingelser",
-                    "Kunde Kundesen",
-                    "AB1234",
-                    "Jolle",
-                    "Model 3",
-                    12,
-                    1997,
-                    "Ingen",
-                    "0"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
