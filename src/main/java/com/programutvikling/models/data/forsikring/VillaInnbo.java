@@ -97,7 +97,7 @@ public class VillaInnbo {
                 ", byggeÅr=" + byggeÅr +
                 ", boligType=" + boligType +
                 ", byggemateriale=" + byggemateriale +
-                ", standard=" + standard + 
+                ", standard=" + standard +
                 ", areal=" + areal +
                 ", beløpBygning=" + beløpBygning +
                 ", beløpInnbo=" + beløpInnbo +
