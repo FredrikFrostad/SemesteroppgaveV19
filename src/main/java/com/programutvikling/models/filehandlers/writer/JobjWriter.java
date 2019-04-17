@@ -1,9 +1,11 @@
 package com.programutvikling.models.filehandlers.writer;
 
 import com.programutvikling.mainapp.MainApp;
+import com.programutvikling.models.data.kunde.Kunde;
 import javafx.stage.FileChooser;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class JobjWriter extends FileWriter {
 
@@ -14,5 +16,10 @@ public class JobjWriter extends FileWriter {
         objOut.writeObject(obj);
         objOut.flush();
         objOut.close();
+    }
+
+    @Override
+    public void writeDataToFile(File file, ArrayList<Kunde> list) throws IOException {
+
     }
 }

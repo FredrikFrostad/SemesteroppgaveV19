@@ -1,10 +1,12 @@
 package com.programutvikling.models.filehandlers.writer;
 
 import com.programutvikling.mainapp.MainApp;
+import com.programutvikling.models.data.kunde.Kunde;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public abstract class FileWriter {
 
@@ -31,4 +33,6 @@ public abstract class FileWriter {
      * @throws IOException
      */
     public abstract void writeDataToFile(File file, Object obj) throws IOException;
+
+    public abstract void writeDataToFile(File file, ArrayList<Kunde> list) throws IOException;
 }

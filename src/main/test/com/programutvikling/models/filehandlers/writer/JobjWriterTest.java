@@ -74,5 +74,6 @@ public class JobjWriterTest {
             }
             System.out.println();
         }
+        file.delete();
     }
 }
