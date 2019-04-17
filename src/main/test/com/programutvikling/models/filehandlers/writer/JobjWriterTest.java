@@ -21,7 +21,7 @@ public class JobjWriterTest {
 
 
         for (int i = 0; i < 10; i++) {
-            String name = "Knut"+i;
+            String name = "Knut" + i;
             MainApp.getClientList().add(new Kunde(
                     name,
                     "Hagen",
@@ -44,36 +44,32 @@ public class JobjWriterTest {
                     "150"));
         }
 
-        File file = new File("dataAsJobj.jobj");
+        File file = new File("testfile.txt");
+
+
         FileWriter writer = new JobjWriter();
         FileReader reader = new JobjReader();
-        ArrayList<Kunde> deserialized = null;
+        ArrayList<?> deserialized = null;
         ArrayList<Kunde> original = MainApp.getClientList();
+
+        System.out.println(file.getAbsolutePath());
+        System.out.println(file.exists());
+        
         try {
             writer.writeDataToFile(file, MainApp.getClientList());
-            deserialized = (ArrayList<Kunde>)reader.readDataFromFile(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-            e.getMessage();
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getMessage();
+        } catch (Exception e) {}
+
+        assertTrue(file.exists());
+
+        try {
+            deserialized = (ArrayList<?>) reader.readDataFromFile(file);
+        } catch (Exception e) {}
+
+        assertTrue(deserialized.get(0) instanceof Kunde);
+
+        for (int i = 0; i < original.size()-1; i++) {
+            assertEquals(original.get(i).toString(), deserialized.get(i).toString());
         }
 
-        for (int i = 0; i < original.size() -1; i++) {
-            String k1 = original.get(i).toString();
-            String k2 = deserialized.get(i).toString();
-            assertEquals(k1, k2);
-        }
-
-        for (Kunde kunde : original) {
-            System.out.println(kunde.toString());
-            for (Forsikring f : kunde.getForsikringer()) {
-                System.out.println(f.toString());
-
-            }
-            System.out.println();
-        }
-        file.delete();
     }
 }

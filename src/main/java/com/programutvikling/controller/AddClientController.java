@@ -2,6 +2,7 @@ package com.programutvikling.controller;
 
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.mainapp.MainApp;
+import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
@@ -36,7 +37,7 @@ public class AddClientController {
 
         JobjWriter writer = new JobjWriter();
         try {
-            writer.writeDataToFile(writer.getFile(), kunde);
+            writer.writeDataToFile(FileWriter.getFile(), kunde);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {

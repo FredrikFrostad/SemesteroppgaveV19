@@ -16,10 +16,6 @@ public class JobjWriter extends FileWriter {
         objOut.writeObject(obj);
         objOut.flush();
         objOut.close();
-    }
-
-    @Override
-    public void writeDataToFile(File file, ArrayList<Kunde> list) throws IOException {
-
+        System.out.println("Data written to file, stream closed");
     }
 }

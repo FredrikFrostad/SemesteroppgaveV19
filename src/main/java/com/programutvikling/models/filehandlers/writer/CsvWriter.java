@@ -47,7 +47,6 @@ public class CsvWriter extends FileWriter {
      * @param list List containing all objekts to be writte
      * @throws IOException
      */
-    @Override
     public void writeDataToFile(File file, ArrayList<Kunde> list ) throws IOException {
         boolean isFirstLine = true;
         java.io.FileWriter fWriter = new java.io.FileWriter(file);

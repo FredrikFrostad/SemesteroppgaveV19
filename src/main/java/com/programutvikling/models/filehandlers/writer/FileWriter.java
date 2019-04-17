@@ -23,7 +23,7 @@ public abstract class FileWriter {
         fileChooser.getExtensionFilters().add(jobj);
         fileChooser.getExtensionFilters().add(csv);
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/" + MainApp.getPROJECTFOLDER()));
-        return fileChooser.showOpenDialog(null);
+        return fileChooser.showSaveDialog(null);
 
     }
 
@@ -34,5 +34,5 @@ public abstract class FileWriter {
      */
     public abstract void writeDataToFile(File file, Object obj) throws IOException;
 
-    public abstract void writeDataToFile(File file, ArrayList<Kunde> list) throws IOException;
+    //public abstract void writeDataToFile(File file, ArrayList<Kunde> list) throws IOException;
 }
