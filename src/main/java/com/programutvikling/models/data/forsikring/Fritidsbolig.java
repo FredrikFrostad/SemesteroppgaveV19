@@ -1,11 +1,13 @@
 package com.programutvikling.models.data.forsikring;
 
+import com.programutvikling.models.data.ObjectType;
+
 import java.io.Serializable;
 
 public class Fritidsbolig extends Forsikring implements Serializable {
 
 
-
+    private static ObjectType type = ObjectType.FRITIDSBOLIG;
     private String adresse;
     private int byggeaar;
     private String boligtype;
@@ -101,14 +103,15 @@ public class Fritidsbolig extends Forsikring implements Serializable {
     public String toString() {
         return "Fritidsbolig{" +
                 super.toString() +
-                "adresse='" + adresse + '\'' +
+                "adresse=" + adresse +
                 ", byggeaar=" + byggeaar +
-                ", boligtype='" + boligtype + '\'' +
-                ", byggemateriale='" + byggemateriale + '\'' +
-                ", standard='" + standard + '\'' +
+                ", boligtype=" + boligtype +
+                ", byggemateriale=" + byggemateriale +
+                ", standard=" + standard +
                 ", areal=" + areal +
                 ", forsikringsbeløpByggning=" + forsikringsbeløpByggning +
                 ", forsikringsbeløpInnbo=" + forsikringsbeløpInnbo +
+                ", type=" + type +
                 '}';
     }
 }

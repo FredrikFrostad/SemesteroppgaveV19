@@ -1,10 +1,13 @@
 package com.programutvikling.models.data.forsikring;
 
+import com.programutvikling.models.data.ObjectType;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public abstract class Forsikring implements Serializable {
 
+    private static ObjectType type = ObjectType.FORSIKRING;
     private double premieAnnum;
     private double forsikringsSum;
     private Date avtaleOpprettet;
@@ -58,6 +61,6 @@ public abstract class Forsikring implements Serializable {
         return "premieAnnum=" + premieAnnum +
                 ", forsikringsSum=" + forsikringsSum +
                 ", avtaleOpprettet=" + avtaleOpprettet +
-                ", betingelser='" + betingelser;
+                ", betingelser=" + betingelser;
     }
 }

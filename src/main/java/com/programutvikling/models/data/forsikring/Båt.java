@@ -1,9 +1,12 @@
 package com.programutvikling.models.data.forsikring;
 
+import com.programutvikling.models.data.ObjectType;
+
 import java.util.Date;
 
 public class Båt extends Forsikring{
 
+    private static ObjectType type = ObjectType.BÅT;
     private String eier;
     private String regNr;
     private String typeBåt; // TODO: Burde dette vært implementert via en indre enum klasse slik at man kan velge mellom predefinerte alternativer...typ daycruiser, robåt, motorseiler etc...
@@ -98,15 +101,16 @@ public class Båt extends Forsikring{
     @Override
     public String toString() {
         return "Båt{" +
-                super.toString() + '\'' +
-                ", eier='" + eier + '\'' +
-                ", regNr='" + regNr + '\'' +
-                ", typeBåt='" + typeBåt + '\'' +
-                ", modell='" + modell + '\'' +
+                super.toString() +
+                ", eier=" + eier +
+                ", regNr=" + regNr +
+                ", typeBåt=" + typeBåt +
+                ", modell=" + modell +
                 ", lengde=" + lengde +
                 ", årsmodell=" + årsmodell +
-                ", motorType='" + motorType + '\'' +
-                ", effekt='" + effekt + '\'' +
+                ", motorType=" + motorType +
+                ", effekt=" + effekt +
+                ", type=" + type +
                 '}';
     }
 }

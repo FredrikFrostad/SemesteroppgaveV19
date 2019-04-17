@@ -1,7 +1,10 @@
 package com.programutvikling.models.data.forsikring;
 
+import com.programutvikling.models.data.ObjectType;
+
 public class Reise extends Forsikring{
 
+    private static ObjectType type = ObjectType.REISE;
     private String forisikringOmraade;
     private double forsikringsSum;
 
@@ -36,8 +39,9 @@ public class Reise extends Forsikring{
     public String toString() {
         return "Reise{" +
                 super.toString() +
-                "forisikringOmraade='" + forisikringOmraade + '\'' +
+                "forisikringOmraade=" + forisikringOmraade +
                 ", forsikringsSum=" + forsikringsSum +
+                ", type=" + type +
                 '}';
     }
 }

@@ -54,7 +54,7 @@ public class JobjWriterTest {
 
         System.out.println(file.getAbsolutePath());
         System.out.println(file.exists());
-        
+
         try {
             writer.writeDataToFile(file, MainApp.getClientList());
         } catch (Exception e) {}
