@@ -37,6 +37,9 @@ public class CsvWriter extends FileWriter {
         fWriter.append("\n");
         //TODO: remove test print
         System.out.println(getDataCsv(objData));
+
+        fWriter.flush();
+        fWriter.close();
     }
 
     /**
