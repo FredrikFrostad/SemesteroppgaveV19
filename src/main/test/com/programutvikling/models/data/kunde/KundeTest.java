@@ -6,6 +6,7 @@ import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import org.junit.Test;
 
 import java.io.File;
+import java.time.LocalDate;
 
 import static org.junit.Assert.*;
 
@@ -56,5 +57,26 @@ public class KundeTest {
 
 
         file.delete();
+    }
+
+    @Test
+    public void setKundeOpprettet() {
+        Kunde k1 = new Kunde();
+        Kunde k2 = new Kunde(
+                "Test",
+                "Testesen",
+                "123456",
+                "Testeveien 11 1111 Testerud"
+        );
+
+
+        try {
+            k1.setKundeOpprettet(LocalDate.parse("1999-12-12"));
+            k2.setKundeOpprettet(LocalDate.parse("1999-12-12"));
+        } catch (IllegalAccessException e) {
+            System.out.println(e.getMessage());
+        }
+        assertEquals("1999-12-12", k1.getKundeOpprettet().toString());
+        assertEquals(LocalDate.now().toString(), k2.getKundeOpprettet().toString());
     }
 }
