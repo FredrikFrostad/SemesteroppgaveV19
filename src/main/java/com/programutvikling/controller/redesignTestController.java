@@ -20,12 +20,6 @@ public class redesignTestController {
 
     @FXML
     public void initialize() {
-        table.setEditable(true);
-
-        TableColumn<Forsikring, String> col1 = new TableColumn<>("Descriptor");
-        col1.setMinWidth(100);
-        col1.setCellValueFactory(new PropertyValueFactory<>("Descriptor"));
-        table.getColumns().addAll(col1);
     }
 
      @FXML

@@ -17,13 +17,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 import java.io.File;
 import java.io.IOException;
 
 public class AddClientController {
 
-    @FXML AnchorPane secondpageparent;
+    @FXML
+    BorderPane rootPane;
 
     @FXML private TextField fx_fornavn;
     @FXML private TextField fx_etternavn;
@@ -83,11 +85,9 @@ public class AddClientController {
     }
 
     @FXML
-    private void abort() {}
-
-    @FXML
-    private void abortButton(ActionEvent event) {
+    private void abort() {
         ViewChanger vc = new ViewChanger();
-        vc.setView(secondpageparent, "startpage", "views/startpage.fxml");
+        vc.setView(rootPane, "startpage", "views/redesignTest.fxml");
     }
+
 }
