@@ -107,6 +107,16 @@ public class InputhandlerTest {
 
     @Test
     public void checkValidFakturaAdresse() {
+
+        String[] valid = {
+                "Etsted 11 0000 Stedet",
+                "A 1A 2022 Oslo",
+        };
+
+        String[] invalid = {
+                "Eike1i 11 0000 Bygda",
+                "Toten 2022 Bugdeveien 1"
+        };
     }
 
     @Test

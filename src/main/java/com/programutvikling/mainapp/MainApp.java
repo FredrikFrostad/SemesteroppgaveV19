@@ -83,7 +83,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         findOSTypeAndCreateProjectFolder();
         //Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
-        Parent root = FXMLLoader.load(getClass().getResource("/views/startpage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/redesignTest.fxml"));
 
 
         Scene scene = new Scene(root);

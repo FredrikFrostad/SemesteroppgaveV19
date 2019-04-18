@@ -2,11 +2,12 @@ package com.programutvikling.models.filehandlers.reader;
 
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
+import com.programutvikling.models.filehandlers.FileHandler;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 
-public abstract class FileReader {
+public abstract class FileReader extends FileHandler {
 
     /**
      * Metode for å velge en filfra maskinens filsystem
@@ -25,25 +26,7 @@ public abstract class FileReader {
 
     }
 
-    /**
-     * Method for providing the extension of a file.
-     * @param file The file we need to get the extension of
-     * @return A string containing the extension formatted as: .extension
-     * @throws InvalidFileFormatException Error is thrown when the file has en illegal extension
-     */
-    public static String getExtension(File file) throws InvalidFileFormatException {
-        String[] extSplt = file.getName().split("\\.");
 
-        if (extSplt.length < 2) {
-            throw new InvalidFileFormatException("Files must be in .jobj or .csv format");
-        }
-
-        String extension = "."+extSplt[extSplt.length - 1];
-        if (!(extension.equals(".jobj") ^ extension.equals(".csv"))) {
-            throw new InvalidFileFormatException("Files must be in .jobj or .csv format");
-        }
-        return extension;
-    }
 
 
     /**
