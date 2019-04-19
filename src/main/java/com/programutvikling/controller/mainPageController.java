@@ -10,6 +10,7 @@ import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -103,7 +104,7 @@ public class mainPageController {
                 @Override
                 public String toString(Kunde kunde) {
                     return kunde.getFornavn() + " " +
-                            kunde.getEtternavn();
+                            kunde.getEtternavn() + " " + kunde.getFakturaadresse();
                 }
 
                 @Override
@@ -118,6 +119,12 @@ public class mainPageController {
         clientList.getItems().removeAll(MainApp.getClientList());
         clientList.getItems().addAll(MainApp.getClientList());
     }
+
+    private void loadStoredClients() {
+
+    }
+
+    
 
 
 
