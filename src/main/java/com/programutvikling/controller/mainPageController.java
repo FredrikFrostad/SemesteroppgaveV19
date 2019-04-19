@@ -12,6 +12,7 @@ import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
@@ -39,7 +40,24 @@ public class mainPageController {
     TableView table;
 
     @FXML
+    TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato;
+
+    @FXML
     public void initialize() {
+        k_forsNr.setEditable(false);
+        k_opDato.setEditable(false);
+    }
+
+    @FXML
+    private void selectClient() {
+        Kunde k = clientList.getSelectionModel().getSelectedItem();
+        MainApp.setSelectedKunde(k);
+        k_fornavn.setText(k.getFornavn());
+        k_etternavn.setText(k.getEtternavn());
+        k_forsNr.setText(k.getForsikrNr());
+        k_adr.setText(k.getFakturaadresse());
+        k_opDato.setText(k.getKundeOpprettet().toString());
+
     }
 
     @FXML
@@ -96,6 +114,14 @@ public class mainPageController {
     }
 
     @FXML
+    private void saveChanges(ActionEvent event) {
+        Kunde k = clientList.getSelectionModel().getSelectedItem();
+        k.setFornavn(k_fornavn.getText());
+        k.setEtternavn(k_etternavn.getText());
+        refresh(event);
+    }
+
+    @FXML
     private void refresh(ActionEvent event) {
 
         clientList.setCellFactory(kundeListView -> {
@@ -124,7 +150,7 @@ public class mainPageController {
 
     }
 
-    
+
 
 
 
