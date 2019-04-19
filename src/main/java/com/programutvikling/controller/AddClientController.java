@@ -21,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AddClientController {
 
@@ -41,10 +42,18 @@ public class AddClientController {
         Kunde kunde = new Kunde();
         try {
             Inputhandler.checkValidNameFormat(fx_fornavn.getText());
+            kunde.setFornavn(fx_fornavn.getText());
+
             Inputhandler.checkValidNameFormat(fx_etternavn.getText());
+            kunde.setEtternavn(fx_etternavn.getText());
+
             Inputhandler.checkValidForsikrNr(fx_forsikringsnummer.getText());
+            kunde.setForsikrNr(fx_forsikringsnummer.getText());
+
             //TODO: Denne metoden funker ikke, fiks - test - moveon
             //Inputhandler.checkValidFakturaAdresse(fx_fakturaadresse.getText());
+            kunde.setFakturaadresse(fx_fakturaadresse.getText());
+
 
             File file = FileWriter.getFile();
             if (FileWriter.getExtension(file).equals(".csv")) new CsvWriter().writeDataToFile(file, kunde);
@@ -65,8 +74,13 @@ public class AddClientController {
             System.out.println(e.getMessage());
         }
 
-            //Legger til kunde i arrayliste som bor i mainapp
-            MainApp.getClientList().add(kunde);
+        //Legger til kunde i arrayliste som bor i mainapp
+
+        ArrayList<Kunde> list = MainApp.getClientList();
+        for (Kunde k : list) {
+            if (k.toString().equals(kunde.toString())) return;
+        }
+        list.add(kunde);
     }
 
     @FXML

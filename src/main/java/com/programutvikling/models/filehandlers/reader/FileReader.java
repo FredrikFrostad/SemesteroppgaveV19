@@ -6,6 +6,7 @@ import com.programutvikling.models.filehandlers.FileHandler;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public abstract class FileReader extends FileHandler {
 
@@ -14,7 +15,7 @@ public abstract class FileReader extends FileHandler {
      * Exceptions skal ikke håndteres i denne metoden, men kastes til kallende metode/klasse
      * @return File
      */
-    public static File getFile() throws Exception {
+    public static File getFile() throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
 
         FileChooser.ExtensionFilter jobj = new FileChooser.ExtensionFilter("jobj files (*.jobj)", "*.jobj");

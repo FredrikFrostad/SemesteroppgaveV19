@@ -20,7 +20,7 @@ public class CsvReader extends FileReader{
      * @throws Exception
      */
     @Override
-    public Object readDataFromFile(File file) throws Exception {
+    public Object readDataFromFile(File file) throws IOException {
         BufferedReader reader = null;
         List<Object> objLst = new ArrayList<>();
 
