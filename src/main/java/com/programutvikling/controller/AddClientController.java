@@ -11,16 +11,14 @@ import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.CsvWriter;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
-import com.programutvikling.models.inputhandler.Inputhandler;
+import com.programutvikling.models.inputhandlers.Inputvalidator;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -44,17 +42,17 @@ public class AddClientController {
         try {
             kunde.setKundeOpprettet(LocalDate.now());
 
-            Inputhandler.checkValidNameFormat(fx_fornavn.getText());
+            Inputvalidator.checkValidNameFormat(fx_fornavn.getText());
             kunde.setFornavn(fx_fornavn.getText());
 
-            Inputhandler.checkValidNameFormat(fx_etternavn.getText());
+            Inputvalidator.checkValidNameFormat(fx_etternavn.getText());
             kunde.setEtternavn(fx_etternavn.getText());
 
-            Inputhandler.checkValidForsikrNr(fx_forsikringsnummer.getText());
+            Inputvalidator.checkValidForsikrNr(fx_forsikringsnummer.getText());
             kunde.setForsikrNr(fx_forsikringsnummer.getText());
 
             //TODO: Denne metoden funker ikke, fiks - test - moveon
-            //Inputhandler.checkValidFakturaAdresse(fx_fakturaadresse.getText());
+            //Inputvalidator.checkValidFakturaAdresse(fx_fakturaadresse.getText());
             kunde.setFakturaadresse(fx_fakturaadresse.getText());
 
 
@@ -104,7 +102,7 @@ public class AddClientController {
     @FXML
     private void abort() {
         ViewChanger vc = new ViewChanger();
-        vc.setView(rootPane, "startpage", "views/redesignTest.fxml");
+        vc.setView(rootPane, "startpage", "views/mainPage.fxml");
     }
 
 }

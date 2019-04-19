@@ -1,4 +1,4 @@
-package com.programutvikling.models.inputhandler;
+package com.programutvikling.models.inputhandlers;
 
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class InputhandlerTest {
             "test@@testmail.com"};
 
         try {
-            b = Inputhandler.checkValidEmailFormat(valid);
+            b = Inputvalidator.checkValidEmailFormat(valid);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,7 +33,7 @@ public class InputhandlerTest {
         for (String s : invalid) {
 
             try {
-                b = Inputhandler.checkValidEmailFormat(s);
+                b = Inputvalidator.checkValidEmailFormat(s);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println(e.getMessage());
@@ -76,7 +76,7 @@ public class InputhandlerTest {
         int index = 0;
         for (String s : valid) {
             try {
-                b = Inputhandler.checkValidForsikrNr(s);
+                b = Inputvalidator.checkValidForsikrNr(s);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println(e.getMessage());
@@ -93,7 +93,7 @@ public class InputhandlerTest {
         b = false;
         for (String s : invalid) {
             try {
-                b = Inputhandler.checkValidForsikrNr(s);
+                b = Inputvalidator.checkValidForsikrNr(s);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println(e.getMessage());
@@ -145,7 +145,7 @@ public class InputhandlerTest {
         boolean b = false;
         for (String s : valid) {
             try {
-                b = Inputhandler.checkIfValidNumber(s);
+                b = Inputvalidator.checkIfValidNumber(s);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println(e.getMessage());
@@ -159,7 +159,7 @@ public class InputhandlerTest {
         b = false;
         for (String s : invalid) {
             try {
-                b = Inputhandler.checkIfValidNumber(s);
+                b = Inputvalidator.checkIfValidNumber(s);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println(e.getMessage());

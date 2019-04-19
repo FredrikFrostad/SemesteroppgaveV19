@@ -12,6 +12,7 @@ import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -25,7 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class redesignTestController {
+public class mainPageController {
 
     @FXML
     BorderPane rootPane;
@@ -40,10 +41,27 @@ public class redesignTestController {
     public void initialize() {
     }
 
-    @FXML 
+    @FXML
     private void nyForsikring(ActionEvent event) {
         Kunde k = clientList.getSelectionModel().getSelectedItem();
-        System.out.println(k.toString());
+        MainApp.setSelectedKunde(k);
+        if (k == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Kunde ikke valgt");
+            alert.setContentText("Vennligst velg en kunde først");
+            alert.showAndWait();
+            return;
+        }
+        ViewChanger vc = new ViewChanger();
+        vc.setView(rootPane, "newPolicy", "views/newPolicy.fxml");
+    }
+
+
+
+    @FXML
+    private void newClient(ActionEvent event) {
+        ViewChanger vc = new ViewChanger();
+        vc.setView(rootPane, "newClient", "views/newClient.fxml");
     }
 
     //TODO: TILBAKEMELDING TIL KUNDE DERSOM FEIL
@@ -74,12 +92,6 @@ public class redesignTestController {
             e.getMessage();
         }
         refresh(event);
-    }
-
-    @FXML
-    private void newClient(ActionEvent event) {
-        ViewChanger vc = new ViewChanger();
-        vc.setView(rootPane, "mainPage", "views/newClient.fxml");
     }
 
     @FXML

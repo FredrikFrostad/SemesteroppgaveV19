@@ -21,6 +21,10 @@ public class MainApp extends Application {
 
     private static ArrayList<Kunde> clientList = new ArrayList<>();
 
+    private static Kunde selectedKunde = null;
+
+
+
     public static ArrayList<Kunde> getClientList() {
         return clientList;
     }
@@ -29,10 +33,15 @@ public class MainApp extends Application {
         return PROJECTFOLDER;
     }
 
-    /**
-     * Enum for å sette forskjellige testmoduser under utvikling.
-     * Dette for å direkte kunne teste relevante fxml-komponenter uten å måtte ta ensyn til kontrolflyt i GUI
-     */
+    public static void setSelectedKunde(Kunde selected) {
+        MainApp.selectedKunde = selected;
+    }
+
+    public static Kunde getSelectedKunde() {
+        return selectedKunde;
+    }
+
+
     enum runMode {
 
         NORMAL,
@@ -40,7 +49,8 @@ public class MainApp extends Application {
         TEST_ADDCLIENT,
         TEST_ADDPOLICY,
         TEST_FREDRIK,
-        TEST_JACOB,
+        TEST_JACOB;
+
     }
 
     /**
@@ -78,19 +88,25 @@ public class MainApp extends Application {
         return out;
     }
 
+    /**
+     * Enum for å sette forskjellige testmoduser under utvikling.
+     * Dette for å direkte kunne teste relevante fxml-komponenter uten å måtte ta ensyn til kontrolflyt i GUI
+     */
+
+
 
     @Override
     public void start(Stage stage) throws Exception {
         findOSTypeAndCreateProjectFolder();
         //Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
-        Parent root = FXMLLoader.load(getClass().getResource("/views/redesignTest.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/mainPage.fxml"));
 
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/views/styles.css").toExternalForm());
 
         // Legger til view i viewmap for å forhindre senere instansiering
-        ViewChanger.viewMap.putIfAbsent("startpage", scene);
+        ViewChanger.viewMap.putIfAbsent("mainPage", scene);
 
         stage.setTitle("SemesteroppgaveV2019");
         stage.setScene(scene);
