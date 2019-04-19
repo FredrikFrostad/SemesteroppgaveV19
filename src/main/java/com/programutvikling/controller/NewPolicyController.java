@@ -1,5 +1,10 @@
 package com.programutvikling.controller;
 
+import com.programutvikling.mainapp.MainApp;
+import com.programutvikling.models.data.forsikring.Forsikring;
+import com.programutvikling.models.data.forsikring.Fritidsbolig;
+import com.programutvikling.models.exceptions.InvalidNumberFormatException;
+import com.programutvikling.models.inputhandlers.Inputvalidator;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -7,10 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -29,9 +31,19 @@ public class NewPolicyController{
     ToggleGroup choosePolicy;
     @FXML
     AnchorPane togglePage, båtPage, reisePage, bilPage, villaPage, fritidsPage;
-    @FXML RadioButton båt, bil, reise, fritid, villa;
+    @FXML
+    RadioButton båt, bil, reise, fritid, villa;
     @FXML
     Button topRightButton;
+    @FXML
+    private TextField fritid_adresse,
+            fritid_byggeår,
+            fritid_boligtype,
+            fritid_byggemateriale,
+            fritid_standard,
+            fritid_areal,
+            fritid_beløpBygning,
+            fritid_beløpInnbo;
 
     private Node active;
 
@@ -64,11 +76,12 @@ public class NewPolicyController{
             topRightButton.setText("Fullfør");
         }
         else {
-
+            registrerForsikring();
+            ViewChanger vc = new ViewChanger();
+            vc.resetView("newPolicy");
+            vc.setView(newPolicyRoot, "mainPage", "views/mainPage.fxml");
         }
     }
-
-
 
     @FXML
     private void back() {
@@ -83,4 +96,44 @@ public class NewPolicyController{
             active.setVisible(true);
         }
     }
+
+    private void registrerForsikring() {
+        Forsikring forsikring = null;
+
+        if (active.getId().equals(fritidsPage)) {
+            forsikring = createFritidsBolig();
+        }
+
+        MainApp.getSelectedKunde().getForsikringer().add(forsikring);
+    }
+
+    private Fritidsbolig createFritidsBolig() {
+        boolean validField = false;
+        Fritidsbolig f = new Fritidsbolig();
+
+        try {
+            Inputvalidator.checkIfValidNumber(fritid_byggeår.getText());
+            Inputvalidator.checkIfValidNumber(fritid_areal.getText());
+            Inputvalidator.checkIfValidNumber(fritid_beløpInnbo.getText());
+            Inputvalidator.checkIfValidNumber(fritid_beløpBygning.getText());
+
+            f.setAdresse(fritid_adresse.getText());
+            f.setByggeaar(Integer.parseInt(fritid_byggeår.getText()));
+            f.setBoligtype(fritid_boligtype.getText());
+            f.setByggemateriale(fritid_byggemateriale.getText());
+            f.setStandard(fritid_standard.getText());
+            f.setAreal(Integer.parseInt(fritid_areal.getText()));
+            f.setForsikringsbeløpByggning(Double.parseDouble(fritid_beløpBygning.getText()));
+            f.setForsikringsbeløpInnbo(Double.parseDouble(fritid_beløpInnbo.getText()));
+
+        } catch (InvalidNumberFormatException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Feil inndata");
+            alert.setContentText(e.getMessage());
+        }
+
+        return f;
+    }
+
 }

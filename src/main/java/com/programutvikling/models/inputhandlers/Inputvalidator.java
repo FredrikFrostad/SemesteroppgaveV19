@@ -104,9 +104,9 @@ public class Inputvalidator {
         return true;
     }
 
-    public static boolean checkIfValidNumber(String numberString) throws NumberFormatException {
+    public static boolean checkIfValidNumber(String numberString) throws InvalidNumberFormatException {
         if (!numberString.matches("-?\\d+(\\.\\d+)?")) {
-            throw new NumberFormatException("Not a valid number");
+            throw new InvalidNumberFormatException("Not a valid number");
         }
         return true;
     }
