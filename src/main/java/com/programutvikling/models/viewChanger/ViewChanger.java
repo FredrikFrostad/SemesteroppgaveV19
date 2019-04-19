@@ -48,6 +48,10 @@ public class ViewChanger {
         }
     }
 
+    public void resetView(String viewName) {
+        if (viewMap.containsKey(viewName)) viewMap.remove(viewName);
+    }
+
     //TODO: Denne metoden er for testing, husk å slette dersom den ikke trengs lenger
     public static HashMap<String, Scene> getViewMap() {
         return viewMap;

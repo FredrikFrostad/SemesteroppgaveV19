@@ -75,6 +75,7 @@ public class NewPolicyController{
         if (active.getId().equals("togglePage")) {
             ViewChanger vc = new ViewChanger();
             vc.setView(newPolicyRoot, "mainPage", "views/mainPage.fxml");
+            vc.resetView("newPolicy");
         }
         else {
             active.setVisible(false);
