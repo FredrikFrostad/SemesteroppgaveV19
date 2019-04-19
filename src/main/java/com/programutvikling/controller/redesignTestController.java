@@ -9,16 +9,21 @@ import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.viewChanger.ViewChanger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.layout.BorderPane;
+import javafx.util.StringConverter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class redesignTestController {
 
@@ -35,9 +40,13 @@ public class redesignTestController {
     public void initialize() {
     }
 
-    @FXML
-    private void nyForsikring(ActionEvent event) {}
+    @FXML 
+    private void nyForsikring(ActionEvent event) {
+        Kunde k = clientList.getSelectionModel().getSelectedItem();
+        System.out.println(k.toString());
+    }
 
+    //TODO: TILBAKEMELDING TIL KUNDE DERSOM FEIL
     @FXML
     private void loadKunde(ActionEvent event) {
         ArrayList<Kunde> list = MainApp.getClientList();
@@ -75,6 +84,25 @@ public class redesignTestController {
 
     @FXML
     private void refresh(ActionEvent event) {
+
+        clientList.setCellFactory(kundeListView -> {
+            TextFieldListCell<Kunde> cell = new TextFieldListCell<>();
+            cell.setConverter(new StringConverter<Kunde>() {
+                @Override
+                public String toString(Kunde kunde) {
+                    return kunde.getFornavn() + " " +
+                            kunde.getEtternavn();
+                }
+
+                @Override
+                public Kunde fromString(String s) {
+                    Kunde kunde = cell.getItem();
+                    return kunde;
+                }
+            });
+            return cell;
+        });
+
         clientList.getItems().removeAll(MainApp.getClientList());
         clientList.getItems().addAll(MainApp.getClientList());
     }
