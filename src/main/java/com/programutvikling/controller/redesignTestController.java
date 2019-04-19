@@ -4,6 +4,7 @@ import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
 import com.programutvikling.models.filehandlers.FileHandler;
+import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
@@ -44,7 +45,9 @@ public class redesignTestController {
         try {
             File file = FileReader.getFile();
             if (FileHandler.getExtension(file).equals(".csv")) {
-                list.add((Kunde)new CsvReader().readDataFromFile(file));
+                for (String[] s : (ArrayList<String[]>)new CsvReader().readDataFromFile(file)) {
+                    list.add((Kunde)new CsvObjectBuilder().buildObjectFromString(s));
+                }
             }
             else list.add((Kunde)new JobjReader().readDataFromFile(file));
 

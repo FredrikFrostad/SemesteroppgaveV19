@@ -21,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AddClientController {
@@ -41,6 +42,8 @@ public class AddClientController {
 
         Kunde kunde = new Kunde();
         try {
+            kunde.setKundeOpprettet(LocalDate.now());
+
             Inputhandler.checkValidNameFormat(fx_fornavn.getText());
             kunde.setFornavn(fx_fornavn.getText());
 
