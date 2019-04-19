@@ -1,8 +1,8 @@
-package com.programutvikling.models.inputhandler;
+package com.programutvikling.models.inputhandlers;
 
 import com.programutvikling.models.exceptions.*;
 
-public class Inputhandler {
+public class Inputvalidator {
 
     /**
      * Method for validating the formatting of an Email adress.
