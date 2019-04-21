@@ -31,16 +31,16 @@ import java.util.List;
 public class mainPageController {
 
     @FXML
-    BorderPane rootPane;
+    private BorderPane rootPane;
 
     @FXML
-    ListView<Kunde> clientList;
+    private ListView<Kunde> clientList;
 
     @FXML
-    TableView table;
+    private TableView table;
 
     @FXML
-    TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato;
+    private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato;
 
     @FXML
     public void initialize() {
