@@ -14,8 +14,9 @@ public class CsvWriter extends FileWriter {
 
     /**
      * Method for generating a csv file from a single objekt
+     *
      * @param file The file to be written
-     * @param obj The objekt containing data to be written
+     * @param obj  The objekt containing data to be written
      * @throws IOException
      */
     @Override
@@ -40,6 +41,7 @@ public class CsvWriter extends FileWriter {
         fWriter.flush();
         fWriter.close();
     }
+
 
     /**
      * Method for generating a csv file from a list of objects.

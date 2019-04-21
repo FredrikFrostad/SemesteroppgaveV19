@@ -73,7 +73,7 @@ public class mainPageController {
         Kunde k = clientList.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
         if (k == null) {
-            AlertHandler.createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
+            createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
             return;
         }
         ViewChanger vc = new ViewChanger();
@@ -160,17 +160,11 @@ public class mainPageController {
 
     }
 
-    static class AlertHandler {
-
-        private static void createAlert(Alert.AlertType type, String title, String msg) {
-            Alert alert = new Alert(type);
-            alert.setTitle(title);
-            alert.setContentText(msg);
-            alert.showAndWait();
-        }
+    private void createAlert(Alert.AlertType type, String title, String msg) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
-
-
-
 
 }

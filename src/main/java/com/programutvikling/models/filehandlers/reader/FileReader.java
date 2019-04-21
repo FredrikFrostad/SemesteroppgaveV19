@@ -23,8 +23,8 @@ public abstract class FileReader extends FileHandler {
         fileChooser.getExtensionFilters().add(jobj);
         fileChooser.getExtensionFilters().add(csv);
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/" + MainApp.getPROJECTFOLDER()));
-        return fileChooser.showOpenDialog(null);
 
+        return fileChooser.showOpenDialog(null);
     }
 
 
