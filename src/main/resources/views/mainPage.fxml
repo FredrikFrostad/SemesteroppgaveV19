@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.mainPageController">
+   <center>
+      <TabPane minWidth="60.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Kunder">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="clientList" onMouseClicked="#selectClient" prefHeight="490.0" prefWidth="278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="422.0" AnchorPane.topAnchor="0.0" />
+                        <JFXTextField fx:id="k_fornavn" layoutX="350.0" layoutY="47.0" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
+                        <JFXTextField fx:id="k_etternavn" layoutX="350.0" layoutY="73.0" prefWidth="320.0" promptText="Etternavn" />
+                        <JFXTextField fx:id="k_forsNr" layoutX="350.0" layoutY="99.0" prefWidth="320.0" promptText="Forsikringsnummer" />
+                        <JFXTextField fx:id="k_adr" layoutX="350.0" layoutY="125.0" prefWidth="320.0" promptText="Fakturaadresse" />
+                        <JFXTextField fx:id="k_opDato" layoutX="350.0" layoutY="21.0" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
+                        <JFXButton layoutX="350.0" layoutY="194.0" onAction="#saveChanges" style="-fx-background-color: grey;" text="Store Changes" />
+                        <JFXButton layoutX="479.0" layoutY="194.0" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabForsikring" text="Forsikringer">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableForsikring" layoutX="6.0" layoutY="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Skademeldinger">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <AnchorPane minWidth="30.0" prefHeight="12.0" prefWidth="800.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton layoutX="200.0" layoutY="4.0" minHeight="-Infinity" onAction="#nyForsikring" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: grey;" text="Ny Forsikring" />
+            <JFXButton layoutX="100.0" layoutY="7.0" maxWidth="100.0" minHeight="-Infinity" onAction="#loadKunde" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: grey;" text="Load Kunde" AnchorPane.leftAnchor="0.0" />
+            <JFXButton layoutX="100.0" layoutY="4.0" maxWidth="100.0" minHeight="-Infinity" onAction="#newClient" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: grey;" text="Ny Kunde" />
+            <JFXButton layoutX="300.0" layoutY="4.0" onAction="#refresh" prefHeight="40.0" prefWidth="100.0" text="Refresh" />
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>

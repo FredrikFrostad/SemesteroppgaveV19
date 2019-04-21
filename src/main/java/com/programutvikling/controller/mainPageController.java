@@ -52,12 +52,20 @@ public class mainPageController {
     private void selectClient() {
         Kunde k = clientList.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
+        populateClientFields(k);
+
+    }
+
+    /**
+     * Methode for populating textfields with client data
+     * @param k The client objects containing the data
+     */
+    private void populateClientFields(Kunde k) {
         k_fornavn.setText(k.getFornavn());
         k_etternavn.setText(k.getEtternavn());
         k_forsNr.setText(k.getForsikrNr());
         k_adr.setText(k.getFakturaadresse());
         k_opDato.setText(k.getKundeOpprettet().toString());
-
     }
 
     @FXML
@@ -65,10 +73,7 @@ public class mainPageController {
         Kunde k = clientList.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
         if (k == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Kunde ikke valgt");
-            alert.setContentText("Vennligst velg en kunde først");
-            alert.showAndWait();
+            AlertHandler.createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
             return;
         }
         ViewChanger vc = new ViewChanger();
@@ -115,7 +120,7 @@ public class mainPageController {
 
     @FXML
     private void saveChanges(ActionEvent event) {
-        Kunde k = clientList.getSelectionModel().getSelectedItem();
+        Kunde k = MainApp.getSelectedKunde();
         k.setFornavn(k_fornavn.getText());
         k.setEtternavn(k_etternavn.getText());
         refresh(event);
@@ -150,6 +155,15 @@ public class mainPageController {
 
     }
 
+    static class AlertHandler {
+
+        private static void createAlert(Alert.AlertType type, String title, String msg) {
+            Alert alert = new Alert(type);
+            alert.setTitle(title);
+            alert.setContentText(msg);
+            alert.showAndWait();
+        }
+    }
 
 
 
