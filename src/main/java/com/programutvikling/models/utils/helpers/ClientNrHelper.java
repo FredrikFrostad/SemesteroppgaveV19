@@ -8,6 +8,10 @@ public class ClientNrHelper {
 
     private static final String CLIENTREGFILE = ".clientNumbers";
 
+    /**
+     * Runs at the start of the application to ensure that the needed files for keeping track
+     * of ensurance numbers are in place. The files arecreated in the program folder placed in the users home directory.
+     */
     public void init() {
         String prjctFldr = MainApp.getPROJECTFOLDER();
 
@@ -29,6 +33,11 @@ public class ClientNrHelper {
     }
 
 
+    /**
+     * Method for keeping track of and auto-incrementing insurance numbers.
+     * @return integer: the next in line insurance number
+     * @throws FileNotFoundException if the reference file is not found
+     */
     public int appendClient() throws FileNotFoundException {
         int out = -1;
 
