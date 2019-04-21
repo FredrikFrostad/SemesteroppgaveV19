@@ -36,6 +36,9 @@ public class CsvReader extends FileReader{
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        reader.close();
+
         return objLst;
     }
 

@@ -1,7 +1,7 @@
 package com.programutvikling.mainapp;
 
 import com.programutvikling.models.data.kunde.Kunde;
-import com.programutvikling.models.osType.OSType;
+import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;

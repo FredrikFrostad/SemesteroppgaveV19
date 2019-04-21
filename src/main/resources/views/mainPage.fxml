@@ -2,15 +2,20 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.mainPageController">
+
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.mainPageController">
    <center>
       <TabPane minWidth="60.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
@@ -18,23 +23,41 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="clientList" onMouseClicked="#selectClient" prefHeight="490.0" prefWidth="278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="422.0" AnchorPane.topAnchor="0.0" />
-                        <JFXTextField fx:id="k_fornavn" layoutX="350.0" layoutY="47.0" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
-                        <JFXTextField fx:id="k_etternavn" layoutX="350.0" layoutY="73.0" prefWidth="320.0" promptText="Etternavn" />
-                        <JFXTextField fx:id="k_forsNr" layoutX="350.0" layoutY="99.0" prefWidth="320.0" promptText="Forsikringsnummer" />
-                        <JFXTextField fx:id="k_adr" layoutX="350.0" layoutY="125.0" prefWidth="320.0" promptText="Fakturaadresse" />
-                        <JFXTextField fx:id="k_opDato" layoutX="350.0" layoutY="21.0" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
-                        <JFXButton layoutX="350.0" layoutY="194.0" onAction="#saveChanges" style="-fx-background-color: grey;" text="Store Changes" />
-                        <JFXButton layoutX="479.0" layoutY="194.0" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file" />
+                        <ListView fx:id="clientList" maxWidth="350.0" onMouseClicked="#selectClient" prefHeight="490.0" prefWidth="278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <VBox layoutX="350.0" layoutY="-1.0" prefHeight="286.0" prefWidth="350.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <JFXTextField fx:id="k_fornavn" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
+                              <JFXTextField fx:id="k_etternavn" prefWidth="320.0" promptText="Etternavn" />
+                              <JFXTextField fx:id="k_forsNr" prefWidth="320.0" promptText="Forsikringsnummer" />
+                              <JFXTextField fx:id="k_adr" prefWidth="320.0" promptText="Fakturaadresse" />
+                              <JFXTextField fx:id="k_opDato" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXButton onAction="#saveChanges" style="-fx-background-color: grey;" text="Store Changes">
+                                       <HBox.margin>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                    <JFXButton onAction="#saveChangesToFile" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file">
+                                       <HBox.margin>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="tabForsikring" text="Forsikringer">
+          <Tab onSelectionChanged="#tabForsikring" text="Forsikringer">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tableForsikring" layoutX="6.0" layoutY="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <TextField fx:id="showSelectedKunde" layoutX="61.0" prefHeight="26.0" prefWidth="641.0" />
+                        <Text layoutX="6.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kunde:" wrappingWidth="52.7294921875" />
+                        <TableView fx:id="tableForsikring" layoutX="6.0" layoutY="26.0" prefHeight="464.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0" />
                      </children>
                   </AnchorPane>
             </content>

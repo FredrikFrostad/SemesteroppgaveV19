@@ -18,6 +18,7 @@ public class Kunde implements Serializable {
     private String etternavn;
     private String forsikrNr;
     private String Fakturaadresse;
+    private transient String filePath;
     private ArrayList<Forsikring> forsikringer = new ArrayList<>();
     private ArrayList<Skademelding> skademeldinger = new ArrayList<>();
     private ArrayList<Double> utbetaltErstatn = new ArrayList<>();
@@ -89,6 +90,14 @@ public class Kunde implements Serializable {
         return utbetaltErstatn;
     }
 
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
     @Override
     public String toString() {
         return "Kunde{" +
@@ -99,10 +108,5 @@ public class Kunde implements Serializable {
                 ", Fakturaadresse=" + Fakturaadresse  +
                 ", type=" + type +
                 '}';
-    }
-
-    public static void main(String[] args) {
-        Kunde k = new Kunde();
-        System.out.println(k.toString());
     }
 }

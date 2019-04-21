@@ -2,6 +2,7 @@ package com.programutvikling.models.filehandlers.writer;
 
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.exceptions.IllegalFileNameException;
 import com.programutvikling.models.filehandlers.FileHandler;
 import javafx.stage.FileChooser;
 
@@ -19,14 +20,23 @@ public abstract class FileWriter extends FileHandler {
     public static File getFile() throws Exception {
         FileChooser fileChooser = new FileChooser();
 
-        FileChooser.ExtensionFilter jobj = new FileChooser.ExtensionFilter("jobj files (*.jobj)", "*.jobj");
-        FileChooser.ExtensionFilter csv = new FileChooser.ExtensionFilter("csv files (*.csv)", "*.csv");
+        FileChooser.ExtensionFilter jobj = new FileChooser.ExtensionFilter(".jobj", "*.jobj");
+        FileChooser.ExtensionFilter csv = new FileChooser.ExtensionFilter(".csv", "*.csv");
         fileChooser.getExtensionFilters().add(jobj);
         fileChooser.getExtensionFilters().add(csv);
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/" + MainApp.getPROJECTFOLDER()));
-        return fileChooser.showSaveDialog(null);
 
+        // Dersom ingen fileextension er satt, generers denne utifra valt extensionfilter
+        String filePath = fileChooser.showSaveDialog(null).getAbsolutePath();
+        String[] splitExt = filePath.split("\\.");
+
+        if (splitExt.length < 2) {
+            filePath += fileChooser.getSelectedExtensionFilter().getDescription();
+        }
+
+        return new File(filePath);
     }
+
 
     /**
      * Metode som skriver data til fil.
@@ -36,4 +46,5 @@ public abstract class FileWriter extends FileHandler {
     public abstract void writeDataToFile(File file, Object obj) throws IOException;
 
     //public abstract void writeDataToFile(File file, ArrayList<Kunde> list) throws IOException;
+
 }

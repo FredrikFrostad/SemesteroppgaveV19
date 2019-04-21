@@ -1,4 +1,4 @@
-package com.programutvikling.models.osType;
+package com.programutvikling.models.utils.osType;
 
 import java.io.IOException;
 import java.util.Locale;

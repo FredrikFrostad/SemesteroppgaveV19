@@ -12,6 +12,7 @@ public abstract class Forsikring implements Serializable {
     private double forsikringsSum;
     private Date avtaleOpprettet;
     private String betingelser;
+    private transient String filePath;
 
     public Forsikring() {
         this.avtaleOpprettet = new Date();
@@ -54,6 +55,14 @@ public abstract class Forsikring implements Serializable {
 
     public void setBetingelser(String betingelser) {
         this.betingelser = betingelser;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override
