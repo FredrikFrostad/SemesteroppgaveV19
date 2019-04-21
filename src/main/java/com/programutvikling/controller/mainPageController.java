@@ -11,22 +11,16 @@ import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
-import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.layout.BorderPane;
-import javafx.util.StringConverter;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class mainPageController {
 
@@ -34,49 +28,47 @@ public class mainPageController {
     private BorderPane rootPane;
 
     @FXML
-    private ListView<Kunde> clientList;
+    private TableView<Forsikring> tableForsikring;
 
     @FXML
-    private TableView tableForsikring;
+    private TableView<Kunde> clientTable;
+
+    @FXML
+    private TableColumn<Kunde, String> col1, col2, col3;
 
     @FXML
     private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato;
 
     @FXML
-    private TextField showSelectedKunde;
+    private TextField selectedKundeField;
 
     @FXML
     public void initialize() {
         k_forsNr.setEditable(false);
         k_opDato.setEditable(false);
-        showSelectedKunde.setEditable(false);
+        selectedKundeField.setEditable(false);
+
+        initClientTable();
+    }
+
+    private void initClientTable() {
+
+        col1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
     }
 
     @FXML
     private void selectClient() {
-        Kunde k = clientList.getSelectionModel().getSelectedItem();
+        System.out.println("SELECTEDCLIENT BOOOM");
+        Kunde k = clientTable.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
         populateClientFields(k);
-        showSelectedKunde.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
+        selectedKundeField.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
     }
 
     @FXML
     private void tabForsikring() {
-        TableColumn<Kunde, String> col1 = new TableColumn<>("Forsikringsnummer");
-        col1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
-
-        TableColumn <Kunde, String> col2 = new TableColumn<>("Fornavn");
-        col2.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
-
-        TableColumn <Kunde, String> col3= new TableColumn<>("Etternavn");
-        col3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
-
-        tableForsikring.getColumns().add(col1);
-        tableForsikring.getColumns().add(col2);
-        tableForsikring.getColumns().add(col3);
-
-        tableForsikring.getItems().addAll(MainApp.getClientList());
-
     }
 
     /**
@@ -93,10 +85,10 @@ public class mainPageController {
 
     @FXML
     private void nyForsikring(ActionEvent event) {
-        Kunde k = clientList.getSelectionModel().getSelectedItem();
+        Kunde k = clientTable.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
         if (k == null) {
-            createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
             return;
         }
         ViewChanger vc = new ViewChanger();
@@ -140,7 +132,7 @@ public class mainPageController {
             e.printStackTrace();
             e.getMessage();
         }
-        refresh(event);
+        refreshTable(event);
     }
 
     @FXML
@@ -148,7 +140,7 @@ public class mainPageController {
         Kunde k = MainApp.getSelectedKunde();
         k.setFornavn(k_fornavn.getText());
         k.setEtternavn(k_etternavn.getText());
-        refresh(event);
+        refreshTable(event);
     }
 
     @FXML
@@ -164,39 +156,11 @@ public class mainPageController {
     }
 
     @FXML
-    private void refresh(ActionEvent event) {
-
-        clientList.setCellFactory(kundeListView -> {
-            TextFieldListCell<Kunde> cell = new TextFieldListCell<>();
-            cell.setConverter(new StringConverter<Kunde>() {
-                @Override
-                public String toString(Kunde kunde) {
-                    return kunde.getFornavn() + " " +
-                            kunde.getEtternavn() + " " + kunde.getFakturaadresse();
-                }
-
-                @Override
-                public Kunde fromString(String s) {
-                    Kunde kunde = cell.getItem();
-                    return kunde;
-                }
-            });
-            return cell;
-        });
-
-        clientList.getItems().removeAll(MainApp.getClientList());
-        clientList.getItems().addAll(MainApp.getClientList());
+    private void refreshTable(ActionEvent event) {
+        clientTable.getItems().clear();
+        clientTable.getItems().addAll(MainApp.getClientList());
     }
 
-    private void loadStoredClients() {
 
-    }
-
-    private void createAlert(Alert.AlertType type, String title, String msg) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setContentText(msg);
-        alert.showAndWait();
-    }
 
 }
