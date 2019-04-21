@@ -1,6 +1,7 @@
 package com.programutvikling.controller;
 
 import com.programutvikling.mainapp.MainApp;
+import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
 import com.programutvikling.models.filehandlers.FileHandler;
@@ -8,16 +9,14 @@ import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
+import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.layout.BorderPane;
 import javafx.util.StringConverter;
@@ -58,7 +57,11 @@ public class mainPageController {
         MainApp.setSelectedKunde(k);
         populateClientFields(k);
         showSelectedKunde.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
+    }
 
+    @FXML
+    private void tabForsikring() {
+        TableColumn <Forsikring, String> firstNameCol = new TableColumn<>("Fornavn");
     }
 
     /**
@@ -135,6 +138,13 @@ public class mainPageController {
 
     @FXML
     private void saveChangesToFile() {
+        File file = new File(MainApp.getSelectedKunde().getFilePath());
+
+        try {
+            FileHandler.getExtension(file);
+        } catch (InvalidFileFormatException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil!", "Kan ikke lagre endringer, finner ikke fil");
+        }
 
     }
 
