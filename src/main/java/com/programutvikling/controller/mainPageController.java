@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.layout.BorderPane;
 import javafx.util.StringConverter;
@@ -36,7 +37,7 @@ public class mainPageController {
     private ListView<Kunde> clientList;
 
     @FXML
-    private TableView table;
+    private TableView tableForsikring;
 
     @FXML
     private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato;
@@ -61,7 +62,21 @@ public class mainPageController {
 
     @FXML
     private void tabForsikring() {
-        TableColumn <Forsikring, String> firstNameCol = new TableColumn<>("Fornavn");
+        TableColumn<Kunde, String> col1 = new TableColumn<>("Forsikringsnummer");
+        col1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
+
+        TableColumn <Kunde, String> col2 = new TableColumn<>("Fornavn");
+        col2.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
+
+        TableColumn <Kunde, String> col3= new TableColumn<>("Etternavn");
+        col3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
+
+        tableForsikring.getColumns().add(col1);
+        tableForsikring.getColumns().add(col2);
+        tableForsikring.getColumns().add(col3);
+
+        tableForsikring.getItems().addAll(MainApp.getClientList());
+
     }
 
     /**
