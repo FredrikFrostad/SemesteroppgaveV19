@@ -84,20 +84,6 @@ public class AddClientController {
         list.add(kunde);
     }
 
-    @FXML
-    private void loadClient() {
-        Kunde kunde = new Kunde();
-        try {
-            File file = FileReader.getFile();
-            if (FileReader.getExtension(file).equals("csv"))kunde = (Kunde)new CsvReader().readDataFromFile(file);
-            else kunde = (Kunde)new JobjReader().readDataFromFile(file);
-
-        } catch (Exception e) {
-            // TODO: Handle this
-        }
-
-        MainApp.getClientList().add(kunde);
-    }
 
     @FXML
     private void abort() {

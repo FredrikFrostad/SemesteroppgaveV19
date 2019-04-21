@@ -96,8 +96,10 @@ public class mainPageController {
         try {
             File file = FileReader.getFile();
             if (FileHandler.getExtension(file).equals(".csv")) {
+
                 for (String[] s : (ArrayList<String[]>)new CsvReader().readDataFromFile(file)) {
-                    list.add((Kunde)new CsvObjectBuilder().buildObjectFromString(s));
+                    Kunde k = (Kunde)new CsvObjectBuilder().buildObjectFromString(s);
+                    if (!list.contains(k)) list.add(k);
                 }
             }
             else list.add((Kunde)new JobjReader().readDataFromFile(file));
