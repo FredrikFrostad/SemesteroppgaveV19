@@ -6,20 +6,12 @@ import com.programutvikling.models.data.forsikring.Fritidsbolig;
 import com.programutvikling.models.exceptions.InvalidNumberFormatException;
 import com.programutvikling.models.inputhandlers.Inputvalidator;
 import com.programutvikling.models.viewChanger.ViewChanger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class NewPolicyController{
 
