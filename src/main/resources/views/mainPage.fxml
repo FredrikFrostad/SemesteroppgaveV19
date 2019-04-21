@@ -25,7 +25,7 @@
                         <JFXTextField fx:id="k_adr" layoutX="350.0" layoutY="125.0" prefWidth="320.0" promptText="Fakturaadresse" />
                         <JFXTextField fx:id="k_opDato" layoutX="350.0" layoutY="21.0" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
                         <JFXButton layoutX="350.0" layoutY="194.0" onAction="#saveChanges" style="-fx-background-color: grey;" text="Store Changes" />
-                        <JFXButton layoutX="479.0" layoutY="194.0" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file" />
+                        <JFXButton layoutX="479.0" layoutY="194.0" onAction="#saveChangesToFile" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file" />
                      </children>
                   </AnchorPane>
             </content>
