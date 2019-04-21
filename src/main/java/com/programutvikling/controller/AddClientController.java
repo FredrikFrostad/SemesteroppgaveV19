@@ -5,20 +5,21 @@ import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.exceptions.InvalidAddressException;
 import com.programutvikling.models.exceptions.InvalidNameFormatException;
 import com.programutvikling.models.exceptions.InvalidNumberFormatException;
-import com.programutvikling.models.filehandlers.reader.CsvReader;
-import com.programutvikling.models.filehandlers.reader.FileReader;
-import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.CsvWriter;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.inputhandlers.Inputvalidator;
+import com.programutvikling.models.utils.helpers.AlertHelper;
+import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -31,6 +32,18 @@ public class AddClientController {
     @FXML private TextField fx_etternavn;
     @FXML private TextField fx_forsikringsnummer;
     @FXML private TextField fx_fakturaadresse;
+
+    @FXML
+    public void initialize() {
+        fx_forsikringsnummer.setEditable(false);
+        try {
+            fx_forsikringsnummer.setText(Integer.toString(new ClientNrHelper().appendClient()));
+
+        } catch (FileNotFoundException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Fatal feil", "Finner ikke registerfil, kan ikke opprette kunde.");
+            abort();
+        }
+    }
 
 
     @FXML
@@ -48,7 +61,6 @@ public class AddClientController {
             Inputvalidator.checkValidNameFormat(fx_etternavn.getText());
             kunde.setEtternavn(fx_etternavn.getText());
 
-            Inputvalidator.checkValidForsikrNr(fx_forsikringsnummer.getText());
             kunde.setForsikrNr(fx_forsikringsnummer.getText());
 
             //TODO: Denne metoden funker ikke, fiks - test - moveon
@@ -82,6 +94,7 @@ public class AddClientController {
             if (k.toString().equals(kunde.toString())) return;
         }
         list.add(kunde);
+        abort();
     }
 
 

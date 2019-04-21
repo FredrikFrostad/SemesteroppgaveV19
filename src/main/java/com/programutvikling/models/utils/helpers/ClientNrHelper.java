@@ -1,10 +1,10 @@
-package com.programutvikling.models.utils.kundeNrHelper;
+package com.programutvikling.models.utils.helpers;
 
 import com.programutvikling.mainapp.MainApp;
 
 import java.io.*;
 
-public class clientNrHelper {
+public class ClientNrHelper {
 
     private static final String CLIENTREGFILE = ".clientNumbers";
 

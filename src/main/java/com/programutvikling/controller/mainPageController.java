@@ -43,9 +43,13 @@ public class mainPageController {
     private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato;
 
     @FXML
+    private TextField showSelectedKunde;
+
+    @FXML
     public void initialize() {
         k_forsNr.setEditable(false);
         k_opDato.setEditable(false);
+        showSelectedKunde.setEditable(false);
     }
 
     @FXML
@@ -53,6 +57,7 @@ public class mainPageController {
         Kunde k = clientList.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
         populateClientFields(k);
+        showSelectedKunde.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
 
     }
 

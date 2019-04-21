@@ -1,4 +1,4 @@
-package com.programutvikling.models.utils.kundeNrHelper;
+package com.programutvikling.models.utils.helpers;
 
 import com.programutvikling.mainapp.MainApp;
 import org.junit.Test;
@@ -14,7 +14,7 @@ public class clientNrHelperTest {
     @Test
     public void init() {
 
-        clientNrHelper helper = new clientNrHelper();
+        ClientNrHelper helper = new ClientNrHelper();
         helper.init();
 
         // Checking if clientNumberFile exists
@@ -46,7 +46,7 @@ public class clientNrHelperTest {
             int1 = Integer.parseInt(reader.readLine());
             reader.close();
 
-            clientNrHelper helper = new clientNrHelper();
+            ClientNrHelper helper = new ClientNrHelper();
             int2 = helper.appendClient();
 
             int3 = Integer.parseInt(reader.readLine());
@@ -57,13 +57,8 @@ public class clientNrHelperTest {
         }
 
         assertTrue(int1 > 0);
-        assertTrue(int2 == int1 + 1);
-        assertTrue(int3 == int2);
-
-
-
-
-
+        assertEquals(int2, int1 + 1);
+        assertEquals(int2, int3);
 
     }
 }
