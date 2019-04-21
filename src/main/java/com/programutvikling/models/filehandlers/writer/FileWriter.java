@@ -26,16 +26,14 @@ public abstract class FileWriter extends FileHandler {
         fileChooser.getExtensionFilters().add(csv);
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/" + MainApp.getPROJECTFOLDER()));
 
+        // Dersom ingen fileextension er satt, generers denne utifra valt extensionfilter
         String filePath = fileChooser.showSaveDialog(null).getAbsolutePath();
         String[] splitExt = filePath.split("\\.");
-        System.out.println("Length" + splitExt.length);
-        System.out.println(fileChooser.getSelectedExtensionFilter().getDescription());
 
         if (splitExt.length < 2) {
             filePath += fileChooser.getSelectedExtensionFilter().getDescription();
         }
 
-        System.out.println("NEW FILE" + filePath);
         return new File(filePath);
     }
 
