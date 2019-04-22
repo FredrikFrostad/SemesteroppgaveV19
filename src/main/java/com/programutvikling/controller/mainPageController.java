@@ -60,7 +60,6 @@ public class mainPageController {
 
     @FXML
     private void selectClient() {
-        System.out.println("SELECTEDCLIENT BOOOM");
         Kunde k = clientTable.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
         populateClientFields(k);
