@@ -6,7 +6,7 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # Uncomment this to ignore entire .idea folder
-.idea/
+#.idea/
 
 # User-specific stuff
 .idea/**/workspace.xml
