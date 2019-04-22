@@ -31,6 +31,9 @@ public class mainPageController {
     private TableView<Forsikring> tableForsikring;
 
     @FXML
+    private Tab tabForsikring, tabKunder, tabSkademeldinger;
+
+    @FXML
     private TableView<Kunde> clientTable;
 
     @FXML
@@ -66,9 +69,18 @@ public class mainPageController {
         selectedKundeField.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
     }
 
+
+    /**
+     * Method for reacting to a selectionchange in this views tabpane. The method response is
+     * based on the tab selected
+     */
     @FXML
-    private void tabForsikring() {
+    private void tabChanged() {
+        if (tabForsikring.isSelected()) System.out.println("EVENT FORSIKRING TRIGGERED!!");
+        else if (tabKunder.isSelected()) System.out.println("EVENT KUNDER TRIGGERED");
+        else if (tabSkademeldinger.isSelected()) System.out.println("EVENT SKADEMELDINGER TRIGGERED");
     }
+
 
     /**
      * Methode for populating textfields with client data
