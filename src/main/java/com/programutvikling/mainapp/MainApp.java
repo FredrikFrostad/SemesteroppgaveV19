@@ -1,6 +1,7 @@
 package com.programutvikling.mainapp;
 
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
@@ -98,6 +99,9 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         findOSTypeAndCreateProjectFolder();
+
+        //make register file
+        new ClientNrHelper().init();
         //Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
         Parent root = FXMLLoader.load(getClass().getResource("/views/mainPage.fxml"));
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CsvReader extends FileReader{
+public class CsvReader extends FileReader implements Runnable{
 
     /**
      * Method for reading data from a CSV-file.
@@ -61,5 +61,10 @@ public class CsvReader extends FileReader{
     @Override
     public Object readDataFromURL(String url) {
         return null;
+    }
+
+    @Override
+    public void run() {
+
     }
 }

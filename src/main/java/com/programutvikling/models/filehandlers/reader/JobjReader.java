@@ -10,7 +10,26 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 
-public class JobjReader extends FileReader {
+public class JobjReader extends FileReader implements Runnable{
+
+    File file;
+    Object objectArray[];
+
+    public JobjReader(File file, Object[] objectArray){
+        this.file = file;
+        this.objectArray = objectArray;
+
+    }
+
+    @Override
+    public void run() {
+        try {
+            this.objectArray[0] = readDataFromFile(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public Object readDataFromFile(File file) throws Exception {
@@ -42,5 +61,6 @@ public class JobjReader extends FileReader {
     public Object readDataFromURL(String url) {
         return null;
     }
+
 
 }
