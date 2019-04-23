@@ -65,6 +65,10 @@ public abstract class Forsikring implements Serializable {
         this.filePath = filePath;
     }
 
+    public Enum getType() {
+        return type;
+    }
+
     @Override
     public String toString() {
         return "premieAnnum=" + premieAnnum +

@@ -1,6 +1,7 @@
 package com.programutvikling.controller;
 
 import com.programutvikling.mainapp.MainApp;
+import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
@@ -35,7 +36,10 @@ public class mainPageController {
     private TableView<Forsikring> tableOverviewForsikring, tableDetailsForsikring;
 
     @FXML
-    private TableColumn<Forsikring, String> overviewCol1, overviewCol2;
+    private TableColumn<Forsikring, String> overviewCol1;
+
+    @FXML
+    private TableColumn<Forsikring, ObjectType> overviewCol2;
 
     @FXML
     private TableView<Kunde> clientTable;
