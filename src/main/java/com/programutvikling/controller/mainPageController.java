@@ -9,6 +9,7 @@ import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
+import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
@@ -34,6 +35,9 @@ public class mainPageController {
     private TableView<Forsikring> tableOverviewForsikring, tableDetailsForsikring;
 
     @FXML
+    private TableColumn<Forsikring, String> overviewCol1, overviewCol2;
+
+    @FXML
     private TableView<Kunde> clientTable;
 
     @FXML
@@ -45,6 +49,7 @@ public class mainPageController {
     @FXML
     private TextField selectedKundeField;
 
+
     @FXML
     public void initialize() {
         k_forsNr.setEditable(false);
@@ -54,7 +59,7 @@ public class mainPageController {
         initClientTable();
     }
 
-    // TODO: Denne metoden kan sløyfes dersom dette flyttes inn i fxml-fila via scenebuilder
+
     private void initClientTable() {
 
         kundeCol1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
@@ -62,11 +67,27 @@ public class mainPageController {
         kundeCol3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
     }
 
-    // TODO: Denne metoden kan sløyfes dersom dette flyttes inn i fxml-fila via scenebuilder
+
     private void initForsikringsTable() {
-        TableColumn<Forsikring, String> forsikringCol1 = new TableColumn<>();
-        TableColumn<Forsikring, String> forsikringCol2 = new TableColumn<>();
-        TableColumn<Forsikring, String> forsikringCol3 = new TableColumn<>();
+        overviewCol1.setCellValueFactory(new PropertyValueFactory<>("type"));
+        overviewCol2.setCellValueFactory(new PropertyValueFactory<>("premieAnnum"));
+
+        if (!MainApp.getSelectedKunde().getForsikringer().isEmpty()) {
+            System.out.println("Loading forsikringer");
+            tableOverviewForsikring.getItems().addAll(MainApp.getSelectedKunde().getForsikringer());
+        } else {
+            System.out.println("loading forsikringer failed");
+        }
+
+    }
+
+
+    // TODO: fjernes når denne ikke trengs mere
+    @FXML
+    private void TEST() {
+        System.out.println("Valgt kunde er: " + MainApp.getSelectedKunde().getFornavn() + " " + MainApp.getSelectedKunde().getEtternavn());
+        System.out.println("Antall elementer i forsikringsliste er: " + MainApp.getSelectedKunde().getForsikringer().size());
+        for (Forsikring f : MainApp.getSelectedKunde().getForsikringer()) System.out.println(f);
     }
 
 
@@ -86,9 +107,16 @@ public class mainPageController {
      */
     @FXML
     private void tabChanged() {
-        if (tabForsikring.isSelected()) System.out.println("EVENT FORSIKRING TRIGGERED!!");
-        else if (tabKunder.isSelected()) System.out.println("EVENT KUNDER TRIGGERED");
-        else if (tabSkademeldinger.isSelected()) System.out.println("EVENT SKADEMELDINGER TRIGGERED");
+        if (tabForsikring.isSelected()) {
+            System.out.println("EVENT FORSIKRING TRIGGERED!!");
+            initForsikringsTable();
+        }
+        else if (tabKunder.isSelected()) {
+            System.out.println("EVENT KUNDER TRIGGERED");
+        }
+        else if (tabSkademeldinger.isSelected()) {
+            System.out.println("EVENT SKADEMELDINGER TRIGGERED");
+        }
     }
 
 
@@ -153,7 +181,7 @@ public class mainPageController {
             e.printStackTrace();
             e.getMessage();
         }
-        refreshTable(event);
+        refreshKundeTable(event);
     }
 
     @FXML
@@ -161,7 +189,7 @@ public class mainPageController {
         Kunde k = MainApp.getSelectedKunde();
         k.setFornavn(k_fornavn.getText());
         k.setEtternavn(k_etternavn.getText());
-        refreshTable(event);
+        refreshKundeTable(event);
     }
 
     @FXML
@@ -169,15 +197,20 @@ public class mainPageController {
         File file = new File(MainApp.getSelectedKunde().getFilePath());
 
         try {
-            FileHandler.getExtension(file);
+            if (FileHandler.getExtension(file).equals(".jobj")) {
+                new JobjWriter().writeDataToFile(file, MainApp.getSelectedKunde());
+            }
+
         } catch (InvalidFileFormatException e) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil!", "Kan ikke lagre endringer, finner ikke fil");
+        } catch (IOException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil ved lagring til fil", e.getMessage());
         }
 
     }
 
     @FXML
-    private void refreshTable(ActionEvent event) {
+    private void refreshKundeTable(ActionEvent event) {
         clientTable.getItems().clear();
         clientTable.getItems().addAll(MainApp.getClientList());
     }

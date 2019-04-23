@@ -92,7 +92,7 @@ public class NewPolicyController{
     private void registrerForsikring() {
         Forsikring forsikring = null;
 
-        if (active.getId().equals(fritidsPage)) {
+        if (active.getId().equals("fritidsPage")) {
             forsikring = createFritidsBolig();
         }
 
