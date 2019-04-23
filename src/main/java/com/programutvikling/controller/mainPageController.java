@@ -28,7 +28,7 @@ public class mainPageController {
     private BorderPane rootPane;
 
     @FXML
-    private TableView<Forsikring> tableForsikring;
+    private TableView<Forsikring> tableAllForsikring, tableForsikring;
 
     @FXML
     private Tab tabForsikring, tabKunder, tabSkademeldinger;
@@ -37,7 +37,7 @@ public class mainPageController {
     private TableView<Kunde> clientTable;
 
     @FXML
-    private TableColumn<Kunde, String> col1, col2, col3;
+    private TableColumn<Kunde, String> kundeCol1, kundeCol2, kundeCol3;
 
     @FXML
     private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato;
@@ -54,12 +54,22 @@ public class mainPageController {
         initClientTable();
     }
 
+    // TODO: Denne metoden kan sløyfes dersom dette flyttes inn i fxml-fila via scenebuilder
     private void initClientTable() {
 
-        col1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
-        col2.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
-        col3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
+        kundeCol1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
+        kundeCol2.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
+        kundeCol3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
     }
+
+    // TODO: Denne metoden kan sløyfes dersom dette flyttes inn i fxml-fila via scenebuilder
+    private void initForsikringsTable() {
+        TableColumn<Forsikring, String> forsikringCol1 = new TableColumn<>();
+        TableColumn<Forsikring, String> forsikringCol2 = new TableColumn<>();
+        TableColumn<Forsikring, String> forsikringCol3 = new TableColumn<>();
+    }
+
+
 
     @FXML
     private void selectClient() {
