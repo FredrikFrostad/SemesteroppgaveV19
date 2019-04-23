@@ -75,15 +75,23 @@ public class AddClientController {
         } catch (InvalidNameFormatException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            //?
+            AlertHelper.createAlert(Alert.AlertType.WARNING, "Feil!", "Ugyldig navnformat oppgitt" );
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            //?
+            AlertHelper.createAlert(Alert.AlertType.WARNING, "Feil!", "Ugyldig tallformat oppgitt" );
         } catch (InvalidAddressException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            //?
+            AlertHelper.createAlert(Alert.AlertType.WARNING, "Ugyldig data!", "Ugyldig adresse oppgitt" );
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            //?
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil!", "Det oppsto en feil, noe er galt" );
         }
 
         //Legger til kunde i arrayliste som bor i mainapp

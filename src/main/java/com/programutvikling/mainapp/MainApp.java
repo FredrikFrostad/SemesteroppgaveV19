@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class MainApp extends Application {
 
     private File projectFilePath;
-    private static final String PROJECTFOLDER = "SemesteroppgaveV19";
+    private static final String PROJECTFOLDER = "SemesteroppgaveV19project";
 
     private static ArrayList<Kunde> clientList = new ArrayList<>();
 
