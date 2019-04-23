@@ -27,7 +27,6 @@ public class CsvReader extends FileReader{
         try {
             String line = "";
             reader = new BufferedReader(new java.io.FileReader(file));
-            reader.readLine();
 
             while ((line = reader.readLine()) != null) {
                 String[] dataFields = line.split(",");
@@ -40,26 +39,5 @@ public class CsvReader extends FileReader{
         reader.close();
 
         return objLst;
-    }
-
-    public static void main(String[] args) {
-
-        try {
-            ArrayList<String[]> list = (ArrayList<String[]>) new CsvReader().readDataFromFile(new File("testfile.csv"));
-            for (String[] arr : list) {
-                for (String s : arr) {
-                    System.out.print(s);
-                }
-                System.out.println();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @Override
-    public Object readDataFromURL(String url) {
-        return null;
     }
 }
