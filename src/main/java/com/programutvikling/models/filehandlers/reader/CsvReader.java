@@ -40,10 +40,4 @@ public class CsvReader extends FileReader{
 
         return objLst;
     }
-
-
-    @Override
-    public Object readDataFromURL(String url) {
-        return null;
-    }
 }

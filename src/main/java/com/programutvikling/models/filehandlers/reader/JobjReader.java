@@ -38,9 +38,4 @@ public class JobjReader extends FileReader {
         }
     }
 
-    @Override
-    public Object readDataFromURL(String url) {
-        return null;
-    }
-
 }

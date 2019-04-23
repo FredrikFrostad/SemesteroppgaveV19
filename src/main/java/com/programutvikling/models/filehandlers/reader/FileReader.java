@@ -36,9 +36,4 @@ public abstract class FileReader extends FileHandler {
      */
     public abstract Object readDataFromFile(File file) throws Exception;
 
-    /**
-     * Metode som leser data fra en URL
-     * @param url Url til data som skal leses
-     */
-    public abstract Object readDataFromURL(String url);
 }
