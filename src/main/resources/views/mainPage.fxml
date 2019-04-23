@@ -43,14 +43,14 @@
                      <children>
                         <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valgt kunde:" />
                         <TextField fx:id="selectedKundeField" layoutX="108.0" prefHeight="26.0" prefWidth="593.0" />
-                        <TableView fx:id="tableAllForsikring" layoutY="28.0" prefHeight="106.0" prefWidth="701.0">
+                        <TableView fx:id="tableOverviewForsikring" layoutY="28.0" prefHeight="106.0" prefWidth="701.0">
                           <columns>
                             <TableColumn fx:id="overviewCol1" prefWidth="117.0" text="Type Forsikring" />
                             <TableColumn fx:id="overviewCol2" prefWidth="446.0" text="Forsikring gjelder" />
                               <TableColumn fx:id="overviewCol3" prefWidth="166.0" text="Pris pr år" />
                           </columns>
                         </TableView>
-                        <TableView fx:id="tableForsikring" layoutX="6.0" layoutY="133.0" prefHeight="357.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="133.0" />
+                        <TableView fx:id="tableDetailsForsikring" layoutX="6.0" layoutY="133.0" prefHeight="357.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="133.0" />
                      </children>
                   </AnchorPane>
             </content>

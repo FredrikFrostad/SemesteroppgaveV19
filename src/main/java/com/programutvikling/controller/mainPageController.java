@@ -28,10 +28,10 @@ public class mainPageController {
     private BorderPane rootPane;
 
     @FXML
-    private TableView<Forsikring> tableAllForsikring, tableForsikring;
+    private Tab tabForsikring, tabKunder, tabSkademeldinger;
 
     @FXML
-    private Tab tabForsikring, tabKunder, tabSkademeldinger;
+    private TableView<Forsikring> tableOverviewForsikring, tableDetailsForsikring;
 
     @FXML
     private TableView<Kunde> clientTable;
