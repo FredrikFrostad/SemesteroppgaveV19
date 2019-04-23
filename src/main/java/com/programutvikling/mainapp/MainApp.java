@@ -98,8 +98,14 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        // This method is called to create a project folder for the applications files
+        // To change the location of the project folder, change the PROJECTFOLDER variable in this class
         findOSTypeAndCreateProjectFolder();
+
+        //This method is called here to insure the file for auto-incrementing client numbers are created
         new ClientNrHelper().init();
+
         //Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
         Parent root = FXMLLoader.load(getClass().getResource("/views/mainPage.fxml"));
 
