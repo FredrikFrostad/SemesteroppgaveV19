@@ -5,6 +5,7 @@ public enum ObjectType {
     KUNDE,
     FORSIKRING,
     BÅT,
+    BIL,
     FRITIDSBOLIG,
     REISE,
     VILLAINNBO,

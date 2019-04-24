@@ -32,10 +32,77 @@
    <center>
       <StackPane fx:id="stack" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="villaPage" prefHeight="200.0" prefWidth="200.0" visible="false" />
-            <AnchorPane fx:id="reisePage" prefHeight="200.0" prefWidth="200.0" visible="false" />
-            <AnchorPane fx:id="bilPage" prefHeight="200.0" prefWidth="200.0" visible="false" />
-            <AnchorPane fx:id="båtPage" prefHeight="200.0" prefWidth="200.0" visible="false" />
+
+            //FIKSE:
+            <AnchorPane fx:id="villaPage" prefHeight="200.0" prefWidth="200.0" visible="false" >
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Rectangle>
+                  <JFXTextField fx:id="villa_adresse" layoutX="323.0" layoutY="116.0" promptText="Adresse" />
+                  <JFXTextField fx:id="villa_byggeår" layoutX="323.0" layoutY="142.0" promptText="Byggeår" />
+                  <JFXTextField fx:id="villa_boligtype" layoutX="323.0" layoutY="168.0" promptText="Boligtype" />
+                  <JFXTextField fx:id="villa_byggemateriale" layoutX="323.0" layoutY="201.0" promptText="Byggemateriale" />
+                  <JFXTextField fx:id="villa_standard" layoutX="323.0" layoutY="227.0" promptText="Standard" />
+                  <JFXTextField fx:id="villa_areal" layoutX="323.0" layoutY="253.0" promptText="Areal" />
+                  <JFXTextField fx:id="villa_beløpBygning" layoutX="323.0" layoutY="305.0" promptText="Beløp byning" />
+                  <JFXTextField fx:id="villa_beløpInnbo" layoutX="323.0" layoutY="279.0" promptText="Beløp innbo" />
+               </children>
+            </AnchorPane>
+
+            //FIKSE
+            <AnchorPane fx:id="reisePage" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <children>
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
+                  <effect>
+                     <DropShadow />
+                  </effect>
+               </Rectangle>
+               <JFXTextField fx:id="reise_forsikringOmraade" layoutX="323.0" layoutY="116.0" promptText="Adresse" />
+               <JFXTextField fx:id="reise_forsikringsSum" layoutX="323.0" layoutY="279.0" promptText="Beløp reiseforsikring" />
+            </children>
+         </AnchorPane>
+
+            //FIKSE:
+            <AnchorPane fx:id="bilPage" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Rectangle>
+                  <JFXTextField fx:id="bil_eier" layoutX="323.0" layoutY="116.0" promptText="Eier" />
+                  <JFXTextField fx:id="bil_regNr" layoutX="323.0" layoutY="142.0" promptText="Registreringsnummer" />
+                  <JFXTextField fx:id="bil_typeBil" layoutX="323.0" layoutY="168.0" promptText="Biltype" />
+                  <JFXTextField fx:id="bil_modell" layoutX="323.0" layoutY="201.0" promptText="Bilmodell" />
+                  <JFXTextField fx:id="bil_lengde" layoutX="323.0" layoutY="227.0" promptText="Lengde" />
+                  <JFXTextField fx:id="bil_årsmodell" layoutX="323.0" layoutY="253.0" promptText="Årsmodell" />
+                  <JFXTextField fx:id="bil_motorType" layoutX="323.0" layoutY="305.0" promptText="Motortype" />
+                  <JFXTextField fx:id="bil_effekt" layoutX="323.0" layoutY="279.0" promptText="Effekt" />
+               </children>
+            </AnchorPane>
+
+            //FIKSE:
+            <AnchorPane fx:id="båtPage" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Rectangle>
+                  <JFXTextField fx:id="båt_eier" layoutX="323.0" layoutY="116.0" promptText="Eier" />
+                  <JFXTextField fx:id="båt_regNr" layoutX="323.0" layoutY="142.0" promptText="Registreringsnummer" />
+                  <JFXTextField fx:id="båt_typeBåt" layoutX="323.0" layoutY="168.0" promptText="Båttype" />
+                  <JFXTextField fx:id="båt_modell" layoutX="323.0" layoutY="201.0" promptText="Båtmodell" />
+                  <JFXTextField fx:id="båt_lengde" layoutX="323.0" layoutY="227.0" promptText="Lengde" />
+                  <JFXTextField fx:id="båt_årsmodell" layoutX="323.0" layoutY="253.0" promptText="Årsmodell" />
+                  <JFXTextField fx:id="båt_motorType" layoutX="323.0" layoutY="305.0" promptText="Motortype" />
+                  <JFXTextField fx:id="båt_effekt" layoutX="323.0" layoutY="279.0" promptText="Effekt" />
+               </children>
+            </AnchorPane>
+
             <AnchorPane fx:id="togglePage" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="279.0" AnchorPane.rightAnchor="278.0" AnchorPane.topAnchor="98.0">

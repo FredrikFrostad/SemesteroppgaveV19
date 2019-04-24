@@ -2,7 +2,9 @@ package com.programutvikling.models.data.forsikring;
 
 import com.programutvikling.models.data.ObjectType;
 
-public class VillaInnbo {
+import java.io.Serializable;
+
+public class VillaInnbo extends Forsikring implements Serializable {
 
     private static ObjectType type = ObjectType.VILLAINNBO;
     private String adresse;

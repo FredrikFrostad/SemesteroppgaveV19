@@ -2,7 +2,9 @@ package com.programutvikling.models.data.forsikring;
 
 import com.programutvikling.models.data.ObjectType;
 
-public class Reise extends Forsikring{
+import java.io.Serializable;
+
+public class Reise extends Forsikring implements Serializable {
 
     private static ObjectType type = ObjectType.REISE;
     private String forsikringOmraade;

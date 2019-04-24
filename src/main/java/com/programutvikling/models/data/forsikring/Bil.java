@@ -5,29 +5,29 @@ import com.programutvikling.models.data.ObjectType;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Båt extends Forsikring implements Serializable {
+public class Bil extends Forsikring implements Serializable {
 
-    private static ObjectType type = ObjectType.BÅT;
+    private static ObjectType type = ObjectType.BIL;
     private String eier;
     private String regNr;
-    private String typeBåt; // TODO: Burde dette vært implementert via en indre enum klasse slik at man kan velge mellom predefinerte alternativer...typ daycruiser, robåt, motorseiler etc...
+    private String typeBil;
     private String modell;
     private int lengde;
     private int årsmodell;
     private String motorType;
     private String effekt;
 
-    public Båt() {
+    public Bil() {
         super();
     }
 
 
-    public Båt(double premieAnnum, double forsikringsSum, String betingelser, String eier, String regNr,
-               String typeBåt, String modell, int lengde, int årsmodell, String motorType, String effekt) {
+    public Bil(double premieAnnum, double forsikringsSum, String betingelser, String eier, String regNr,
+               String typeBil, String modell, int lengde, int årsmodell, String motorType, String effekt) {
         super(premieAnnum, forsikringsSum, betingelser);
         this.eier = eier;
         this.regNr = regNr;
-        this.typeBåt = typeBåt;
+        this.typeBil = typeBil;
         this.modell = modell;
         this.lengde = lengde;
         this.årsmodell = årsmodell;
@@ -52,11 +52,11 @@ public class Båt extends Forsikring implements Serializable {
     }
 
     public String getTypeBåt() {
-        return typeBåt;
+        return typeBil;
     }
 
     public void setTypeBåt(String typeBåt) {
-        this.typeBåt = typeBåt;
+        this.typeBil = typeBåt;
     }
 
     public String getModell() {
@@ -101,11 +101,11 @@ public class Båt extends Forsikring implements Serializable {
 
     @Override
     public String toString() {
-        return "Båt{" +
+        return "Bil{" +
                 super.toString() +
                 ", eier=" + eier +
                 ", regNr=" + regNr +
-                ", typeBåt=" + typeBåt +
+                ", typeBil=" + typeBil +
                 ", modell=" + modell +
                 ", lengde=" + lengde +
                 ", årsmodell=" + årsmodell +
