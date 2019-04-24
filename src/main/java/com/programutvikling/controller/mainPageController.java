@@ -55,7 +55,7 @@ public class mainPageController {
 
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         k_forsNr.setEditable(false);
         k_opDato.setEditable(false);
         selectedKundeField.setEditable(false);
@@ -218,10 +218,16 @@ public class mainPageController {
 
     }
 
+    /**
+     * Method for refreshing the kunde tableview. This method is public to enable other screens to
+     * refresh the tableview if a change has happened.
+     * @param event is consumed
+     */
     @FXML
-    private void refreshKundeTable(ActionEvent event) {
+    public void refreshKundeTable(ActionEvent event) {
         clientTable.getItems().clear();
         clientTable.getItems().addAll(MainApp.getClientList());
+        event.consume();
     }
 
 

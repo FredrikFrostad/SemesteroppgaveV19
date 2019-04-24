@@ -28,7 +28,7 @@ public class CsvObjectBuilderTest {
             new CsvWriter().writeDataToFile(new File("testfile.csv"), k1);
             CsvReader reader = new CsvReader();
             ArrayList<String[]> lst = (ArrayList<String[]>) reader.readDataFromFile(new File("testfile.csv"));
-            k2 = (Kunde) new CsvObjectBuilder().buildObjectFromString(lst.get(0));
+            k2 = (Kunde) new CsvObjectBuilder().buildObjectFromString(lst.get(1));
 
         } catch (IOException e) {
             e.printStackTrace();
