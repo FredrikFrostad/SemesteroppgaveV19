@@ -16,8 +16,16 @@ public class VillaInnbo extends Forsikring implements Serializable {
     private int beløpBygning;
     private int beløpInnbo;
 
-    public VillaInnbo(String adresse, int byggeÅr, String boligType, String byggemateriale,
+
+
+    public VillaInnbo() {
+        super();
+    }
+
+    public VillaInnbo(double premieAnnum, double forsikringsSum, String betingelser,String adresse,
+                      int byggeÅr, String boligType, String byggemateriale,
                       String standard, int areal, int beløpBygning, int beløpInnbo) {
+        super(premieAnnum, forsikringsSum, betingelser);
         this.adresse = adresse;
         this.byggeÅr = byggeÅr;
         this.boligType = boligType;

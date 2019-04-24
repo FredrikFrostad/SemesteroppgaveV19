@@ -51,12 +51,12 @@ public class Bil extends Forsikring implements Serializable {
         this.regNr = regNr;
     }
 
-    public String getTypeBåt() {
+    public String getTypeBil() {
         return typeBil;
     }
 
-    public void setTypeBåt(String typeBåt) {
-        this.typeBil = typeBåt;
+    public void setTypeBil(String typeBil) {
+        this.typeBil = typeBil;
     }
 
     public String getModell() {

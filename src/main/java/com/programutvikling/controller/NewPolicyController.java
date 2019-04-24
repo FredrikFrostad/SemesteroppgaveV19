@@ -134,12 +134,14 @@ public class NewPolicyController{
         } else if (active.getId().equals(reisePage)) {
             forsikring = createReise();
         }
-        //else if (active.getId().equals(bilPage)) {
-            //forsikring = createBil();}
+        else if (active.getId().equals(bilPage)) {
+            forsikring = createBil();
+            }
 
         else if (active.getId().equals(båtPage)) {
             forsikring = createBåt();
         }
+
 
         MainApp.getSelectedKunde().getForsikringer().add(forsikring);
     }
@@ -149,11 +151,7 @@ public class NewPolicyController{
         Fritidsbolig f = new Fritidsbolig();
 
         try {
-            //Dette er nok ikke helt riktig
-            //Inputvalidator.checkIfValidNumber(fritid_byggeår.getText());
-            //f.setByggeaar(Integer.parseInt(fritid_byggeår.getText()));
 
-            //Gjør dette:
             if (Inputvalidator.checkIfValidNumber(fritid_byggeår.getText())) {
                 f.setByggeaar(Integer.parseInt(fritid_byggeår.getText()));
             }
@@ -168,7 +166,6 @@ public class NewPolicyController{
                 f.setForsikringsbeløpByggning(Double.parseDouble(fritid_beløpBygning.getText()));
             }
 
-            //riktig å bruke checkValidFakturaAdresse??
             else if (Inputvalidator.checkValidFakturaAdresse(fritid_adresse.getText())){
                 f.setAdresse(fritid_adresse.getText());
             }
@@ -183,7 +180,6 @@ public class NewPolicyController{
                     f.setStandard(fritid_standard.getText());
 
             }
-
 
 
 
@@ -210,13 +206,51 @@ public class NewPolicyController{
         VillaInnbo v = new VillaInnbo();
 
         try {
+            if (Inputvalidator.checkIfValidNumber(villa_byggeår.getText())) {
+                v.setByggeÅr(Integer.parseInt(villa_byggeår.getText()));
+            }
+
+            else if (Inputvalidator.checkIfValidNumber(villa_areal.getText())){
+                v.setAreal(Integer.parseInt(villa_areal.getText()));
+            }
+            else if (Inputvalidator.checkIfValidNumber(villa_beløpInnbo.getText())){
+                v.setBeløpInnbo(Integer.parseInt(villa_beløpInnbo.getText()));
+            }
+            else if (Inputvalidator.checkValidNameFormat(villa_beløpBygning.getText())){
+                v.setBeløpBygning(Integer.parseInt(villa_beløpBygning.getText()));
+            }
+
+            else if (Inputvalidator.checkValidFakturaAdresse(villa_adresse.getText())){
+                v.setAdresse(villa_adresse.getText());
+            }
+
+            else if (Inputvalidator.checkValidNameFormat(villa_boligtype.getText())) {
+                v.setBoligType(villa_boligtype.getText());
+            }
+            else if (Inputvalidator.checkValidNameFormat(villa_byggemateriale.getText())) {
+                v.setByggemateriale(villa_byggemateriale.getText());
+            }
+            else if(Inputvalidator.checkValidNameFormat(villa_standard.getText())){
+                v.setStandard(villa_standard.getText());
+
+            }
 
         }
-        catch(Exception e){
+
+        catch (InvalidNumberFormatException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig tall", e.getMessage());
+        } catch (InvalidAddressException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig fakturaadresse", e.getMessage());
+        } catch (InvalidNameFormatException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig navn", e.getMessage());
+        }
+        catch (Exception e) {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Noe gikk galt!", e.getMessage());
         }
-
 
 
         return v;
@@ -227,7 +261,22 @@ public class NewPolicyController{
         Reise r = new Reise();
 
         try {
+            if (Inputvalidator.checkValidNameFormat(reise_forsikringOmraade.getText())) {
+                r.setforsikringOmraade(reise_forsikringOmraade.getText());
+            }
 
+            else if (Inputvalidator.checkIfValidNumber(reise_forsikringsSum.getText())){
+                r.setForsikringsSum(Integer.parseInt(reise_forsikringsSum.getText()));
+            }
+
+        }
+        catch (InvalidNumberFormatException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig tall", e.getMessage());
+        }
+        catch (InvalidNameFormatException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig navn", e.getMessage());
         }
         catch(Exception e){
             e.printStackTrace();
@@ -244,9 +293,46 @@ public class NewPolicyController{
         Båt b = new Båt();
 
         try {
+            if (Inputvalidator.checkValidNameFormat(båt_eier.getText())) {
+                b.setEier((båt_eier.getText()));
+            }
 
+            else if (Inputvalidator.checkIfValidNumber(båt_regNr.getText())){
+                b.setRegNr(båt_regNr.getText());
+            }
+            else if (Inputvalidator.checkValidNameFormat(båt_typeBåt.getText())){
+                b.setTypeBåt(båt_typeBåt.getText());
+            }
+            else if (Inputvalidator.checkValidNameFormat(båt_modell.getText())){
+                b.setModell((båt_modell.getText()));
+            }
+
+            //riktig å bruke checkValidFakturaAdresse??
+            else if (Inputvalidator.checkIfValidNumber(båt_lengde.getText())){
+                b.setLengde(Integer.parseInt(båt_lengde.getText()));
+            }
+
+            else if (Inputvalidator.checkIfValidNumber(båt_årsmodell.getText())) {
+                b.setÅrsmodell(Integer.parseInt(båt_årsmodell.getText()));
+            }
+            else if (Inputvalidator.checkValidNameFormat(båt_motorType.getText())) {
+                b.setMotorType(båt_motorType.getText());
+            }
+            else if(Inputvalidator.checkValidNameFormat(båt_effekt.getText())){
+                b.setEffekt(båt_effekt.getText());
+
+            }
+
+
+
+        } catch (InvalidNumberFormatException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig tall", e.getMessage());
+        } catch (InvalidNameFormatException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig navn", e.getMessage());
         }
-        catch(Exception e){
+        catch (Exception e) {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Noe gikk galt!", e.getMessage());
         }
@@ -262,15 +348,52 @@ public class NewPolicyController{
 
         try {
 
+            if (Inputvalidator.checkValidNameFormat(bil_eier.getText())) {
+                bi.setEier((bil_eier.getText()));
+            }
+
+            else if (Inputvalidator.checkIfValidNumber(bil_regNr.getText())){
+                bi.setRegNr(bil_regNr.getText());
+            }
+            else if (Inputvalidator.checkValidNameFormat(bil_typeBil.getText())){
+                bi.setTypeBil(bil_typeBil.getText());
+            }
+            else if (Inputvalidator.checkValidNameFormat(bil_modell.getText())){
+                bi.setModell(bil_modell.getText());
+            }
+            else if (Inputvalidator.checkIfValidNumber(bil_lengde.getText())){
+                bi.setLengde(Integer.parseInt(bil_lengde.getText()));
+            }
+
+            else if (Inputvalidator.checkIfValidNumber(bil_årsmodell.getText())) {
+                bi.setÅrsmodell(Integer.parseInt(bil_årsmodell.getText()));
+            }
+            else if (Inputvalidator.checkValidNameFormat(bil_motorType.getText())) {
+                bi.setMotorType(bil_motorType.getText());
+            }
+            else if(Inputvalidator.checkValidNameFormat(bil_effekt.getText())){
+                bi.setEffekt(bil_effekt.getText());
+
+            }
+
+
+
+        } catch (InvalidNumberFormatException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig tall", e.getMessage());
+        } catch (InvalidNameFormatException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig navn", e.getMessage());
         }
-        catch(Exception e){
+        catch (Exception e) {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Noe gikk galt!", e.getMessage());
         }
 
 
 
-        return bi;
+
+            return bi;
     }
 
 

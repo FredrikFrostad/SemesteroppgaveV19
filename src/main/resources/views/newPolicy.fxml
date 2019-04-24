@@ -33,7 +33,7 @@
       <StackPane fx:id="stack" BorderPane.alignment="CENTER">
          <children>
 
-            //FIKSE:
+            //VILLAINNBOSIDE
             <AnchorPane fx:id="villaPage" prefHeight="200.0" prefWidth="200.0" visible="false" >
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
@@ -52,7 +52,7 @@
                </children>
             </AnchorPane>
 
-            //FIKSE
+            //REISESIDE
             <AnchorPane fx:id="reisePage" prefHeight="200.0" prefWidth="200.0" visible="false">
             <children>
                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
@@ -65,7 +65,7 @@
             </children>
          </AnchorPane>
 
-            //FIKSE:
+            //BILSIDE
             <AnchorPane fx:id="bilPage" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
@@ -84,7 +84,7 @@
                </children>
             </AnchorPane>
 
-            //FIKSE:
+            //BÅTSIDE
             <AnchorPane fx:id="båtPage" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
@@ -121,6 +121,8 @@
                   <JFXRadioButton fx:id="villa" layoutX="346.0" layoutY="300.0" text="Villa-Innboforsikring" toggleGroup="$choosePolicy" />
                </children>
             </AnchorPane>
+
+            //FRITIDSBOLIGSIDE
             <AnchorPane fx:id="fritidsPage" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
