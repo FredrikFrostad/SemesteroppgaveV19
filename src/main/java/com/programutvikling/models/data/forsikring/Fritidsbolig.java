@@ -90,7 +90,6 @@ public class Fritidsbolig extends Forsikring implements Serializable {
     public void setForsikringsbeløpByggning(double forsikringsbeløpByggning) {
         this.forsikringsbeløpByggning = forsikringsbeløpByggning;
     }
-
     public double getForsikringsbeløpInnbo() {
         return forsikringsbeløpInnbo;
     }

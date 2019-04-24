@@ -133,12 +133,9 @@ public class NewPolicyController{
             forsikring = createVillaInnbo();
         } else if (active.getId().equals(reisePage)) {
             forsikring = createReise();
-        }
-        else if (active.getId().equals(bilPage)) {
+        } else if (active.getId().equals(bilPage)) {
             forsikring = createBil();
-            }
-
-        else if (active.getId().equals(båtPage)) {
+        } else if (active.getId().equals(båtPage)) {
             forsikring = createBåt();
         }
 
@@ -307,7 +304,6 @@ public class NewPolicyController{
                 b.setModell((båt_modell.getText()));
             }
 
-            //riktig å bruke checkValidFakturaAdresse??
             else if (Inputvalidator.checkIfValidNumber(båt_lengde.getText())){
                 b.setLengde(Integer.parseInt(båt_lengde.getText()));
             }
@@ -322,7 +318,6 @@ public class NewPolicyController{
                 b.setEffekt(båt_effekt.getText());
 
             }
-
 
 
         } catch (InvalidNumberFormatException e) {
@@ -351,7 +346,6 @@ public class NewPolicyController{
             if (Inputvalidator.checkValidNameFormat(bil_eier.getText())) {
                 bi.setEier((bil_eier.getText()));
             }
-
             else if (Inputvalidator.checkIfValidNumber(bil_regNr.getText())){
                 bi.setRegNr(bil_regNr.getText());
             }
@@ -364,7 +358,6 @@ public class NewPolicyController{
             else if (Inputvalidator.checkIfValidNumber(bil_lengde.getText())){
                 bi.setLengde(Integer.parseInt(bil_lengde.getText()));
             }
-
             else if (Inputvalidator.checkIfValidNumber(bil_årsmodell.getText())) {
                 bi.setÅrsmodell(Integer.parseInt(bil_årsmodell.getText()));
             }
@@ -373,9 +366,7 @@ public class NewPolicyController{
             }
             else if(Inputvalidator.checkValidNameFormat(bil_effekt.getText())){
                 bi.setEffekt(bil_effekt.getText());
-
             }
-
 
 
         } catch (InvalidNumberFormatException e) {
@@ -384,13 +375,10 @@ public class NewPolicyController{
         } catch (InvalidNameFormatException e) {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig navn", e.getMessage());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Noe gikk galt!", e.getMessage());
         }
-
-
 
 
             return bi;
