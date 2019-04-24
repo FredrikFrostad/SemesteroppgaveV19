@@ -131,13 +131,15 @@ public class NewPolicyController{
             forsikring = createFritidsBolig();
         } else if (active.getId().equals(villaPage)) {
             forsikring = createVillaInnbo();
-        } else if (active.getId().equals(reisePage)) {
+        }
+         else if (active.getId().equals(reisePage)) {
             forsikring = createReise();
         } else if (active.getId().equals(bilPage)) {
             forsikring = createBil();
         } else if (active.getId().equals(båtPage)) {
             forsikring = createBåt();
         }
+
 
 
         MainApp.getSelectedKunde().getForsikringer().add(forsikring);
@@ -177,7 +179,6 @@ public class NewPolicyController{
                     f.setStandard(fritid_standard.getText());
 
             }
-
 
 
         } catch (InvalidNumberFormatException e) {
@@ -229,7 +230,6 @@ public class NewPolicyController{
             }
             else if(Inputvalidator.checkValidNameFormat(villa_standard.getText())){
                 v.setStandard(villa_standard.getText());
-
             }
 
         }
@@ -319,7 +319,6 @@ public class NewPolicyController{
 
             }
 
-
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Ikke gyldig tall", e.getMessage());
@@ -383,7 +382,6 @@ public class NewPolicyController{
 
             return bi;
     }
-
 
 
 
