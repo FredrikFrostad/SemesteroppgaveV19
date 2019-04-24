@@ -156,7 +156,11 @@ public class mainPageController {
         vc.setView(rootPane, "newClient", "views/newClient.fxml");
     }
 
-    //TODO: TILBAKEMELDING TIL KUNDE DERSOM FEIL
+
+    /**
+     * Method loading clientdata stored to file
+     * @param event is conumed
+     */
     @FXML
     private void loadKunde(ActionEvent event) {
         ArrayList<Kunde> list = MainApp.getClientList();
@@ -186,6 +190,7 @@ public class mainPageController {
             AlertHelper.createAlert(Alert.AlertType.ERROR,"En feil har oppstått", e.getMessage());
         }
         refreshKundeTable(event);
+        event.consume();
     }
 
     @FXML
