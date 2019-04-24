@@ -174,16 +174,16 @@ public class mainPageController {
 
         } catch (FileNotFoundException e){
             e.printStackTrace();
-            e.getMessage();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Finner ikke fil", e.getMessage());
         } catch (InvalidFileFormatException e) {
             e.printStackTrace();
-            e.getMessage();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ukjent filformat", e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
-            e.getMessage();
+            AlertHelper.createAlert(Alert.AlertType.ERROR,"Kan ikke lese fra fil", e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
-            e.getMessage();
+            AlertHelper.createAlert(Alert.AlertType.ERROR,"En feil har oppstått", e.getMessage());
         }
         refreshKundeTable(event);
     }
