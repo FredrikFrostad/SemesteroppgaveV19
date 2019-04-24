@@ -15,6 +15,7 @@ public class CsvReader extends FileReader{
 
     /**
      * Method for reading data from a CSV-file.
+     * This method assumes that the first line in any csv-file is a header, this line will be skipped
      * @param file Csv file to parse and read
      * @return An arraylist containing one string array pr line of the CSV file
      * @throws Exception
@@ -27,6 +28,9 @@ public class CsvReader extends FileReader{
         try {
             String line = "";
             reader = new BufferedReader(new java.io.FileReader(file));
+
+            // Assuming the first line contains a header and skipping it
+            reader.readLine();
 
             while ((line = reader.readLine()) != null) {
                 String[] dataFields = line.split(",");
