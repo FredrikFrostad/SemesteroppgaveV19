@@ -75,6 +75,7 @@ public class AddClientController {
         } catch (InvalidNameFormatException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            AlertHelper.createAlert("");
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
