@@ -52,9 +52,17 @@ public class StartPageController {
             String ext = FileReader.getExtension(file);
 
             if (ext.equals(".jobj")) {
-                k = (Kunde) new JobjReader().readDataFromFile(file);
+                JobjReader jobjReader = new JobjReader(file);
+                Thread thread_JobjReader = new Thread(jobjReader);
+                thread_JobjReader.start();
+                thread_JobjReader.join();
+                k = (Kunde) jobjReader.getReturnValue();
             } else if (ext.equals(".csv")) {
-                k = (Kunde) new CsvReader().readDataFromFile(file);
+                CsvReader csvReader = new CsvReader(file);
+                Thread thread_CsvReader = new Thread(csvReader);
+                thread_CsvReader.start();
+                thread_CsvReader.join();
+                k = (Kunde) csvReader.getReturnValue();
             }
         } catch (InvalidFileFormatException e) {
             e.printStackTrace();

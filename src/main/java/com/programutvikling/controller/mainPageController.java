@@ -168,13 +168,23 @@ public class mainPageController {
         try {
             File file = FileReader.getFile();
             if (FileHandler.getExtension(file).equals(".csv")) {
-
-                for (String[] s : (ArrayList<String[]>)new CsvReader().readDataFromFile(file)) {
+                CsvReader csvReader = new CsvReader(file);
+                Thread thread = new Thread(csvReader);
+                thread.start();
+                thread.join();
+                for (String[] s : (ArrayList<String[]>)csvReader.getReturnValue()) {
                     Kunde k = (Kunde)new CsvObjectBuilder().buildObjectFromString(s);
                     if (!list.contains(k)) list.add(k);
                 }
             }
-            else list.add((Kunde)new JobjReader().readDataFromFile(file));
+            else {
+                //makeing a new jobjReader object to read in the file, starts thread,
+                JobjReader jobjReader = new JobjReader(file);
+                Thread thread = new Thread(jobjReader);
+                thread.start();
+                thread.join();
+                list.add((Kunde)jobjReader.getReturnValue());
+            }
 
         } catch (FileNotFoundException e){
             e.printStackTrace();

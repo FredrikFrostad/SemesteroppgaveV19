@@ -48,7 +48,7 @@ public class JobjWriterTest {
 
 
         FileWriter writer = new JobjWriter();
-        FileReader reader = new JobjReader();
+        //FileReader reader = new JobjReader();
         ArrayList<?> deserialized = null;
         ArrayList<Kunde> original = MainApp.getClientList();
 
@@ -62,7 +62,7 @@ public class JobjWriterTest {
         assertTrue(file.exists());
 
         try {
-            deserialized = (ArrayList<?>) reader.readDataFromFile(file);
+         //   deserialized = (ArrayList<?>) reader.readDataFromFile(file);
         } catch (Exception e) {}
 
         assertTrue(deserialized.get(0) instanceof Kunde);

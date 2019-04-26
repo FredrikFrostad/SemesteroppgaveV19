@@ -38,12 +38,18 @@ public class KundeTest {
         kunde.getForsikringer().add(b1);
         Kunde kundeFromFile = null;
         JobjWriter writer = new JobjWriter();
-        JobjReader reader = new JobjReader();
         File file = new File("testfile.jobj");
-
+        JobjReader reader = new JobjReader(file);
+        Thread thread_JobjReader = new Thread(reader);
+            thread_JobjReader.start();
+            try {
+                thread_JobjReader.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         try {
             writer.writeDataToFile(file, kunde);
-            kundeFromFile = (Kunde)reader.readDataFromFile(file);
+            kundeFromFile = (Kunde)reader.getReturnValue();
         } catch (Exception e) {
             e.printStackTrace();
         }
