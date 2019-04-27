@@ -13,6 +13,7 @@ public class BåtTest {
     @Test
     public void verifySerialization() {
         Båt b1 = new Båt(
+                123456,
                 12000,
                 400000,
                 "Betingelser",

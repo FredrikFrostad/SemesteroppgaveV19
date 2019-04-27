@@ -1,5 +1,6 @@
 package com.programutvikling.mainapp;
 
+import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
@@ -26,6 +27,7 @@ public class MainApp extends Application {
     private static File userSaveFilepath;
     private static final String PROJECTFOLDER = "SemesteroppgaveV19";
     private static ArrayList<Kunde> clientList = new ArrayList<>();
+    private static ArrayList<Forsikring> insuranceList = new ArrayList<>();
     private static Kunde selectedKunde = null;
 
 
@@ -107,10 +109,32 @@ public class MainApp extends Application {
         if (databaseFilePath.listFiles().length == 0) {
             CsvReader reader = new CsvReader();
             try {
-                ArrayList<String[]> kList = reader.readDataFromFile(new File("testKunder.csv"));
-                for (String[] s : kList) {
+
+                // Adding dummy clients for testing
+                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testKunder.csv").getFile()));
+                for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
+                /*
+                //Adding dummy policies for testing
+                list = reader.readDataFromFile(new File("/testObjects/testForsikringerBåt.csv"));
+                for (String[] s : list) {
+                    insuranceList.add((Forsikring) new CsvObjectBuilder().buildObjectFromString(s));
+                }
+                */
+                // TODO: Use this in mainPAgeController
+                //Adding dummy insurance policies for testing
+                /*
+                File[] files = databaseFilePath.listFiles();
+                // Looping over all files in database folder
+                for (File f : files) {
+                    if (f.getName().contains("båt") && f.getName().endsWith(".csv")) {
+
+                    }
+                }
+
+                 */
+
 
             } catch (IOException e) {
                 e.printStackTrace();

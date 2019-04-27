@@ -51,8 +51,6 @@ public class CsvWriter extends FileWriter {
         for (Object o : list) {
             String[] objData = o.toString().split("\\,");
 
-            for (String s : objData) System.out.print(objData);
-
             //Getting header for datafields if firstline of CSV file
             if (isFirstLine) {
                 //Writing header with datafield names
@@ -146,6 +144,7 @@ public class CsvWriter extends FileWriter {
 
         ArrayList<Object> listfors = new ArrayList<>();
         listfors.add(new Båt(
+                123456,
                 12000,
                 400000,
                 "Betingelser",
@@ -158,6 +157,7 @@ public class CsvWriter extends FileWriter {
                 "Utenbords",
                 "150"));
         listfors.add(new Båt(
+                123457,
                 12000,
                 400000,
                 "Betingelser",
@@ -170,6 +170,7 @@ public class CsvWriter extends FileWriter {
                 "Utenbords",
                 "150"));
         listfors.add(new Båt(
+                123458,
                 12000,
                 400000,
                 "Betingelser",
@@ -182,6 +183,7 @@ public class CsvWriter extends FileWriter {
                 "Utenbords",
                 "150"));
         listfors.add(new Båt(
+                123458,
                 12000,
                 400000,
                 "Betingelser",

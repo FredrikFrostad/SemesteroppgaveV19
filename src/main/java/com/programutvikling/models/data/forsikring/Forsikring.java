@@ -8,6 +8,7 @@ import java.util.Date;
 public abstract class Forsikring implements Serializable {
 
     private static ObjectType type = ObjectType.FORSIKRING;
+    private int forsNr;
     private double premieAnnum;
     private double forsikringsSum;
     private Date avtaleOpprettet;
@@ -18,7 +19,8 @@ public abstract class Forsikring implements Serializable {
         this.avtaleOpprettet = new Date();
     }
 
-    public Forsikring(double premieAnnum, double forsikringsSum, String betingelser) {
+    public Forsikring(int forsNr, double premieAnnum, double forsikringsSum, String betingelser) {
+        this.forsNr = forsNr;
         this.premieAnnum = premieAnnum;
         this.forsikringsSum = forsikringsSum;
         this.avtaleOpprettet = new Date();
@@ -67,7 +69,8 @@ public abstract class Forsikring implements Serializable {
 
     @Override
     public String toString() {
-        return "premieAnnum=" + premieAnnum +
+        return  "forsikringsNummer=" + forsNr +
+                ", premieAnnum=" + premieAnnum +
                 ", forsikringsSum=" + forsikringsSum +
                 ", avtaleOpprettet=" + avtaleOpprettet +
                 ", betingelser=" + betingelser;

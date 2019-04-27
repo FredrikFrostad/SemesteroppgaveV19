@@ -29,6 +29,7 @@ public class JobjWriterTest {
 
         for (Kunde k : MainApp.getClientList()) {
             k.getForsikringer().add(new Båt(
+                    123456,
                     12000,
                     400000,
                     "Betingelser",

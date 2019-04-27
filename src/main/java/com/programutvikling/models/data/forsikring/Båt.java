@@ -21,9 +21,9 @@ public class Båt extends Forsikring{
     }
 
 
-    public Båt(double premieAnnum, double forsikringsSum, String betingelser, String eier, String regNr,
+    public Båt(int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String eier, String regNr,
                String typeBåt, String modell, int lengde, int årsmodell, String motorType, String effekt) {
-        super(premieAnnum, forsikringsSum, betingelser);
+        super(forsNr, premieAnnum, forsikringsSum, betingelser);
         this.eier = eier;
         this.regNr = regNr;
         this.typeBåt = typeBåt;

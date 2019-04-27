@@ -23,6 +23,7 @@ public class KundeTest {
                 "Testerudbakke 3 9989 Nordpå");
 
         Båt b1 = new Båt(
+                123456,
                 12000,
                 400000,
                 "Betingelser",

@@ -49,6 +49,7 @@ public class clientNrHelperTest {
             ClientNrHelper helper = new ClientNrHelper();
             int2 = helper.appendClient();
 
+            reader = new BufferedReader(new FileReader(file));
             int3 = Integer.parseInt(reader.readLine());
             reader.close();
 

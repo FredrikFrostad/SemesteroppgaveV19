@@ -13,6 +13,7 @@ public class BåtThreadsTest {
     @Test
     public void verifySerialization() {
         Fritidsbolig f1 = new Fritidsbolig(
+                123456,
                 3500,
                 1000000,
                 "Betingelser",

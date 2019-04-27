@@ -10,9 +10,9 @@ public class Reise extends Forsikring{
 
     public Reise() {};
 
-    public Reise(double premieAnnum, double forsikringsSum, String betingelser,
+    public Reise(int forsNr, double premieAnnum, double forsikringsSum, String betingelser,
                  String forsikringOmraade, double forsikringsSum1) {
-        super(premieAnnum, forsikringsSum, betingelser);
+        super(forsNr,premieAnnum, forsikringsSum, betingelser);
         this.forsikringOmraade = forsikringOmraade;
         this.forsikringsSum = forsikringsSum1;
     }

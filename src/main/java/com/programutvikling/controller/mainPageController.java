@@ -52,6 +52,7 @@ public class mainPageController {
         selectedKundeField.setEditable(false);
 
         initClientTable();
+        refreshTable();
     }
 
     private void initClientTable() {
@@ -143,7 +144,7 @@ public class mainPageController {
             e.printStackTrace();
             e.getMessage();
         }
-        refreshTable(event);
+        refreshTable();
     }
 
     @FXML
@@ -151,7 +152,7 @@ public class mainPageController {
         Kunde k = MainApp.getSelectedKunde();
         k.setFornavn(k_fornavn.getText());
         k.setEtternavn(k_etternavn.getText());
-        refreshTable(event);
+        refreshTable();
     }
 
     @FXML
@@ -167,7 +168,7 @@ public class mainPageController {
     }
 
     @FXML
-    private void refreshTable(ActionEvent event) {
+    private void refreshTable() {
         clientTable.getItems().clear();
         clientTable.getItems().addAll(MainApp.getClientList());
     }
