@@ -83,6 +83,7 @@ public class Inputvalidator {
      * @return true if the parameter String passes all checks
      * @throws InvalidAddressException Exception is thrown when the parameter String is illegally formatted
      */
+    //TODO: implementer metodene under i checkValidFakturaAdresse()
     public static boolean checkValidFakturaAdresse(String fakturaAdresse) throws InvalidAddressException {
         String addressFormatMsg = "Adress must be on the form of. Streetname Streetnumber Zipcode Location";
 
@@ -109,6 +110,27 @@ public class Inputvalidator {
             throw new InvalidNumberFormatException("Not a valid number");
         }
         return true;
+    }
+
+    /**
+     * Methode for validating a Norwegian zip code
+     * @param zip
+     * @return true if the zip-code given is correct
+     */
+    private static boolean validateZip(String zip){
+
+        return zip.matches("\\d{4}");
+    }
+
+    /**
+     * Methode for validating address.
+     * @param address
+     * @return true if the address given is correct
+     */
+    private static boolean validateAddress(String address){
+
+        // this regex gives validation for the format "123, Street"
+        return address.matches("\\\\d+\\\\s+([a-zA-Z]+|[a-zA-Z]+\\\\s[a-zA-Z]+)");
     }
 
     public static void main(String[] args) {

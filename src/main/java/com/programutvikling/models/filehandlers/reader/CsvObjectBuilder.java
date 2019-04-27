@@ -9,7 +9,7 @@ import com.programutvikling.models.exceptions.InvalidObjectTypeException;
 
 import java.time.LocalDate;
 
-public class CsvObjectBuilder extends CsvReader {
+public class CsvObjectBuilder {
 
     public Object buildObjectFromString(String[] objData) throws Exception{
         int lastIndex = objData.length - 1;

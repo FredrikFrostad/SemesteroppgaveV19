@@ -59,6 +59,8 @@ public class mainPageController {
         k_forsNr.setEditable(false);
         k_opDato.setEditable(false);
         selectedKundeField.setEditable(false);
+        refreshKundeTable();
+
 
         initClientTable();
     }
@@ -183,7 +185,14 @@ public class mainPageController {
                 Thread thread = new Thread(jobjReader);
                 thread.start();
                 thread.join();
-                list.add((Kunde)jobjReader.getReturnValue());
+
+                if (!list.contains((Kunde)jobjReader.getReturnValue())){
+                    System.out.println("HAR SJEKKET AT KUNDE IKKE LIGGER I LISTE FRA FØR");
+                    list.add((Kunde)jobjReader.getReturnValue());
+                }
+                else{
+                    AlertHelper.createAlert(Alert.AlertType.ERROR, "Man kan ikke load inn et objekt som allerede eksisterer, throw exception", "Man kan ikke load inn et objekt som allerede eksisterer, throw exception");
+                }
             }
 
         } catch (FileNotFoundException e){
@@ -239,6 +248,11 @@ public class mainPageController {
         clientTable.getItems().addAll(MainApp.getClientList());
         event.consume();
     }
+    public void refreshKundeTable() {
+        clientTable.getItems().clear();
+        clientTable.getItems().addAll(MainApp.getClientList());
+    }
+
 
 
 

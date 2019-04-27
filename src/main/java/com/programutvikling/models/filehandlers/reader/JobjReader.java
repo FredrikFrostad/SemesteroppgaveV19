@@ -49,6 +49,7 @@ public class JobjReader extends FileReader implements Runnable{
     public void setNewFile(File file){
         this.file = file;
     }
+
     public Object getReturnValue(){
         return returnValue;
     }

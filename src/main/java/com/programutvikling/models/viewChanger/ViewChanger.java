@@ -55,4 +55,5 @@ public class ViewChanger {
     public HashMap<String, Scene> getViewMap() {
         return viewMap;
     }
+
 }
