@@ -1,16 +1,13 @@
 package com.programutvikling.models.filehandlers.writer;
 
 import com.programutvikling.mainapp.MainApp;
-import com.programutvikling.models.data.kunde.Kunde;
-import com.programutvikling.models.exceptions.IllegalFileNameException;
-import com.programutvikling.models.filehandlers.FileHandler;
+import com.programutvikling.models.filehandlers.ExtensionHandler;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public abstract class FileWriter extends FileHandler {
+public abstract class FileWriter extends ExtensionHandler {
 
     /**
      * Metode for å velge en filfra maskinens filsystem

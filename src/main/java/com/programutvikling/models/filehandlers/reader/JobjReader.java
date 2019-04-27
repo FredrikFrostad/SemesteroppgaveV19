@@ -15,6 +15,8 @@ public class JobjReader extends FileReader implements Runnable{
     File file;
     Object objectArray[];
 
+    public JobjReader() {}
+
     public JobjReader(File file, Object[] objectArray){
         this.file = file;
         this.objectArray = objectArray;
@@ -23,6 +25,7 @@ public class JobjReader extends FileReader implements Runnable{
 
     @Override
     public void run() {
+
         try {
             this.objectArray[0] = readDataFromFile(file);
         } catch (Exception e) {

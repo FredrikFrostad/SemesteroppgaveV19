@@ -4,7 +4,7 @@ import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
-import com.programutvikling.models.filehandlers.FileHandler;
+import com.programutvikling.models.filehandlers.ExtensionHandler;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
@@ -121,7 +121,7 @@ public class mainPageController {
 
         try {
             File file = FileReader.getFile();
-            if (FileHandler.getExtension(file).equals(".csv")) {
+            if (ExtensionHandler.getExtension(file).equals(".csv")) {
 
                 for (String[] s : (ArrayList<String[]>)new CsvReader().readDataFromFile(file)) {
                     Kunde k = (Kunde)new CsvObjectBuilder().buildObjectFromString(s);
@@ -159,7 +159,7 @@ public class mainPageController {
         File file = new File(MainApp.getSelectedKunde().getFilePath());
 
         try {
-            FileHandler.getExtension(file);
+            ExtensionHandler.getExtension(file);
         } catch (InvalidFileFormatException e) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil!", "Kan ikke lagre endringer, finner ikke fil");
         }

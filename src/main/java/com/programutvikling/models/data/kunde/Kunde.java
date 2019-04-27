@@ -100,13 +100,11 @@ public class Kunde implements Serializable {
 
     @Override
     public String toString() {
-        return "Kunde{" +
-                "kundeOpprettet=" + kundeOpprettet +
+        return  "type=" + type +
+                ", kundeOpprettet=" + kundeOpprettet +
                 ", fornavn=" + fornavn +
                 ", etternavn=" + etternavn +
                 ", forsikrNr=" + forsikrNr +
-                ", Fakturaadresse=" + Fakturaadresse  +
-                ", type=" + type +
-                '}';
+                ", Fakturaadresse=" + Fakturaadresse;
     }
 }

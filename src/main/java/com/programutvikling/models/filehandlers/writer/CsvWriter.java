@@ -24,7 +24,7 @@ public class CsvWriter extends FileWriter {
         java.io.FileWriter fWriter = new java.io.FileWriter(file);
 
         String[] objData = obj.toString().split("\\,");
-        objData = trimHeadTail(objData);
+        //objData = trimHeadTail(objData);
 
         //Generating header
         fWriter.append(getHeaderCsv(objData));
@@ -55,7 +55,7 @@ public class CsvWriter extends FileWriter {
 
         for (Kunde k : list) {
             String[] objData = k.toString().split("\\,");
-            objData = trimHeadTail(objData);
+            //objData = trimHeadTail(objData);
 
             //Getting header for datafields
             if (isFirstLine) {
@@ -138,10 +138,18 @@ public class CsvWriter extends FileWriter {
 
     public static void main(String[] args) {
 
-        Kunde k = new Kunde("Kjell", "Olsen", "123456", "Elgfaret 11 2022 Gjerdrum");
+        ArrayList<Kunde> list = new ArrayList<>();
+        list.add(new Kunde("Kjell", "Olsen", "123456", "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell", "Olsen", "123457", "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell", "Olsen", "123458", "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell", "Olsen", "123459", "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell", "Olsen", "123460", "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell", "Olsen", "123461", "Elgfaret 11 2022 Gjerdrum"));
+
 
         try {
-            new CsvWriter().writeDataToFile(new File("testfileKunde.csv"), k);
+            new CsvWriter().writeDataToFile(new File("testfileKunde.csv"), list.get(0));
+            new CsvWriter().writeDataToFile(new File("testfileKundeArray.csv"), list);
         } catch (IOException e) {
             e.printStackTrace();
         }
