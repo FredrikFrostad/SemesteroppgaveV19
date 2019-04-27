@@ -104,6 +104,8 @@ public class Båt extends Forsikring{
 
     public void setForsikrNr(int nr) {super.setForsikrNr(nr);}
 
+    public ObjectType getType() {return type;}
+
     public void setAvtaleOpprettet(LocalDate avtaleOpprettet) throws IllegalAccessException{
             super.setAvtaleOpprettet(avtaleOpprettet);
     }

@@ -13,11 +13,11 @@ import java.util.*;
 public class DbExportHelper {
 
     private ArrayList<Forsikring> exportList;
-    ArrayList<Object>  boatList;
-    ArrayList<Object> holidayResiddenceList;
-    ArrayList<Object> travelList;
-    ArrayList<Object> villaList;
-    ArrayList<Object> clients;
+    private ArrayList<Object>  boatList;
+    private ArrayList<Object> holidayResiddenceList;
+    private ArrayList<Object> travelList;
+    private ArrayList<Object> villaList;
+    private ArrayList<Object> clients;
 
     public DbExportHelper() {
         this.boatList = new ArrayList<>();
@@ -25,6 +25,7 @@ public class DbExportHelper {
         this.travelList = new ArrayList<>();
         this.villaList = new ArrayList<>();
         this.exportList = new ArrayList<>();
+        this.clients = new ArrayList<>();
     }
 
     public void exportDbAsCsv() {
@@ -41,21 +42,28 @@ public class DbExportHelper {
         populatePolicyLists();
 
         // Writing all data to files
+        try {
+            writeListsToFile();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     private void populatePolicyLists() {
         for (Forsikring f : exportList) {
-            if (f.getType().equals(ObjectType.BÅT)) boatList.add((Båt) f);
-            else if (f.getType().equals(ObjectType.FRITIDSBOLIG)) holidayResiddenceList.add((Fritidsbolig) f);
-            else if (f.getType().equals(ObjectType.REISE)) travelList.add((Reise) f);
-            else if (f.getType().equals(ObjectType.VILLAINNBO)) villaList.add((VillaInnbo) f);
+            System.out.println(f);
+            if (f.getType().equals(ObjectType.BÅT)) boatList.add(f);
+            else if (f.getType().equals(ObjectType.FRITIDSBOLIG)) holidayResiddenceList.add(f);
+            else if (f.getType().equals(ObjectType.REISE)) travelList.add(f);
+            else if (f.getType().equals(ObjectType.VILLAINNBO)) villaList.add(f);
         }
     }
 
     private void writeListsToFile() throws IOException{
-        String filePath = MainApp.getDatabaseFilePath().getAbsolutePath();
+        String filePath = MainApp.getDatabaseFilePath().getAbsolutePath() + File.separator;
+        System.out.println(filePath);
         clients.addAll(MainApp.getClientList());
 
         if (MainApp.getClientList().size() > 0) {

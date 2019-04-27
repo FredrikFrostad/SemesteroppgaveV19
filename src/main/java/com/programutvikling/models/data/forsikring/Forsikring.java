@@ -24,6 +24,7 @@ public abstract class Forsikring implements Serializable {
         this.forsikringsSum = forsikringsSum;
         this.avtaleOpprettet = LocalDate.now();
         this.betingelser = betingelser;
+        this.type = type;
     }
 
     public double getPremieAnnum() {
