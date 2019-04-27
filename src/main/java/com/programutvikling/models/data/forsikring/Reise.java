@@ -37,11 +37,9 @@ public class Reise extends Forsikring{
 
     @Override
     public String toString() {
-        return "Reise{" +
-                super.toString() +
-                "forsikringOmraade=" + forsikringOmraade +
-                ", forsikringsSum=" + forsikringsSum +
-                ", type=" + type +
-                '}';
+        return "type=" + type +
+                "," + super.toString() +
+                ", forsikringOmraade=" + forsikringOmraade +
+                ", forsikringsSum=" + forsikringsSum;
     }
 }
