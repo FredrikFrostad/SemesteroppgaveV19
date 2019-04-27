@@ -6,6 +6,7 @@ import com.programutvikling.models.data.forsikring.Reise;
 import com.programutvikling.models.data.forsikring.VillaInnbo;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidObjectTypeException;
+import com.programutvikling.models.utils.helpers.ClientNrHelper;
 
 import java.time.LocalDate;
 
@@ -43,11 +44,14 @@ public class CsvObjectBuilder extends CsvReader {
     private Kunde buildKundeFromCsv(String[] objData) throws Exception{
 
         Kunde k = new Kunde();
-        k.setKundeOpprettet(LocalDate.parse(objData[0]));
-        k.setFornavn(objData[1]);
-        k.setEtternavn(objData[2]);
-        k.setForsikrNr(objData[3]);
-        k.setFakturaadresse(objData[4]);
+        k.setKundeOpprettet(LocalDate.parse(objData[1]));
+        k.setFornavn(objData[2]);
+        k.setEtternavn(objData[3]);
+        if (objData[4].isBlank()) {
+            k.setForsikrNr(new ClientNrHelper().appendClient());
+        }
+        k.setForsikrNr(Integer.parseInt(objData[4]));
+        k.setFakturaadresse(objData[5]);
         return k;
     }
 

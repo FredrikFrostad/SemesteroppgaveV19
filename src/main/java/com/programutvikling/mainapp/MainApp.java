@@ -17,7 +17,9 @@ import java.util.ArrayList;
 
 public class MainApp extends Application {
 
-    private File projectFilePath;
+    private static File projectFilePath;
+    private static File databaseFilePath;
+    private static File userSaveFilepath;
     private static final String PROJECTFOLDER = "SemesteroppgaveV19";
     private static ArrayList<Kunde> clientList = new ArrayList<>();
     private static Kunde selectedKunde = null;
@@ -39,7 +41,7 @@ public class MainApp extends Application {
     public static Kunde getSelectedKunde() {
         return selectedKunde;
     }
-    
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -72,13 +74,18 @@ public class MainApp extends Application {
                 OSType.getOsType() == OSType.OS.MAC ||
                 OSType.getOsType() == OSType.OS.LINUX) {
             projectFilePath = new File(userHome + File.separator + PROJECTFOLDER);
+            databaseFilePath = new File(projectFilePath + File.separator + "Database");
+            userSaveFilepath = new File(projectFilePath + File.separator + "UserData");
             {
                 if (projectFilePath.exists()) {
                     System.out.println("Mappen finnes allerede: " + projectFilePath); //TODO: Fjerne testkode ved endelig implementering
                 } else {
                     System.out.println("Oppretter mappe: " + projectFilePath); //TODO: Fjerne testkode ved endelig implementering
-                    boolean isPathCreated = projectFilePath.mkdirs();
+                    boolean isPathCreated = false;
 
+                    if (projectFilePath.mkdirs() && databaseFilePath.mkdir() && userSaveFilepath.mkdir() ) {
+                        isPathCreated = true;
+                    }
                     if (isPathCreated) {
                         System.out.println("Mappa er laget!"); //TODO: Fjerne testkode ved endelig implementering
                     }

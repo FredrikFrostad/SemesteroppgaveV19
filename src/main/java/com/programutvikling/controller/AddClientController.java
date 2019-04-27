@@ -60,7 +60,7 @@ public class AddClientController {
             Inputvalidator.checkValidNameFormat(fx_etternavn.getText());
             kunde.setEtternavn(fx_etternavn.getText());
 
-            kunde.setForsikrNr(fx_forsikringsnummer.getText());
+            kunde.setForsikrNr(Integer.parseInt(fx_forsikringsnummer.getText()));
 
             //TODO: Denne metoden funker ikke, fiks - test - moveon
             //Inputvalidator.checkValidFakturaAdresse(fx_fakturaadresse.getText());

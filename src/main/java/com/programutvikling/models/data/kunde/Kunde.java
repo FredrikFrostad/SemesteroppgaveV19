@@ -16,7 +16,7 @@ public class Kunde implements Serializable {
     private LocalDate kundeOpprettet;
     private String fornavn;
     private String etternavn;
-    private String forsikrNr;
+    private int forsikrNr;
     private String Fakturaadresse;
     private transient String filePath;
     private ArrayList<Forsikring> forsikringer = new ArrayList<>();
@@ -27,7 +27,7 @@ public class Kunde implements Serializable {
 
     public Kunde() {}
 
-    public Kunde(String fornavn, String etternavn, String forsikrNr, String fakturaadresse) {
+    public Kunde(String fornavn, String etternavn, int forsikrNr, String fakturaadresse) {
         this.kundeOpprettet = LocalDate.now();
         this.fornavn = fornavn;
         this.etternavn = etternavn;
@@ -62,11 +62,11 @@ public class Kunde implements Serializable {
         this.etternavn = etternavn;
     }
 
-    public String getForsikrNr() {
+    public int getForsikrNr() {
         return forsikrNr;
     }
 
-    public void setForsikrNr(String forsikrNr) {
+    public void setForsikrNr(int forsikrNr) {
         this.forsikrNr = forsikrNr;
     }
 
