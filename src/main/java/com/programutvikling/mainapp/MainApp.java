@@ -19,9 +19,7 @@ public class MainApp extends Application {
 
     private File projectFilePath;
     private static final String PROJECTFOLDER = "SemesteroppgaveV19";
-
     private static ArrayList<Kunde> clientList = new ArrayList<>();
-
     private static Kunde selectedKunde = null;
 
 
@@ -41,60 +39,7 @@ public class MainApp extends Application {
     public static Kunde getSelectedKunde() {
         return selectedKunde;
     }
-
-
-    enum runMode {
-
-        NORMAL,
-        TEST_STARTPAGE,
-        TEST_ADDCLIENT,
-        TEST_ADDPOLICY,
-        TEST_FREDRIK,
-        TEST_JACOB;
-
-    }
-
-    /**
-     * Metode for testing og utvikling.
-     * Denne metoden injiserer riktig fxml i fxmlloaderen basert på hvilken testmodus programmet startes i
-     * @param mode En enum som definerer type testmodus
-     * @return En string som gir path til korrekt FXML dokument
-     */
-    private String fxmlChooser(runMode mode) {
-        String out = null;
-
-        switch (mode) {
-            case NORMAL:
-                out = "/views/startpage.fxml";
-                break;
-            case TEST_ADDCLIENT:
-                //out = "/views/NOTDEFINED.fxml";
-                break;
-            case TEST_ADDPOLICY:
-                //out = "/views/NOTDEFINED.fxml";
-                break;
-            case TEST_STARTPAGE:
-                //out = "/views/NOTDEFINED.fxml";
-                break;
-            case TEST_FREDRIK:
-                //out = "/views/NOTDEFINED.fxml";
-                break;
-            case TEST_JACOB:
-                //out = "/views/NOTDEFINED.fxml";
-            default:
-                out = null;
-
-        }
-
-        return out;
-    }
-
-    /**
-     * Enum for å sette forskjellige testmoduser under utvikling.
-     * Dette for å direkte kunne teste relevante fxml-komponenter uten å måtte ta ensyn til kontrolflyt i GUI
-     */
-
-
+    
 
     @Override
     public void start(Stage stage) throws Exception {
