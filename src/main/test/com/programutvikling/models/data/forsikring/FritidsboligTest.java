@@ -31,7 +31,7 @@ public class FritidsboligTest {
         File file = new File("testfile.jobj");
 
         try {
-            writer.writeDataToFile(file, f1);
+            writer.writeObjectDataToFile(file, f1);
             f2 = (Fritidsbolig) reader.readDataFromFile(file);
         } catch (Exception e) {
             e.printStackTrace();

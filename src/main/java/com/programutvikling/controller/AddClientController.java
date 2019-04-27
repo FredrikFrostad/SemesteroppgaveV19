@@ -68,8 +68,8 @@ public class AddClientController {
 
 
             File file = FileWriter.getFile();
-            if (FileWriter.getExtension(file).equals(".csv")) new CsvWriter().writeDataToFile(file, kunde);
-            else new JobjWriter().writeDataToFile(file, kunde);
+            if (FileWriter.getExtension(file).equals(".csv")) new CsvWriter().writeObjectDataToFile(file, kunde);
+            else new JobjWriter().writeObjectDataToFile(file, kunde);
 
 
         } catch (InvalidNameFormatException e) {

@@ -6,6 +6,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public abstract class FileWriter extends ExtensionHandler {
 
@@ -36,12 +37,14 @@ public abstract class FileWriter extends ExtensionHandler {
 
 
     /**
-     * Metode som skriver data til fil.
+     * Metode som skriver et enkelt objekts data til fil.
      * Exceptions skal ikke håndteres i denne klassen, men kastes til kallende metode/klasse
      * @throws IOException
      */
-    public abstract void writeDataToFile(File file, Object obj) throws IOException;
+    public abstract void writeObjectDataToFile(File file, Object obj) throws IOException;
 
-    //public abstract void writeDataToFile(File file, ArrayList<Kunde> list) throws IOException;
+    //public abstract void writeObjectDataToFile(File file, ArrayList<Kunde> list) throws IOException;
+
+    public abstract void writeDatabaseToFile(File file, ArrayList<Object> list) throws IOException;
 
 }

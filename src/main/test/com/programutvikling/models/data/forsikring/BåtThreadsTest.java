@@ -33,7 +33,7 @@ public class BåtThreadsTest {
         thread.start();
 
         try {
-            writer.writeDataToFile(file, f1);
+            writer.writeObjectDataToFile(file, f1);
             f2 = (Fritidsbolig) båt[0];
         } catch (Exception e) {
             e.printStackTrace();

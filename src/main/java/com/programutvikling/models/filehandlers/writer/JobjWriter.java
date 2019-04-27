@@ -21,13 +21,18 @@ public class JobjWriter extends FileWriter implements Runnable{
     }
 
     @Override
-    public void writeDataToFile(File file, Object obj) throws IOException {
+    public void writeObjectDataToFile(File file, Object obj) throws IOException {
         FileOutputStream fileOut = new FileOutputStream(file);
         ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
         objOut.writeObject(obj);
         objOut.flush();
         objOut.close();
         System.out.println("Data written to file, stream closed");
+    }
+
+    @Override
+    public void writeDatabaseToFile(File file, ArrayList<Object> list) throws IOException {
+
     }
 
     @Override

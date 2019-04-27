@@ -101,17 +101,15 @@ public class Fritidsbolig extends Forsikring implements Serializable {
 
     @Override
     public String toString() {
-        return "Fritidsbolig{" +
-                super.toString() +
-                "adresse=" + adresse +
+        return "type=" + type +
+                "," + super.toString() +
+                ", adresse=" + adresse +
                 ", byggeaar=" + byggeaar +
                 ", boligtype=" + boligtype +
                 ", byggemateriale=" + byggemateriale +
                 ", standard=" + standard +
                 ", areal=" + areal +
                 ", forsikringsbeløpByggning=" + forsikringsbeløpByggning +
-                ", forsikringsbeløpInnbo=" + forsikringsbeløpInnbo +
-                ", type=" + type +
-                '}';
+                ", forsikringsbeløpInnbo=" + forsikringsbeløpInnbo;
     }
 }

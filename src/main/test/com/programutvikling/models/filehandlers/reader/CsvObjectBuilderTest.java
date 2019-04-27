@@ -25,7 +25,7 @@ public class CsvObjectBuilderTest {
         Kunde k2 = null;
 
         try {
-            new CsvWriter().writeDataToFile(new File("testfile.csv"), k1);
+            new CsvWriter().writeObjectDataToFile(new File("testfile.csv"), k1);
             CsvReader reader = new CsvReader();
             ArrayList<String[]> lst = (ArrayList<String[]>) reader.readDataFromFile(new File("testfile.csv"));
             k2 = (Kunde) new CsvObjectBuilder().buildObjectFromString(lst.get(0));

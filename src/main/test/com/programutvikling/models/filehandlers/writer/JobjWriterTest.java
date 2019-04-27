@@ -2,14 +2,12 @@ package com.programutvikling.models.filehandlers.writer;
 
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.forsikring.Båt;
-import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -56,7 +54,7 @@ public class JobjWriterTest {
         System.out.println(file.exists());
 
         try {
-            writer.writeDataToFile(file, MainApp.getClientList());
+            writer.writeObjectDataToFile(file, MainApp.getClientList());
         } catch (Exception e) {}
 
         assertTrue(file.exists());

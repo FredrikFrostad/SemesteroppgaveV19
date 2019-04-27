@@ -31,7 +31,7 @@ public class BåtTest {
         File file = new File("testfile.jobj");
 
         try {
-            writer.writeDataToFile(file, b1);
+            writer.writeObjectDataToFile(file, b1);
             b2 = (Båt)reader.readDataFromFile(file);
         } catch (Exception e) {
             e.printStackTrace();

@@ -42,7 +42,7 @@ public class KundeTest {
         File file = new File("testfile.jobj");
 
         try {
-            writer.writeDataToFile(file, kunde);
+            writer.writeObjectDataToFile(file, kunde);
             kundeFromFile = (Kunde)reader.readDataFromFile(file);
         } catch (Exception e) {
             e.printStackTrace();
