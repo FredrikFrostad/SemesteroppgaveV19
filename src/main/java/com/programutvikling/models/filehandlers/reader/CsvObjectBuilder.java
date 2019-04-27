@@ -12,9 +12,16 @@ import java.time.LocalDate;
 
 public class CsvObjectBuilder extends CsvReader {
 
+    /**
+     * Method for creating a dataobject from an array of strings.
+     * The method requires that the first element of the string array is a type identifier, so
+     * that the type og object to be created can be determined.
+     * @param objData String array containing the objects datafields as separate elements
+     * @return Object of the same type as the type identifier @ objData[0].
+     * @throws Exception if the type identifier is missing or unknown
+     */
     public Object buildObjectFromString(String[] objData) throws Exception{
-        int lastIndex = objData.length - 1;
-        String type = objData[lastIndex];
+        String type = objData[0];
         Object out = null;
 
         switch (type) {

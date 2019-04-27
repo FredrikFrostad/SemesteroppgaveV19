@@ -1,6 +1,9 @@
 package com.programutvikling.mainapp;
 
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
+import com.programutvikling.models.filehandlers.reader.CsvReader;
+import com.programutvikling.models.filehandlers.writer.CsvWriter;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
@@ -12,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -90,6 +94,23 @@ public class MainApp extends Application {
                         System.out.println("Mappa er laget!"); //TODO: Fjerne testkode ved endelig implementering
                     }
                 }
+            }
+        }
+    }
+
+    private void initTestObjects() {
+        if (databaseFilePath.listFiles().length == 0) {
+            CsvReader reader = new CsvReader();
+            try {
+                ArrayList<String[]> kList = reader.readDataFromFile(new File("testKunder.csv"));
+                for (String[] s : kList) {
+                    clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

@@ -3,6 +3,7 @@ package com.programutvikling.controller;
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
+import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,7 +56,9 @@ public class StartPageController {
             if (ext.equals(".jobj")) {
                 k = (Kunde) new JobjReader().readDataFromFile(file);
             } else if (ext.equals(".csv")) {
-                k = (Kunde) new CsvReader().readDataFromFile(file);
+                ArrayList<String[]> list = new CsvReader().readDataFromFile(file);
+                k = (Kunde)new CsvObjectBuilder().buildObjectFromString(list.get(0));
+
             }
         } catch (InvalidFileFormatException e) {
             e.printStackTrace();

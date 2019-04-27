@@ -137,12 +137,12 @@ public class CsvWriter extends FileWriter {
     public static void main(String[] args) {
 
         ArrayList<Object> list = new ArrayList<>();
-        list.add(new Kunde("Kjell1", "Olsen", "123456", "Elgfaret 11 2022 Gjerdrum"));
-        list.add(new Kunde("Kjell2", "Olsen", "123457", "Elgfaret 11 2022 Gjerdrum"));
-        list.add(new Kunde("Kjell3", "Olsen", "123458", "Elgfaret 11 2022 Gjerdrum"));
-        list.add(new Kunde("Kjell4", "Olsen", "123459", "Elgfaret 11 2022 Gjerdrum"));
-        list.add(new Kunde("Kjell5", "Olsen", "123460", "Elgfaret 11 2022 Gjerdrum"));
-        list.add(new Kunde("Kjell6", "Olsen", "123461", "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell1", "Olsen", 123456, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell2", "Olsen", 123457, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell3", "Olsen", 123458, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell4", "Olsen", 123459, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell5", "Olsen", 123460, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell6", "Olsen", 123461, "Elgfaret 11 2022 Gjerdrum"));
 
         ArrayList<Object> listfors = new ArrayList<>();
         listfors.add(new Båt(

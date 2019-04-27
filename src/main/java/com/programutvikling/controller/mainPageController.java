@@ -89,7 +89,7 @@ public class mainPageController {
     private void populateClientFields(Kunde k) {
         k_fornavn.setText(k.getFornavn());
         k_etternavn.setText(k.getEtternavn());
-        k_forsNr.setText(k.getForsikrNr());
+        k_forsNr.setText(Integer.toString(k.getForsikrNr()));
         k_adr.setText(k.getFakturaadresse());
         k_opDato.setText(k.getKundeOpprettet().toString());
     }

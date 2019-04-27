@@ -20,9 +20,9 @@ public class CsvReader extends FileReader implements Runnable{
      * @throws Exception
      */
     @Override
-    public Object readDataFromFile(File file) throws IOException {
+    public ArrayList<String[]> readDataFromFile(File file) throws IOException {
         BufferedReader reader = null;
-        List<Object> objLst = new ArrayList<>();
+        ArrayList<String[]> objLst = new ArrayList<>();
 
         try {
             String line = "";

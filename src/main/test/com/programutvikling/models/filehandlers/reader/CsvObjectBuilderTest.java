@@ -16,7 +16,7 @@ public class CsvObjectBuilderTest {
     Kunde k1 = new Kunde(
             "Kjell",
             "Olsen",
-            "123456",
+            123456,
             "Elgfaret 11 2022 Gjerdrum");
 
 
@@ -27,7 +27,7 @@ public class CsvObjectBuilderTest {
         try {
             new CsvWriter().writeObjectDataToFile(new File("testfile.csv"), k1);
             CsvReader reader = new CsvReader();
-            ArrayList<String[]> lst = (ArrayList<String[]>) reader.readDataFromFile(new File("testfile.csv"));
+            ArrayList<String[]> lst = reader.readDataFromFile(new File("testfile.csv"));
             k2 = (Kunde) new CsvObjectBuilder().buildObjectFromString(lst.get(0));
 
         } catch (IOException e) {

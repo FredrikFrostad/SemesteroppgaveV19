@@ -19,7 +19,7 @@ public class KundeTest {
         Kunde kunde = new Kunde(
                 "Knut",
                 "Hagen",
-                "123456",
+                123456,
                 "Testerudbakke 3 9989 Nordpå");
 
         Båt b1 = new Båt(
@@ -65,7 +65,7 @@ public class KundeTest {
         Kunde k2 = new Kunde(
                 "Test",
                 "Testesen",
-                "123456",
+                123456,
                 "Testeveien 11 1111 Testerud"
         );
 

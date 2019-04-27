@@ -23,7 +23,7 @@ public class JobjWriterTest {
             MainApp.getClientList().add(new Kunde(
                     name,
                     "Hagen",
-                    "123456",
+                    123456,
                     "Testerudbakke 3 9989 Nordpå"));
         }
 
