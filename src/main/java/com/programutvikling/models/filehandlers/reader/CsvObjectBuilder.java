@@ -48,6 +48,12 @@ public class CsvObjectBuilder extends CsvReader {
         return out;
     }
 
+    /**
+     * Helper method for creating a client object from a string array
+     * @param objData String array containing object datafields
+     * @return Client object
+     * @throws Exception if new date is set on already existing clientobject
+     */
     private Kunde buildKundeFromCsv(String[] objData) throws Exception{
 
         Kunde k = new Kunde();
@@ -56,13 +62,15 @@ public class CsvObjectBuilder extends CsvReader {
         k.setEtternavn(objData[3]);
         if (objData[4].isBlank()) {
             k.setForsikrNr(new ClientNrHelper().appendClient());
+        } else {
+            k.setForsikrNr(Integer.parseInt(objData[4]));
         }
-        k.setForsikrNr(Integer.parseInt(objData[4]));
         k.setFakturaadresse(objData[5]);
         return k;
     }
 
-    private Båt buildBåtFromCsv(String[] objData) throws Exception {
+
+    private Båt buildBåtFromCsv(String[] objData) {
         Båt b = new Båt();
         b.setEier(objData[0]);
         b.setRegNr(objData[1]);
@@ -75,7 +83,7 @@ public class CsvObjectBuilder extends CsvReader {
         return b;
     }
 
-    private Fritidsbolig buildFritidsboligFromCsv(String[] objData) throws Exception {
+    private Fritidsbolig buildFritidsboligFromCsv(String[] objData) {
         Fritidsbolig f = new Fritidsbolig();
         f.setAdresse(objData[0]);
         f.setByggeaar(Integer.parseInt(objData[1]));
@@ -88,11 +96,13 @@ public class CsvObjectBuilder extends CsvReader {
         return f;
     }
 
+    //TODO: finish this
     private Reise buildReiseFromcsv(String[] objData) throws Exception {
         Reise r = new Reise();
         throw new Exception();
     }
 
+    //TODO: finish this
     private VillaInnbo buildVillaInnboFromCsv(String[] objData) throws Exception {
         throw new NoSuchMethodException();
     }

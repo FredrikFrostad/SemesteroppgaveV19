@@ -53,6 +53,10 @@ public class MainApp extends Application {
 
         //make register file
         new ClientNrHelper().init();
+
+        //Initialise testData
+        initTestObjects();
+
         //Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
         Parent root = FXMLLoader.load(getClass().getResource("/views/mainPage.fxml"));
 
@@ -99,6 +103,7 @@ public class MainApp extends Application {
     }
 
     private void initTestObjects() {
+        // Create testdata if database is empty
         if (databaseFilePath.listFiles().length == 0) {
             CsvReader reader = new CsvReader();
             try {
