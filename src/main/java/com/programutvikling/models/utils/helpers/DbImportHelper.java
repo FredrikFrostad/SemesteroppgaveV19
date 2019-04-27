@@ -5,12 +5,13 @@ import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
+import javafx.concurrent.Task;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class DbImportHelper {
+public class DbImportHelper extends Task {
 
     //TODO: This should throw exeption up to calling class, also this method is a mess, clean it up!!
     public void importDbFromCsv() {
@@ -67,5 +68,10 @@ public class DbImportHelper {
             if (k.getForsikrNr() == client.getForsikrNr()) return true;
         }
         return false;
+    }
+
+    @Override
+    protected Object call() throws Exception {
+        return null;
     }
 }

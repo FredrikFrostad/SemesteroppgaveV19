@@ -28,6 +28,10 @@ public class DbExportHelper {
         this.clients = new ArrayList<>();
     }
 
+    /**
+     * This method dumps all of the dataobjects in the program into separate csv files based on the object type.
+     * The files are stored in a folder defined by the database filepath variable in the MainApp class.
+     */
     public void exportDbAsCsv() {
 
         // Iterating over all clients and adding policies to list
@@ -51,6 +55,10 @@ public class DbExportHelper {
 
     }
 
+    /**
+     * Method for iterating over all client objects and storing the
+     * policy objects contained inside in separate lists
+     */
     private void populatePolicyLists() {
         for (Forsikring f : exportList) {
             System.out.println(f);
@@ -61,6 +69,12 @@ public class DbExportHelper {
         }
     }
 
+
+    /**
+     * Writes the data-object lists to file. These files are used by the program for loading and saving data,
+     * therefor filenames and locations are hardcoded.
+     * @throws IOException
+     */
     private void writeListsToFile() throws IOException{
         String filePath = MainApp.getDatabaseFilePath().getAbsolutePath() + File.separator;
         System.out.println(filePath);
