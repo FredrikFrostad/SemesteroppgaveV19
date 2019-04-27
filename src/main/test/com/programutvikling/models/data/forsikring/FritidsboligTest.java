@@ -1,5 +1,6 @@
 package com.programutvikling.models.data.forsikring;
 
+import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import org.junit.Test;
@@ -13,6 +14,7 @@ public class FritidsboligTest {
     @Test
     public void verifySerialization() {
         Fritidsbolig f1 = new Fritidsbolig(
+                ObjectType.FRITIDSBOLIG,
                 123456,
                 3500,
                 1000000,

@@ -16,6 +16,8 @@ public class JobjReader extends FileReader implements Runnable{
     public File file;
     private Object returnValue;
 
+    public JobjReader() {}
+
     public JobjReader(File file){
         this.file = file;
 

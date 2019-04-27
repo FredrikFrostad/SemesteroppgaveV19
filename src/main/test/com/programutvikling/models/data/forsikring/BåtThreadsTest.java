@@ -1,5 +1,6 @@
 package com.programutvikling.models.data.forsikring;
 
+import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import org.junit.Test;
@@ -13,6 +14,7 @@ public class BåtThreadsTest {
     @Test
     public void verifySerialization() {
         Fritidsbolig f1 = new Fritidsbolig(
+                ObjectType.BÅT,
                 123456,
                 3500,
                 1000000,
@@ -30,7 +32,7 @@ public class BåtThreadsTest {
         Object[] båt = new Object[0];
         JobjWriter writer = new JobjWriter();
         File file = new File("testfile.jobj");
-        Thread thread = new Thread( new JobjReader(file, båt));
+        Thread thread = new Thread( new JobjReader(file));
         thread.start();
 
         try {
