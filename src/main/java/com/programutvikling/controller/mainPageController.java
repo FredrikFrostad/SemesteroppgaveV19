@@ -10,6 +10,7 @@ import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.utils.helpers.AlertHelper;
+import com.programutvikling.models.utils.helpers.DbImportHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,6 +53,7 @@ public class mainPageController {
         selectedKundeField.setEditable(false);
 
         initClientTable();
+        initDb();
         refreshTable();
     }
 
@@ -175,14 +177,21 @@ public class mainPageController {
 
     }
 
+    /**
+     * Refreshes tableviews to display changes
+     */
     @FXML
     private void refreshTable() {
         clientTable.getItems().clear();
         clientTable.getItems().addAll(MainApp.getClientList());
     }
 
+    /**
+     * Loads db data into program
+     */
     private void initDb() {
-
+        DbImportHelper importer = new DbImportHelper();
+        importer.importDbFromCsv();
     }
 
 
