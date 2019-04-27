@@ -2,6 +2,7 @@ package com.programutvikling.mainapp;
 
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
@@ -54,6 +55,9 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        // This method is called to create a project folder for the applications files
+        // To change the location of the project folder, change the PROJECTFOLDER variable in this class
         findOSTypeAndCreateProjectFolder();
 
         //make register file

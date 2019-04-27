@@ -41,6 +41,7 @@ public class CsvObjectBuilder extends CsvReader {
                 out = buildVillaInnboFromCsv(objData);
                 break;
             default:
+                System.out.println("The type is: " + type);
                 throw new InvalidObjectTypeException("Object type not found.");
 
         }

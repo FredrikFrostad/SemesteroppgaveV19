@@ -1,6 +1,7 @@
 package com.programutvikling.controller;
 
 import com.programutvikling.mainapp.MainApp;
+import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
@@ -9,6 +10,7 @@ import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
+import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.utils.helpers.DbImportHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
@@ -29,16 +31,22 @@ public class mainPageController {
     private BorderPane rootPane;
 
     @FXML
-    private TableView<Forsikring> tableForsikring;
+    private Tab tabForsikring, tabKunder, tabSkademeldinger;
 
     @FXML
-    private Tab tabForsikring, tabKunder, tabSkademeldinger;
+    private TableView<Forsikring> tableOverviewForsikring, tableDetailsForsikring;
+
+    @FXML
+    private TableColumn<Forsikring, String> overviewCol1;
+
+    @FXML
+    private TableColumn<Forsikring, ObjectType> overviewCol2;
 
     @FXML
     private TableView<Kunde> clientTable;
 
     @FXML
-    private TableColumn<Kunde, String> col1, col2, col3;
+    private TableColumn<Kunde, String> kundeCol1, kundeCol2, kundeCol3;
 
     @FXML
     private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato;
@@ -46,8 +54,9 @@ public class mainPageController {
     @FXML
     private TextField selectedKundeField;
 
+
     @FXML
-    public void initialize() {
+    private void initialize() {
         k_forsNr.setEditable(false);
         k_opDato.setEditable(false);
         selectedKundeField.setEditable(false);
@@ -57,14 +66,41 @@ public class mainPageController {
         refreshTable();
     }
 
+
     /**
      * Initialises column names and valueproperties for the Client tableview
      */
     private void initClientTable() {
-        col1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
-        col2.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
-        col3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
+
+        kundeCol1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
+        kundeCol2.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
+        kundeCol3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
     }
+
+
+    private void initForsikringsTable() {
+        overviewCol1.setCellValueFactory(new PropertyValueFactory<>("type"));
+        overviewCol2.setCellValueFactory(new PropertyValueFactory<>("premieAnnum"));
+
+        if (!MainApp.getSelectedKunde().getForsikringer().isEmpty()) {
+            System.out.println("Loading forsikringer");
+            tableOverviewForsikring.getItems().addAll(MainApp.getSelectedKunde().getForsikringer());
+        } else {
+            System.out.println("loading forsikringer failed");
+        }
+
+    }
+
+
+    // TODO: fjernes når denne ikke trengs mere
+    @FXML
+    private void TEST() {
+        System.out.println("Valgt kunde er: " + MainApp.getSelectedKunde().getFornavn() + " " + MainApp.getSelectedKunde().getEtternavn());
+        System.out.println("Antall elementer i forsikringsliste er: " + MainApp.getSelectedKunde().getForsikringer().size());
+        for (Forsikring f : MainApp.getSelectedKunde().getForsikringer()) System.out.println(f);
+    }
+
+
 
     /**
      * When a row containing client data is selected, the corresponding client object is set as activive in MainApp.
@@ -87,9 +123,14 @@ public class mainPageController {
     private void tabChanged() {
         if (tabForsikring.isSelected()) {
             System.out.println("EVENT FORSIKRING TRIGGERED!!");
-
-        }else if (tabKunder.isSelected()) System.out.println("EVENT KUNDER TRIGGERED");
-        else if (tabSkademeldinger.isSelected()) System.out.println("EVENT SKADEMELDINGER TRIGGERED");
+            initForsikringsTable();
+        }
+        else if (tabKunder.isSelected()) {
+            System.out.println("EVENT KUNDER TRIGGERED");
+        }
+        else if (tabSkademeldinger.isSelected()) {
+            System.out.println("EVENT SKADEMELDINGER TRIGGERED");
+        }
     }
 
 
@@ -125,7 +166,11 @@ public class mainPageController {
         vc.setView(rootPane, "newClient", "views/newClient.fxml");
     }
 
-    //TODO: TILBAKEMELDING TIL KUNDE DERSOM FEIL
+
+    /**
+     * Method loading clientdata stored to file
+     * @param event is conumed
+     */
     @FXML
     private void loadKunde(ActionEvent event) {
         ArrayList<Kunde> list = MainApp.getClientList();
@@ -143,18 +188,19 @@ public class mainPageController {
 
         } catch (FileNotFoundException e){
             e.printStackTrace();
-            e.getMessage();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Finner ikke fil", e.getMessage());
         } catch (InvalidFileFormatException e) {
             e.printStackTrace();
-            e.getMessage();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ukjent filformat", e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
-            e.getMessage();
+            AlertHelper.createAlert(Alert.AlertType.ERROR,"Kan ikke lese fra fil", e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
-            e.getMessage();
+            AlertHelper.createAlert(Alert.AlertType.ERROR,"En feil har oppstått", e.getMessage());
         }
-        refreshTable();
+        refreshKundeTable(event);
+        event.consume();
     }
 
     @FXML
@@ -162,7 +208,7 @@ public class mainPageController {
         Kunde k = MainApp.getSelectedKunde();
         k.setFornavn(k_fornavn.getText());
         k.setEtternavn(k_etternavn.getText());
-        refreshTable();
+        refreshKundeTable(event);
     }
 
     @FXML
@@ -170,20 +216,28 @@ public class mainPageController {
         File file = new File(MainApp.getSelectedKunde().getFilePath());
 
         try {
-            ExtensionHandler.getExtension(file);
+            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
+                new JobjWriter().writeObjectDataToFile(file, MainApp.getSelectedKunde());
+            }
+
         } catch (InvalidFileFormatException e) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil!", "Kan ikke lagre endringer, finner ikke fil");
+        } catch (IOException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil ved lagring til fil", e.getMessage());
         }
 
     }
 
     /**
-     * Refreshes tableviews to display changes
+     * Method for refreshing the kunde tableview. This method is public to enable other screens to
+     * refresh the tableview if a change has happened.
+     * @param event is consumed
      */
     @FXML
-    private void refreshTable() {
+    public void refreshKundeTable(ActionEvent event) {
         clientTable.getItems().clear();
         clientTable.getItems().addAll(MainApp.getClientList());
+        event.consume();
     }
 
     /**

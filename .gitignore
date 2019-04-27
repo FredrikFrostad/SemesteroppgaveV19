@@ -14,6 +14,7 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/**/vcs.xml
 
 # Generated files
 .idea/**/contentModel.xml
@@ -29,6 +30,7 @@
 
 # Gradle
 .idea/**/gradle.xml
+
 .idea/**/libraries
 
 # Gradle and Maven with auto-import

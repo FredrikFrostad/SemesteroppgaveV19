@@ -60,10 +60,4 @@ public class JobjReader extends FileReader implements Runnable{
         }
     }
 
-    @Override
-    public Object readDataFromURL(String url) {
-        return null;
-    }
-
-
 }

@@ -83,14 +83,4 @@ public class StartPageController {
     }
 
 
-    @FXML
-    private void test(ActionEvent event) {
-        HashMap<String, Scene> map = ViewChanger.getViewMap();
-        for (Map.Entry m : map.entrySet()) {
-            System.out.println(m.getKey()+ " " + m.getValue());
-        }
-        System.out.println();
-
-
-    }
 }

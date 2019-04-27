@@ -3,8 +3,11 @@ package com.programutvikling.controller;
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.forsikring.Fritidsbolig;
+import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidNumberFormatException;
+import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.inputhandlers.Inputvalidator;
+import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,6 +15,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+
+import java.io.File;
+import java.io.IOException;
 
 public class NewPolicyController{
 
@@ -92,11 +98,24 @@ public class NewPolicyController{
     private void registrerForsikring() {
         Forsikring forsikring = null;
 
-        if (active.getId().equals(fritidsPage)) {
+        if (active.getId().equals("fritidsPage")) {
             forsikring = createFritidsBolig();
         }
 
-        MainApp.getSelectedKunde().getForsikringer().add(forsikring);
+        Kunde k = MainApp.getSelectedKunde();
+        k.getForsikringer().add(forsikring);
+
+        //Skriver endringer til fil
+        File file = new File(k.getFilePath());
+        if (file.exists()) {
+            try {
+                new JobjWriter().writeDataToFile(file, k);
+            } catch (IOException e) {
+                e.printStackTrace();
+                AlertHelper.createAlert(Alert.AlertType.WARNING, "Endringer ikke lagret", "Kundeobjektet denne forsikringen er knyttet til, er ikke lagret til disk!");
+            }
+        }
+
     }
 
     private Fritidsbolig createFritidsBolig() {
