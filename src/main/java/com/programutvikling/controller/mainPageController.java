@@ -15,6 +15,7 @@ import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.utils.helpers.DbImportHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -199,8 +200,7 @@ public class mainPageController {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR,"En feil har oppstått", e.getMessage());
         }
-        refreshKundeTable(event);
-        event.consume();
+        refreshTable();
     }
 
     @FXML
@@ -208,7 +208,7 @@ public class mainPageController {
         Kunde k = MainApp.getSelectedKunde();
         k.setFornavn(k_fornavn.getText());
         k.setEtternavn(k_etternavn.getText());
-        refreshKundeTable(event);
+        refreshTable();
     }
 
     @FXML
@@ -231,13 +231,11 @@ public class mainPageController {
     /**
      * Method for refreshing the kunde tableview. This method is public to enable other screens to
      * refresh the tableview if a change has happened.
-     * @param event is consumed
      */
     @FXML
-    public void refreshKundeTable(ActionEvent event) {
+    public void refreshTable() {
         clientTable.getItems().clear();
         clientTable.getItems().addAll(MainApp.getClientList());
-        event.consume();
     }
 
     /**

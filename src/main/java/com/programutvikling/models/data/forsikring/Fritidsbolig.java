@@ -21,7 +21,7 @@ public class Fritidsbolig extends Forsikring implements Serializable {
         super();
     }
 
-    public Fritidsbolig(int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String adresse, int byggeaar,
+    public Fritidsbolig(ObjectType type, int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String adresse, int byggeaar,
                         String boligtype, String byggemateriale, String standard, int areal,
                         double forsikringsbeløpByggning, double forsikringsbeløpInnbo) {
         super(type, forsNr,premieAnnum, forsikringsSum, betingelser);
@@ -100,7 +100,7 @@ public class Fritidsbolig extends Forsikring implements Serializable {
     }
 
     @Override
-    public Enum getType() { return type;}
+    public ObjectType getType() { return type;}
 
     @Override
     public String toString() {
