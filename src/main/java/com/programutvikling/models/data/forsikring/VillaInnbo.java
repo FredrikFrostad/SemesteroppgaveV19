@@ -2,7 +2,7 @@ package com.programutvikling.models.data.forsikring;
 
 import com.programutvikling.models.data.ObjectType;
 
-public class VillaInnbo {
+public class VillaInnbo extends Forsikring{
 
     private static ObjectType type = ObjectType.VILLAINNBO;
     private String adresse;

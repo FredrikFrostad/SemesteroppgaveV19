@@ -4,12 +4,11 @@ import com.programutvikling.models.data.ObjectType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 public abstract class Forsikring implements Serializable {
 
-    private static ObjectType type = ObjectType.FORSIKRING;
-    private int forsNr;
+    private ObjectType type;
+    private int forsikrNr;
     private double premieAnnum;
     private double forsikringsSum;
     private LocalDate avtaleOpprettet;
@@ -19,8 +18,8 @@ public abstract class Forsikring implements Serializable {
     public Forsikring() {
     }
 
-    public Forsikring(int forsNr, double premieAnnum, double forsikringsSum, String betingelser) {
-        this.forsNr = forsNr;
+    public Forsikring(ObjectType type, int forsNr, double premieAnnum, double forsikringsSum, String betingelser) {
+        this.forsikrNr = forsNr;
         this.premieAnnum = premieAnnum;
         this.forsikringsSum = forsikringsSum;
         this.avtaleOpprettet = LocalDate.now();
@@ -54,7 +53,6 @@ public abstract class Forsikring implements Serializable {
         this.avtaleOpprettet = avtaleOpprettet;
     }
 
-
     public String getBetingelser() {
         return betingelser;
     }
@@ -71,11 +69,18 @@ public abstract class Forsikring implements Serializable {
         this.filePath = filePath;
     }
 
-    public void setForsNr(int nr) {this.forsNr = nr;}
+    public void setForsikrNr(int nr) {this.forsikrNr = nr;}
+
+    public int getForsikrNr() {return this.forsikrNr;}
+
+    public void setType (ObjectType type) {this.type = type;}
+
+    public ObjectType getType() {return this.type;}
+
 
     @Override
     public String toString() {
-        return  "forsikringsNummer=" + forsNr +
+        return  "forsikringsNummer=" + forsikrNr +
                 ", premieAnnum=" + premieAnnum +
                 ", forsikringsSum=" + forsikringsSum +
                 ", avtaleOpprettet=" + avtaleOpprettet +

@@ -3,7 +3,6 @@ package com.programutvikling.models.data.forsikring;
 import com.programutvikling.models.data.ObjectType;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Båt extends Forsikring{
 
@@ -24,7 +23,7 @@ public class Båt extends Forsikring{
 
     public Båt(int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String eier, String regNr,
                String typeBåt, String modell, int lengde, int årsmodell, String motorType, String effekt) {
-        super(forsNr, premieAnnum, forsikringsSum, betingelser);
+        super(type, forsNr, premieAnnum, forsikringsSum, betingelser);
         this.eier = eier;
         this.regNr = regNr;
         this.typeBåt = typeBåt;
@@ -103,7 +102,7 @@ public class Båt extends Forsikring{
 
     public void setForsikringsSum(double sum) {super.setForsikringsSum(sum);}
 
-    public void setForsikrNr(int nr) {super.setForsNr(nr);}
+    public void setForsikrNr(int nr) {super.setForsikrNr(nr);}
 
     public void setAvtaleOpprettet(LocalDate avtaleOpprettet) throws IllegalAccessException{
             super.setAvtaleOpprettet(avtaleOpprettet);

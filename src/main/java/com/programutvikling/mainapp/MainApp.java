@@ -26,7 +26,6 @@ public class MainApp extends Application {
     private static File userSaveFilepath;
     private static final String PROJECTFOLDER = "SemesteroppgaveV19";
     private static ArrayList<Kunde> clientList = new ArrayList<>();
-    private static ArrayList<Forsikring> insuranceList = new ArrayList<>();
     private static Kunde selectedKunde = null;
 
 
@@ -35,9 +34,13 @@ public class MainApp extends Application {
         return clientList;
     }
 
+    public static ArrayList<Forsikring> getInsuranceList;
+
     public static String getPROJECTFOLDER() {
         return PROJECTFOLDER;
     }
+
+    public static File getDatabaseFilePath() {return databaseFilePath;}
 
     public static void setSelectedKunde(Kunde selected) {
         MainApp.selectedKunde = selected;
@@ -118,23 +121,14 @@ public class MainApp extends Application {
                 //Adding dummy policies for testing
                 list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
                 for (String[] s : list) {
-                    insuranceList.add((Forsikring) new CsvObjectBuilder().buildObjectFromString(s));
-                }
-
-                // TODO: Use this in mainPAgeController
-                //Adding dummy insurance policies for testing
-                /*
-                File[] files = databaseFilePath.listFiles();
-                // Looping over all files in database folder
-                for (File f : files) {
-                    if (f.getName().contains("båt") && f.getName().endsWith(".csv")) {
-
+                    Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
+                    for (Kunde k : clientList) {
+                        if (k.getForsikrNr() == f.getForsikrNr()) {
+                            k.getForsikringer().add(f);
+                            System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
+                        }
                     }
                 }
-
-                 */
-
-
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (Exception e) {

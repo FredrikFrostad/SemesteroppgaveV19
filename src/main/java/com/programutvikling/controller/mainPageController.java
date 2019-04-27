@@ -55,13 +55,19 @@ public class mainPageController {
         refreshTable();
     }
 
+    /**
+     * Initialises column names and valueproperties for the Client tableview
+     */
     private void initClientTable() {
-
         col1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
         col2.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
         col3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
     }
 
+    /**
+     * When a row containing client data is selected, the corresponding client object is set as activive in MainApp.
+     * A string describing the selected clien object is also set in the Insurance policies tab.
+     */
     @FXML
     private void selectClient() {
         Kunde k = clientTable.getSelectionModel().getSelectedItem();
@@ -77,8 +83,10 @@ public class mainPageController {
      */
     @FXML
     private void tabChanged() {
-        if (tabForsikring.isSelected()) System.out.println("EVENT FORSIKRING TRIGGERED!!");
-        else if (tabKunder.isSelected()) System.out.println("EVENT KUNDER TRIGGERED");
+        if (tabForsikring.isSelected()) {
+            System.out.println("EVENT FORSIKRING TRIGGERED!!");
+
+        }else if (tabKunder.isSelected()) System.out.println("EVENT KUNDER TRIGGERED");
         else if (tabSkademeldinger.isSelected()) System.out.println("EVENT SKADEMELDINGER TRIGGERED");
     }
 

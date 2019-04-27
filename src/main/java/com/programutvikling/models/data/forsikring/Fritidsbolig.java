@@ -24,7 +24,7 @@ public class Fritidsbolig extends Forsikring implements Serializable {
     public Fritidsbolig(int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String adresse, int byggeaar,
                         String boligtype, String byggemateriale, String standard, int areal,
                         double forsikringsbeløpByggning, double forsikringsbeløpInnbo) {
-        super(forsNr,premieAnnum, forsikringsSum, betingelser);
+        super(type, forsNr,premieAnnum, forsikringsSum, betingelser);
         this.adresse = adresse;
         this.byggeaar = byggeaar;
         this.boligtype = boligtype;
