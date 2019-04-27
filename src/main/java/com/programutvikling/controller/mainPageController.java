@@ -116,6 +116,7 @@ public class mainPageController {
         if (tabForsikring.isSelected()) {
             System.out.println("EVENT FORSIKRING TRIGGERED!!");
             initForsikringsTable();
+
         }
         else if (tabKunder.isSelected()) {
             System.out.println("EVENT KUNDER TRIGGERED");
@@ -251,6 +252,9 @@ public class mainPageController {
     public void refreshKundeTable() {
         clientTable.getItems().clear();
         clientTable.getItems().addAll(MainApp.getClientList());
+    }
+    public void refreshForsikringsTable(){
+        tableOverviewForsikring.getItems().clear();
     }
 
 
