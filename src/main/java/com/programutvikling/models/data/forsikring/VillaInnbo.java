@@ -92,16 +92,15 @@ public class VillaInnbo {
 
     @Override
     public String toString() {
-        return "VillaInnbo{" +
-                "adresse=" + adresse +
+        return "type=" + type +
+                "," + super.toString() +
+                ", adresse=" + adresse +
                 ", byggeÅr=" + byggeÅr +
                 ", boligType=" + boligType +
                 ", byggemateriale=" + byggemateriale +
                 ", standard=" + standard +
                 ", areal=" + areal +
                 ", beløpBygning=" + beløpBygning +
-                ", beløpInnbo=" + beløpInnbo +
-                ", type=" + type +
-                '}';
+                ", beløpInnbo=" + beløpInnbo;
     }
 }
