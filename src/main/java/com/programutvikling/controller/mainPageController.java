@@ -181,6 +181,9 @@ public class mainPageController {
         clientTable.getItems().addAll(MainApp.getClientList());
     }
 
+    private void initDb() {
+
+    }
 
 
 }

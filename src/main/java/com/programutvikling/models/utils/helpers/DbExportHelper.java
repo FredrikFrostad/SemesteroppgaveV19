@@ -83,16 +83,26 @@ public class DbExportHelper {
         }
     }
 
+    /**
+     * Sort clients based on policy Number.
+     * This is not necessary, but id done so that the exported files look cleaner
+     * @param list Arraylist of policy objects to be sorted
+     */
+    private void sortClientsList(ArrayList<Kunde> list) {
+        Collections.sort(list, (a,b) -> {
+            return  a.getForsikrNr() - b.getForsikrNr();
+        });
+    }
 
+    /**
+     * Sorts policies based on type, then on policy number
+     * This is not necessary, but is done so that the exported files look cleaner
+     * @param list Arraylist of policy Objects to be sorted
+     */
     private void sortPolicyList(ArrayList<Forsikring> list) {
-        // Sorting policies based on type, then on policy number
-        // This is not necessary, but is done so that the exported files look cleaner
-        Collections.sort(list, new Comparator<Forsikring>() {
-            @Override
-            public int compare(Forsikring o1, Forsikring o2) {
-                int res =  o1.getType().compareTo(o2.getType());
-                return res != 0 ? res : o1.getForsikrNr() - o2.getForsikrNr();
-            }
+        Collections.sort(list, (a,b) -> {
+            int res = a.getType().compareTo(b.getType());
+            return res != 0 ? res : a.getForsikrNr() - b.getForsikrNr();
         });
     }
 }
