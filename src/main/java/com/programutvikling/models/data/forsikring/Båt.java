@@ -2,6 +2,7 @@ package com.programutvikling.models.data.forsikring;
 
 import com.programutvikling.models.data.ObjectType;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Båt extends Forsikring{
@@ -96,6 +97,16 @@ public class Båt extends Forsikring{
 
     public void setEffekt(String effekt) {
         this.effekt = effekt;
+    }
+
+    public void setPremieAnum(double premieAnnum) {super.setPremieAnnum(premieAnnum);}
+
+    public void setForsikringsSum(double sum) {super.setForsikringsSum(sum);}
+
+    public void setForsikrNr(int nr) {super.setForsNr(nr);}
+
+    public void setAvtaleOpprettet(LocalDate avtaleOpprettet) throws IllegalAccessException{
+            super.setAvtaleOpprettet(avtaleOpprettet);
     }
 
     @Override

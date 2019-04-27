@@ -1,0 +1,21 @@
+type,forsikringsNummer,premieAnnum,forsikringsSum,avtaleOpprettet,betingelser,eier,regNr,typeBåt,modell,lengde,årsmodell,motorType,effekt
+BÅT,1,12000,400000,2019-04-27,Betingelser,Fredrik Frostad,BD1234,Daycriuser,Ibiza,32,2014,Utenbords,150
+BÅT,1,12000,400000,2019-04-27,Betingelser,Fredrik Frostad,BD1234,Daycriuser,Ibiza,32,2014,Utenbords,150
+BÅT,2,12000,400000,2019-04-27,Betingelser,Anders Minken,BD1234,Daycriuser,Ibiza,32,2014,Utenbords,150
+BÅT,4,12001,400001,2019-04-27,Betingelser,Jakob Simonsen,BD1235,Daycriuser,Ibiza,33,2015,Utenbords,151
+BÅT,4,12002,400002,2019-04-10,Betingelser,Jakob Simonsen,BD1236,Daycriuser,Ibiza,34,2016,Utenbords,152
+BÅT,4,12003,400003,2019-04-11,Betingelser,Jakob Simonsen,BD1237,Daycriuser,Ibiza,35,2017,Utenbords,153
+BÅT,7,12004,400004,2019-04-12,Betingelser,Terje Sether,BD1238,Daycriuser,Ibiza,36,2018,Utenbords,154
+BÅT,7,12005,400005,2019-04-13,Betingelser,Terje Sether,BD1239,Daycriuser,Ibiza,37,2019,Utenbords,155
+BÅT,7,12006,400006,2019-04-14,Betingelser,Terje Sether,BD1240,Daycriuser,Ibiza,38,2020,Utenbords,156
+BÅT,7,12007,400007,2019-04-15,Betingelser,Terje Sether,BD1241,Daycriuser,Ibiza,39,2021,Utenbords,157
+BÅT,7,12008,400008,2019-04-16,Betingelser,Terje Sether,BD1242,Daycriuser,Ibiza,40,2022,Utenbords,158
+BÅT,13,12009,400009,2019-04-17,Betingelser,Heidi Pynten,BD1243,Daycriuser,Ibiza,41,2023,Utenbords,159
+BÅT,13,12010,400010,2019-04-18,Betingelser,Heidi Pynten,BD1244,Daycriuser,Ibiza,42,2024,Utenbords,160
+BÅT,13,12011,400011,2019-04-19,Betingelser,Heidi Pynten,BD1245,Daycriuser,Ibiza,43,2025,Utenbords,161
+BÅT,13,12012,400012,2019-04-20,Betingelser,Heidi Pynten,BD1246,Daycriuser,Ibiza,44,2026,Utenbords,162
+BÅT,16,12013,400013,2019-04-21,Betingelser,Nico Benz,BD1247,Daycriuser,Ibiza,45,2027,Utenbords,163
+BÅT,16,12014,400014,2019-04-22,Betingelser,Nico Benz,BD1248,Daycriuser,Ibiza,46,2028,Utenbords,164
+BÅT,16,12015,400015,2019-04-23,Betingelser,Nico Benz,BD1249,Daycriuser,Ibiza,47,2029,Utenbords,165
+BÅT,16,12016,400016,2019-04-24,Betingelser,Nico Benz,BD1250,Daycriuser,Ibiza,48,2030,Utenbords,166
+BÅT,16,12017,400017,2019-04-27,Betingelser,Nico Benz,BD1251,Daycriuser,Ibiza,49,2031,Utenbords,167

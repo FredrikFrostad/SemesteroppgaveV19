@@ -3,6 +3,7 @@ package com.programutvikling.models.data.forsikring;
 import com.programutvikling.models.data.ObjectType;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 public abstract class Forsikring implements Serializable {
@@ -11,19 +12,18 @@ public abstract class Forsikring implements Serializable {
     private int forsNr;
     private double premieAnnum;
     private double forsikringsSum;
-    private Date avtaleOpprettet;
+    private LocalDate avtaleOpprettet;
     private String betingelser;
     private transient String filePath;
 
     public Forsikring() {
-        this.avtaleOpprettet = new Date();
     }
 
     public Forsikring(int forsNr, double premieAnnum, double forsikringsSum, String betingelser) {
         this.forsNr = forsNr;
         this.premieAnnum = premieAnnum;
         this.forsikringsSum = forsikringsSum;
-        this.avtaleOpprettet = new Date();
+        this.avtaleOpprettet = LocalDate.now();
         this.betingelser = betingelser;
     }
 
@@ -43,13 +43,17 @@ public abstract class Forsikring implements Serializable {
         this.forsikringsSum = forsikringsSum;
     }
 
-    public Date getAvtaleOpprettet() {
+    public LocalDate getAvtaleOpprettet() {
         return avtaleOpprettet;
     }
 
-    public void setAvtaleOpprettet(Date avtaleOpprettet) {
+    public void setAvtaleOpprettet(LocalDate avtaleOpprettet) throws IllegalAccessException {
+        if (this.avtaleOpprettet != null) {
+            throw new IllegalAccessException("The date cannot be changed once it is set");
+        }
         this.avtaleOpprettet = avtaleOpprettet;
     }
+
 
     public String getBetingelser() {
         return betingelser;
@@ -66,6 +70,8 @@ public abstract class Forsikring implements Serializable {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
+
+    public void setForsNr(int nr) {this.forsNr = nr;}
 
     @Override
     public String toString() {

@@ -1,0 +1,20 @@
+type,kundeOpprettet,fornavn,etternavn,forsikrNr,Fakturaadresse
+KUNDE,2019-04-27,Fredrik,Frostad,,Elgfaret 11 2022 Gjerdrum
+KUNDE,2019-04-27,Anders ,Minken,,Sinsen Terrasse 0182 Oslo
+KUNDE,2019-04-27,Siri ,Minken,,Elgfaret 11 2022 Gjerdrum
+KUNDE,2019-04-27,Jakob,Simonsen,,Pilestredet 35 0182 Oslo
+KUNDE,2019-04-10,Silje,Viko,,Storgata 12 0182 Oslo
+KUNDE,2019-04-11,Robert,Iversen,,Gateveien 14 2345 Stedet
+KUNDE,2019-04-12,Terje,Sether,,Gateveien 14 2345 Stedet
+KUNDE,2019-04-13,Kjell,Hagen,,Gateveien 16 2345 Stedet
+KUNDE,2019-04-14,Petter,Espeland,,Storgata 26 3245 Gjøvik
+KUNDE,2019-04-15,Rolf,Monsen,,Tunveien 30 2222 Nannestad
+KUNDE,2019-04-16,Stine,Henriksen,,Åsveien 2 2022 Gjerdrum
+KUNDE,2019-04-17,Kristine,Bergan,,Blåbærlia 21 1349 Hødd
+KUNDE,2019-04-18,Heidi,Pynten,,Jorbærenga 55 2435 Bekkelia
+KUNDE,2019-04-19,Max,Puntervoll,,Finnmarksgata 74 0185 Oslo
+KUNDE,2019-04-20,Iris,Nicolaisen,,Pilestredet 22 0182 Oslo
+KUNDE,2019-04-21,Nico,Benz,,Kvinnegardslia 10 5456 Ål
+KUNDE,2019-04-22,Ulf-Erlend,Haave,,Parkveien 8 0185 Oslo
+KUNDE,2019-04-23,Tom,Knutsen,,Libakken 1 4524 Dal
+KUNDE,2019-04-24,Robert,Schistad,,Fugleveien 142 4366 Stedet

@@ -70,16 +70,21 @@ public class CsvObjectBuilder extends CsvReader {
     }
 
 
-    private Båt buildBåtFromCsv(String[] objData) {
+    private Båt buildBåtFromCsv(String[] objData) throws IllegalAccessException{
         Båt b = new Båt();
-        b.setEier(objData[0]);
-        b.setRegNr(objData[1]);
-        b.setTypeBåt(objData[2]);
-        b.setModell(objData[3]);
-        b.setLengde(Integer.parseInt(objData[4]));
-        b.setÅrsmodell(Integer.parseInt(objData[5]));
-        b.setMotorType(objData[6]);
-        b.setEffekt(objData[7]);
+        b.setForsikrNr(Integer.parseInt(objData[1]));
+        b.setPremieAnum(Double.parseDouble(objData[2]));
+        b.setForsikringsSum(Double.parseDouble(objData[3]));
+        b.setAvtaleOpprettet(LocalDate.parse(objData[4]));
+        b.setBetingelser(objData[5]);
+        b.setEier(objData[6]);
+        b.setRegNr(objData[7]);
+        b.setTypeBåt(objData[8]);
+        b.setModell(objData[9]);
+        b.setLengde(Integer.parseInt(objData[10]));
+        b.setÅrsmodell(Integer.parseInt(objData[11]));
+        b.setMotorType(objData[12]);
+        b.setEffekt(objData[13]);
         return b;
     }
 

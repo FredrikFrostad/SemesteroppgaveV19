@@ -4,7 +4,6 @@ import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
-import com.programutvikling.models.filehandlers.writer.CsvWriter;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
@@ -111,17 +110,17 @@ public class MainApp extends Application {
             try {
 
                 // Adding dummy clients for testing
-                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testKunder.csv").getFile()));
+                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
                 for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
-                /*
+
                 //Adding dummy policies for testing
-                list = reader.readDataFromFile(new File("/testObjects/testForsikringerBåt.csv"));
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
                 for (String[] s : list) {
                     insuranceList.add((Forsikring) new CsvObjectBuilder().buildObjectFromString(s));
                 }
-                */
+
                 // TODO: Use this in mainPAgeController
                 //Adding dummy insurance policies for testing
                 /*
