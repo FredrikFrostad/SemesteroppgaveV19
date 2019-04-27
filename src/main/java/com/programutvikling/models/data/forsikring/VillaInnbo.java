@@ -2,7 +2,7 @@ package com.programutvikling.models.data.forsikring;
 
 import com.programutvikling.models.data.ObjectType;
 
-public class VillaInnbo {
+public class VillaInnbo extends Forsikring{
 
     private static ObjectType type = ObjectType.VILLAINNBO;
     private String adresse;
@@ -92,16 +92,15 @@ public class VillaInnbo {
 
     @Override
     public String toString() {
-        return "VillaInnbo{" +
-                "adresse=" + adresse +
+        return "type=" + type +
+                "," + super.toString() +
+                ", adresse=" + adresse +
                 ", byggeÅr=" + byggeÅr +
                 ", boligType=" + boligType +
                 ", byggemateriale=" + byggemateriale +
                 ", standard=" + standard +
                 ", areal=" + areal +
                 ", beløpBygning=" + beløpBygning +
-                ", beløpInnbo=" + beløpInnbo +
-                ", type=" + type +
-                '}';
+                ", beløpInnbo=" + beløpInnbo;
     }
 }

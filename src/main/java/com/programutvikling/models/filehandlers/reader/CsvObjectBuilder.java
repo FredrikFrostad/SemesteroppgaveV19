@@ -6,14 +6,22 @@ import com.programutvikling.models.data.forsikring.Reise;
 import com.programutvikling.models.data.forsikring.VillaInnbo;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidObjectTypeException;
+import com.programutvikling.models.utils.helpers.ClientNrHelper;
 
 import java.time.LocalDate;
 
 public class CsvObjectBuilder {
 
+    /**
+     * Method for creating a dataobject from an array of strings.
+     * The method requires that the first element of the string array is a type identifier, so
+     * that the type og object to be created can be determined.
+     * @param objData String array containing the objects datafields as separate elements
+     * @return Object of the same type as the type identifier @ objData[0].
+     * @throws Exception if the type identifier is missing or unknown
+     */
     public Object buildObjectFromString(String[] objData) throws Exception{
-        int lastIndex = objData.length - 1;
-        String type = objData[lastIndex];
+        String type = objData[0];
         Object out = null;
 
         switch (type) {
@@ -41,31 +49,47 @@ public class CsvObjectBuilder {
         return out;
     }
 
+    /**
+     * Helper method for creating a client object from a string array
+     * @param objData String array containing object datafields
+     * @return Client object
+     * @throws Exception if new date is set on already existing clientobject
+     */
     private Kunde buildKundeFromCsv(String[] objData) throws Exception{
 
         Kunde k = new Kunde();
-        k.setKundeOpprettet(LocalDate.parse(objData[0]));
-        k.setFornavn(objData[1]);
-        k.setEtternavn(objData[2]);
-        k.setForsikrNr(objData[3]);
-        k.setFakturaadresse(objData[4]);
+        k.setKundeOpprettet(LocalDate.parse(objData[1]));
+        k.setFornavn(objData[2]);
+        k.setEtternavn(objData[3]);
+        if (objData[4].isBlank()) {
+            k.setForsikrNr(new ClientNrHelper().appendClient());
+        } else {
+            k.setForsikrNr(Integer.parseInt(objData[4]));
+        }
+        k.setFakturaadresse(objData[5]);
         return k;
     }
 
-    private Båt buildBåtFromCsv(String[] objData) throws Exception {
+
+    private Båt buildBåtFromCsv(String[] objData) throws IllegalAccessException{
         Båt b = new Båt();
-        b.setEier(objData[0]);
-        b.setRegNr(objData[1]);
-        b.setTypeBåt(objData[2]);
-        b.setModell(objData[3]);
-        b.setLengde(Integer.parseInt(objData[4]));
-        b.setÅrsmodell(Integer.parseInt(objData[5]));
-        b.setMotorType(objData[6]);
-        b.setEffekt(objData[7]);
+        b.setForsikrNr(Integer.parseInt(objData[1]));
+        b.setPremieAnum(Double.parseDouble(objData[2]));
+        b.setForsikringsSum(Double.parseDouble(objData[3]));
+        b.setAvtaleOpprettet(LocalDate.parse(objData[4]));
+        b.setBetingelser(objData[5]);
+        b.setEier(objData[6]);
+        b.setRegNr(objData[7]);
+        b.setTypeBåt(objData[8]);
+        b.setModell(objData[9]);
+        b.setLengde(Integer.parseInt(objData[10]));
+        b.setÅrsmodell(Integer.parseInt(objData[11]));
+        b.setMotorType(objData[12]);
+        b.setEffekt(objData[13]);
         return b;
     }
 
-    private Fritidsbolig buildFritidsboligFromCsv(String[] objData) throws Exception {
+    private Fritidsbolig buildFritidsboligFromCsv(String[] objData) {
         Fritidsbolig f = new Fritidsbolig();
         f.setAdresse(objData[0]);
         f.setByggeaar(Integer.parseInt(objData[1]));
@@ -78,11 +102,13 @@ public class CsvObjectBuilder {
         return f;
     }
 
+    //TODO: finish this
     private Reise buildReiseFromcsv(String[] objData) throws Exception {
         Reise r = new Reise();
         throw new Exception();
     }
 
+    //TODO: finish this
     private VillaInnbo buildVillaInnboFromCsv(String[] objData) throws Exception {
         throw new NoSuchMethodException();
     }

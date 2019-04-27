@@ -1,7 +1,12 @@
 package com.programutvikling.mainapp;
 
+import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
+import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
+import com.programutvikling.models.filehandlers.reader.CsvReader;
+import com.programutvikling.models.utils.helpers.ClientNrHelper;
+import com.programutvikling.models.utils.helpers.DbExportHelper;
 import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
@@ -12,12 +17,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class MainApp extends Application {
 
-    private File projectFilePath;
+    private static File projectFilePath;
+    private static File databaseFilePath;
+    private static File userSaveFilepath;
     private static final String PROJECTFOLDER = "SemesteroppgaveV19";
     private static ArrayList<Kunde> clientList = new ArrayList<>();
     private static Kunde selectedKunde = null;
@@ -28,9 +36,13 @@ public class MainApp extends Application {
         return clientList;
     }
 
+    public static ArrayList<Forsikring> getInsuranceList;
+
     public static String getPROJECTFOLDER() {
         return PROJECTFOLDER;
     }
+
+    public static File getDatabaseFilePath() {return databaseFilePath;}
 
     public static void setSelectedKunde(Kunde selected) {
         MainApp.selectedKunde = selected;
@@ -41,8 +53,6 @@ public class MainApp extends Application {
     }
 
 
-
-
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -50,8 +60,11 @@ public class MainApp extends Application {
         // To change the location of the project folder, change the PROJECTFOLDER variable in this class
         findOSTypeAndCreateProjectFolder();
 
-        //This method is called here to insure the file for auto-incrementing client numbers are created
+        //make register file
         new ClientNrHelper().init();
+
+        //Initialise testData
+        initTestObjects();
 
         //Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
         Parent root = FXMLLoader.load(getClass().getResource("/views/mainPage.fxml"));
@@ -78,19 +91,57 @@ public class MainApp extends Application {
                 OSType.getOsType() == OSType.OS.MAC ||
                 OSType.getOsType() == OSType.OS.LINUX) {
             projectFilePath = new File(userHome + File.separator + PROJECTFOLDER);
+            databaseFilePath = new File(projectFilePath + File.separator + "Database");
+            userSaveFilepath = new File(projectFilePath + File.separator + "UserData");
             {
                 if (projectFilePath.exists()) {
                     System.out.println("Mappen finnes allerede: " + projectFilePath); //TODO: Fjerne testkode ved endelig implementering
                 } else {
                     System.out.println("Oppretter mappe: " + projectFilePath); //TODO: Fjerne testkode ved endelig implementering
-                    boolean isPathCreated = projectFilePath.mkdirs();
+                    boolean isPathCreated = false;
 
+                    if (projectFilePath.mkdirs() && databaseFilePath.mkdir() && userSaveFilepath.mkdir() ) {
+                        isPathCreated = true;
+                    }
                     if (isPathCreated) {
                         System.out.println("Mappa er laget!"); //TODO: Fjerne testkode ved endelig implementering
                     }
                 }
             }
         }
+    }
+
+    private void initTestObjects() {
+        // Create testdata if database is empty
+        if (databaseFilePath.listFiles().length == 0) {
+            CsvReader reader = new CsvReader();
+            try {
+
+                // Adding dummy clients for testing
+                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
+                for (String[] s : list) {
+                    clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
+                }
+
+                //Adding dummy policies for testing
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
+                for (String[] s : list) {
+                    Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
+                    for (Kunde k : clientList) {
+                        if (k.getForsikrNr() == f.getForsikrNr()) {
+                            k.getForsikringer().add(f);
+                            System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        DbExportHelper export = new DbExportHelper();
+        export.exportDbAsCsv();
     }
 
 

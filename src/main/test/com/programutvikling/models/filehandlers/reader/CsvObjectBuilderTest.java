@@ -16,7 +16,7 @@ public class CsvObjectBuilderTest {
     Kunde k1 = new Kunde(
             "Kjell",
             "Olsen",
-            "123456",
+            123456,
             "Elgfaret 11 2022 Gjerdrum");
 
 
@@ -25,7 +25,7 @@ public class CsvObjectBuilderTest {
         Kunde k2 = null;
 
         try {
-            new CsvWriter().writeDataToFile(new File("testfile.csv"), k1);
+            new CsvWriter().writeObjectDataToFile(new File("testfile.csv"), k1);
             File file = new File("testfile.csv");
             CsvReader reader = new CsvReader(file);
             Thread thread = new Thread(reader);

@@ -10,9 +10,9 @@ public class Reise extends Forsikring{
 
     public Reise() {};
 
-    public Reise(double premieAnnum, double forsikringsSum, String betingelser,
+    public Reise(int forsNr, double premieAnnum, double forsikringsSum, String betingelser,
                  String forsikringOmraade, double forsikringsSum1) {
-        super(premieAnnum, forsikringsSum, betingelser);
+        super(type, forsNr,premieAnnum, forsikringsSum, betingelser);
         this.forsikringOmraade = forsikringOmraade;
         this.forsikringsSum = forsikringsSum1;
     }
@@ -37,11 +37,9 @@ public class Reise extends Forsikring{
 
     @Override
     public String toString() {
-        return "Reise{" +
-                super.toString() +
-                "forsikringOmraade=" + forsikringOmraade +
-                ", forsikringsSum=" + forsikringsSum +
-                ", type=" + type +
-                '}';
+        return "type=" + type +
+                "," + super.toString() +
+                ", forsikringOmraade=" + forsikringOmraade +
+                ", forsikringsSum=" + forsikringsSum;
     }
 }

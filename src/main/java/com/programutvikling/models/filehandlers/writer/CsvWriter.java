@@ -1,8 +1,7 @@
 package com.programutvikling.models.filehandlers.writer;
 
-import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.forsikring.Båt;
-import com.programutvikling.models.data.forsikring.Reise;
+import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 
 import java.io.File;
@@ -20,23 +19,19 @@ public class CsvWriter extends FileWriter {
      * @throws IOException
      */
     @Override
-    public void writeDataToFile(File file, Object obj) throws IOException {
+    public void writeObjectDataToFile(File file, Object obj) throws IOException {
         java.io.FileWriter fWriter = new java.io.FileWriter(file);
 
         String[] objData = obj.toString().split("\\,");
-        objData = trimHeadTail(objData);
+        //objData = trimHeadTail(objData);
 
         //Generating header
         fWriter.append(getHeaderCsv(objData));
         fWriter.append("\n");
-        //TODO: remove test print
-        System.out.println(getHeaderCsv(objData));
 
         //Generating data
         fWriter.append(getDataCsv(objData));
         fWriter.append("\n");
-        //TODO: remove test print
-        System.out.println(getDataCsv(objData));
 
         fWriter.flush();
         fWriter.close();
@@ -49,28 +44,24 @@ public class CsvWriter extends FileWriter {
      * @param list List containing all objekts to be writte
      * @throws IOException
      */
-    public void writeDataToFile(File file, ArrayList<Kunde> list ) throws IOException {
+    public void writeDatabaseToFile(File file, ArrayList<Object> list ) throws IOException {
         boolean isFirstLine = true;
         java.io.FileWriter fWriter = new java.io.FileWriter(file);
 
-        for (Kunde k : list) {
-            String[] objData = k.toString().split("\\,");
-            objData = trimHeadTail(objData);
+        for (Object o : list) {
+            String[] objData = o.toString().split("\\,");
 
-            //Getting header for datafields
+            //Getting header for datafields if firstline of CSV file
             if (isFirstLine) {
                 //Writing header with datafield names
                 fWriter.append(getHeaderCsv(objData));
                 fWriter.append("\n");
                 isFirstLine = false;
-                //TODO: remove test print
-                System.out.println(getHeaderCsv(objData));
             }
+            // If not first line, object data is written to fields in csv file
             else {
                 fWriter.append(getDataCsv(objData));
                 fWriter.append("\n");
-                //TODO: remove test print
-                System.out.println(getDataCsv(objData));
             }
         }
         fWriter.flush();
@@ -102,6 +93,9 @@ public class CsvWriter extends FileWriter {
      * @return A correctly formatted String[]
      */
     private String[] trimHeadTail(String[] data) {
+
+        if (data[0].toString().matches("^type")) return data;
+
         String[] temp = data[0].split("\\{");
         data[0] = temp[1];
 
@@ -128,9 +122,11 @@ public class CsvWriter extends FileWriter {
             //Building header string
             String[] tmp = data[i].split("\\=");
 
+
             //Building out string
             out.add(tmp[1]);
         }
+        //System.out.println(out.toString());
         return out.toString();
     }
 
@@ -138,10 +134,72 @@ public class CsvWriter extends FileWriter {
 
     public static void main(String[] args) {
 
-        Kunde k = new Kunde("Kjell", "Olsen", "123456", "Elgfaret 11 2022 Gjerdrum");
+        ArrayList<Object> list = new ArrayList<>();
+        list.add(new Kunde("Kjell1", "Olsen", 123456, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell2", "Olsen", 123457, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell3", "Olsen", 123458, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell4", "Olsen", 123459, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell5", "Olsen", 123460, "Elgfaret 11 2022 Gjerdrum"));
+        list.add(new Kunde("Kjell6", "Olsen", 123461, "Elgfaret 11 2022 Gjerdrum"));
 
+        ArrayList<Object> listfors = new ArrayList<>();
+        listfors.add(new Båt(
+                123456,
+                12000,
+                400000,
+                "Betingelser",
+                "Kjell Normann",
+                "BD1234",
+                "Daycriuser",
+                "Ibiza",
+                32,
+                2014,
+                "Utenbords",
+                "150"));
+        listfors.add(new Båt(
+                123457,
+                12000,
+                400000,
+                "Betingelser",
+                "Kjell Normann",
+                "BD1234",
+                "Daycriuser",
+                "Ibiza",
+                32,
+                2014,
+                "Utenbords",
+                "150"));
+        listfors.add(new Båt(
+                123458,
+                12000,
+                400000,
+                "Betingelser",
+                "Kjell Normann",
+                "BD1234",
+                "Daycriuser",
+                "Ibiza",
+                32,
+                2014,
+                "Utenbords",
+                "150"));
+        listfors.add(new Båt(
+                123458,
+                12000,
+                400000,
+                "Betingelser",
+                "Kjell Normann",
+                "BD1234",
+                "Daycriuser",
+                "Ibiza",
+                32,
+                2014,
+                "Utenbords",
+                "150"));
         try {
-            new CsvWriter().writeDataToFile(new File("testfileKunde.csv"), k);
+            new CsvWriter().writeObjectDataToFile(new File("testfileKunde.csv"), list.get(0));
+            new CsvWriter().writeDatabaseToFile(new File("testfileKundeArray.csv"), list);
+            new CsvWriter().writeObjectDataToFile(new File("testbåt.csv"), listfors.get(0));
+            new CsvWriter().writeDatabaseToFile(new File("testbåtarray.csv"), listfors);
         } catch (IOException e) {
             e.printStackTrace();
         }

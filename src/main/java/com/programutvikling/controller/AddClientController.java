@@ -60,7 +60,7 @@ public class AddClientController {
             Inputvalidator.checkValidNameFormat(fx_etternavn.getText());
             kunde.setEtternavn(fx_etternavn.getText());
 
-            kunde.setForsikrNr(fx_forsikringsnummer.getText());
+            kunde.setForsikrNr(Integer.parseInt(fx_forsikringsnummer.getText()));
 
             //TODO: Denne metoden funker ikke, fiks - test - moveon
             //Inputvalidator.checkValidFakturaAdresse(fx_fakturaadresse.getText());
@@ -68,8 +68,8 @@ public class AddClientController {
 
 
             File file = FileWriter.getFile();
-            if (FileWriter.getExtension(file).equals(".csv")) new CsvWriter().writeDataToFile(file, kunde);
-            else new JobjWriter().writeDataToFile(file, kunde);
+            if (FileWriter.getExtension(file).equals(".csv")) new CsvWriter().writeObjectDataToFile(file, kunde);
+            else new JobjWriter().writeObjectDataToFile(file, kunde);
 
 
         } catch (InvalidNameFormatException e) {

@@ -109,7 +109,7 @@ public class NewPolicyController{
         File file = new File(k.getFilePath());
         if (file.exists()) {
             try {
-                new JobjWriter().writeDataToFile(file, k);
+                new JobjWriter().writeObjectDataToFile(file, k);
             } catch (IOException e) {
                 e.printStackTrace();
                 AlertHelper.createAlert(Alert.AlertType.WARNING, "Endringer ikke lagret", "Kundeobjektet denne forsikringen er knyttet til, er ikke lagret til disk!");

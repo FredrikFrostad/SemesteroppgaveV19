@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class FritidsboligTest {
-
+public class BåtThreadsTest {
+    Thread reader;
     @Test
     public void verifySerialization() {
         Fritidsbolig f1 = new Fritidsbolig(
@@ -27,13 +27,15 @@ public class FritidsboligTest {
                 200000);
 
         Fritidsbolig f2 = null;
-        JobjReader reader = new JobjReader();
+        Object[] båt = new Object[0];
         JobjWriter writer = new JobjWriter();
         File file = new File("testfile.jobj");
+        Thread thread = new Thread( new JobjReader(file, båt));
+        thread.start();
 
         try {
             writer.writeObjectDataToFile(file, f1);
-            f2 = (Fritidsbolig) reader.readDataFromFile(file);
+            f2 = (Fritidsbolig) båt[0];
         } catch (Exception e) {
             e.printStackTrace();
         }

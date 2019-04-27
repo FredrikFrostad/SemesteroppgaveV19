@@ -2,7 +2,7 @@ package com.programutvikling.models.data.forsikring;
 
 import com.programutvikling.models.data.ObjectType;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Båt extends Forsikring{
 
@@ -21,9 +21,9 @@ public class Båt extends Forsikring{
     }
 
 
-    public Båt(double premieAnnum, double forsikringsSum, String betingelser, String eier, String regNr,
+    public Båt(int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String eier, String regNr,
                String typeBåt, String modell, int lengde, int årsmodell, String motorType, String effekt) {
-        super(premieAnnum, forsikringsSum, betingelser);
+        super(type, forsNr, premieAnnum, forsikringsSum, betingelser);
         this.eier = eier;
         this.regNr = regNr;
         this.typeBåt = typeBåt;
@@ -98,10 +98,22 @@ public class Båt extends Forsikring{
         this.effekt = effekt;
     }
 
+    public void setPremieAnum(double premieAnnum) {super.setPremieAnnum(premieAnnum);}
+
+    public void setForsikringsSum(double sum) {super.setForsikringsSum(sum);}
+
+    public void setForsikrNr(int nr) {super.setForsikrNr(nr);}
+
+    public ObjectType getType() {return type;}
+
+    public void setAvtaleOpprettet(LocalDate avtaleOpprettet) throws IllegalAccessException{
+            super.setAvtaleOpprettet(avtaleOpprettet);
+    }
+
     @Override
     public String toString() {
-        return "Båt{" +
-                super.toString() +
+        return  "type=" + type +
+                "," + super.toString() +
                 ", eier=" + eier +
                 ", regNr=" + regNr +
                 ", typeBåt=" + typeBåt +
@@ -109,8 +121,6 @@ public class Båt extends Forsikring{
                 ", lengde=" + lengde +
                 ", årsmodell=" + årsmodell +
                 ", motorType=" + motorType +
-                ", effekt=" + effekt +
-                ", type=" + type +
-                '}';
+                ", effekt=" + effekt;
     }
 }

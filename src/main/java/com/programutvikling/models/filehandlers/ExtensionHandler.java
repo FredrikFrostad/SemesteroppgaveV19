@@ -4,7 +4,7 @@ import com.programutvikling.models.exceptions.InvalidFileFormatException;
 
 import java.io.File;
 
-public abstract class FileHandler {
+public class ExtensionHandler {
 
     /**
      * Method for providing the extension of a file.

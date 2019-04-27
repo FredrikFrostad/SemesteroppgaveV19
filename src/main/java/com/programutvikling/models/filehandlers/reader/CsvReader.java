@@ -29,14 +29,16 @@ public class CsvReader extends FileReader implements Runnable{
     public  File file;
     private List<Object> returnValue = new ArrayList<>();
 
+    public CsvReader() {}
+
     public CsvReader(File file){
         this.file = file;
     }
 
     @Override
-    public Object readDataFromFile(File file) throws IOException {
+    public ArrayList<String[]> readDataFromFile(File file) throws IOException {
         BufferedReader reader = null;
-        List<Object> objLst = new ArrayList<>();
+        ArrayList<String[]> objLst = new ArrayList<>();
 
         try {
             String line = "";

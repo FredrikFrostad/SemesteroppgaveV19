@@ -19,10 +19,11 @@ public class KundeTest {
         Kunde kunde = new Kunde(
                 "Knut",
                 "Hagen",
-                "123456",
+                123456,
                 "Testerudbakke 3 9989 Nordpå");
 
         Båt b1 = new Båt(
+                123456,
                 12000,
                 400000,
                 "Betingelser",
@@ -48,7 +49,7 @@ public class KundeTest {
                 e.printStackTrace();
             }
         try {
-            writer.writeDataToFile(file, kunde);
+            writer.writeObjectDataToFile(file, kunde);
             kundeFromFile = (Kunde)reader.getReturnValue();
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,7 +72,7 @@ public class KundeTest {
         Kunde k2 = new Kunde(
                 "Test",
                 "Testesen",
-                "123456",
+                123456,
                 "Testeveien 11 1111 Testerud"
         );
 

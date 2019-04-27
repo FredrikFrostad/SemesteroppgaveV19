@@ -1,14 +1,13 @@
 package com.programutvikling.models.filehandlers.reader;
 
 import com.programutvikling.mainapp.MainApp;
-import com.programutvikling.models.exceptions.InvalidFileFormatException;
-import com.programutvikling.models.filehandlers.FileHandler;
+import com.programutvikling.models.filehandlers.ExtensionHandler;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public abstract class FileReader extends FileHandler {
+public abstract class FileReader extends ExtensionHandler {
 
     /**
      * Metode for å velge en filfra maskinens filsystem

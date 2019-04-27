@@ -5,15 +5,17 @@ import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
-import com.programutvikling.models.filehandlers.FileHandler;
+import com.programutvikling.models.filehandlers.ExtensionHandler;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.utils.helpers.AlertHelper;
+import com.programutvikling.models.utils.helpers.DbImportHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -59,13 +61,16 @@ public class mainPageController {
         k_forsNr.setEditable(false);
         k_opDato.setEditable(false);
         selectedKundeField.setEditable(false);
-        refreshKundeTable();
-
 
         initClientTable();
+        initDb();
+        refreshTable();
     }
 
 
+    /**
+     * Initialises column names and valueproperties for the Client tableview
+     */
     private void initClientTable() {
 
         kundeCol1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
@@ -98,6 +103,10 @@ public class mainPageController {
 
 
 
+    /**
+     * When a row containing client data is selected, the corresponding client object is set as activive in MainApp.
+     * A string describing the selected clien object is also set in the Insurance policies tab.
+     */
     @FXML
     private void selectClient() {
         Kunde k = clientTable.getSelectionModel().getSelectedItem();
@@ -116,7 +125,6 @@ public class mainPageController {
         if (tabForsikring.isSelected()) {
             System.out.println("EVENT FORSIKRING TRIGGERED!!");
             initForsikringsTable();
-
         }
         else if (tabKunder.isSelected()) {
             System.out.println("EVENT KUNDER TRIGGERED");
@@ -134,7 +142,7 @@ public class mainPageController {
     private void populateClientFields(Kunde k) {
         k_fornavn.setText(k.getFornavn());
         k_etternavn.setText(k.getEtternavn());
-        k_forsNr.setText(k.getForsikrNr());
+        k_forsNr.setText(Integer.toString(k.getForsikrNr()));
         k_adr.setText(k.getFakturaadresse());
         k_opDato.setText(k.getKundeOpprettet().toString());
     }
@@ -170,7 +178,8 @@ public class mainPageController {
 
         try {
             File file = FileReader.getFile();
-            if (FileHandler.getExtension(file).equals(".csv")) {
+            if (ExtensionHandler.getExtension(file).equals(".csv")) {
+
                 CsvReader csvReader = new CsvReader(file);
                 Thread thread = new Thread(csvReader);
                 thread.start();
@@ -209,8 +218,7 @@ public class mainPageController {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR,"En feil har oppstått", e.getMessage());
         }
-        refreshKundeTable(event);
-        event.consume();
+        refreshTable();
     }
 
     @FXML
@@ -218,7 +226,7 @@ public class mainPageController {
         Kunde k = MainApp.getSelectedKunde();
         k.setFornavn(k_fornavn.getText());
         k.setEtternavn(k_etternavn.getText());
-        refreshKundeTable(event);
+        refreshTable();
     }
 
     @FXML
@@ -226,8 +234,8 @@ public class mainPageController {
         File file = new File(MainApp.getSelectedKunde().getFilePath());
 
         try {
-            if (FileHandler.getExtension(file).equals(".jobj")) {
-                new JobjWriter().writeDataToFile(file, MainApp.getSelectedKunde());
+            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
+                new JobjWriter().writeObjectDataToFile(file, MainApp.getSelectedKunde());
             }
 
         } catch (InvalidFileFormatException e) {
@@ -241,23 +249,21 @@ public class mainPageController {
     /**
      * Method for refreshing the kunde tableview. This method is public to enable other screens to
      * refresh the tableview if a change has happened.
-     * @param event is consumed
      */
     @FXML
-    public void refreshKundeTable(ActionEvent event) {
+    public void refreshTable() {
         clientTable.getItems().clear();
         clientTable.getItems().addAll(MainApp.getClientList());
-        event.consume();
-    }
-    public void refreshKundeTable() {
-        clientTable.getItems().clear();
-        clientTable.getItems().addAll(MainApp.getClientList());
-    }
-    public void refreshForsikringsTable(){
         tableOverviewForsikring.getItems().clear();
     }
 
-
+    /**
+     * Loads db data into program
+     */
+    private void initDb() {
+        DbImportHelper importer = new DbImportHelper();
+        importer.importDbFromCsv();
+    }
 
 
 }

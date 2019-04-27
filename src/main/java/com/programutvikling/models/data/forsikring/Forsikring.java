@@ -3,26 +3,28 @@ package com.programutvikling.models.data.forsikring;
 import com.programutvikling.models.data.ObjectType;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 public abstract class Forsikring implements Serializable {
 
-    private static ObjectType type = ObjectType.FORSIKRING;
+    private ObjectType type;
+    private int forsikrNr;
     private double premieAnnum;
     private double forsikringsSum;
-    private Date avtaleOpprettet;
+    private LocalDate avtaleOpprettet;
     private String betingelser;
     private transient String filePath;
 
     public Forsikring() {
-        this.avtaleOpprettet = new Date();
     }
 
-    public Forsikring(double premieAnnum, double forsikringsSum, String betingelser) {
+    public Forsikring(ObjectType type, int forsNr, double premieAnnum, double forsikringsSum, String betingelser) {
+        this.forsikrNr = forsNr;
         this.premieAnnum = premieAnnum;
         this.forsikringsSum = forsikringsSum;
-        this.avtaleOpprettet = new Date();
+        this.avtaleOpprettet = LocalDate.now();
         this.betingelser = betingelser;
+        this.type = type;
     }
 
     public double getPremieAnnum() {
@@ -41,11 +43,14 @@ public abstract class Forsikring implements Serializable {
         this.forsikringsSum = forsikringsSum;
     }
 
-    public Date getAvtaleOpprettet() {
+    public LocalDate getAvtaleOpprettet() {
         return avtaleOpprettet;
     }
 
-    public void setAvtaleOpprettet(Date avtaleOpprettet) {
+    public void setAvtaleOpprettet(LocalDate avtaleOpprettet) throws IllegalAccessException {
+        if (this.avtaleOpprettet != null) {
+            throw new IllegalAccessException("The date cannot be changed once it is set");
+        }
         this.avtaleOpprettet = avtaleOpprettet;
     }
 
@@ -65,13 +70,19 @@ public abstract class Forsikring implements Serializable {
         this.filePath = filePath;
     }
 
-    public Enum getType() {
-        return type;
-    }
+    public void setForsikrNr(int nr) {this.forsikrNr = nr;}
+
+    public int getForsikrNr() {return this.forsikrNr;}
+
+    public void setType (ObjectType type) {this.type = type;}
+
+    public ObjectType getType() {return this.type;}
+
 
     @Override
     public String toString() {
-        return "premieAnnum=" + premieAnnum +
+        return  "forsikringsNummer=" + forsikrNr +
+                ", premieAnnum=" + premieAnnum +
                 ", forsikringsSum=" + forsikringsSum +
                 ", avtaleOpprettet=" + avtaleOpprettet +
                 ", betingelser=" + betingelser;

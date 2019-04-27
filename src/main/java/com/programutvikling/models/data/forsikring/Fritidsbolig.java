@@ -21,10 +21,10 @@ public class Fritidsbolig extends Forsikring implements Serializable {
         super();
     }
 
-    public Fritidsbolig(double premieAnnum, double forsikringsSum, String betingelser, String adresse, int byggeaar,
+    public Fritidsbolig(ObjectType type, int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String adresse, int byggeaar,
                         String boligtype, String byggemateriale, String standard, int areal,
                         double forsikringsbeløpByggning, double forsikringsbeløpInnbo) {
-        super(premieAnnum, forsikringsSum, betingelser);
+        super(type, forsNr,premieAnnum, forsikringsSum, betingelser);
         this.adresse = adresse;
         this.byggeaar = byggeaar;
         this.boligtype = boligtype;
@@ -100,22 +100,20 @@ public class Fritidsbolig extends Forsikring implements Serializable {
     }
 
     @Override
-    public Enum getType() { return type;}
+    public ObjectType getType() { return type;}
 
     @Override
     public String toString() {
-        return "Fritidsbolig{" +
-                super.toString() +
-                "adresse=" + adresse +
+        return "type=" + type +
+                "," + super.toString() +
+                ", adresse=" + adresse +
                 ", byggeaar=" + byggeaar +
                 ", boligtype=" + boligtype +
                 ", byggemateriale=" + byggemateriale +
                 ", standard=" + standard +
                 ", areal=" + areal +
                 ", forsikringsbeløpByggning=" + forsikringsbeløpByggning +
-                ", forsikringsbeløpInnbo=" + forsikringsbeløpInnbo +
-                ", type=" + type +
-                '}';
+                ", forsikringsbeløpInnbo=" + forsikringsbeløpInnbo;
     }
 
     public static void main(String[] args) {

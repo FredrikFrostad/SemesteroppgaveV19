@@ -1,16 +1,14 @@
 package com.programutvikling.models.filehandlers.writer;
 
 import com.programutvikling.mainapp.MainApp;
-import com.programutvikling.models.data.kunde.Kunde;
-import com.programutvikling.models.exceptions.IllegalFileNameException;
-import com.programutvikling.models.filehandlers.FileHandler;
+import com.programutvikling.models.filehandlers.ExtensionHandler;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class FileWriter extends FileHandler {
+public abstract class FileWriter extends ExtensionHandler {
 
     /**
      * Metode for å velge en filfra maskinens filsystem
@@ -39,12 +37,14 @@ public abstract class FileWriter extends FileHandler {
 
 
     /**
-     * Metode som skriver data til fil.
+     * Metode som skriver et enkelt objekts data til fil.
      * Exceptions skal ikke håndteres i denne klassen, men kastes til kallende metode/klasse
      * @throws IOException
      */
-    public abstract void writeDataToFile(File file, Object obj) throws IOException;
+    public abstract void writeObjectDataToFile(File file, Object obj) throws IOException;
 
-    //public abstract void writeDataToFile(File file, ArrayList<Kunde> list) throws IOException;
+    //public abstract void writeObjectDataToFile(File file, ArrayList<Kunde> list) throws IOException;
+
+    public abstract void writeDatabaseToFile(File file, ArrayList<Object> list) throws IOException;
 
 }
