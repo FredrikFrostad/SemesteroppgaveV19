@@ -10,6 +10,7 @@ import javafx.concurrent.Task;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DbImportHelper extends Task {
 
@@ -17,13 +18,17 @@ public class DbImportHelper extends Task {
     public void importDbFromCsv() {
 
         String filePath = MainApp.getDatabaseFilePath().getAbsolutePath() + File.separator;
+        System.out.println("Printfilepath 1 " + filePath);
         File[] dbFiles = new File(filePath).listFiles();
+        System.out.println("Antall filer: " + dbFiles.length);
         ArrayList<Kunde> clientList = MainApp.getClientList();
-        ArrayList<String[]> policyList = new ArrayList<>();
+        ArrayList<String[]> policyList;
         CsvReader reader = new CsvReader();
 
+        Arrays.sort(dbFiles);
 
         for (File file : dbFiles) {
+            System.out.println(file.getAbsolutePath());
             try {
                 if (file.getName().equals("clients.csv")) {
                     ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
@@ -35,6 +40,17 @@ public class DbImportHelper extends Task {
                     }
                 } else {
                     policyList = reader.readDataFromFile(new File(file.getAbsolutePath()));
+                    for (String[] s : policyList) {
+
+                        Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
+
+                        for (Kunde k : clientList) {
+                            if (k.getForsikrNr() == f.getForsikrNr()) {
+                                k.getForsikringer().add(f);
+                            }
+                        }
+
+                    }
                 }
 
             } catch (IOException e) {
@@ -43,18 +59,7 @@ public class DbImportHelper extends Task {
                 e.printStackTrace();
             }
         }
-        for (String[] s : policyList) {
-            try {
-                Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
-                for (Kunde k : clientList) {
-                    if (k.getForsikrNr() == f.getForsikrNr()) {
-                        k.getForsikringer().add(f);
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+
     }
 
     /**

@@ -27,11 +27,13 @@ public class MainApp extends Application {
     private static File databaseFilePath;
     private static File userSaveFilepath;
     private static final String PROJECTFOLDER = "SemesteroppgaveV19";
-    private static ArrayList<Kunde> clientList = new ArrayList<>();
+    private static ArrayList<Kunde> clientList;
     private static Kunde selectedKunde = null;
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        clientList = new ArrayList<>();
 
         // This method is called to create a project folder for the applications files
         // To change the location of the project folder, change the PROJECTFOLDER variable in this class
