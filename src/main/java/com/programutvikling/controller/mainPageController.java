@@ -13,6 +13,7 @@ import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.utils.helpers.DbImportHelper;
+import com.programutvikling.models.utils.helpers.FormatPolicyTableHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -107,6 +108,22 @@ public class mainPageController {
         populateClientFields(k);
         selectedKundeField.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
     }
+
+    @FXML
+    private void selectPolicy() {
+        if (tableOverviewForsikring.getSelectionModel().getSelectedItem() != null) {
+
+            Forsikring f = tableOverviewForsikring.getSelectionModel().getSelectedItem();
+
+            if (tableOverviewForsikring.getSelectionModel().getSelectedItem() != null &&
+                    !tableDetailsForsikring.getSelectionModel().getSelectedItem().getType().equals(f.getType()) ) {
+                FormatPolicyTableHelper.formatCollumns(tableDetailsForsikring, f);
+            }
+                tableDetailsForsikring.getItems().clear();
+                tableDetailsForsikring.getItems().add(f);
+        }
+    }
+
 
 
     /**
