@@ -50,7 +50,7 @@ public class mainPageController {
     @FXML
     private TableColumn<Kunde, String> kundeCol1, kundeCol2, kundeCol3;
 
-    //Todo: generate data for unused fields
+    //Todo: generate data for unused fields, also these fields must be uneditable!!
     @FXML
     private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato, policyCountField, yearlyAmountField;
 
@@ -60,11 +60,8 @@ public class mainPageController {
 
     @FXML
     private void initialize() {
-        k_forsNr.setEditable(false);
-        k_opDato.setEditable(false);
-        selectedKundeField.setEditable(false);
-
         initClientTable();
+        initForsikringsTable();
         initDb();
         refreshTable();
     }
@@ -80,18 +77,12 @@ public class mainPageController {
         kundeCol3.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
     }
 
-
+    /**
+     * Initialises column names and valueproperties for the insurance overview tableview
+     */
     private void initForsikringsTable() {
         overviewCol1.setCellValueFactory(new PropertyValueFactory<>("type"));
         overviewCol2.setCellValueFactory(new PropertyValueFactory<>("premieAnnum"));
-
-        if (!MainApp.getSelectedKunde().getForsikringer().isEmpty()) {
-            System.out.println("Loading forsikringer");
-            tableOverviewForsikring.getItems().addAll(MainApp.getSelectedKunde().getForsikringer());
-        } else {
-            System.out.println("loading forsikringer failed");
-        }
-
     }
 
 
@@ -126,7 +117,7 @@ public class mainPageController {
     private void tabChanged() {
         if (tabForsikring.isSelected()) {
             System.out.println("EVENT FORSIKRING TRIGGERED!!");
-            initForsikringsTable();
+            refreshTable();
         }
         else if (tabKunder.isSelected()) {
             System.out.println("EVENT KUNDER TRIGGERED");
@@ -188,10 +179,58 @@ public class mainPageController {
     }
 
 
+    @FXML
+    private void saveChanges(ActionEvent event) {
+        Kunde k = MainApp.getSelectedKunde();
+        k.setFornavn(k_fornavn.getText());
+        k.setEtternavn(k_etternavn.getText());
+        refreshTable();
+    }
+
+    @FXML
+    private void saveChangesToFile() {
+        File file = new File(MainApp.getSelectedKunde().getFilePath());
+
+        try {
+            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
+                new JobjWriter().writeObjectDataToFile(file, MainApp.getSelectedKunde());
+            }
+
+        } catch (InvalidFileFormatException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil!", "Kan ikke lagre endringer, finner ikke fil");
+        } catch (IOException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil ved lagring til fil", e.getMessage());
+        }
+
+    }
+
     /**
-     * Method loading clientdata stored to file
-     * @param event is conumed
+     * Method for refreshing the kunde tableview. This method is public to enable other screens to
+     * refresh the tableview if a change has happened.
      */
+    @FXML
+    public void refreshTable() {
+        clientTable.getItems().clear();
+        clientTable.getItems().addAll(MainApp.getClientList());
+        tableOverviewForsikring.getItems().clear();
+        if (MainApp.getSelectedKunde() != null) {
+            Kunde k = MainApp.getSelectedKunde();
+            tableOverviewForsikring.getItems().addAll(k.getForsikringer());
+        }
+    }
+
+    /**
+     * Loads db data into program
+     */
+    private void initDb() {
+        DbImportHelper importer = new DbImportHelper();
+        importer.importDbFromCsv();
+    }
+
+
+}
+
+    /*
     @FXML
     private void loadKunde(ActionEvent event) {
         ArrayList<Kunde> list = MainApp.getClientList();
@@ -240,50 +279,4 @@ public class mainPageController {
         }
         refreshTable();
     }
-
-    @FXML
-    private void saveChanges(ActionEvent event) {
-        Kunde k = MainApp.getSelectedKunde();
-        k.setFornavn(k_fornavn.getText());
-        k.setEtternavn(k_etternavn.getText());
-        refreshTable();
-    }
-
-    @FXML
-    private void saveChangesToFile() {
-        File file = new File(MainApp.getSelectedKunde().getFilePath());
-
-        try {
-            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
-                new JobjWriter().writeObjectDataToFile(file, MainApp.getSelectedKunde());
-            }
-
-        } catch (InvalidFileFormatException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil!", "Kan ikke lagre endringer, finner ikke fil");
-        } catch (IOException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil ved lagring til fil", e.getMessage());
-        }
-
-    }
-
-    /**
-     * Method for refreshing the kunde tableview. This method is public to enable other screens to
-     * refresh the tableview if a change has happened.
-     */
-    @FXML
-    public void refreshTable() {
-        clientTable.getItems().clear();
-        clientTable.getItems().addAll(MainApp.getClientList());
-        tableOverviewForsikring.getItems().clear();
-    }
-
-    /**
-     * Loads db data into program
-     */
-    private void initDb() {
-        DbImportHelper importer = new DbImportHelper();
-        importer.importDbFromCsv();
-    }
-
-
-}
+    */

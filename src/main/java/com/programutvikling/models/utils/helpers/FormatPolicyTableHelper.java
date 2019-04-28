@@ -2,18 +2,14 @@ package com.programutvikling.models.utils.helpers;
 
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.forsikring.Forsikring;
+import javafx.scene.control.TableView;
 
 import java.util.ArrayList;
 
-public class getClientPoliciesHelper {
+public class FormatPolicyTableHelper {
 
-
-    public ArrayList<Forsikring> getClientPolicies() {
-        ArrayList<Forsikring> list = new ArrayList<>();
-
-
-        return list;
+    public TableView<Forsikring> formatCollumns(TableView<Forsikring> viewTable) {
+        return viewTable;
     }
-
 
 }
