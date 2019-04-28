@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class MainApp extends Application {
@@ -29,29 +30,6 @@ public class MainApp extends Application {
     private static final String PROJECTFOLDER = "SemesteroppgaveV19";
     private static ArrayList<Kunde> clientList = new ArrayList<>();
     private static Kunde selectedKunde = null;
-
-
-
-    public static ArrayList<Kunde> getClientList() {
-        return clientList;
-    }
-
-    public static ArrayList<Forsikring> getInsuranceList;
-
-    public static String getPROJECTFOLDER() {
-        return PROJECTFOLDER;
-    }
-
-    public static File getDatabaseFilePath() {return databaseFilePath;}
-
-    public static void setSelectedKunde(Kunde selected) {
-        MainApp.selectedKunde = selected;
-    }
-
-    public static Kunde getSelectedKunde() {
-        return selectedKunde;
-    }
-
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -111,14 +89,21 @@ public class MainApp extends Application {
         }
     }
 
-    private void initTestObjects() {
+    private void initTestObjects() throws InterruptedException {
         // Create testdata if database is empty
-        if (databaseFilePath.listFiles().length == 0) {
-            CsvReader reader = new CsvReader();
+        if (Objects.requireNonNull(databaseFilePath.listFiles()).length == 0) {
+
+            //TODO: lag en generisk klasse som håndterer tråder generelt så man slipper å initialisere Threads hver gang.
+            //Thread implementering for reader.
+            CsvReader reader = new CsvReader(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
+            Thread thread = new Thread(reader);
+            thread.start();
+            thread.join();
+
             try {
 
                 // Adding dummy clients for testing
-                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
+                ArrayList<String[]> list = (ArrayList<String[]>) reader.getReturnValue();
                 for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
@@ -142,6 +127,26 @@ public class MainApp extends Application {
         }
         DbExportHelper export = new DbExportHelper();
         export.exportDbAsCsv();
+    }
+
+    public static ArrayList<Kunde> getClientList() {
+        return clientList;
+    }
+
+    public static ArrayList<Forsikring> getInsuranceList;
+
+    public static String getPROJECTFOLDER() {
+        return PROJECTFOLDER;
+    }
+
+    public static File getDatabaseFilePath() {return databaseFilePath;}
+
+    public static void setSelectedKunde(Kunde selected) {
+        MainApp.selectedKunde = selected;
+    }
+
+    public static Kunde getSelectedKunde() {
+        return selectedKunde;
     }
 
 

@@ -9,6 +9,7 @@ import javafx.concurrent.Task;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 
 public class DbImportHelper extends Task {
@@ -20,13 +21,18 @@ public class DbImportHelper extends Task {
         File[] dbFiles = new File(filePath).listFiles();
         ArrayList<Kunde> clientList = MainApp.getClientList();
         ArrayList<String[]> policyList = new ArrayList<>();
-        CsvReader reader = new CsvReader();
+        CsvReader reader;
+        Thread thread;
 
         for (File file : dbFiles) {
-
             try {
                 if (file.getName().equals("clients.csv")) {
-                    ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
+                    thread = new Thread(reader = new CsvReader(new File(file.getAbsolutePath())));
+                    thread.start();
+                    thread.join();
+
+                    //TODO: fiks casting problemet med return value variabelen i csvreader
+                    ArrayList<String[]> list = (ArrayList<String[]>) reader.getReturnValue();
                     for (String[] s : list) {
                         Kunde k = (Kunde) new CsvObjectBuilder().buildObjectFromString(s);
                         if (!clientListContains(clientList, k)) {
@@ -34,7 +40,10 @@ public class DbImportHelper extends Task {
                         }
                     }
                 } else {
-                    policyList = reader.readDataFromFile(new File(file.getAbsolutePath()));
+                    thread = new Thread(reader = new CsvReader(new File(file.getAbsolutePath())));
+                    thread.start();
+                    thread.join();
+                    policyList = (ArrayList<String[]>) reader.getReturnValue();
                 }
 
             } catch (IOException e) {

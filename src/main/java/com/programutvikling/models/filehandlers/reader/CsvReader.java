@@ -27,9 +27,9 @@ public class CsvReader extends FileReader implements Runnable{
      */
 
     public  File file;
-    private List<Object> returnValue = new ArrayList<>();
+    private ArrayList<String[]> returnValue;
 
-    public CsvReader() {}
+    //public CsvReader() {}
 
     public CsvReader(File file){
         this.file = file;
@@ -72,7 +72,7 @@ public class CsvReader extends FileReader implements Runnable{
         try {
             readDataFromFile(file);
 
-            System.out.println("thread for cvs read from file" );
+            System.out.println("thread for CvsRead from file" );
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
