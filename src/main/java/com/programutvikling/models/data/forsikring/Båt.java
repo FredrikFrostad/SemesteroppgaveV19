@@ -1,6 +1,7 @@
 package com.programutvikling.models.data.forsikring;
 
 import com.programutvikling.models.data.ObjectType;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.time.LocalDate;
 

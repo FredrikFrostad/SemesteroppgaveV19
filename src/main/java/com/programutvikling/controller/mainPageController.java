@@ -119,7 +119,7 @@ public class mainPageController {
         if (tableOverviewForsikring.getSelectionModel().getSelectedItem() != null) {
             Forsikring f = tableOverviewForsikring.getSelectionModel().getSelectedItem();
             tableDetailsForsikring.getColumns().clear();
-            FormatPolicyTableHelper.formatCollumns(tableDetailsForsikring, f);
+            FormatPolicyTableHelper.formatCollumns(this, tableDetailsForsikring, f);
             tableDetailsForsikring.getItems().clear();
             tableDetailsForsikring.getItems().add(f);
         }
