@@ -109,18 +109,19 @@ public class mainPageController {
         selectedKundeField.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
     }
 
+    /**
+     * When a policy is selected, the corrasponding data is displayed in a single row tableview.
+     * The columns of the tableview are generated on demand by the FormatPolicyHelper class, based
+     * on the type enum of the data object.
+     */
     @FXML
     private void selectPolicy() {
         if (tableOverviewForsikring.getSelectionModel().getSelectedItem() != null) {
-
             Forsikring f = tableOverviewForsikring.getSelectionModel().getSelectedItem();
-
-            if (tableOverviewForsikring.getSelectionModel().getSelectedItem() != null &&
-                    !tableDetailsForsikring.getSelectionModel().getSelectedItem().getType().equals(f.getType()) ) {
-                FormatPolicyTableHelper.formatCollumns(tableDetailsForsikring, f);
-            }
-                tableDetailsForsikring.getItems().clear();
-                tableDetailsForsikring.getItems().add(f);
+            tableDetailsForsikring.getColumns().clear();
+            FormatPolicyTableHelper.formatCollumns(tableDetailsForsikring, f);
+            tableDetailsForsikring.getItems().clear();
+            tableDetailsForsikring.getItems().add(f);
         }
     }
 
