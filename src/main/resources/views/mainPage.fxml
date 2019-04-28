@@ -56,7 +56,7 @@
                             <TableColumn fx:id="overviewCol2" prefWidth="108.0" text="Pris pr år" />
                           </columns>
                         </TableView>
-                        <TableView fx:id="tableDetailsForsikring" layoutX="6.0" layoutY="326.0" prefHeight="164.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="326.0" />
+                        <TableView fx:id="tableDetailsForsikring" editable="true" layoutX="6.0" layoutY="326.0" prefHeight="164.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="326.0" />
                         <Text layoutX="298.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEGG TIL FELTER SOM VISER RELEVANT DATA HER" />
                      </children>
                   </AnchorPane>

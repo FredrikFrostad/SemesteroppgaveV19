@@ -2,6 +2,7 @@ package com.programutvikling.models.utils.helpers;
 
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.ObjectType;
+import com.programutvikling.models.data.forsikring.Båt;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -9,6 +10,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.cell.TextFieldTreeCell;
+import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
@@ -44,6 +47,7 @@ public class FormatPolicyTableHelper {
         }
     };
 
+
     public static void formatCollumns(TableView<Forsikring> tableView, Forsikring f) {
         ObjectType type = f.getType();
 
@@ -68,10 +72,18 @@ public class FormatPolicyTableHelper {
 
         TableColumn<Forsikring,Double> col2 = new TableColumn<>("Premie");
         col2.setCellValueFactory(new PropertyValueFactory<>("premieAnnum"));
-        //col2.setOnEditStart(col2.setCellFactory(TextFieldTableCell.forTableColumn()));
+        col2.setCellFactory(TextFieldTableCell.forTableColumn(doubleConverter));
+        col2.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Forsikring, Double>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Forsikring, Double> forsikringDoubleCellEditEvent) {
+                Forsikring f = tableView.getSelectionModel().getSelectedItem();
+                f.setPremieAnnum(forsikringDoubleCellEditEvent.getNewValue());
+            }
+        });
 
         TableColumn<Forsikring,Double> col3 = new TableColumn<>("Forsikringssum");
         col3.setCellValueFactory(new PropertyValueFactory<>("forsikringsSum"));
+
 
         TableColumn<Forsikring,String> col4 = new TableColumn<>("Eier");
         col4.setCellValueFactory(new PropertyValueFactory<>("eier"));
