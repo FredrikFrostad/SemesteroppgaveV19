@@ -5,6 +5,7 @@ import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Båt;
 import com.programutvikling.models.data.forsikring.Forsikring;
+import com.programutvikling.models.data.forsikring.Fritidsbolig;
 import com.programutvikling.models.exceptions.InvalidNumberFormatException;
 import com.programutvikling.models.inputhandlers.Inputvalidator;
 import javafx.beans.value.ObservableValue;
@@ -55,6 +56,8 @@ public class FormatPolicyTableHelper {
     public static void formatCollumns(mainPageController controller, TableView<Forsikring> tableView, Forsikring f) {
         ObjectType type = f.getType();
 
+        formatCommonCells(tableView, controller);
+
         switch (type) {
             case BÅT:
                 formatBoat(tableView, controller);
@@ -69,12 +72,7 @@ public class FormatPolicyTableHelper {
         }
     }
 
-
-    /**
-     * Defines all eventhandlers and cellproperties when a boat insurance policy is displayed
-     * @param tableView Parent node to Tablecolumns
-     */
-    private static void formatBoat(TableView<Forsikring> tableView, mainPageController controller) {
+    private static void formatCommonCells(TableView<Forsikring> tableView, mainPageController controller) {
         TableColumn<Forsikring,Integer> col1 = new TableColumn<>("Polisenummer");
         col1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
 
@@ -100,8 +98,13 @@ public class FormatPolicyTableHelper {
                 controller.refreshTable();
             }
         });
+    }
 
-
+    /**
+     * Defines all eventhandlers and cellproperties when a boat insurance policy is displayed
+     * @param tableView Parent node to Tablecolumns
+     */
+    private static void formatBoat(TableView<Forsikring> tableView, mainPageController controller) {
         TableColumn<Forsikring,String> col4 = new TableColumn<>("Eier");
         col4.setCellValueFactory(new PropertyValueFactory<>("eier"));
         col4.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -200,36 +203,83 @@ public class FormatPolicyTableHelper {
             }
         });
 
-        tableView.getColumns().addAll(col1, col2, col3, col4, col5,col6, col7, col8, col9, col10, col11);
+        tableView.getColumns().addAll(col4, col5,col6, col7, col8, col9, col10, col11);
     }
 
-    private void formatHolidayHome(TableView<Forsikring> tableView) {
+    private void formatHolidayHome(TableView<Forsikring> tableView, mainPageController controller) {
+        TableColumn<Forsikring,String> col4 = new TableColumn<>("Adresse");
+        col4.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        col4.setCellFactory(TextFieldTableCell.forTableColumn());
+        col4.setOnEditCommit(forsikringStringCellEditEvent -> {
+            Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
+            f.setAdresse(forsikringStringCellEditEvent.getNewValue());
+        });
+
+        TableColumn<Forsikring,Integer> col5 = new TableColumn<>("ByggeÅr");
+        col5.setCellValueFactory(new PropertyValueFactory<>("byggeaar"));
+        col5.setCellFactory(TextFieldTableCell.forTableColumn(intConverter));
+        col5.setOnEditCommit(forsikringIntegerCellEditEvent -> {
+            Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
+            f.setByggeaar(forsikringIntegerCellEditEvent.getNewValue());
+        });
+
+        TableColumn<Forsikring,String> col6 = new TableColumn<>("Boligtype");
+        col6.setCellValueFactory(new PropertyValueFactory<>("boligype"));
+        col6.setCellFactory(TextFieldTableCell.forTableColumn());
+        col6.setOnEditCommit(forsikringStringCellEditEvent -> {
+            Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
+            f.setBoligtype(forsikringStringCellEditEvent.getNewValue());
+        });
+
+        TableColumn<Forsikring,String> col7 = new TableColumn<>("Materiale");
+        col7.setCellValueFactory(new PropertyValueFactory<>("byggemateriale"));
+        col7.setCellFactory(TextFieldTableCell.forTableColumn());
+        col7.setOnEditCommit(forsikringStringCellEditEvent -> {
+            Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
+            f.setByggemateriale(forsikringStringCellEditEvent.getNewValue());
+        });
+
+        TableColumn<Forsikring,String> col8 = new TableColumn<>("Standard");
+        col8.setCellValueFactory(new PropertyValueFactory<>("standard"));
+        col8.setCellFactory(TextFieldTableCell.forTableColumn());
+        col8.setOnEditCommit(forsikringStringCellEditEvent -> {
+            Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
+            f.setStandard(forsikringStringCellEditEvent.getNewValue());
+        });
+
+        TableColumn<Forsikring,Integer> col9 = new TableColumn<>("areal");
+        col9.setCellValueFactory(new PropertyValueFactory<>("areal"));
+        col9.setCellFactory(TextFieldTableCell.forTableColumn(intConverter));
+        col9.setOnEditCommit(forsikringIntegerCellEditEvent -> {
+            Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
+            f.setAreal(forsikringIntegerCellEditEvent.getNewValue());
+        });
+
+        TableColumn<Forsikring,Double> col10 = new TableColumn<>("Beløp Bygning");
+        col10.setCellValueFactory(new PropertyValueFactory<>("forsikringsbeløpByggning"));
+        col10.setCellFactory(TextFieldTableCell.forTableColumn(doubleConverter));
+        col10.setOnEditCommit(forsikringDoubleCellEditEvent -> {
+            Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
+            f.setForsikringsbeløpByggning(forsikringDoubleCellEditEvent.getNewValue());
+        });
+
+        TableColumn<Forsikring,Double> col11 = new TableColumn<>("Beløp Innbo");
+        col11.setCellValueFactory(new PropertyValueFactory<>("forsikringsbeløpInnbo"));
+        col11.setCellFactory(TextFieldTableCell.forTableColumn(doubleConverter));
+        col11.setOnEditCommit(forsikringDoubleCellEditEvent -> {
+            Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
+            f.setForsikringsbeløpInnbo(forsikringDoubleCellEditEvent.getNewValue());
+        });
+
+
+
+    }
+    private void formatVilla (TableView < Forsikring > tableView) {
 
     }
 
-    private void formatVilla(TableView<Forsikring> tableView) {
+    private void formatTravel (TableView < Forsikring > tableView) {
 
     }
 
-    private void formatTravel(TableView<Forsikring> tableView) {
-
-    }
-
-
-    private static void formatHelper(TableView<Forsikring> tableView, TableColumn column, String colName, String dataField, Boolean editable, String type) {
-        column.setText(colName);
-        column.setCellValueFactory(new PropertyValueFactory<>(dataField));
-
-        if (editable && type.equals("Double")) {
-            column.setCellFactory(TextFieldTableCell.forTableColumn(doubleConverter));
-            column.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Forsikring, Double>>() {
-                @Override
-                public void handle(TableColumn.CellEditEvent<Forsikring, Double> forsikringDoubleCellEditEvent) {
-                    Forsikring f = tableView.getSelectionModel().getSelectedItem();
-                    SelectionModel<Forsikring> editedForsikring = tableView.getSelectionModel();
-                }
-            });
-        }
-
-    }
 }
