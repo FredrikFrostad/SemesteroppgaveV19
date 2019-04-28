@@ -96,6 +96,8 @@ public class FormatPolicyTableHelper {
                 controller.refreshTable();
             }
         });
+
+        tableView.getColumns().addAll(col1, col2, col3);
     }
 
     /**
@@ -229,7 +231,7 @@ public class FormatPolicyTableHelper {
         });
 
         TableColumn<Forsikring,String> col6 = new TableColumn<>("Boligtype");
-        col6.setCellValueFactory(new PropertyValueFactory<>("boligype"));
+        col6.setCellValueFactory(new PropertyValueFactory<>("boligtype"));
         col6.setCellFactory(TextFieldTableCell.forTableColumn());
         col6.setOnEditCommit(forsikringStringCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
@@ -281,6 +283,8 @@ public class FormatPolicyTableHelper {
             f.setForsikringsbeløpInnbo(forsikringDoubleCellEditEvent.getNewValue());
             controller.refreshTable();
         });
+
+        tableView.getColumns().addAll(col4, col5, col6, col7, col8, col9, col10, col11);
     }
 
     private static void formatTravel (TableView <Forsikring> tableView, mainPageController controller) {

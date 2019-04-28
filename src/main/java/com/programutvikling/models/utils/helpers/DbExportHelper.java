@@ -87,7 +87,7 @@ public class DbExportHelper {
             new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_boat.csv"), boatList);
         }
         if (holidayResiddenceList.size() > 0) {
-            new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_holidayResidence"), holidayResiddenceList);
+            new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_holidayResidence.csv"), holidayResiddenceList);
         }
         if (travelList.size() > 0) {
             new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_travel.csv"), travelList);

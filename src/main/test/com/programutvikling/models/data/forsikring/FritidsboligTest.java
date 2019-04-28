@@ -14,7 +14,6 @@ public class FritidsboligTest {
     @Test
     public void verifySerialization() {
         Fritidsbolig f1 = new Fritidsbolig(
-                ObjectType.FRITIDSBOLIG,
                 123456,
                 3500,
                 1000000,

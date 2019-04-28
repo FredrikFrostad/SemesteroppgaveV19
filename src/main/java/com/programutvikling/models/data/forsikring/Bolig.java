@@ -98,13 +98,18 @@ public class Bolig extends Forsikring {
         this.forsikringsbeløpInnbo = forsikringsbeløpInnbo;
     }
 
+    public void setPremieAnum(double premieAnnum) {super.setPremieAnnum(premieAnnum);}
+
+    public void setForsikringsSum(double sum) {super.setForsikringsSum(sum);}
+
+    public void setForsikrNr(int nr) {super.setForsikrNr(nr);}
+
     @Override
     public ObjectType getType() { return type;}
 
     @Override
     public String toString() {
-        return "type=" + type +
-                "," + super.toString() +
+        return  super.toString() +
                 ", adresse=" + adresse +
                 ", byggeaar=" + byggeaar +
                 ", boligtype=" + boligtype +

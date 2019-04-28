@@ -22,8 +22,8 @@ public class DbImportHelper extends Task {
         ArrayList<String[]> policyList = new ArrayList<>();
         CsvReader reader = new CsvReader();
 
-        for (File file : dbFiles) {
 
+        for (File file : dbFiles) {
             try {
                 if (file.getName().equals("clients.csv")) {
                     ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));

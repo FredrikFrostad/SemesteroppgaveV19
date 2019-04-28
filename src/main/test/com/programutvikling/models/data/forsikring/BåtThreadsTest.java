@@ -14,7 +14,6 @@ public class BåtThreadsTest {
     @Test
     public void verifySerialization() {
         Fritidsbolig f1 = new Fritidsbolig(
-                ObjectType.BÅT,
                 123456,
                 3500,
                 1000000,

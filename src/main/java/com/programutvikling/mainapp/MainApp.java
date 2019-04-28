@@ -92,34 +92,46 @@ public class MainApp extends Application {
     private void initTestObjects() {
         // Create testdata if database is empty
         if (databaseFilePath.listFiles().length == 0) {
+            System.out.println("No data present, loading evaluation data");
             CsvReader reader = new CsvReader();
             try {
 
-                // Adding dummy clients for testing
+                // Adding dummy clients for evaluation
                 ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
                 for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
 
-                //Adding dummy policies for testing
+                //Adding dummy boat policies for testing
                 list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
-                for (String[] s : list) {
-                    Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
-                    for (Kunde k : clientList) {
-                        if (k.getForsikrNr() == f.getForsikrNr()) {
-                            k.getForsikringer().add(f);
-                            System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
-                        }
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+                readPoliciesFromFile(list);
+
+                // Adding dummy Homeowners policies for evaluation
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
+                readPoliciesFromFile(list);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         DbExportHelper export = new DbExportHelper();
         export.exportDbAsCsv();
+    }
+
+    private static void readPoliciesFromFile(ArrayList<String[]> list) {
+        for (String[] s : list) {
+            try {
+                Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
+                for (Kunde k : clientList) {
+                    if (k.getForsikrNr() == f.getForsikrNr()) {
+                        k.getForsikringer().add(f);
+                        System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
+                    }
+                }
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static ArrayList<Kunde> getClientList() {
