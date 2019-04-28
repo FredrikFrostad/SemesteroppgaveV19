@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class DbExportHelper {
+public class DbExportHelperCsv {
 
     private ArrayList<Forsikring> exportList;
     private ArrayList<Object>  boatList;
@@ -19,7 +19,7 @@ public class DbExportHelper {
     private ArrayList<Object> villaList;
     private ArrayList<Object> clients;
 
-    public DbExportHelper() {
+    public DbExportHelperCsv() {
         this.boatList = new ArrayList<>();
         this.holidayResiddenceList = new ArrayList<>();
         this.travelList = new ArrayList<>();

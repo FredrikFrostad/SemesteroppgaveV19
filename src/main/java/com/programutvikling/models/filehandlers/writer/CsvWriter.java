@@ -26,12 +26,12 @@ public class CsvWriter extends FileWriter {
         //objData = trimHeadTail(objData);
 
         //Generating header
-        fWriter.append(getHeaderCsv(objData));
-        fWriter.append("\n");
+        fWriter.write(getHeaderCsv(objData));
+        fWriter.write("\n");
 
         //Generating data
-        fWriter.append(getDataCsv(objData));
-        fWriter.append("\n");
+        fWriter.write(getDataCsv(objData));
+        fWriter.write("\n");
 
         fWriter.flush();
         fWriter.close();
@@ -54,16 +54,16 @@ public class CsvWriter extends FileWriter {
             //Getting header for datafields if firstline of CSV file
             if (isFirstLine) {
                 //Writing header with datafield names
-                fWriter.append(getHeaderCsv(objData));
-                fWriter.append("\n");
-                fWriter.append(getDataCsv(objData));
-                fWriter.append("\n");
+                fWriter.write(getHeaderCsv(objData));
+                fWriter.write("\n");
+                fWriter.write(getDataCsv(objData));
+                fWriter.write("\n");
                 isFirstLine = false;
             }
             // If not first line, object data is written to fields in csv file
             else {
-                fWriter.append(getDataCsv(objData));
-                fWriter.append("\n");
+                fWriter.write(getDataCsv(objData));
+                fWriter.write("\n");
             }
         }
         fWriter.flush();

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class DbImportHelper extends Task {
+public class DbImportHelperCsv extends Task {
 
     //TODO: This should throw exeption up to calling class, also this method is a mess, clean it up!!
     public void importDbFromCsv() {

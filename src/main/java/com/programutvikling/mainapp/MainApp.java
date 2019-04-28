@@ -5,8 +5,7 @@ import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
-import com.programutvikling.models.utils.helpers.ClientNrHelper;
-import com.programutvikling.models.utils.helpers.DbExportHelper;
+import com.programutvikling.models.utils.helpers.DbExportHelperCsv;
 import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
@@ -20,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -42,7 +40,7 @@ public class MainApp extends Application {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
                 System.out.println("Stage is closing - writing data to disk");
-                new DbExportHelper().exportDbAsCsv();
+                new DbExportHelperCsv().exportDbAsCsv();
 
             }
         });
@@ -130,8 +128,8 @@ public class MainApp extends Application {
                 e.printStackTrace();
             }
         }
-        DbExportHelper export = new DbExportHelper();
-        export.exportDbAsCsv();
+        //DbExportHelperCsv export = new DbExportHelperCsv();
+        //export.exportDbAsCsv();
     }
 
     private static void readPoliciesFromFile(ArrayList<String[]> list) {
@@ -141,7 +139,8 @@ public class MainApp extends Application {
                 for (Kunde k : clientList) {
                     if (k.getForsikrNr() == f.getForsikrNr()) {
                         k.getForsikringer().add(f);
-                        System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
+                        break;
+                        //System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
                     }
                 }
             }catch (Exception e) {
