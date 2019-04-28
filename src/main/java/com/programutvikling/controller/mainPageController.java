@@ -125,8 +125,7 @@ public class mainPageController {
         }
     }
 
-
-
+    
     /**
      * Method for reacting to a selectionchange in this views tabpane. The method response is
      * based on the tab selected
