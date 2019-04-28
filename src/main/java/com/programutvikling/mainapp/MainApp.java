@@ -53,7 +53,7 @@ public class MainApp extends Application {
         new ClientNrHelper().init();
 
         //Initialise testData
-        initTestObjects();
+        //initTestObjects();
 
         Parent root = FXMLLoader.load(getClass().getResource("/views/mainPage.fxml"));
         Scene scene = new Scene(root);
@@ -128,8 +128,6 @@ public class MainApp extends Application {
                 e.printStackTrace();
             }
         }
-        //DbExportHelperCsv export = new DbExportHelperCsv();
-        //export.exportDbAsCsv();
     }
 
     private static void readPoliciesFromFile(ArrayList<String[]> list) {

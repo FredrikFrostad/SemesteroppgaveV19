@@ -6,6 +6,9 @@ import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
 import com.programutvikling.models.filehandlers.ExtensionHandler;
+import com.programutvikling.models.filehandlers.reader.FileReader;
+import com.programutvikling.models.filehandlers.reader.JobjReader;
+import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.utils.helpers.DbImportHelperCsv;
@@ -17,7 +20,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class mainPageController {
@@ -56,7 +61,7 @@ public class mainPageController {
     private void initialize() {
         initClientTable();
         initForsikringsTable();
-        initDb();
+        //initDb();
         refreshTable();
     }
 
@@ -155,14 +160,44 @@ public class mainPageController {
      */
     @FXML
     private void exportToFile() {
-
+        try
+        {
+            File file = FileWriter.getFile();
+            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
+                JobjWriter writer = new JobjWriter();
+                writer.writeObjectDataToFile(file, MainApp.getClientList());
+            }
+        } catch (InvalidFileFormatException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+            e.printStackTrace();
+        } catch (IOException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**
      * Imports data objects from either jobj or csv files
      */
     @FXML private void importFromFile() {
+        try {
+            File file = FileReader.getFile();
+            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
+                JobjReader reader = new JobjReader();
+                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(file);
+                for (Kunde k : list) MainApp.getClientList().add(k);
+            }
 
+        }catch (FileNotFoundException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR,"Import feilet", e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
+        }
+        refreshTable();
     }
 
     @FXML
