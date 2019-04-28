@@ -34,6 +34,7 @@ public class mainPageController {
     @FXML
     private Tab tabForsikring, tabKunder, tabSkademeldinger;
 
+    //TODO: generate, format and display data for these fields
     @FXML
     private TableView<Forsikring> tableOverviewForsikring, tableDetailsForsikring;
 
@@ -49,8 +50,9 @@ public class mainPageController {
     @FXML
     private TableColumn<Kunde, String> kundeCol1, kundeCol2, kundeCol3;
 
+    //Todo: generate data for unused fields
     @FXML
-    private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato;
+    private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato, policyCountField, yearlyAmountField;
 
     @FXML
     private TextField selectedKundeField;
@@ -147,6 +149,21 @@ public class mainPageController {
         k_opDato.setText(k.getKundeOpprettet().toString());
     }
 
+    /**
+     * Exports all data objects as a single jobj file or several csv files
+     */
+    @FXML
+    private void exportToFile() {
+
+    }
+
+    /**
+     * Imports data objects from either jobj or csv files
+     */
+    @FXML private void importFromFile() {
+
+    }
+
     @FXML
     private void nyForsikring(ActionEvent event) {
         Kunde k = clientTable.getSelectionModel().getSelectedItem();
@@ -160,7 +177,10 @@ public class mainPageController {
     }
 
 
-
+    /**
+     * Changes to the view for adding a client.
+     * @param event
+     */
     @FXML
     private void newClient(ActionEvent event) {
         ViewChanger vc = new ViewChanger();

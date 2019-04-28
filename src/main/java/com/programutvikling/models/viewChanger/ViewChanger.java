@@ -15,7 +15,6 @@ public class ViewChanger {
     public static HashMap<String, Scene> viewMap = new HashMap<>();
 
     /**
-     * TODO: Vi trenger funskjonalitet som bytter view uten å instansiere controller på nytt hver gang!!
      * Dette kan gjøres ved å ha en egen klasse for views (denne) og sørge for at alle nyew views legges i
      * et hashmap / arraylist som sjekkes før instaniering av nytt view. Dersom viewet allerede er instansier,
      * skal vi IKKE laste på nytt via FXMLLoader, men hente inn den kjørende instansen fra liste.

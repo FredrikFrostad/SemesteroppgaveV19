@@ -43,11 +43,7 @@ public class Inputvalidator {
         if (name.length() > 25) {
             throw new InvalidNameFormatException("Names cannot exceed 25 characters in length");
         }
-        /* TODO: Fjern denne iffen hvis den ikke trengs
-        if (!name.matches("[a-åA-Å]]")) {
-            throw new InvalidNameFormatException("Pleace enter a valid Name");
-        }
-         */
+
         return true;
     }
 

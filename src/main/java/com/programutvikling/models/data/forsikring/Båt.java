@@ -9,7 +9,7 @@ public class Båt extends Forsikring{
     private static ObjectType type = ObjectType.BÅT;
     private String eier;
     private String regNr;
-    private String typeBåt; // TODO: Burde dette vært implementert via en indre enum klasse slik at man kan velge mellom predefinerte alternativer...typ daycruiser, robåt, motorseiler etc...
+    private String typeBåt;
     private String modell;
     private int lengde;
     private int årsmodell;

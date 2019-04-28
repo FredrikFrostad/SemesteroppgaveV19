@@ -6,8 +6,6 @@ import static org.junit.Assert.*;
 
 public class InputhandlerTest {
 
-    //TODO: Legg til så mange testcaser som mulig her. Jeg tester i utgangspunket ganske overfladisk
-
     @Test
     public void checkValidEmailFormat() {
         boolean b = false;

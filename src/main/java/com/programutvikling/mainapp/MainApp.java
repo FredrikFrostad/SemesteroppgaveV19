@@ -30,29 +30,6 @@ public class MainApp extends Application {
     private static ArrayList<Kunde> clientList = new ArrayList<>();
     private static Kunde selectedKunde = null;
 
-
-
-    public static ArrayList<Kunde> getClientList() {
-        return clientList;
-    }
-
-    public static ArrayList<Forsikring> getInsuranceList;
-
-    public static String getPROJECTFOLDER() {
-        return PROJECTFOLDER;
-    }
-
-    public static File getDatabaseFilePath() {return databaseFilePath;}
-
-    public static void setSelectedKunde(Kunde selected) {
-        MainApp.selectedKunde = selected;
-    }
-
-    public static Kunde getSelectedKunde() {
-        return selectedKunde;
-    }
-
-
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -66,10 +43,7 @@ public class MainApp extends Application {
         //Initialise testData
         initTestObjects();
 
-        //Parent root = FXMLLoader.load(getClass().getResource(fxmlChooser(runMode.NORMAL)));
         Parent root = FXMLLoader.load(getClass().getResource("/views/mainPage.fxml"));
-
-
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/views/styles.css").toExternalForm());
 
@@ -95,22 +69,26 @@ public class MainApp extends Application {
             userSaveFilepath = new File(projectFilePath + File.separator + "UserData");
             {
                 if (projectFilePath.exists()) {
-                    System.out.println("Mappen finnes allerede: " + projectFilePath); //TODO: Fjerne testkode ved endelig implementering
+                    System.out.println("Mappen finnes allerede: " + projectFilePath);
                 } else {
-                    System.out.println("Oppretter mappe: " + projectFilePath); //TODO: Fjerne testkode ved endelig implementering
+                    System.out.println("Oppretter mappe: " + projectFilePath);
                     boolean isPathCreated = false;
 
                     if (projectFilePath.mkdirs() && databaseFilePath.mkdir() && userSaveFilepath.mkdir() ) {
                         isPathCreated = true;
                     }
                     if (isPathCreated) {
-                        System.out.println("Mappa er laget!"); //TODO: Fjerne testkode ved endelig implementering
+                        System.out.println("Mappa er laget!");
                     }
                 }
             }
         }
     }
 
+    /**
+     * This method is only here for loading dummy data into the application to make it
+     * easier to evaluate the applications functionality.
+     */
     private void initTestObjects() {
         // Create testdata if database is empty
         if (databaseFilePath.listFiles().length == 0) {
@@ -142,6 +120,26 @@ public class MainApp extends Application {
         }
         DbExportHelper export = new DbExportHelper();
         export.exportDbAsCsv();
+    }
+
+    public static ArrayList<Kunde> getClientList() {
+        return clientList;
+    }
+
+    public static ArrayList<Forsikring> getInsuranceList;
+
+    public static String getPROJECTFOLDER() {
+        return PROJECTFOLDER;
+    }
+
+    public static File getDatabaseFilePath() {return databaseFilePath;}
+
+    public static void setSelectedKunde(Kunde selected) {
+        MainApp.selectedKunde = selected;
+    }
+
+    public static Kunde getSelectedKunde() {
+        return selectedKunde;
     }
 
 
