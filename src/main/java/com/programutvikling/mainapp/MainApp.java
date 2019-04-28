@@ -11,10 +11,13 @@ import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +37,15 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
 
         clientList = new ArrayList<>();
+
+        // For catching program exit via OS native close button
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                System.out.println("Stage is closing - writing data to disk");
+                new DbExportHelper().exportDbAsCsv();
+
+            }
+        });
 
         // This method is called to create a project folder for the applications files
         // To change the location of the project folder, change the PROJECTFOLDER variable in this class
@@ -55,6 +67,8 @@ public class MainApp extends Application {
         stage.setTitle("SemesteroppgaveV2019");
         stage.setScene(scene);
         stage.show();
+
+
     }
 
     /**

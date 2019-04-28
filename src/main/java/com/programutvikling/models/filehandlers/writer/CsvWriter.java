@@ -56,6 +56,8 @@ public class CsvWriter extends FileWriter {
                 //Writing header with datafield names
                 fWriter.append(getHeaderCsv(objData));
                 fWriter.append("\n");
+                fWriter.append(getDataCsv(objData));
+                fWriter.append("\n");
                 isFirstLine = false;
             }
             // If not first line, object data is written to fields in csv file
