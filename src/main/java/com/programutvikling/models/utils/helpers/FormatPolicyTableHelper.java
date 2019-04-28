@@ -276,6 +276,20 @@ public class FormatPolicyTableHelper {
     }
     private void formatVilla (TableView < Forsikring > tableView) {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     private void formatTravel (TableView < Forsikring > tableView) {
