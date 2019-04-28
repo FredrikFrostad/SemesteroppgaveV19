@@ -1,26 +1,16 @@
 package com.programutvikling.models.utils.helpers;
 
 import com.programutvikling.controller.mainPageController;
-import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Båt;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.forsikring.Fritidsbolig;
-import com.programutvikling.models.exceptions.InvalidNumberFormatException;
-import com.programutvikling.models.inputhandlers.Inputvalidator;
-import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
-import javafx.scene.control.SelectionModel;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.control.cell.TextFieldTreeCell;
-import javafx.scene.control.cell.TextFieldTreeTableCell;
-import javafx.util.Callback;
 import javafx.util.StringConverter;
-
-import java.util.ArrayList;
 
 public class FormatPolicyTableHelper {
 
@@ -63,15 +53,23 @@ public class FormatPolicyTableHelper {
                 formatBoat(tableView, controller);
                 break;
             case FRITIDSBOLIG:
-                break;
-            case REISE:
+                formatHomeowner(tableView, controller);
                 break;
             case VILLAINNBO:
+                formatHomeowner(tableView, controller);
+                break;
+            case REISE:
+                formatTravel(tableView, controller);
                 break;
             default:
         }
     }
 
+    /**
+     * Defines all eventhandlers and cellvalueproperties for columns common to all policies
+     * @param tableView Parent node to Tablecolumns
+     * @param controller This is used to refresh the view if an editevent is triggered
+     */
     private static void formatCommonCells(TableView<Forsikring> tableView, mainPageController controller) {
         TableColumn<Forsikring,Integer> col1 = new TableColumn<>("Polisenummer");
         col1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
@@ -206,13 +204,19 @@ public class FormatPolicyTableHelper {
         tableView.getColumns().addAll(col4, col5,col6, col7, col8, col9, col10, col11);
     }
 
-    private void formatHolidayHome(TableView<Forsikring> tableView, mainPageController controller) {
+    /**
+     * Defines all eventhandlers and cellvalueproperties when a Homeowners policy is selected.
+     * @param tableView
+     * @param controller
+     */
+    private static void formatHomeowner(TableView<Forsikring> tableView, mainPageController controller) {
         TableColumn<Forsikring,String> col4 = new TableColumn<>("Adresse");
         col4.setCellValueFactory(new PropertyValueFactory<>("adresse"));
         col4.setCellFactory(TextFieldTableCell.forTableColumn());
         col4.setOnEditCommit(forsikringStringCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setAdresse(forsikringStringCellEditEvent.getNewValue());
+            controller.refreshTable();
         });
 
         TableColumn<Forsikring,Integer> col5 = new TableColumn<>("ByggeÅr");
@@ -221,6 +225,7 @@ public class FormatPolicyTableHelper {
         col5.setOnEditCommit(forsikringIntegerCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setByggeaar(forsikringIntegerCellEditEvent.getNewValue());
+            controller.refreshTable();
         });
 
         TableColumn<Forsikring,String> col6 = new TableColumn<>("Boligtype");
@@ -229,6 +234,7 @@ public class FormatPolicyTableHelper {
         col6.setOnEditCommit(forsikringStringCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setBoligtype(forsikringStringCellEditEvent.getNewValue());
+            controller.refreshTable();
         });
 
         TableColumn<Forsikring,String> col7 = new TableColumn<>("Materiale");
@@ -237,6 +243,7 @@ public class FormatPolicyTableHelper {
         col7.setOnEditCommit(forsikringStringCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setByggemateriale(forsikringStringCellEditEvent.getNewValue());
+            controller.refreshTable();
         });
 
         TableColumn<Forsikring,String> col8 = new TableColumn<>("Standard");
@@ -245,6 +252,7 @@ public class FormatPolicyTableHelper {
         col8.setOnEditCommit(forsikringStringCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setStandard(forsikringStringCellEditEvent.getNewValue());
+            controller.refreshTable();
         });
 
         TableColumn<Forsikring,Integer> col9 = new TableColumn<>("areal");
@@ -253,6 +261,7 @@ public class FormatPolicyTableHelper {
         col9.setOnEditCommit(forsikringIntegerCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setAreal(forsikringIntegerCellEditEvent.getNewValue());
+            controller.refreshTable();
         });
 
         TableColumn<Forsikring,Double> col10 = new TableColumn<>("Beløp Bygning");
@@ -261,6 +270,7 @@ public class FormatPolicyTableHelper {
         col10.setOnEditCommit(forsikringDoubleCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setForsikringsbeløpByggning(forsikringDoubleCellEditEvent.getNewValue());
+            controller.refreshTable();
         });
 
         TableColumn<Forsikring,Double> col11 = new TableColumn<>("Beløp Innbo");
@@ -269,30 +279,11 @@ public class FormatPolicyTableHelper {
         col11.setOnEditCommit(forsikringDoubleCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setForsikringsbeløpInnbo(forsikringDoubleCellEditEvent.getNewValue());
+            controller.refreshTable();
         });
-
-
-
-    }
-    private void formatVilla (TableView < Forsikring > tableView) {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
-    private void formatTravel (TableView < Forsikring > tableView) {
+    private static void formatTravel (TableView <Forsikring> tableView, mainPageController controller) {
 
     }
 
