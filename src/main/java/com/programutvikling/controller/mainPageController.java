@@ -188,7 +188,10 @@ public class mainPageController {
             if (ExtensionHandler.getExtension(file).equals(".jobj")) {
                 JobjReader reader = new JobjReader();
                 ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(file);
-                for (Kunde k : list) MainApp.getClientList().add(k);
+                for (Kunde k : list) {
+                    if (!MainApp.getClientList().contains(k)) MainApp.getClientList().add(k);
+
+                }
             }
 
         }catch (FileNotFoundException e) {
