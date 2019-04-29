@@ -210,14 +210,29 @@ public class mainPageController {
     private void nyForsikring(ActionEvent event) {
         Kunde k = clientTable.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
-        if (k == null) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
-            return;
-        }
+        noCustomerSelected(k);
+
         ViewChanger vc = new ViewChanger();
         vc.setView(rootPane, "newPolicy", "views/newPolicy.fxml");
     }
 
+    @FXML
+    private void nySkademelding(ActionEvent event){
+        Kunde k = clientTable.getSelectionModel().getSelectedItem();
+        MainApp.setSelectedKunde(k);
+        noCustomerSelected(k);
+
+        ViewChanger vc = new ViewChanger();
+        vc.setView(rootPane, "newInjuryRepoert", "views/newInjuryRepoert.fxml");
+
+
+    }
+    private void noCustomerSelected(Kunde k){
+        if (k == null) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
+            return;
+        }
+    }
 
     /**
      * Changes to the view for adding a client.

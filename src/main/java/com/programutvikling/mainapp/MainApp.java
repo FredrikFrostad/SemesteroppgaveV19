@@ -6,6 +6,7 @@ import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.utils.helpers.DbExportHelperCsv;
+import com.programutvikling.models.utils.helpers.ThreadHelper;
 import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
@@ -107,21 +108,25 @@ public class MainApp extends Application {
         // Create testdata if database is empty
         if (databaseFilePath.listFiles().length == 0) {
             System.out.println("No data present, loading evaluation data");
-            CsvReader reader = new CsvReader();
+            CsvReader reader = new CsvReader(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
+            Thread thread = new Thread(reader);
             try {
+                ThreadHelper.runThread(thread);
 
                 // Adding dummy clients for evaluation
-                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
+                ArrayList<String[]> list = (ArrayList<String[]>) reader.getReturnValue();
                 for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
 
                 //Adding dummy boat policies for testing
-                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
+                reader.setNewFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
+                list = (ArrayList<String[]>) reader.getReturnValue();
                 readPoliciesFromFile(list);
 
                 // Adding dummy Homeowners policies for evaluation
-                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
+                reader.setNewFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
+                list = (ArrayList<String[]>) reader.getReturnValue();
                 readPoliciesFromFile(list);
 
             } catch (Exception e) {
@@ -131,6 +136,8 @@ public class MainApp extends Application {
     }
 
     private static void readPoliciesFromFile(ArrayList<String[]> list) {
+
+        Thread thread = new Thread();
         for (String[] s : list) {
             try {
                 Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);

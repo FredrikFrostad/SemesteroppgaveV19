@@ -12,6 +12,8 @@ public class Skademelding {
     private double takseringsBelop;
     private double utbetaltErstatning;
 
+    public Skademelding(){}
+
     public Skademelding(Date skadeDato, int skadeNr, String typeSkade, String skadeBeskrivelse, String kontaktinfoVitner, double takseringsBelop, double utbetaltErstatning) {
         this.skadeDato = skadeDato;
         this.skadeNr = skadeNr;

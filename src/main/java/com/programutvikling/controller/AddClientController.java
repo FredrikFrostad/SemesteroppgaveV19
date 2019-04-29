@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class AddClientController {
 
+
     @FXML
     BorderPane rootPane;
 
