@@ -11,18 +11,24 @@ import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.utils.helpers.AlertHelper;
+import com.programutvikling.models.utils.helpers.DbExportHelperCsv;
 import com.programutvikling.models.utils.helpers.DbImportHelperCsv;
 import com.programutvikling.models.utils.helpers.FormatPolicyTableHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class mainPageController {
@@ -64,6 +70,7 @@ public class mainPageController {
         initDb();
         refreshTable();
     }
+
 
 
     /**
