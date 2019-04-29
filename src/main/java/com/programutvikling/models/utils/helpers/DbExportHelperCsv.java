@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class DbExportHelper {
+public class DbExportHelperCsv {
 
     private ArrayList<Forsikring> exportList;
     private ArrayList<Object>  boatList;
@@ -19,7 +19,7 @@ public class DbExportHelper {
     private ArrayList<Object> villaList;
     private ArrayList<Object> clients;
 
-    public DbExportHelper() {
+    public DbExportHelperCsv() {
         this.boatList = new ArrayList<>();
         this.holidayResiddenceList = new ArrayList<>();
         this.travelList = new ArrayList<>();
@@ -87,7 +87,7 @@ public class DbExportHelper {
             new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_boat.csv"), boatList);
         }
         if (holidayResiddenceList.size() > 0) {
-            new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_holidayResidence"), holidayResiddenceList);
+            new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_holidayResidence.csv"), holidayResiddenceList);
         }
         if (travelList.size() > 0) {
             new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_travel.csv"), travelList);

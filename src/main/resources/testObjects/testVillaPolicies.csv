@@ -1,0 +1,14 @@
+type,forsikringsNummer,premieAnnum,forsikringsSum,avtaleOpprettet,betingelser,adresse,byggeaar,boligtype,byggemateriale,standard,areal,forsikringsbeløpByggning,forsikringsbeløpInnbo
+FRITIDSBOLIG,1,1300,123123,2019-04-28,Betingelser,Elgfaret 11 2022 Gjerdrum,1998,Enebolig,Tre,God,189,20000000,10000000
+FRITIDSBOLIG,2,1301,123124,2019-04-29,Betingelser,Sinsen Terrasse 0182 Oslo,1999,Enebolig,Tre,God,190,20000001,10000001
+FRITIDSBOLIG,4,1302,123125,2019-04-30,Betingelser,Pilestredet 35 0182 Oslo,2000,Rekkehus,Mur,God,191,20000002,10000002
+FRITIDSBOLIG,6,1303,123126,2019-04-22,Betingelser,Gateveien 14 2345 Stedet,2001,Rekkehus,Mur,God,192,20000003,10000003
+FRITIDSBOLIG,7,1304,123127,2019-04-23,Betingelser,Gateveien 14 2345 Stedet,2002,Enebolig,Tre,God,193,20000004,10000004
+FRITIDSBOLIG,9,1305,123128,2019-04-24,Betingelser,Storgata 26 3245 Gjøvik,2003,Enebolig,Mur,God,194,20000005,10000005
+FRITIDSBOLIG,10,1306,123129,2019-04-25,Betingelser,Tunveien 30 2222 Nannestad,2004,Enebolig,Tre,God,195,20000006,10000006
+FRITIDSBOLIG,11,1307,123130,2019-04-26,Betingelser,Åsveien 2 2022 Gjerdrum,2005,Enebolig,Mur,God,196,20000007,10000007
+FRITIDSBOLIG,13,1308,123131,2019-04-27,Betingelser,Jorbærenga 55 2435 Bekkelia,2006,Rekkehus,Tre,God,197,20000008,10000008
+FRITIDSBOLIG,15,1309,123132,2019-04-12,Betingelser,Pilestredet 22 0182 Oslo,2007,Enebolig,Mur,God,198,20000009,10000009
+FRITIDSBOLIG,16,1310,123133,2019-04-13,Betingelser,Kvinnegardslia 10 5456 Ål,2008,Rekkehus,Mur,God,199,20000010,10000010
+FRITIDSBOLIG,17,1311,123134,2019-04-14,Betingelser,Parkveien 8 0185 Oslo,2009,Rekkehus,Tre,God,200,20000011,10000011
+FRITIDSBOLIG,18,1312,123135,2019-04-15,Betingelser,Libakken 1 4524 Dal,2010,Enebolig,Mur,God,201,20000012,10000012

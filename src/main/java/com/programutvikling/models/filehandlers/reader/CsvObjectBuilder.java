@@ -1,9 +1,7 @@
 package com.programutvikling.models.filehandlers.reader;
 
-import com.programutvikling.models.data.forsikring.Båt;
-import com.programutvikling.models.data.forsikring.Fritidsbolig;
-import com.programutvikling.models.data.forsikring.Reise;
-import com.programutvikling.models.data.forsikring.VillaInnbo;
+import com.programutvikling.models.data.ObjectType;
+import com.programutvikling.models.data.forsikring.*;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidObjectTypeException;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
@@ -32,13 +30,13 @@ public class CsvObjectBuilder {
                 out = buildBåtFromCsv(objData);
                 break;
             case("FRITIDSBOLIG"):
-                out = buildFritidsboligFromCsv(objData);
+                out = buildHomeOwnerFromCsv(objData);
                 break;
             case ("REISE"):
                 out = buildReiseFromcsv(objData);
                 break;
             case ("VILLAINNBO"):
-                out = buildVillaInnboFromCsv(objData);
+                out = buildHomeOwnerFromCsv(objData);
                 break;
             default:
                 System.out.println("The type is: " + type);
@@ -67,6 +65,7 @@ public class CsvObjectBuilder {
             k.setForsikrNr(Integer.parseInt(objData[4]));
         }
         k.setFakturaadresse(objData[5]);
+
         return k;
     }
 
@@ -86,20 +85,33 @@ public class CsvObjectBuilder {
         b.setÅrsmodell(Integer.parseInt(objData[11]));
         b.setMotorType(objData[12]);
         b.setEffekt(objData[13]);
+
         return b;
     }
 
-    private Fritidsbolig buildFritidsboligFromCsv(String[] objData) {
-        Fritidsbolig f = new Fritidsbolig();
-        f.setAdresse(objData[0]);
-        f.setByggeaar(Integer.parseInt(objData[1]));
-        f.setBoligtype(objData[2]);
-        f.setByggemateriale(objData[3]);
-        f.setStandard(objData[4]);
-        f.setAreal(Integer.parseInt(objData[5]));
-        f.setForsikringsbeløpByggning(Double.parseDouble(objData[6]));
-        f.setForsikringsbeløpInnbo(Double.parseDouble(objData[7]));
-        return f;
+
+    private Bolig buildHomeOwnerFromCsv(String[] objData) throws Exception {
+        Bolig b = null;
+        if (objData[0].equals(ObjectType.VILLAINNBO.toString())) {
+            b = new VillaInnbo();
+        } else {
+            b = new Fritidsbolig();
+        }
+        b.setForsikrNr(Integer.parseInt(objData[1]));
+        b.setPremieAnum(Double.parseDouble(objData[2]));
+        b.setForsikringsSum(Double.parseDouble(objData[3]));
+        b.setAvtaleOpprettet(LocalDate.parse(objData[4]));
+        b.setBetingelser(objData[5]);
+        b.setAdresse(objData[6]);
+        b.setByggeaar(Integer.parseInt(objData[7]));
+        b.setBoligtype(objData[8]);
+        b.setStandard(objData[9]);
+        b.setByggemateriale(objData[10]);
+        b.setAreal(Integer.parseInt(objData[11]));
+        b.setForsikringsbeløpByggning(Double.parseDouble(objData[12]));
+        b.setForsikringsbeløpInnbo(Double.parseDouble(objData[13]));
+
+        return b;
     }
 
     //TODO: finish this
@@ -108,8 +120,5 @@ public class CsvObjectBuilder {
         throw new Exception();
     }
 
-    //TODO: finish this
-    private VillaInnbo buildVillaInnboFromCsv(String[] objData) throws Exception {
-        throw new NoSuchMethodException();
-    }
+
 }

@@ -1,7 +1,7 @@
 package com.programutvikling.models.filehandlers.writer;
 
-import com.programutvikling.models.data.forsikring.Båt;
-import com.programutvikling.models.data.forsikring.Forsikring;
+import com.programutvikling.models.data.ObjectType;
+import com.programutvikling.models.data.forsikring.*;
 import com.programutvikling.models.data.kunde.Kunde;
 
 import java.io.File;
@@ -26,12 +26,12 @@ public class CsvWriter extends FileWriter {
         //objData = trimHeadTail(objData);
 
         //Generating header
-        fWriter.append(getHeaderCsv(objData));
-        fWriter.append("\n");
+        fWriter.write(getHeaderCsv(objData));
+        fWriter.write("\n");
 
         //Generating data
-        fWriter.append(getDataCsv(objData));
-        fWriter.append("\n");
+        fWriter.write(getDataCsv(objData));
+        fWriter.write("\n");
 
         fWriter.flush();
         fWriter.close();
@@ -54,14 +54,16 @@ public class CsvWriter extends FileWriter {
             //Getting header for datafields if firstline of CSV file
             if (isFirstLine) {
                 //Writing header with datafield names
-                fWriter.append(getHeaderCsv(objData));
-                fWriter.append("\n");
+                fWriter.write(getHeaderCsv(objData));
+                fWriter.write("\n");
+                fWriter.write(getDataCsv(objData));
+                fWriter.write("\n");
                 isFirstLine = false;
             }
             // If not first line, object data is written to fields in csv file
             else {
-                fWriter.append(getDataCsv(objData));
-                fWriter.append("\n");
+                fWriter.write(getDataCsv(objData));
+                fWriter.write("\n");
             }
         }
         fWriter.flush();
@@ -128,5 +130,60 @@ public class CsvWriter extends FileWriter {
         }
         //System.out.println(out.toString());
         return out.toString();
+    }
+
+    public static void main(String[] args) {
+        CsvWriter writer = new CsvWriter();
+
+        VillaInnbo v = new VillaInnbo(9999,
+                1300,
+                123123,
+                "Betingelser",
+                "Bytunet 4 5487 Stedet",
+                1998, "Enebolig",
+                "Tre",
+                "God",
+                189,
+                20000000,
+                10000000);
+
+        Fritidsbolig f = new Fritidsbolig(9999,
+                1300,
+                123123,
+                "Betingelser",
+                "Bytunet 4 5487 Stedet",
+                1998, "Enebolig",
+                "Tre",
+                "God",
+                189,
+                20000000,
+                10000000);
+        Båt b = new Båt(
+                123456,
+                12000,
+                400000,
+                "Betingelser",
+                "Kjell Normann",
+                "BD1234",
+                "Daycriuser",
+                "Ibiza",
+                32,
+                2014,
+                "Utenbords",
+                "150");
+
+        ArrayList<Object> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add(f);
+        }
+
+        try {
+            writer.writeObjectDataToFile(new File("Villatest.csv"), v);
+            writer.writeObjectDataToFile(new File("Fritidtest.csv"), f);
+            writer.writeDatabaseToFile(new File("fritidsarray.csv"), list);
+            writer.writeObjectDataToFile(new File("boattest.csv"),b);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

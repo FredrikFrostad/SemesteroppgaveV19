@@ -5,20 +5,20 @@ import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
-import com.programutvikling.models.utils.helpers.ClientNrHelper;
-import com.programutvikling.models.utils.helpers.DbExportHelper;
-import com.programutvikling.models.utils.helpers.ThreadHelper;
+import com.programutvikling.models.utils.helpers.DbExportHelperCsv;
 import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -28,11 +28,22 @@ public class MainApp extends Application {
     private static File databaseFilePath;
     private static File userSaveFilepath;
     private static final String PROJECTFOLDER = "SemesteroppgaveV19";
-    private static ArrayList<Kunde> clientList = new ArrayList<>();
+    private static ArrayList<Kunde> clientList;
     private static Kunde selectedKunde = null;
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        clientList = new ArrayList<>();
+
+        // For catching program exit via OS native close button
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                System.out.println("Stage is closing - writing data to disk");
+                new DbExportHelperCsv().exportDbAsCsv();
+
+            }
+        });
 
         // This method is called to create a project folder for the applications files
         // To change the location of the project folder, change the PROJECTFOLDER variable in this class
@@ -54,6 +65,8 @@ public class MainApp extends Application {
         stage.setTitle("SemesteroppgaveV2019");
         stage.setScene(scene);
         stage.show();
+
+
     }
 
     /**
@@ -91,48 +104,47 @@ public class MainApp extends Application {
      * easier to evaluate the applications functionality.
      */
     private void initTestObjects() {
-        System.out.println(databaseFilePath.toString());
         // Create testdata if database is empty
         if (databaseFilePath.listFiles().length == 0) {
-
-            CsvReader reader = new CsvReader(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
-
+            System.out.println("No data present, loading evaluation data");
+            CsvReader reader = new CsvReader();
             try {
-                Thread threadForClientData = new Thread(reader);
-                ThreadHelper.runThread(threadForClientData);
 
-                // Adding dummy clients for testing
-                ArrayList<String[]> list = (ArrayList<String[]>) reader.getReturnValue();
+                // Adding dummy clients for evaluation
+                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
                 for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
 
-                reader.setNewFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
+                //Adding dummy boat policies for testing
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
+                readPoliciesFromFile(list);
 
-                //Running up threads to handle data reading
-                Thread threadForPolicyData = new Thread(reader);
-                ThreadHelper.runThread(threadForPolicyData);
+                // Adding dummy Homeowners policies for evaluation
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
+                readPoliciesFromFile(list);
 
-
-                //Adding dummy policies for testing
-                list = (ArrayList<String[]>) reader.getReturnValue();
-                for (String[] s : list) {
-                    Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
-                    for (Kunde k : clientList) {
-                        if (k.getForsikrNr() == f.getForsikrNr()) {
-                            k.getForsikringer().add(f);
-                            System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
-                        }
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        DbExportHelper export = new DbExportHelper();
-        export.exportDbAsCsv();
+    }
+
+    private static void readPoliciesFromFile(ArrayList<String[]> list) {
+        for (String[] s : list) {
+            try {
+                Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
+                for (Kunde k : clientList) {
+                    if (k.getForsikrNr() == f.getForsikrNr()) {
+                        k.getForsikringer().add(f);
+                        break;
+                        //System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
+                    }
+                }
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static ArrayList<Kunde> getClientList() {

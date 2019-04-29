@@ -6,17 +6,15 @@ import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
 import com.programutvikling.models.filehandlers.ExtensionHandler;
-import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
-import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
+import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
 import com.programutvikling.models.utils.helpers.AlertHelper;
-import com.programutvikling.models.utils.helpers.DbImportHelper;
+import com.programutvikling.models.utils.helpers.DbImportHelperCsv;
 import com.programutvikling.models.utils.helpers.FormatPolicyTableHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -104,9 +102,12 @@ public class mainPageController {
     @FXML
     private void selectClient() {
         Kunde k = clientTable.getSelectionModel().getSelectedItem();
-        MainApp.setSelectedKunde(k);
-        populateClientFields(k);
-        selectedKundeField.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
+        if (k != null) {
+            MainApp.setSelectedKunde(k);
+            populateClientFields(k);
+            selectedKundeField.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
+        }
+
     }
 
     /**
@@ -162,14 +163,47 @@ public class mainPageController {
      */
     @FXML
     private void exportToFile() {
-
+        try
+        {
+            File file = FileWriter.getFile();
+            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
+                JobjWriter writer = new JobjWriter();
+                writer.writeObjectDataToFile(file, MainApp.getClientList());
+            }
+        } catch (InvalidFileFormatException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+            e.printStackTrace();
+        } catch (IOException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**
      * Imports data objects from either jobj or csv files
      */
     @FXML private void importFromFile() {
+        try {
+            File file = FileReader.getFile();
+            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
+                JobjReader reader = new JobjReader();
+                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(file);
+                for (Kunde k : list) {
+                    if (!MainApp.getClientList().contains(k)) MainApp.getClientList().add(k);
 
+                }
+            }
+
+        }catch (FileNotFoundException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR,"Import feilet", e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
+        }
+        refreshTable();
     }
 
     @FXML
@@ -240,11 +274,9 @@ public class mainPageController {
      * Loads db data into program
      */
     private void initDb() {
-        DbImportHelper importer = new DbImportHelper();
+        DbImportHelperCsv importer = new DbImportHelperCsv();
         importer.importDbFromCsv();
-
     }
 
 
 }
-
