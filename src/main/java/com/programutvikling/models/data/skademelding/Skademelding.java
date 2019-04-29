@@ -22,6 +22,7 @@ public class Skademelding {
         this.utbetaltErstatning = utbetaltErstatning;
     }
 
+
     public Date getSkadeDato() {
         return skadeDato;
     }
