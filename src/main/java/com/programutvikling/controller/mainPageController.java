@@ -61,7 +61,7 @@ public class mainPageController {
     private void initialize() {
         initClientTable();
         initForsikringsTable();
-        //initDb();
+        initDb();
         refreshTable();
     }
 
@@ -102,9 +102,12 @@ public class mainPageController {
     @FXML
     private void selectClient() {
         Kunde k = clientTable.getSelectionModel().getSelectedItem();
-        MainApp.setSelectedKunde(k);
-        populateClientFields(k);
-        selectedKundeField.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
+        if (k != null) {
+            MainApp.setSelectedKunde(k);
+            populateClientFields(k);
+            selectedKundeField.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
+        }
+
     }
 
     /**

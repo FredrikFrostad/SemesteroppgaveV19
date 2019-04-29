@@ -287,6 +287,7 @@ public class FormatPolicyTableHelper {
         tableView.getColumns().addAll(col4, col5, col6, col7, col8, col9, col10, col11);
     }
 
+    //Todo: implement this
     private static void formatTravel (TableView <Forsikring> tableView, mainPageController controller) {
 
     }

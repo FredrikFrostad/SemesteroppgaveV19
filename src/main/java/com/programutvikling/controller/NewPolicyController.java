@@ -105,17 +105,6 @@ public class NewPolicyController{
         Kunde k = MainApp.getSelectedKunde();
         k.getForsikringer().add(forsikring);
 
-        //Skriver endringer til fil
-        File file = new File(k.getFilePath());
-        if (file.exists()) {
-            try {
-                new JobjWriter().writeObjectDataToFile(file, k);
-            } catch (IOException e) {
-                e.printStackTrace();
-                AlertHelper.createAlert(Alert.AlertType.WARNING, "Endringer ikke lagret", "Kundeobjektet denne forsikringen er knyttet til, er ikke lagret til disk!");
-            }
-        }
-
     }
 
     private Fritidsbolig createFritidsBolig() {
