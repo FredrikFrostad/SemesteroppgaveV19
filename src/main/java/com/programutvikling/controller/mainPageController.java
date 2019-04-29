@@ -223,7 +223,9 @@ public class mainPageController {
         noCustomerSelected(k);
 
         ViewChanger vc = new ViewChanger();
-        vc.setView(rootPane, "newInjuryRepoert", "views/newInjuryRepoert.fxml");
+        vc.setView(rootPane, "newInjuryRepoert", "views/newInjuryReport.fxml");
+
+        saveChangesToFile();
 
 
     }
