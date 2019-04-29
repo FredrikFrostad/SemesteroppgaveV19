@@ -242,58 +242,9 @@ public class mainPageController {
     private void initDb() {
         DbImportHelper importer = new DbImportHelper();
         importer.importDbFromCsv();
+
     }
 
 
 }
 
-    /*
-    @FXML
-    private void loadKunde(ActionEvent event) {
-        ArrayList<Kunde> list = MainApp.getClientList();
-
-        try {
-            File file = FileReader.getFile();
-            if (ExtensionHandler.getExtension(file).equals(".csv")) {
-
-                CsvReader csvReader = new CsvReader(file);
-                Thread thread = new Thread(csvReader);
-                thread.start();
-                thread.join();
-                for (String[] s : (ArrayList<String[]>)csvReader.getReturnValue()) {
-                    Kunde k = (Kunde)new CsvObjectBuilder().buildObjectFromString(s);
-                    if (!list.contains(k)) list.add(k);
-                }
-            }
-            else {
-                //makeing a new jobjReader object to read in the file, starts thread,
-                JobjReader jobjReader = new JobjReader(file);
-                Thread thread = new Thread(jobjReader);
-                thread.start();
-                thread.join();
-
-                if (!list.contains((Kunde)jobjReader.getReturnValue())){
-                    System.out.println("HAR SJEKKET AT KUNDE IKKE LIGGER I LISTE FRA FØR");
-                    list.add((Kunde)jobjReader.getReturnValue());
-                }
-                else{
-                    AlertHelper.createAlert(Alert.AlertType.ERROR, "Man kan ikke load inn et objekt som allerede eksisterer, throw exception", "Man kan ikke load inn et objekt som allerede eksisterer, throw exception");
-                }
-            }
-
-        } catch (FileNotFoundException e){
-            e.printStackTrace();
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Finner ikke fil", e.getMessage());
-        } catch (InvalidFileFormatException e) {
-            e.printStackTrace();
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ukjent filformat", e.getMessage());
-        } catch (IOException e) {
-            e.printStackTrace();
-            AlertHelper.createAlert(Alert.AlertType.ERROR,"Kan ikke lese fra fil", e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            AlertHelper.createAlert(Alert.AlertType.ERROR,"En feil har oppstått", e.getMessage());
-        }
-        refreshTable();
-    }
-    */

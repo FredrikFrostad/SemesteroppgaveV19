@@ -14,19 +14,25 @@ import java.util.ArrayList;
 public class DbImportHelper extends Task {
 
     //TODO: This should throw exeption up to calling class, also this method is a mess, clean it up!!
-    public void importDbFromCsv() {
+    public void importDbFromCsv(){
 
         String filePath = MainApp.getDatabaseFilePath().getAbsolutePath() + File.separator;
         File[] dbFiles = new File(filePath).listFiles();
         ArrayList<Kunde> clientList = MainApp.getClientList();
         ArrayList<String[]> policyList = new ArrayList<>();
         CsvReader reader = new CsvReader();
+        //Thread thread = new Thread(reader);
 
         for (File file : dbFiles) {
-
+            Thread thread = new Thread(reader);
+            reader.setNewFile(file);
             try {
+                ThreadHelper.runThread(thread);
                 if (file.getName().equals("clients.csv")) {
-                    ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
+
+                    //ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
+                    ArrayList<String[]> list = (ArrayList<String[]>) reader.getReturnValue();
+
                     for (String[] s : list) {
                         Kunde k = (Kunde) new CsvObjectBuilder().buildObjectFromString(s);
                         if (!clientListContains(clientList, k)) {
@@ -34,7 +40,10 @@ public class DbImportHelper extends Task {
                         }
                     }
                 } else {
-                    policyList = reader.readDataFromFile(new File(file.getAbsolutePath()));
+                   // ThreadHelper.runThread(thread);
+                    //policyList = reader.readDataFromFile(new File(file.getAbsolutePath()));
+                    Thread.currentThread().getState();
+                    policyList = (ArrayList<String[]>) reader.getReturnValue();
                 }
 
             } catch (IOException e) {
