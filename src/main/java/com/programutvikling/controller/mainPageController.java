@@ -323,33 +323,3 @@ public class mainPageController {
         importer.importDbFromCsv();
     }
 }
-
-
-
-/*
-    @FXML private void importFromFile() {
-        File file = null;
-        try {
-            file = FileReader.getFile();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        try {
-
-            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
-                JobjReader reader = new JobjReader(file);
-                Thread jobj_thread = new Thread(reader);
-                ThreadHelper.runThread(jobj_thread);
-                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.getReturnValue();
-                for (Kunde k : list) {
-                    if (!MainApp.getClientList().contains(k)) MainApp.getClientList().add(k);
-                }
-            }
-        } catch (Exception e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
-        }
-        refreshTable();
-    }
-*/
