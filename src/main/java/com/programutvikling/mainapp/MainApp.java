@@ -156,7 +156,12 @@ public class MainApp extends Application {
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK){
                     System.out.println("Stage is closing - writing data to disk");
-                    new DbExportHelperCsv().exportDbAsCsv();
+                    Thread thread = new Thread(() -> {
+                        System.out.println("Saving database to file");
+                        new DbExportHelperCsv().exportDbAsCsv();
+                        System.out.println("Save complete");
+                    });
+                    thread.run();
                 } else {
                     System.out.println("Stage is closing - purging data");
                 }

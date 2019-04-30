@@ -5,19 +5,24 @@ import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
-import javafx.concurrent.Task;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class DbImportHelperCsv extends Task {
+public class DbImportHelperCsv{
 
     //TODO: This should throw exeption up to calling class, also this method is a mess, clean it up!!
-    public void importDbFromCsv() {
 
-        String filePath = MainApp.getDatabaseFilePath().getAbsolutePath() + File.separator;
+
+    public void importDbFromCsv(String path) {
+
+        String filePath = null;
+        if (path == null) {
+            filePath = MainApp.getDatabaseFilePath().getAbsolutePath() + File.separator;
+        } else {
+            filePath = path;
+        }
         System.out.println("Printfilepath 1 " + filePath);
         File[] dbFiles = new File(filePath).listFiles();
         System.out.println("Antall filer: " + dbFiles.length);
@@ -74,10 +79,5 @@ public class DbImportHelperCsv extends Task {
             if (k.getForsikrNr() == client.getForsikrNr()) return true;
         }
         return false;
-    }
-
-    @Override
-    protected Object call() throws Exception {
-        return null;
     }
 }

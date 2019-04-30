@@ -96,9 +96,15 @@ public class mainPageController {
     // TODO: fjernes når denne ikke trengs mere
     @FXML
     private void TEST() {
+        /*
         System.out.println("Valgt kunde er: " + MainApp.getSelectedKunde().getFornavn() + " " + MainApp.getSelectedKunde().getEtternavn());
         System.out.println("Antall elementer i forsikringsliste er: " + MainApp.getSelectedKunde().getForsikringer().size());
         for (Forsikring f : MainApp.getSelectedKunde().getForsikringer()) System.out.println(f);
+        */
+        for (int i = 0; i < 1E6; i++) {
+            MainApp.getClientList().add(new Kunde("Test" + Integer.toString(i), "Testesen" + Integer.toString(i), i + 500, "Fakturaadresse"));
+        }
+        refreshTable();
     }
 
 
@@ -171,33 +177,49 @@ public class mainPageController {
      */
     @FXML
     private void exportToFile() {
-        try
-        {
-            File file = FileWriter.getFile();
-            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
-                JobjWriter writer = new JobjWriter();
-                writer.writeObjectDataToFile(file, MainApp.getClientList());
-            }
-        } catch (InvalidFileFormatException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-            e.printStackTrace();
+        try {
+            threadfile = FileWriter.getFile();
         } catch (Exception e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
             e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
         }
+
+        Service<Void> threadService = new Service<Void>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        try
+                        {
+                            if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
+                                JobjWriter writer = new JobjWriter();
+                                writer.writeObjectDataToFile(threadfile, MainApp.getClientList());
+                            }
+                        } catch (InvalidFileFormatException e) {
+                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+                            e.printStackTrace();
+                        } catch (Exception e) {
+                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+                            e.printStackTrace();
+                        }
+                        return null;
+                    }
+                };
+            }
+        };
+        threadService.start();
     }
 
     /**
      * Imports data objects from either jobj or csv files
      */
     @FXML private void importFromFile() {
-
         try {
             threadfile = FileReader.getFile();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -209,17 +231,28 @@ public class mainPageController {
                     @Override
                     protected Void call() throws Exception {
                         try {
+                            System.out.println("Starting file import task!");
                             if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
                                 JobjReader reader = new JobjReader();
 
                                 ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(threadfile);
+                                ArrayList<Kunde> clientList = MainApp.getClientList();
                                 for (Kunde k : list) {
-                                    if (!MainApp.getClientList().contains(k)) MainApp.getClientList().add(k);
+                                    if (!clientList.contains(k)) {
+                                        clientList.add(k);
+                                    }
                                 }
+                            } else {
+                                // This implementation is fragile, and only works on files eksported using the
+                                // exportToFile method, insuring that the naming scheme of the exported csv files
+                                // are kept intact.
+                                DbImportHelperCsv importer = new DbImportHelperCsv();
+                                importer.importDbFromCsv(threadfile.getParent());
                             }
                         } catch (Exception e) {
                             AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
                         }
+                        System.out.println("File import task completed");
                         refreshTable();
                         return null;
                     }
@@ -320,6 +353,6 @@ public class mainPageController {
      */
     private void initDb() {
         DbImportHelperCsv importer = new DbImportHelperCsv();
-        importer.importDbFromCsv();
+        importer.importDbFromCsv(null);
     }
 }
