@@ -225,7 +225,6 @@ public class mainPageController {
         ViewChanger vc = new ViewChanger();
         vc.setView(rootPane, "newInjuryRepoert", "views/newInjuryReport.fxml");
 
-        saveChangesToFile();
 
 
     }
@@ -285,6 +284,12 @@ public class mainPageController {
             Kunde k = MainApp.getSelectedKunde();
             tableOverviewForsikring.getItems().addAll(k.getForsikringer());
         }
+    }
+
+    //TODO: testfunksjon fjern når ferdig med den!
+    @FXML
+    private void testfunksjon(ActionEvent event){
+        System.out.println(MainApp.getSelectedKunde().getSkademeldinger().get(0).toString());
     }
 
     /**

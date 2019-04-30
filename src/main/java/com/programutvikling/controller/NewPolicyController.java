@@ -3,6 +3,7 @@ package com.programutvikling.controller;
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.forsikring.Fritidsbolig;
+import com.programutvikling.models.data.forsikring.VillaInnbo;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidNumberFormatException;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
@@ -100,11 +101,36 @@ public class NewPolicyController{
 
         if (active.getId().equals("fritidsPage")) {
             forsikring = createFritidsBolig();
+        }/*else if(active.getId().equals("bilPage")){
+            forsikring = createBilForsikring();
+        }*/else if(active.getId().equals("båtPage")){
+            forsikring = createBåtForsikring();
+        }else if(active.getId().equals("reisePage")){
+            forsikring = createReiseForsikring();
+        }else if(active.getId().equals("villaPage")){
+            forsikring = createVillaForsikring();
         }
 
         Kunde k = MainApp.getSelectedKunde();
         k.getForsikringer().add(forsikring);
 
+    }
+
+    private Forsikring createVillaForsikring() {
+        VillaInnbo villa = new VillaInnbo();
+
+        try{
+            Inputvalidator.checkIfValidNumber(fritid_byggeår.getText());
+        }
+    }
+
+    private Forsikring createReiseForsikring() {
+    }
+
+    private Forsikring createBåtForsikring() {
+    }
+
+    private Forsikring createBilForsikring() {
     }
 
     private Fritidsbolig createFritidsBolig() {
