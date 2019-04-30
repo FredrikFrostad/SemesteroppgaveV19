@@ -60,6 +60,7 @@ public class JobjReader extends FileReader implements Runnable{
     public void run() {
         try{
             returnValue = readDataFromFile(file);
+            Thread.sleep(10000);
             System.out.println("threaden er kjørt. output"+ returnValue.toString());
         }
         catch (Exception e){

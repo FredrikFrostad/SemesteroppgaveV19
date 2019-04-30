@@ -2,6 +2,7 @@ package com.programutvikling.mainapp;
 
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
@@ -16,11 +17,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class MainApp extends Application {
@@ -37,18 +41,12 @@ public class MainApp extends Application {
 
         clientList = new ArrayList<>();
 
-        // For catching program exit via OS native close button
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-                System.out.println("Stage is closing - writing data to disk");
-                new DbExportHelperCsv().exportDbAsCsv();
-
-            }
-        });
-
         // This method is called to create a project folder for the applications files
         // To change the location of the project folder, change the PROJECTFOLDER variable in this class
         findOSTypeAndCreateProjectFolder();
+
+        // Eventhandler for program exit
+        initOnExitHandler(stage);
 
         //make register file
         new ClientNrHelper().init();
@@ -66,8 +64,6 @@ public class MainApp extends Application {
         stage.setTitle("SemesteroppgaveV2019");
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     /**
@@ -152,6 +148,26 @@ public class MainApp extends Application {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void initOnExitHandler(Stage stage) {
+        // For catching program exit via OS native close button
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lagre før lukking");
+                alert.setContentText("Lagre endringer før programmet avsluttes?");
+                //alert.showAndWait();
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    System.out.println("Stage is closing - writing data to disk");
+                    new DbExportHelperCsv().exportDbAsCsv();
+                } else {
+                    System.out.println("Stage is closing - purging data");
+                }
+            }
+        });
     }
 
     public static ArrayList<Kunde> getClientList() {
