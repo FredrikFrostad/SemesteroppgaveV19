@@ -10,11 +10,10 @@ import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
-import com.programutvikling.models.utils.helpers.AlertHelper;
-import com.programutvikling.models.utils.helpers.DbExportHelperCsv;
-import com.programutvikling.models.utils.helpers.DbImportHelperCsv;
-import com.programutvikling.models.utils.helpers.FormatPolicyTableHelper;
+import com.programutvikling.models.utils.helpers.*;
 import com.programutvikling.models.viewChanger.ViewChanger;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -61,6 +60,8 @@ public class mainPageController {
 
     @FXML
     private TextField selectedKundeField;
+
+    private File threadfile;
 
 
     @FXML
@@ -193,24 +194,39 @@ public class mainPageController {
      * Imports data objects from either jobj or csv files
      */
     @FXML private void importFromFile() {
+
         try {
-            File file = FileReader.getFile();
-            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
-                JobjReader reader = new JobjReader();
-                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(file);
-                for (Kunde k : list) {
-                    if (!MainApp.getClientList().contains(k)) MainApp.getClientList().add(k);
+            threadfile = FileReader.getFile();
 
-                }
-            }
-
-        }catch (FileNotFoundException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR,"Import feilet", e.getMessage());
-            e.printStackTrace();
         } catch (Exception e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
+            e.printStackTrace();
         }
-        refreshTable();
+
+        Service<Void> thread = new Service<Void>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        try {
+                            if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
+                                JobjReader reader = new JobjReader();
+
+                                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(threadfile);
+                                for (Kunde k : list) {
+                                    if (!MainApp.getClientList().contains(k)) MainApp.getClientList().add(k);
+                                }
+                            }
+                        } catch (Exception e) {
+                            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
+                        }
+                        refreshTable();
+                        return null;
+                    }
+                };
+            }
+        };
+        thread.start();
     }
 
     @FXML
@@ -284,6 +300,34 @@ public class mainPageController {
         DbImportHelperCsv importer = new DbImportHelperCsv();
         importer.importDbFromCsv();
     }
-
-
 }
+
+
+
+/*
+    @FXML private void importFromFile() {
+        File file = null;
+        try {
+            file = FileReader.getFile();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+
+            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
+                JobjReader reader = new JobjReader(file);
+                Thread jobj_thread = new Thread(reader);
+                ThreadHelper.runThread(jobj_thread);
+                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.getReturnValue();
+                for (Kunde k : list) {
+                    if (!MainApp.getClientList().contains(k)) MainApp.getClientList().add(k);
+                }
+            }
+        } catch (Exception e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
+        }
+        refreshTable();
+    }
+*/
