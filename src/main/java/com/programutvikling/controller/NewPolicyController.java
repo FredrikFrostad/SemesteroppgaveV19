@@ -19,6 +19,7 @@ import javafx.scene.layout.StackPane;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class NewPolicyController{
 
@@ -96,10 +97,11 @@ public class NewPolicyController{
             topRightButton.setText("Fullfør");
         }
         else {
-            registrerForsikring();
-            ViewChanger vc = new ViewChanger();
-            vc.resetView("newPolicy");
-            vc.setView(newPolicyRoot, "mainPage", "views/mainPage.fxml");
+            if (registrerForsikring()) {
+                ViewChanger vc = new ViewChanger();
+                vc.resetView("newPolicy");
+                vc.setView(newPolicyRoot, "mainPage", "views/mainPage.fxml");
+            }
         }
     }
 
@@ -114,10 +116,11 @@ public class NewPolicyController{
             active.setVisible(false);
             active = togglePage;
             active.setVisible(true);
+            topRightButton.setText("Next");
         }
     }
 
-    private void registrerForsikring() {
+    private boolean registrerForsikring() {
         Forsikring forsikring = null;
 
         if (active.getId().equals("fritidsPage")) {
@@ -132,9 +135,12 @@ public class NewPolicyController{
             forsikring = createVillaForsikring();
         }
 
-        Kunde k = MainApp.getSelectedKunde();
-        k.getForsikringer().add(forsikring);
-
+        if (forsikring != null) {
+            Kunde k = MainApp.getSelectedKunde();
+            k.getForsikringer().add(forsikring);
+            return true;
+        }
+        return false;
     }
 
     private Forsikring createVillaForsikring() {
@@ -160,6 +166,7 @@ public class NewPolicyController{
         return null;
     }
 
+    // todo: DET MANGLER FELTER I FXML - PRIS PR ÅR OG FORSIKRINGSSUM (fORSIKRINGSSUM ER KOMBINASJONEN AV INNBO OG bYGNING, MÅ BEREGNES I KLASSEN!!)
     private Fritidsbolig createFritidsBolig() {
         boolean validField = false;
         Fritidsbolig f = new Fritidsbolig();
@@ -170,6 +177,9 @@ public class NewPolicyController{
             Inputvalidator.checkIfValidNumber(fritid_beløpInnbo.getText());
             Inputvalidator.checkIfValidNumber(fritid_beløpBygning.getText());
 
+            f.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
+            f.setBetingelser("Betingelser shmetingelser");
+            f.setAvtaleOpprettet(LocalDate.now());
             f.setAdresse(fritid_adresse.getText());
             f.setByggeaar(Integer.parseInt(fritid_byggeår.getText()));
             f.setBoligtype(fritid_boligtype.getText());
@@ -181,12 +191,11 @@ public class NewPolicyController{
 
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Feil inndata");
-            alert.setContentText(e.getMessage());
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Ugyldig inndata", "Ett eller flere felter inneholder ugyldige data");
+            return null;
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
-
         return f;
     }
-
 }

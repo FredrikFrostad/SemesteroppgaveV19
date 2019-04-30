@@ -48,7 +48,7 @@ public class mainPageController {
 
     @FXML
     private TableColumn<Kunde, String> kundeCol1, kundeCol2, kundeCol3;
-    
+
     @FXML
     private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato, policyCountField, yearlyAmountField;
 

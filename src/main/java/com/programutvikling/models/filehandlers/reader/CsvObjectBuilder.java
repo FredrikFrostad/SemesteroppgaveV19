@@ -100,6 +100,7 @@ public class CsvObjectBuilder {
         b.setForsikrNr(Integer.parseInt(objData[1]));
         b.setPremieAnum(Double.parseDouble(objData[2]));
         b.setForsikringsSum(Double.parseDouble(objData[3]));
+        //TODO: denne gir nullpointerexeption, finn ut av det - fredrik
         b.setAvtaleOpprettet(LocalDate.parse(objData[4]));
         b.setBetingelser(objData[5]);
         b.setAdresse(objData[6]);
