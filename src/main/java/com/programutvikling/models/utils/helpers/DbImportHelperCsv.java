@@ -47,6 +47,7 @@ public class DbImportHelperCsv extends Task {
                         for (Kunde k : clientList) {
                             if (k.getForsikrNr() == f.getForsikrNr()) {
                                 k.getForsikringer().add(f);
+                                break;
                             }
                         }
 
