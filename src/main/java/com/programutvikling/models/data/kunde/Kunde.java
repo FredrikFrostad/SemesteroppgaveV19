@@ -78,9 +78,7 @@ public class Kunde implements Serializable {
         Fakturaadresse = fakturaadresse;
     }
 
-    public ArrayList<Forsikring> getForsikringer() {
-        return forsikringer;
-    }
+    public ArrayList<Forsikring> getForsikringer() {return forsikringer;}
 
     public ArrayList<Skademelding> getSkademeldinger() {
         return skademeldinger;
@@ -88,14 +86,6 @@ public class Kunde implements Serializable {
 
     public ArrayList<Double> getUtbetaltErstatn() {
         return utbetaltErstatn;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 
     @Override

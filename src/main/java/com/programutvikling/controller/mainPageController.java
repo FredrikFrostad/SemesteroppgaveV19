@@ -79,8 +79,6 @@ public class mainPageController {
         refreshTable();
     }
 
-
-
     /**
      * Initialises column names and valueproperties for the Client tableview
      */
@@ -222,7 +220,8 @@ public class mainPageController {
     }
 
     /**
-     * Imports data objects from either jobj or csv files
+     * Imports data objects from either jobj or csv files.
+     * The file import is threaded  to keep the gui responsive
      */
     @FXML private void importFromFile() {
         try {
@@ -318,19 +317,15 @@ public class mainPageController {
     }
 
     @FXML
+    private void deleteClient() {
+        Kunde k = MainApp.getSelectedKunde();
+        MainApp.setSelectedKunde(null);
+        MainApp.getClientList().remove(k);
+        refreshTable();
+    }
+
+    @FXML
     private void saveChangesToFile() {
-        File file = new File(MainApp.getSelectedKunde().getFilePath());
-
-        try {
-            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
-                new JobjWriter().writeObjectDataToFile(file, MainApp.getSelectedKunde());
-            }
-
-        } catch (InvalidFileFormatException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil!", "Kan ikke lagre endringer, finner ikke fil");
-        } catch (IOException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil ved lagring til fil", e.getMessage());
-        }
 
     }
 

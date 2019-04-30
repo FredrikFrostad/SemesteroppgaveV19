@@ -84,10 +84,10 @@
       </AnchorPane>
    </top>
    <bottom>
-      <AnchorPane fx:id="progressBar" prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="739.0" layoutY="2.0" mnemonicParsing="false" onAction="#TEST" text="TEST" />
-            <JFXProgressBar layoutX="14.0" layoutY="15.0" progress="0.0" />
+            <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="15.0" progress="0.0" />
             <Text fx:id="progressText" fill="WHITE" layoutX="227.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
          </children></AnchorPane>
    </bottom>
