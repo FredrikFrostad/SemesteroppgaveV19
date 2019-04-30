@@ -18,7 +18,6 @@ public class Kunde implements Serializable {
     private String etternavn;
     private int forsikrNr;
     private String Fakturaadresse;
-    private transient String filePath;
     private ArrayList<Forsikring> forsikringer = new ArrayList<>();
     private ArrayList<Skademelding> skademeldinger = new ArrayList<>();
     private ArrayList<Double> utbetaltErstatn = new ArrayList<>();
@@ -78,9 +77,7 @@ public class Kunde implements Serializable {
         Fakturaadresse = fakturaadresse;
     }
 
-    public ArrayList<Forsikring> getForsikringer() {
-        return forsikringer;
-    }
+    public ArrayList<Forsikring> getForsikringer() {return forsikringer;}
 
     public ArrayList<Skademelding> getSkademeldinger() {
         return skademeldinger;
@@ -90,12 +87,17 @@ public class Kunde implements Serializable {
         return utbetaltErstatn;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public int getNmbrOfPolicies() {
+        return forsikringer.size();
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public double getYearlyPremium() {
+        Double out = 0.0;
+
+        for (Forsikring f : forsikringer) {
+            out += f.getPremieAnnum();
+        }
+        return out;
     }
 
     @Override

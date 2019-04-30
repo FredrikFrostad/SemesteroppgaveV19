@@ -10,19 +10,25 @@ import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
-import com.programutvikling.models.utils.helpers.AlertHelper;
-import com.programutvikling.models.utils.helpers.DbImportHelperCsv;
-import com.programutvikling.models.utils.helpers.FormatPolicyTableHelper;
+import com.programutvikling.models.utils.helpers.*;
 import com.programutvikling.models.viewChanger.ViewChanger;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class mainPageController {
@@ -56,6 +62,14 @@ public class mainPageController {
     @FXML
     private TextField selectedKundeField;
 
+    @FXML
+    private ProgressBar progressBar;
+
+    @FXML
+    private Text progressText;
+
+    private File threadfile;
+
 
     @FXML
     private void initialize() {
@@ -64,7 +78,6 @@ public class mainPageController {
         initDb();
         refreshTable();
     }
-
 
     /**
      * Initialises column names and valueproperties for the Client tableview
@@ -85,12 +98,20 @@ public class mainPageController {
     }
 
 
-    // TODO: fjernes når denne ikke trengs mere
+    // TODO: fjernes når denne ikke trengs mere - FOR TESTING
     @FXML
-    private void TEST() {
-        System.out.println("Valgt kunde er: " + MainApp.getSelectedKunde().getFornavn() + " " + MainApp.getSelectedKunde().getEtternavn());
-        System.out.println("Antall elementer i forsikringsliste er: " + MainApp.getSelectedKunde().getForsikringer().size());
-        for (Forsikring f : MainApp.getSelectedKunde().getForsikringer()) System.out.println(f);
+    private void CLEAR() {
+        MainApp.getClientList().clear();
+        refreshTable();
+    }
+
+    // TODO: fjernes når denne ikke trengs mere - FOR TESTING
+    @FXML
+    private void BIG() {
+        for (int i = 0; i < 1E6; i++) {
+            MainApp.getClientList().add(new Kunde("Test" + Integer.toString(i), "Testesen" + Integer.toString(i), i + 500, "Fakturaadresse"));
+        }
+        refreshTable();
     }
 
 
@@ -126,6 +147,8 @@ public class mainPageController {
         }
     }
 
+
+
     
     /**
      * Method for reacting to a selectionchange in this views tabpane. The method response is
@@ -156,6 +179,8 @@ public class mainPageController {
         k_forsNr.setText(Integer.toString(k.getForsikrNr()));
         k_adr.setText(k.getFakturaadresse());
         k_opDato.setText(k.getKundeOpprettet().toString());
+        policyCountField.setText(String.valueOf(k.getNmbrOfPolicies()));
+        yearlyAmountField.setText(String.valueOf(k.getYearlyPremium()));
     }
 
     /**
@@ -163,47 +188,88 @@ public class mainPageController {
      */
     @FXML
     private void exportToFile() {
-        try
-        {
-            File file = FileWriter.getFile();
-            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
-                JobjWriter writer = new JobjWriter();
-                writer.writeObjectDataToFile(file, MainApp.getClientList());
-            }
-        } catch (InvalidFileFormatException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-            e.printStackTrace();
+        try {
+            threadfile = FileWriter.getFile();
         } catch (Exception e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
             e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
         }
+
+        Service<Void> threadService = new Service<Void>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        try
+                        {
+                            if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
+                                JobjWriter writer = new JobjWriter();
+                                writer.writeObjectDataToFile(threadfile, MainApp.getClientList());
+                            } else {
+                                DbExportHelperCsv exporter = new DbExportHelperCsv(threadfile.getAbsolutePath());
+                                exporter.exportDbAsCsv();
+                            }
+                        } catch (InvalidFileFormatException e) {
+                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+                            e.printStackTrace();
+                        } catch (Exception e) {
+                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+                            e.printStackTrace();
+                        }
+                        return null;
+                    }
+                };
+            }
+        };
+        threadService.start();
     }
 
     /**
-     * Imports data objects from either jobj or csv files
+     * Imports data objects from either jobj or csv files.
+     * The file import is threaded  to keep the gui responsive
      */
     @FXML private void importFromFile() {
         try {
-            File file = FileReader.getFile();
-            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
-                JobjReader reader = new JobjReader();
-                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(file);
-                for (Kunde k : list) {
-                    if (!MainApp.getClientList().contains(k)) MainApp.getClientList().add(k);
-
-                }
-            }
-
-        }catch (FileNotFoundException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR,"Import feilet", e.getMessage());
-            e.printStackTrace();
+            threadfile = FileReader.getFile();
         } catch (Exception e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
+            e.printStackTrace();
         }
-        refreshTable();
+
+        Service<Void> thread = new Service<Void>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        try {
+                            System.out.println("Starting file import task!");
+                            if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
+                                JobjReader reader = new JobjReader();
+
+                                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(threadfile);
+                                MainApp.getClientList().addAll(list);
+                            } else {
+                                // This implementation is fragile, and only works on files eksported using the
+                                // exportToFile method, insuring that the naming scheme of the exported csv files
+                                // are kept intact.
+                                DbImportHelperCsv importer = new DbImportHelperCsv();
+                                importer.importDbFromCsv(threadfile.getParent());
+                            }
+                        } catch (Exception e) {
+                            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
+                        }
+                        System.out.println("File import task completed");
+                        refreshTable();
+                        return null;
+                    }
+                };
+            }
+        };
+        thread.start();
     }
 
     @FXML
@@ -224,10 +290,12 @@ public class mainPageController {
 
         ViewChanger vc = new ViewChanger();
         vc.setView(rootPane, "newInjuryRepoert", "views/newInjuryReport.fxml");
-
-
-
     }
+
+    /**
+     * Checks if a client is selected for operations that rewuire this to be done.
+     * @param k selected client object or null if nothing is selected.
+     */
     private void noCustomerSelected(Kunde k){
         if (k == null) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
@@ -255,19 +323,39 @@ public class mainPageController {
     }
 
     @FXML
-    private void saveChangesToFile() {
-        File file = new File(MainApp.getSelectedKunde().getFilePath());
+    private void deleteClient() {
+        Kunde k = MainApp.getSelectedKunde();
+        Optional<ButtonType> result = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
+                "Er du sikker på at du vil slette kunde " + k.getFornavn() + " " + k.getEtternavn() + "?",
+                "Slett Kunde ", "Avbryt");
 
-        try {
-            if (ExtensionHandler.getExtension(file).equals(".jobj")) {
-                new JobjWriter().writeObjectDataToFile(file, MainApp.getSelectedKunde());
-            }
-
-        } catch (InvalidFileFormatException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil!", "Kan ikke lagre endringer, finner ikke fil");
-        } catch (IOException e) {
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil ved lagring til fil", e.getMessage());
+        if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
+            MainApp.setSelectedKunde(null);
+            MainApp.getClientList().remove(k);
+            refreshTable();
         }
+    }
+
+    @FXML
+    private void deletePolicy() {
+        if (tableOverviewForsikring.getSelectionModel().getSelectedItem() != null) {
+            Forsikring f = tableOverviewForsikring.getSelectionModel().getSelectedItem();
+
+            Optional<ButtonType> result = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
+                        "Er du sikker på at du vil slette forsikring " + f.getType() + ", opprettet: " + f.getAvtaleOpprettet() + "?",
+                            "Slett Forsikring", "Avbryt");
+            if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
+                MainApp.getSelectedKunde().getForsikringer().remove(f);
+                tableDetailsForsikring.getColumns().clear();
+                tableDetailsForsikring.getItems().clear();
+                populateClientFields(MainApp.getSelectedKunde());
+                refreshTable();
+            }
+        }
+    }
+
+    @FXML
+    private void saveChangesToFile() {
 
     }
 
@@ -297,8 +385,6 @@ public class mainPageController {
      */
     private void initDb() {
         DbImportHelperCsv importer = new DbImportHelperCsv();
-        importer.importDbFromCsv();
+        importer.importDbFromCsv(null);
     }
-
-
 }

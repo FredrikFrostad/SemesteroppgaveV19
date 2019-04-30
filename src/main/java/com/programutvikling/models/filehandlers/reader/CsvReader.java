@@ -12,29 +12,17 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-public class CsvReader extends FileReader implements Runnable{
+public class CsvReader extends FileReader{
+
+    public CsvReader() {}
 
     /**
      * Method for reading data from a CSV-file.
      * This method assumes that the first line in any csv-file is a header, this line will be skipped
      * @param file Csv file to parse and read
      * @return An arraylist containing one string array pr line of the CSV file
-     * @throws Exception
+     * @throws Exception when reading of the file fails
      */
-    //TODO: skriv dokumentasjon på tråd håndtering
-    /**
-     *
-     */
-
-    public  File file;
-    private List<Object> returnValue = new ArrayList<>();
-
-    public CsvReader() {}
-
-    public CsvReader(File file){
-        this.file = file;
-    }
-
     @Override
     public ArrayList<String[]> readDataFromFile(File file) throws IOException {
         BufferedReader reader = null;
@@ -56,26 +44,6 @@ public class CsvReader extends FileReader implements Runnable{
         }
 
         reader.close();
-        returnValue = new ArrayList<>(objLst);
         return objLst;
-    }
-    public void setNewFile(File file){
-        this.file = file;
-    }
-
-    public Object getReturnValue() {
-        return returnValue;
-    }
-
-    @Override
-    public void run() {
-        try {
-            readDataFromFile(file);
-
-            System.out.println("thread for cvs read from file" );
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-        }
     }
 }

@@ -142,17 +142,22 @@ public class NewPolicyController{
 
         try{
             Inputvalidator.checkIfValidNumber(fritid_byggeår.getText());
-            Inputvalidator
+        } catch (InvalidNumberFormatException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Ugyldig byggeår", e.getMessage());
         }
+        return null;
     }
 
     private Forsikring createReiseForsikring() {
+        return null;
     }
 
     private Forsikring createBåtForsikring() {
+        return null;
     }
 
     private Forsikring createBilForsikring() {
+        return null;
     }
 
     private Fritidsbolig createFritidsBolig() {

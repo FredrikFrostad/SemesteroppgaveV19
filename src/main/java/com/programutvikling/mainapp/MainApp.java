@@ -6,7 +6,6 @@ import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import com.programutvikling.models.utils.helpers.DbExportHelperCsv;
-import com.programutvikling.models.utils.helpers.ThreadHelper;
 import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
@@ -16,11 +15,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class MainApp extends Application {
@@ -37,18 +39,12 @@ public class MainApp extends Application {
 
         clientList = new ArrayList<>();
 
-        // For catching program exit via OS native close button
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-                System.out.println("Stage is closing - writing data to disk");
-                new DbExportHelperCsv().exportDbAsCsv();
-
-            }
-        });
-
         // This method is called to create a project folder for the applications files
         // To change the location of the project folder, change the PROJECTFOLDER variable in this class
         findOSTypeAndCreateProjectFolder();
+
+        // Eventhandler for program exit
+        initOnExitHandler(stage);
 
         //make register file
         new ClientNrHelper().init();
@@ -65,9 +61,9 @@ public class MainApp extends Application {
 
         stage.setTitle("SemesteroppgaveV2019");
         stage.setScene(scene);
+        stage.setMinHeight(640);
+        stage.setMinWidth(800);
         stage.show();
-
-
     }
 
     /**
@@ -108,25 +104,21 @@ public class MainApp extends Application {
         // Create testdata if database is empty
         if (databaseFilePath.listFiles().length == 0) {
             System.out.println("No data present, loading evaluation data");
-            CsvReader reader = new CsvReader(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
-            Thread thread = new Thread(reader);
+            CsvReader reader = new CsvReader();
             try {
-                ThreadHelper.runThread(thread);
 
                 // Adding dummy clients for evaluation
-                ArrayList<String[]> list = (ArrayList<String[]>) reader.getReturnValue();
+                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
                 for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
 
                 //Adding dummy boat policies for testing
-                reader.setNewFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
-                list = (ArrayList<String[]>) reader.getReturnValue();
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
                 readPoliciesFromFile(list);
 
                 // Adding dummy Homeowners policies for evaluation
-                reader.setNewFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
-                list = (ArrayList<String[]>) reader.getReturnValue();
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
                 readPoliciesFromFile(list);
 
             } catch (Exception e) {
@@ -152,6 +144,31 @@ public class MainApp extends Application {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void initOnExitHandler(Stage stage) {
+        // For catching program exit via OS native close button
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lagre før lukking");
+                alert.setContentText("Lagre endringer før programmet avsluttes?");
+                //alert.showAndWait();
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    System.out.println("Stage is closing - writing data to disk");
+                    Thread thread = new Thread(() -> {
+                        System.out.println("Saving database to file");
+                        new DbExportHelperCsv().exportDbAsCsv();
+                        System.out.println("Save complete");
+                    });
+                    thread.run();
+                } else {
+                    System.out.println("Stage is closing - purging data");
+                }
+            }
+        });
     }
 
     public static ArrayList<Kunde> getClientList() {
