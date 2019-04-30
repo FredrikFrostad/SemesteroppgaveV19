@@ -147,6 +147,8 @@ public class mainPageController {
         }
     }
 
+
+
     
     /**
      * Method for reacting to a selectionchange in this views tabpane. The method response is
@@ -323,16 +325,33 @@ public class mainPageController {
     @FXML
     private void deleteClient() {
         Kunde k = MainApp.getSelectedKunde();
-        Optional<ButtonType> choice = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
+        Optional<ButtonType> result = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
                 "Er du sikker på at du vil slette kunde " + k.getFornavn() + " " + k.getEtternavn() + "?",
                 "Slett Kunde ", "Avbryt");
 
-        if (choice.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
+        if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
             MainApp.setSelectedKunde(null);
             MainApp.getClientList().remove(k);
             refreshTable();
         }
+    }
 
+    @FXML
+    private void deletePolicy() {
+        if (tableOverviewForsikring.getSelectionModel().getSelectedItem() != null) {
+            Forsikring f = tableOverviewForsikring.getSelectionModel().getSelectedItem();
+
+            Optional<ButtonType> result = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
+                        "Er du sikker på at du vil slette forsikring " + f.getType() + ", opprettet: " + f.getAvtaleOpprettet() + "?",
+                            "Slett Forsikring", "Avbryt");
+            if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
+                MainApp.getSelectedKunde().getForsikringer().remove(f);
+                tableDetailsForsikring.getColumns().clear();
+                tableDetailsForsikring.getItems().clear();
+                populateClientFields(MainApp.getSelectedKunde());
+                refreshTable();
+            }
+        }
     }
 
     @FXML
