@@ -43,6 +43,8 @@ public class NewPolicyController{
             fritid_areal,
             fritid_beløpBygning,
             fritid_beløpInnbo,
+            fritid_beløp,
+            fritid_prÅr,
             villa_adresse,
             villa_byggeår,
             villa_boligtype,
@@ -51,6 +53,8 @@ public class NewPolicyController{
             villa_areal,
             villa_beløpBygning,
             villa_beløpInnbo,
+            villa_beløp,
+            villa_prÅr,
             båt_eier,
             båt_regNr,
             båt_typebåt,
@@ -157,6 +161,9 @@ public class NewPolicyController{
             villa.setForsikringsbeløpByggning(Double.parseDouble(villa_beløpBygning.getText()));
             villa.setForsikringsbeløpInnbo(Double.parseDouble(villa_beløpInnbo.getText()));
 
+            villa_beløp.setText(String.valueOf(villa.calculateForsikringssum()));
+            villa_prÅr.setText(String.valueOf(villa.prisPrÅr(200)));
+
         } catch (InvalidNumberFormatException e) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Ugyldig byggeår", e.getMessage());
         }
@@ -202,8 +209,8 @@ public class NewPolicyController{
 
     // todo: DET MANGLER FELTER I FXML - PRIS PR ÅR OG FORSIKRINGSSUM (fORSIKRINGSSUM ER KOMBINASJONEN AV INNBO OG bYGNING, MÅ BEREGNES I KLASSEN!!)
     private Fritidsbolig createFritidsBolig() {
-        boolean validField = false;
-        Fritidsbolig f = new Fritidsbolig();
+
+        Fritidsbolig fritidsbolig = new Fritidsbolig();
 
         try {
             Inputvalidator.checkIfValidNumber(fritid_byggeår.getText());
@@ -211,17 +218,20 @@ public class NewPolicyController{
             Inputvalidator.checkIfValidNumber(fritid_beløpInnbo.getText());
             Inputvalidator.checkIfValidNumber(fritid_beløpBygning.getText());
 
-            f.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
-            f.setBetingelser("Betingelser shmetingelser");
-            f.setAvtaleOpprettet(LocalDate.now());
-            f.setAdresse(fritid_adresse.getText());
-            f.setByggeaar(Integer.parseInt(fritid_byggeår.getText()));
-            f.setBoligtype(fritid_boligtype.getText());
-            f.setByggemateriale(fritid_byggemateriale.getText());
-            f.setStandard(fritid_standard.getText());
-            f.setAreal(Integer.parseInt(fritid_areal.getText()));
-            f.setForsikringsbeløpByggning(Double.parseDouble(fritid_beløpBygning.getText()));
-            f.setForsikringsbeløpInnbo(Double.parseDouble(fritid_beløpInnbo.getText()));
+            fritidsbolig.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
+            fritidsbolig.setBetingelser("Betingelser shmetingelser");
+            fritidsbolig.setAvtaleOpprettet(LocalDate.now());
+            fritidsbolig.setAdresse(fritid_adresse.getText());
+            fritidsbolig.setByggeaar(Integer.parseInt(fritid_byggeår.getText()));
+            fritidsbolig.setBoligtype(fritid_boligtype.getText());
+            fritidsbolig.setByggemateriale(fritid_byggemateriale.getText());
+            fritidsbolig.setStandard(fritid_standard.getText());
+            fritidsbolig.setAreal(Integer.parseInt(fritid_areal.getText()));
+            fritidsbolig.setForsikringsbeløpByggning(Double.parseDouble(fritid_beløpBygning.getText()));
+            fritidsbolig.setForsikringsbeløpInnbo(Double.parseDouble(fritid_beløpInnbo.getText()));
+
+            fritid_beløp.setText(String.valueOf(fritidsbolig.calculateForsikringssum()));
+            fritid_prÅr.setText(String.valueOf(fritidsbolig.prisPrÅr(300)));
 
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
@@ -230,6 +240,6 @@ public class NewPolicyController{
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        return f;
+        return fritidsbolig;
     }
 }

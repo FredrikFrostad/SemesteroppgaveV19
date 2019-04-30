@@ -30,9 +30,23 @@ public class Fritidsbolig extends Bolig implements Serializable {
                 "," + super.toString();
     }
 
+//    public int calculateForsikringssum(){
+//        return (int) (this.getForsikringsbeløpByggning() + this.getForsikringsSum());
+//    }
+//
+//    /**
+//     *  Using 300 as a set rate for calculatng price for encurance pr year
+//     * @return
+//     */
+//    public int prisPrÅr(){
+//        return (int)((this.getForsikringsSum() + this.getForsikringsbeløpByggning())/300);
+//    }
+
     public static void main(String[] args) {
         Fritidsbolig fritid = new Fritidsbolig();
         String s = fritid.type.toString();
         System.out.println(s);
     }
+
+
 }

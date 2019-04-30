@@ -28,4 +28,16 @@ public class VillaInnbo extends Bolig implements Serializable {
         return "type=" + type +
                 "," + super.toString();
     }
+
+    /*public int calculateForsikringssum(){
+        return (int) (this.getForsikringsbeløpByggning() + this.getForsikringsSum());
+    }
+
+    *//**
+     *  Using 200 as a set rate for calculatng price for encurance pr year
+     * @return
+     *//*
+    public int prisPrÅr(){
+        return (int)((this.getForsikringsSum() + this.getForsikringsbeløpByggning())/200);
+    }*/
 }

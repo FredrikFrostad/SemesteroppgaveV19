@@ -119,4 +119,16 @@ public class Bolig extends Forsikring {
                 ", forsikringsbeløpByggning=" + forsikringsbeløpByggning +
                 ", forsikringsbeløpInnbo=" + forsikringsbeløpInnbo;
     }
+
+    public int calculateForsikringssum(){
+        return (int) (this.getForsikringsbeløpByggning() + this.getForsikringsSum());
+    }
+
+    /**
+     *  Using 200 as a set rate for calculatng price for encurance pr year
+     * @return
+     */
+    public int prisPrÅr(int rate){
+        return (int)((this.getForsikringsSum() + this.getForsikringsbeløpByggning())/rate);
+    }
 }
