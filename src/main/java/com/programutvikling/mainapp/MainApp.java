@@ -104,25 +104,21 @@ public class MainApp extends Application {
         // Create testdata if database is empty
         if (databaseFilePath.listFiles().length == 0) {
             System.out.println("No data present, loading evaluation data");
-            CsvReader reader = new CsvReader(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
-            Thread thread = new Thread(reader);
+            CsvReader reader = new CsvReader();
             try {
-                ThreadHelper.runThread(thread);
 
                 // Adding dummy clients for evaluation
-                ArrayList<String[]> list = (ArrayList<String[]>) reader.getReturnValue();
+                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
                 for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
 
                 //Adding dummy boat policies for testing
-                reader.setNewFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
-                list = (ArrayList<String[]>) reader.getReturnValue();
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
                 readPoliciesFromFile(list);
 
                 // Adding dummy Homeowners policies for evaluation
-                reader.setNewFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
-                list = (ArrayList<String[]>) reader.getReturnValue();
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
                 readPoliciesFromFile(list);
 
             } catch (Exception e) {
