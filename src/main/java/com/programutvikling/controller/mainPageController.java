@@ -98,18 +98,19 @@ public class mainPageController {
     }
 
 
-    // TODO: fjernes når denne ikke trengs mere
+    // TODO: fjernes når denne ikke trengs mere - FOR TESTING
     @FXML
-    private void TEST() {
-        /*
-        System.out.println("Valgt kunde er: " + MainApp.getSelectedKunde().getFornavn() + " " + MainApp.getSelectedKunde().getEtternavn());
-        System.out.println("Antall elementer i forsikringsliste er: " + MainApp.getSelectedKunde().getForsikringer().size());
-        for (Forsikring f : MainApp.getSelectedKunde().getForsikringer()) System.out.println(f);
-        */
+    private void CLEAR() {
+        MainApp.getClientList().clear();
+        refreshTable();
+    }
+
+    // TODO: fjernes når denne ikke trengs mere - FOR TESTING
+    @FXML
+    private void BIG() {
         for (int i = 0; i < 1E6; i++) {
             MainApp.getClientList().add(new Kunde("Test" + Integer.toString(i), "Testesen" + Integer.toString(i), i + 500, "Fakturaadresse"));
         }
-        refreshTable();
     }
 
 
@@ -244,12 +245,7 @@ public class mainPageController {
                                 JobjReader reader = new JobjReader();
 
                                 ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(threadfile);
-                                ArrayList<Kunde> clientList = MainApp.getClientList();
-                                for (Kunde k : list) {
-                                    if (!clientList.contains(k)) {
-                                        clientList.add(k);
-                                    }
-                                }
+                                MainApp.getClientList().addAll(list);
                             } else {
                                 // This implementation is fragile, and only works on files eksported using the
                                 // exportToFile method, insuring that the naming scheme of the exported csv files

@@ -22,8 +22,6 @@ public class JobjReader extends FileReader{
         Object loadObject = objIn.readObject();
         objIn.close();
 
-        System.out.println("Data loaded from: " + file.getAbsolutePath() + loadObject.toString());
-
         return loadObject;
     }
 }
