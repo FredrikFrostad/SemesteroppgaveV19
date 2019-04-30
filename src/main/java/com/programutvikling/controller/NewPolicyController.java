@@ -64,7 +64,8 @@ public class NewPolicyController{
             båt_motorType,
             båt_effekt,
             reise_forsikringOmraade,
-            reise_forsikringsSum;
+            reise_forsikringsSum,
+            reise_beløp;
 
     private Node active;
 
@@ -171,18 +172,19 @@ public class NewPolicyController{
     }
 
     private Forsikring createReiseForsikring() {
-        Reise reiseForiskring = new Reise();
+        Reise reiseForsikring = new Reise();
 
         try{
             Inputvalidator.checkIfValidNumber(reise_forsikringsSum.getText());
 
-            reiseForiskring.setforsikringOmraade(reise_forsikringOmraade.getText());
-            reiseForiskring.setForsikringsSum(Double.parseDouble(reise_forsikringsSum.getText()));
+            reiseForsikring.setforsikringOmraade(reise_forsikringOmraade.getText());
+            reiseForsikring.setForsikringsSum(Double.parseDouble(reise_forsikringsSum.getText()));
 
+            reise_beløp.setText(String.valueOf(reiseForsikring.prisPrÅr()));
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
         }
-        return reiseForiskring;
+        return reiseForsikring;
     }
 
     private Forsikring createBåtForsikring() {

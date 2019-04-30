@@ -42,4 +42,7 @@ public class Reise extends Forsikring{
                 ", forsikringOmraade=" + forsikringOmraade +
                 ", forsikringsSum=" + forsikringsSum;
     }
+    public int prisPrÅr(){
+        return (int) (this.getForsikringsSum()/100);
+    }
 }
