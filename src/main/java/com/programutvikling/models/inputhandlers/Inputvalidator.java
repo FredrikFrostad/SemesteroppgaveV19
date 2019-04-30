@@ -79,7 +79,6 @@ public class Inputvalidator {
      * @return true if the parameter String passes all checks
      * @throws InvalidAddressException Exception is thrown when the parameter String is illegally formatted
      */
-    //TODO: implementer metodene under i checkValidFakturaAdresse()
     public static boolean checkValidFakturaAdresse(String fakturaAdresse) throws InvalidAddressException {
         String addressFormatMsg = "Adress must be on the form of. Streetname Streetnumber Zipcode Location";
 
@@ -119,7 +118,7 @@ public class Inputvalidator {
     }
 
     /**
-     * Methode for validating address.
+     * Method for validating address.
      * @param address
      * @return true if the address given is correct
      */

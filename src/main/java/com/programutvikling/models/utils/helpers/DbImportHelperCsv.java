@@ -12,10 +12,16 @@ import java.util.Arrays;
 
 public class DbImportHelperCsv{
 
-    //TODO: This should throw exeption up to calling class, also this method is a mess, clean it up!!
 
-
-    public void importDbFromCsv(String path) {
+    /**
+     * This method imports the entire database from a set of csv files. The files need to be located in the same folder,
+     * and follow the naming conventions establishes by the DbExportHelper method. Otherwise this method will fail in its
+     * current (quite naive) implementation.
+     * @param path Path to the folder where the files are located, this can be null, which will make the method load
+     *             data from the programs default database folder
+     * @throws Exception when filereading fails or garbage data is read
+     */
+    public void importDbFromCsv(String path) throws Exception {
 
         String filePath = null;
         if (path == null) {
@@ -26,54 +32,37 @@ public class DbImportHelperCsv{
 
         File[] dbFiles = new File(filePath).listFiles();
         ArrayList<Kunde> clientList = MainApp.getClientList();
-        ArrayList<String[]> policyList;
         CsvReader reader = new CsvReader();
         CsvObjectBuilder builder = new CsvObjectBuilder();
 
+        // Database csv files are named in such a way that the clientfiles
+        // always come first when the file array is sorted. This is obviously a naive aproach.....
+        // This could be improved by looking at the file content and making sure that the file containing client
+        // data is imported first.
         Arrays.sort(dbFiles);
 
         for (File file : dbFiles) {
-            System.out.println(file.getAbsolutePath());
-            try {
+
+            if (!file.getName().endsWith(".csv")) {
+
                 if (file.getName().equals("clients.csv")) {
+
+                    // This boolean is set to avoid doing an expensive check for duplicate imports when the database is
+                    // loaded at program start.
+                    // Ideally this should not be done in this way, and we should instead implement a more effective
+                    // way to check for duplicates. At the moment the check cost is at least n squared.
                     boolean startUp = false;
                     if (MainApp.getClientList().isEmpty()) {
                         startUp = true;
                     }
+
                     ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
+                    buldClientObjects(list, startUp, clientList);
 
-                    // Building customer object from string and adding them to list.
-                    for (String[] s : list) {
-                        Kunde k = (Kunde) builder.buildObjectFromString(s);
-
-                        // This procedure is horribly slow when adding large datasets.
-                        // Using startUp flag to skip duplicate check when populating clientobject arraylist
-                        // on program startup
-                        if (startUp) {
-                            clientList.add((Kunde) builder.buildObjectFromString(s));
-                        } else if (!clientListContains(clientList, k)) {
-                            clientList.add((Kunde) builder.buildObjectFromString(s));
-                        }
-                    }
                 } else {
-                    policyList = reader.readDataFromFile(new File(file.getAbsolutePath()));
-                    for (String[] s : policyList) {
-
-                        Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
-
-                        for (Kunde k : clientList) {
-                            if (k.getForsikrNr() == f.getForsikrNr()) {
-                                k.getForsikringer().add(f);
-                                break;
-                            }
-                        }
-
-                    }
+                    ArrayList<String[]> policyList = reader.readDataFromFile(new File(file.getAbsolutePath()));
+                    buildPolicyObjects(policyList, clientList);
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     }
@@ -91,5 +80,51 @@ public class DbImportHelperCsv{
             if (k.getForsikrNr() == client.getForsikrNr()) return true;
         }
         return false;
+    }
+
+    /**
+     * Builds client objects read from a csv file and adds them to an arraylist.
+     * @param list Arraylist containing string arrays. Each string array represents one dataobject
+     * @param startUp boolean used as a flag to skip duplicate check on program startup, as this is
+     *                extremely computationaly expensive on large datasets
+     * @param clientList Arraylist where the objects genereated from the csv file are stored
+     * @throws Exception when file cannot be read or when encountering invalid data
+     */
+    private void buldClientObjects(ArrayList<String[]> list, boolean startUp, ArrayList<Kunde> clientList) throws Exception{
+        CsvObjectBuilder builder = new CsvObjectBuilder();
+
+        // Building customer object from string and adding them to list.
+        for (String[] s : list) {
+            Kunde k = (Kunde) builder.buildObjectFromString(s);
+
+            // This procedure is horribly slow when adding large datasets.
+            // Using startUp flag to skip duplicate check when populating clientobject arraylist
+            // on program startup
+            if (startUp) {
+                clientList.add((Kunde) builder.buildObjectFromString(s));
+            } else if (!clientListContains(clientList, k)) {
+                clientList.add((Kunde) builder.buildObjectFromString(s));
+            }
+        }
+    }
+
+    /**
+     * Builds policy objects read from a csv file and adds them to an arraylist
+     * @param policyList Arraylist containing string arrays. Each string array represents one dataobject
+     * @param clientList Arraylist where the objects genereated from the csv file are stored
+     * @throws Exception when file cannot be read or when encountering invalid data
+     */
+    private void buildPolicyObjects(ArrayList<String[]> policyList, ArrayList<Kunde> clientList) throws Exception {
+        for (String[] s : policyList) {
+
+            Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
+
+            for (Kunde k : clientList) {
+                if (k.getForsikrNr() == f.getForsikrNr()) {
+                    k.getForsikringer().add(f);
+                    break;
+                }
+            }
+        }
     }
 }

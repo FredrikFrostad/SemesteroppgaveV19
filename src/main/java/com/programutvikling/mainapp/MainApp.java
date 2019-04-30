@@ -61,7 +61,7 @@ public class MainApp extends Application {
 
         stage.setTitle("SemesteroppgaveV2019");
         stage.setScene(scene);
-        stage.setMinHeight(640);
+        stage.setMinHeight(650);
         stage.setMinWidth(800);
         stage.show();
     }
@@ -153,9 +153,8 @@ public class MainApp extends Application {
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lagre før lukking");
                 alert.setContentText("Lagre endringer før programmet avsluttes?");
-                //alert.showAndWait();
-
                 Optional<ButtonType> result = alert.showAndWait();
+
                 if (result.get() == ButtonType.OK){
                     System.out.println("Stage is closing - writing data to disk");
                     Thread thread = new Thread(() -> {

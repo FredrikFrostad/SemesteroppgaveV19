@@ -15,17 +15,12 @@ import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -39,7 +34,6 @@ public class mainPageController {
     @FXML
     private Tab tabForsikring, tabKunder, tabSkademeldinger;
 
-    //TODO: generate, format and display data for these fields
     @FXML
     private TableView<Forsikring> tableOverviewForsikring, tableDetailsForsikring;
 
@@ -55,7 +49,6 @@ public class mainPageController {
     @FXML
     private TableColumn<Kunde, String> kundeCol1, kundeCol2, kundeCol3;
 
-    //Todo: generate data for unused fields, also these fields must be uneditable!!
     @FXML
     private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato, policyCountField, yearlyAmountField;
 
@@ -385,6 +378,11 @@ public class mainPageController {
      */
     private void initDb() {
         DbImportHelperCsv importer = new DbImportHelperCsv();
-        importer.importDbFromCsv(null);
+        try {
+            importer.importDbFromCsv(null);
+        } catch (Exception e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Kritisk feil", "Feil ved importering av database. " +
+                    "Kan ikke garantere dataintegritet.");
+        }
     }
 }
