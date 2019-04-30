@@ -72,7 +72,6 @@ public class DbExportHelperCsv {
      */
     private void populatePolicyLists() {
         for (Forsikring f : exportList) {
-            System.out.println(f);
             if (f.getType().equals(ObjectType.BÅT)) boatList.add(f);
             else if (f.getType().equals(ObjectType.FRITIDSBOLIG)) holidayResiddenceList.add(f);
             else if (f.getType().equals(ObjectType.REISE)) travelList.add(f);
