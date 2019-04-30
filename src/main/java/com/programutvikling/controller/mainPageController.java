@@ -378,6 +378,11 @@ public class mainPageController {
      */
     private void initDb() {
         DbImportHelperCsv importer = new DbImportHelperCsv();
-        importer.importDbFromCsv(null);
+        try {
+            importer.importDbFromCsv(null);
+        } catch (Exception e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Kritisk feil", "Feil ved importering av database. " +
+                    "Kan ikke garantere dataintegritet.");
+        }
     }
 }
