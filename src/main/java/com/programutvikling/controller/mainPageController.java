@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -60,6 +61,12 @@ public class mainPageController {
 
     @FXML
     private TextField selectedKundeField;
+
+    @FXML
+    private ProgressBar progressBar;
+
+    @FXML
+    private Text progressText;
 
     private File threadfile;
 

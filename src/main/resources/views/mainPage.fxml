@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tab?>
@@ -27,19 +28,18 @@
                               <TableColumn fx:id="kundeCol2" onEditStart="#selectClient" prefWidth="121.0" text="Fornavn" />
                               <TableColumn fx:id="kundeCol3" onEditStart="#selectClient" prefWidth="142.0" text="Etternavn" />
                            </columns></TableView>
-                        <JFXTextField fx:id="k_fornavn" layoutX="350.0" layoutY="47.0" onInputMethodTextChanged="#saveChanges" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
-                        <JFXTextField fx:id="k_etternavn" layoutX="350.0" layoutY="73.0" prefWidth="320.0" promptText="Etternavn" />
-                        <JFXTextField fx:id="k_forsNr" disable="true" editable="false" layoutX="350.0" layoutY="99.0" prefWidth="320.0" promptText="Forsikringsnummer" />
+                        <JFXTextField fx:id="k_fornavn" layoutX="350.0" layoutY="73.0" onInputMethodTextChanged="#saveChanges" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
+                        <JFXTextField fx:id="k_etternavn" layoutX="350.0" layoutY="99.0" prefWidth="320.0" promptText="Etternavn" />
+                        <JFXTextField fx:id="k_forsNr" disable="true" editable="false" layoutX="350.0" layoutY="28.0" prefWidth="320.0" promptText="Forsikringsnummer" />
                         <JFXTextField fx:id="k_adr" layoutX="350.0" layoutY="125.0" prefWidth="320.0" promptText="Fakturaadresse" />
-                        <JFXTextField fx:id="k_opDato" disable="true" editable="false" layoutX="350.0" layoutY="21.0" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
+                        <JFXTextField fx:id="k_opDato" disable="true" editable="false" layoutX="350.0" layoutY="54.0" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
                         <JFXTextField fx:id="policyCountField" editable="false" layoutX="531.0" layoutY="181.0" prefHeight="26.0" prefWidth="135.0" />
-                        <JFXButton layoutX="345.0" layoutY="316.0" onAction="#saveChanges" style="-fx-background-color: grey;" text="Store Changes" />
-                        <JFXButton layoutX="474.0" layoutY="316.0" onAction="#saveChangesToFile" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file" />
-                        <Text layoutX="345.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEGG TIL FELTER SOM VISER RELEVANT DATA HER" />
-                        <Button layoutX="480.0" layoutY="350.0" mnemonicParsing="false" onAction="#TEST" text="TEST" />
+                        <JFXButton layoutX="572.0" layoutY="403.0" onAction="#saveChanges" prefWidth="114.0" style="-fx-background-color: grey;" text="Store Changes" />
+                        <JFXButton layoutX="572.0" layoutY="435.0" onAction="#saveChangesToFile" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file" />
                         <Text layoutX="402.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antall forsikringer:" />
                         <JFXTextField fx:id="yearlyAmountField" editable="false" layoutX="531.0" layoutY="210.0" prefHeight="26.0" prefWidth="135.0" />
                         <Text layoutX="438.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Årlig premie:" />
+                        <JFXButton layoutX="572.0" layoutY="370.0" onAction="#deleteClient" prefWidth="114.0" style="-fx-background-color: grey;" text="Delete Client" />
                      </children>
                   </AnchorPane>
             </content>
@@ -84,7 +84,12 @@
       </AnchorPane>
    </top>
    <bottom>
-      <AnchorPane prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="progressBar" prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="739.0" layoutY="2.0" mnemonicParsing="false" onAction="#TEST" text="TEST" />
+            <JFXProgressBar layoutX="14.0" layoutY="15.0" progress="0.0" />
+            <Text fx:id="progressText" fill="WHITE" layoutX="227.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+         </children></AnchorPane>
    </bottom>
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
