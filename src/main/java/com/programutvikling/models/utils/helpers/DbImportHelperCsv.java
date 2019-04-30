@@ -6,7 +6,6 @@ import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -42,8 +41,8 @@ public class DbImportHelperCsv{
         Arrays.sort(dbFiles);
 
         for (File file : dbFiles) {
-
-            if (!file.getName().endsWith(".csv")) {
+            System.out.println(file.getName());
+            if (file.getName().split("\\.")[1].equals("csv")) {
 
                 if (file.getName().equals("clients.csv")) {
 

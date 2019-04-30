@@ -381,6 +381,7 @@ public class mainPageController {
         try {
             importer.importDbFromCsv(null);
         } catch (Exception e) {
+            e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Kritisk feil", "Feil ved importering av database. " +
                     "Kan ikke garantere dataintegritet.");
         }
