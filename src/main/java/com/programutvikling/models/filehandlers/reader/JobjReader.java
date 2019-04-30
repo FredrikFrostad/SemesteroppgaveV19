@@ -11,17 +11,9 @@ import java.io.ObjectInputStream;
 
 //TODO: skriv dokumentasjon på denne klassen!
 
-public class JobjReader extends FileReader implements Runnable{
-
-    public File file;
-    private Object returnValue;
+public class JobjReader extends FileReader{
 
     public JobjReader() {}
-
-    public JobjReader(File file){
-        this.file = file;
-
-    }
 
     @Override
     public Object readDataFromFile(File file) throws Exception {
@@ -46,26 +38,6 @@ public class JobjReader extends FileReader implements Runnable{
             ((Forsikring) obj).setFilePath(file.getPath());
         } else {
             System.out.println("Error: could not set filePath as instance variable");
-        }
-    }
-    public void setNewFile(File file){
-        this.file = file;
-    }
-
-    public Object getReturnValue(){
-        return returnValue;
-    }
-
-    @Override
-    public void run() {
-        try{
-            returnValue = readDataFromFile(file);
-            Thread.sleep(10000);
-            System.out.println("threaden er kjørt. output"+ returnValue.toString());
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            System.out.println(e);
         }
     }
 }
