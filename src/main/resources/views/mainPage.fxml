@@ -28,20 +28,20 @@
                               <TableColumn fx:id="kundeCol2" onEditStart="#selectClient" prefWidth="121.0" text="Fornavn" />
                               <TableColumn fx:id="kundeCol3" onEditStart="#selectClient" prefWidth="142.0" text="Etternavn" />
                            </columns></TableView>
-                        <Group layoutX="345.0" layoutY="21.0" AnchorPane.rightAnchor="24.490234375">
+                        <Group layoutX="355.509765625" layoutY="21.0" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="24.490234375" AnchorPane.topAnchor="21.0">
                            <children>
-                              <JFXTextField fx:id="k_fornavn" layoutX="5.0" layoutY="26.0" onInputMethodTextChanged="#saveChanges" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
-                              <JFXTextField fx:id="k_etternavn" layoutX="5.0" layoutY="52.0" prefWidth="320.0" promptText="Etternavn" />
-                              <JFXTextField fx:id="k_forsNr" disable="true" editable="false" layoutX="5.0" layoutY="78.0" prefWidth="320.0" promptText="Forsikringsnummer" />
-                              <JFXTextField fx:id="k_adr" layoutX="5.0" layoutY="104.0" prefWidth="320.0" promptText="Fakturaadresse" />
-                              <JFXTextField fx:id="k_opDato" disable="true" editable="false" layoutX="5.0" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
-                              <JFXTextField fx:id="policyCountField" editable="false" layoutX="186.0" layoutY="160.0" prefHeight="26.0" prefWidth="135.0" />
-                              <JFXButton layoutY="295.0" onAction="#saveChanges" style="-fx-background-color: grey;" text="Store Changes" />
-                              <JFXButton layoutX="129.0" layoutY="295.0" onAction="#saveChangesToFile" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file" />
-                              <Text layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEGG TIL FELTER SOM VISER RELEVANT DATA HER" />
-                              <Text layoutX="57.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antall forsikringer:" />
-                              <JFXTextField fx:id="yearlyAmountField" editable="false" layoutX="186.0" layoutY="189.0" prefHeight="26.0" prefWidth="135.0" />
-                              <Text layoutX="93.0" layoutY="202.93310546875" strokeType="OUTSIDE" strokeWidth="0.0" text="Årlig premie:" />
+                              <JFXTextField fx:id="k_fornavn" layoutY="26.0" onInputMethodTextChanged="#saveChanges" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
+                              <JFXTextField fx:id="k_etternavn" layoutY="52.0" prefWidth="320.0" promptText="Etternavn" />
+                              <JFXTextField fx:id="k_forsNr" disable="true" editable="false" layoutY="78.0" prefWidth="320.0" promptText="Forsikringsnummer" />
+                              <JFXTextField fx:id="k_adr" layoutY="104.0" prefWidth="320.0" promptText="Fakturaadresse" />
+                              <JFXTextField fx:id="k_opDato" disable="true" editable="false" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
+                              <JFXTextField fx:id="policyCountField" editable="false" layoutX="181.0" layoutY="160.0" prefHeight="26.0" prefWidth="135.0" />
+                              <Text layoutX="52.0" layoutY="160.93310546875" strokeType="OUTSIDE" strokeWidth="0.0" text="Antall forsikringer:" />
+                              <JFXTextField fx:id="yearlyAmountField" editable="false" layoutX="181.0" layoutY="189.0" prefHeight="26.0" prefWidth="135.0" />
+                              <Text layoutX="88.0" layoutY="190.8662109375" strokeType="OUTSIDE" strokeWidth="0.0" text="Årlig premie:" />
+                              <JFXButton layoutX="202.490234375" layoutY="416.0" onAction="#saveChangesToFile" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file" />
+                              <JFXButton layoutX="201.490234375" layoutY="381.0" onAction="#saveChanges" prefWidth="115.0" style="-fx-background-color: grey;" text="Store Changes" />
+                              <JFXButton layoutX="201.490234375" layoutY="346.0" onAction="#deleteClient" prefWidth="115.0" style="-fx-background-color: grey;" text="Delete Client" />
                            </children>
                         </Group>
                      </children>
