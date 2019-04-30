@@ -18,7 +18,6 @@ public class Kunde implements Serializable {
     private String etternavn;
     private int forsikrNr;
     private String Fakturaadresse;
-    private transient String filePath;
     private ArrayList<Forsikring> forsikringer = new ArrayList<>();
     private ArrayList<Skademelding> skademeldinger = new ArrayList<>();
     private ArrayList<Double> utbetaltErstatn = new ArrayList<>();

@@ -326,7 +326,6 @@ public class mainPageController {
         Optional<ButtonType> choice = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
                 "Er du sikker på at du vil slette kunde " + k.getFornavn() + " " + k.getEtternavn() + "?",
                 "Slett Kunde ", "Avbryt");
-        
 
         if (choice.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
             MainApp.setSelectedKunde(null);
