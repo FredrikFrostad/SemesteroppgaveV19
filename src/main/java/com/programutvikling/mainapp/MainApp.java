@@ -61,6 +61,8 @@ public class MainApp extends Application {
 
         stage.setTitle("SemesteroppgaveV2019");
         stage.setScene(scene);
+        stage.setMinHeight(600);
+        stage.setMinWidth(800);
         stage.show();
     }
 
