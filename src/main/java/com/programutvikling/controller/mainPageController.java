@@ -323,9 +323,17 @@ public class mainPageController {
     @FXML
     private void deleteClient() {
         Kunde k = MainApp.getSelectedKunde();
-        MainApp.setSelectedKunde(null);
-        MainApp.getClientList().remove(k);
-        refreshTable();
+        Optional<ButtonType> choice = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
+                "Er du sikker på at du vil slette kunde " + k.getFornavn() + " " + k.getEtternavn() + "?",
+                "Slett Kunde ", "Avbryt");
+        
+
+        if (choice.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
+            MainApp.setSelectedKunde(null);
+            MainApp.getClientList().remove(k);
+            refreshTable();
+        }
+
     }
 
     @FXML
