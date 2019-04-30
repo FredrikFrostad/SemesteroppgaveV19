@@ -88,6 +88,19 @@ public class Kunde implements Serializable {
         return utbetaltErstatn;
     }
 
+    public int getNmbrOfPolicies() {
+        return forsikringer.size();
+    }
+
+    public double getYearlyPremium() {
+        Double out = 0.0;
+
+        for (Forsikring f : forsikringer) {
+            out += f.getPremieAnnum();
+        }
+        return out;
+    }
+
     @Override
     public String toString() {
         return  "type=" + type +

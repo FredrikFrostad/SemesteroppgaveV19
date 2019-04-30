@@ -175,6 +175,8 @@ public class mainPageController {
         k_forsNr.setText(Integer.toString(k.getForsikrNr()));
         k_adr.setText(k.getFakturaadresse());
         k_opDato.setText(k.getKundeOpprettet().toString());
+        policyCountField.setText(String.valueOf(k.getNmbrOfPolicies()));
+        yearlyAmountField.setText(String.valueOf(k.getYearlyPremium()));
     }
 
     /**
@@ -286,10 +288,12 @@ public class mainPageController {
 
         ViewChanger vc = new ViewChanger();
         vc.setView(rootPane, "newInjuryRepoert", "views/newInjuryReport.fxml");
-
-
-
     }
+
+    /**
+     * Checks if a client is selected for operations that rewuire this to be done.
+     * @param k selected client object or null if nothing is selected.
+     */
     private void noCustomerSelected(Kunde k){
         if (k == null) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
