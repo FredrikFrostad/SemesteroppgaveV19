@@ -1,9 +1,7 @@
 package com.programutvikling.controller;
 
 import com.programutvikling.mainapp.MainApp;
-import com.programutvikling.models.data.forsikring.Forsikring;
-import com.programutvikling.models.data.forsikring.Fritidsbolig;
-import com.programutvikling.models.data.forsikring.VillaInnbo;
+import com.programutvikling.models.data.forsikring.*;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidNumberFormatException;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
@@ -46,16 +44,14 @@ public class NewPolicyController{
             fritid_beløpBygning,
             fritid_beløpInnbo,
             villa_adresse,
-            villa_type,
-            villa_byggår,
+            villa_byggeår,
             villa_boligtype,
-            villa_byggmaterialer,
-            villa_standar,
+            villa_byggemateriale,
+            villa_standard,
             villa_areal,
-            villa_forsikringsbeløp,
-            villa_forsikringsbeløpinbo,
+            villa_beløpBygning,
+            villa_beløpInnbo,
             båt_eier,
-            båt_type,
             båt_regNr,
             båt_typebåt,
             båt_modell,
@@ -147,23 +143,61 @@ public class NewPolicyController{
         VillaInnbo villa = new VillaInnbo();
 
         try{
-            Inputvalidator.checkIfValidNumber(fritid_byggeår.getText());
+            Inputvalidator.checkIfValidNumber(villa_byggeår.getText());
+            Inputvalidator.checkIfValidNumber(villa_areal.getText());
+            Inputvalidator.checkIfValidNumber(villa_beløpInnbo.getText());
+            Inputvalidator.checkIfValidNumber(villa_beløpBygning.getText());
+
+            villa.setAdresse(villa_adresse.getText());
+            villa.setByggeaar(Integer.parseInt(villa_byggeår.getText()));
+            villa.setBoligtype(villa_boligtype.getText());
+            villa.setByggemateriale(villa_byggemateriale.getText());
+            villa.setStandard(villa_standard.getText());
+            villa.setAreal(Integer.parseInt(villa_areal.getText()));
+            villa.setForsikringsbeløpByggning(Double.parseDouble(villa_beløpBygning.getText()));
+            villa.setForsikringsbeløpInnbo(Double.parseDouble(villa_beløpInnbo.getText()));
+
         } catch (InvalidNumberFormatException e) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Ugyldig byggeår", e.getMessage());
         }
-        return null;
+       return villa;
     }
 
     private Forsikring createReiseForsikring() {
-        return null;
+        Reise reiseForiskring = new Reise();
+
+        try{
+            Inputvalidator.checkIfValidNumber(reise_forsikringsSum.getText());
+
+            reiseForiskring.setforsikringOmraade(reise_forsikringOmraade.getText());
+            reiseForiskring.setForsikringsSum(Double.parseDouble(reise_forsikringsSum.getText()));
+
+        } catch (InvalidNumberFormatException e) {
+            e.printStackTrace();
+        }
+        return reiseForiskring;
     }
 
     private Forsikring createBåtForsikring() {
-        return null;
-    }
+        Båt båtForsikring = new Båt();
 
-    private Forsikring createBilForsikring() {
-        return null;
+        try {
+            Inputvalidator.checkIfValidNumber(båt_lengde.getText());
+            Inputvalidator.checkIfValidNumber(båt_årsmodell.getText());
+
+            båtForsikring.setEier(båt_eier.getText());
+            båtForsikring.setTypeBåt(båt_typebåt.getText());
+            båtForsikring.setRegNr(båt_regNr.getText());
+            båtForsikring.setEffekt(båt_effekt.getText());
+            båtForsikring.setModell(båt_modell.getText());
+            båtForsikring.setLengde(Integer.parseInt(båt_lengde.getText()));
+            båtForsikring.setÅrsmodell(Integer.parseInt(båt_årsmodell.getText()));
+            båtForsikring.setMotorType(båt_motorType.getText());
+
+        } catch (InvalidNumberFormatException e) {
+            e.printStackTrace();
+        }
+        return båtForsikring;
     }
 
     // todo: DET MANGLER FELTER I FXML - PRIS PR ÅR OG FORSIKRINGSSUM (fORSIKRINGSSUM ER KOMBINASJONEN AV INNBO OG bYGNING, MÅ BEREGNES I KLASSEN!!)
