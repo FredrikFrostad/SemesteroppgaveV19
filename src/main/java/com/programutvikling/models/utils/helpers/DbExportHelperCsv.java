@@ -18,6 +18,7 @@ public class DbExportHelperCsv {
     private ArrayList<Object> travelList;
     private ArrayList<Object> villaList;
     private ArrayList<Object> clients;
+    private String filePath;
 
     public DbExportHelperCsv() {
         this.boatList = new ArrayList<>();
@@ -26,6 +27,16 @@ public class DbExportHelperCsv {
         this.villaList = new ArrayList<>();
         this.exportList = new ArrayList<>();
         this.clients = new ArrayList<>();
+    }
+
+    public DbExportHelperCsv(String filePath) {
+        this.boatList = new ArrayList<>();
+        this.holidayResiddenceList = new ArrayList<>();
+        this.travelList = new ArrayList<>();
+        this.villaList = new ArrayList<>();
+        this.exportList = new ArrayList<>();
+        this.clients = new ArrayList<>();
+        this.filePath = filePath;
     }
 
     /**
@@ -47,7 +58,7 @@ public class DbExportHelperCsv {
 
         // Writing all data to files
         try {
-            writeListsToFile();
+            writeListsToFile(filePath);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,8 +86,19 @@ public class DbExportHelperCsv {
      * therefor filenames and locations are hardcoded.
      * @throws IOException
      */
-    private void writeListsToFile() throws IOException{
-        String filePath = MainApp.getDatabaseFilePath().getAbsolutePath() + File.separator;
+    private void writeListsToFile(String filePath) throws IOException{
+        if (filePath == null) {
+            filePath = MainApp.getDatabaseFilePath().getAbsolutePath() + File.separator;
+        } else {
+            String[] path = filePath.split("\\.");
+            System.out.println("Path til mappe er: " + path[0]);
+            path[0] = path[0] + File.separator;
+            new File(path[0]).mkdir();
+            System.out.println("Created directory.........writing files");
+            filePath = path[0];
+            System.out.println("Filsti er: " + filePath);
+
+        }
         System.out.println(filePath);
         clients.addAll(MainApp.getClientList());
 
@@ -96,6 +118,7 @@ public class DbExportHelperCsv {
             new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_villa.csv"), villaList);
         }
     }
+
 
     /**
      * Sort clients based on policy Number.

@@ -204,6 +204,9 @@ public class mainPageController {
                             if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
                                 JobjWriter writer = new JobjWriter();
                                 writer.writeObjectDataToFile(threadfile, MainApp.getClientList());
+                            } else {
+                                DbExportHelperCsv exporter = new DbExportHelperCsv(threadfile.getAbsolutePath());
+                                exporter.exportDbAsCsv();
                             }
                         } catch (InvalidFileFormatException e) {
                             AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
