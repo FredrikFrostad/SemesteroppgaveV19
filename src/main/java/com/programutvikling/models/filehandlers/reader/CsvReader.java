@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-public class CsvReader extends FileReader implements Runnable{
+public class CsvReader extends FileReader{
 
     /**
      * Method for reading data from a CSV-file.
@@ -65,17 +65,5 @@ public class CsvReader extends FileReader implements Runnable{
 
     public Object getReturnValue() {
         return returnValue;
-    }
-
-    @Override
-    public void run() {
-        try {
-            readDataFromFile(file);
-
-            System.out.println("thread for cvs read from file" );
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-        }
     }
 }
