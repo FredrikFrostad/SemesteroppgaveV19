@@ -35,14 +35,35 @@ public class NewPolicyController{
     @FXML
     Button topRightButton;
     @FXML
-    private TextField fritid_adresse,
+    private TextField
+            fritid_adresse,
             fritid_byggeår,
             fritid_boligtype,
             fritid_byggemateriale,
             fritid_standard,
             fritid_areal,
             fritid_beløpBygning,
-            fritid_beløpInnbo;
+            fritid_beløpInnbo,
+            villa_adresse,
+            villa_type,
+            villa_byggår,
+            villa_boligtype,
+            villa_byggmaterialer,
+            villa_standar,
+            villa_areal,
+            villa_forsikringsbeløp,
+            villa_forsikringsbeløpinbo,
+            båt_eier,
+            båt_type,
+            båt_regNr,
+            båt_typebåt,
+            båt_modell,
+            båt_lengde,
+            båt_årsmodell,
+            båt_motorType,
+            båt_effekt,
+            reise_forsikringOmraade,
+            reise_forsikringsSum;
 
     private Node active;
 
@@ -121,6 +142,7 @@ public class NewPolicyController{
 
         try{
             Inputvalidator.checkIfValidNumber(fritid_byggeår.getText());
+            Inputvalidator
         }
     }
 
