@@ -111,6 +111,7 @@ public class mainPageController {
         for (int i = 0; i < 1E6; i++) {
             MainApp.getClientList().add(new Kunde("Test" + Integer.toString(i), "Testesen" + Integer.toString(i), i + 500, "Fakturaadresse"));
         }
+        refreshTable();
     }
 
 
