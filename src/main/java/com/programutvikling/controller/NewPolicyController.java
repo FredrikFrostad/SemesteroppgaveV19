@@ -18,6 +18,8 @@ import java.time.LocalDate;
 
 public class NewPolicyController{
 
+    //TODO: Javadoc!!!!!!
+
     @FXML
     BorderPane newPolicyRoot;
     @FXML
@@ -141,14 +143,20 @@ public class NewPolicyController{
         return false;
     }
 
+    /**
+     * Creates a new Villa insurance policy from the provided fields
+     * @return Villa policy data object
+     */
     private Forsikring createVillaForsikring() {
-        VillaInnbo villa = new VillaInnbo();
+        VillaInnbo villa = null;
 
         try{
             Inputvalidator.checkIfValidNumber(villa_byggeår.getText());
             Inputvalidator.checkIfValidNumber(villa_areal.getText());
             Inputvalidator.checkIfValidNumber(villa_beløpInnbo.getText());
             Inputvalidator.checkIfValidNumber(villa_beløpBygning.getText());
+
+            villa = new VillaInnbo();
 
             villa.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
             villa.setBetingelser("Betingelser shmetingelser");
@@ -174,26 +182,27 @@ public class NewPolicyController{
     }
 
     private Forsikring createReiseForsikring() {
-        Reise reiseForsikring = new Reise();
+        Reise travelPolicy = null;
 
         try{
             Inputvalidator.checkIfValidNumber(reise_forsikringsSum.getText());
 
-            reiseForsikring.setBetingelser("Betingelser shmetingelser");
-            reiseForsikring.setAvtaleOpprettet(LocalDate.now());
-            reiseForsikring.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
-            reiseForsikring.setOmraade(reise_forsikringOmraade.getText().replace(","," "));
-            reiseForsikring.setForsikringsSum(Double.parseDouble(reise_forsikringsSum.getText().replace(","," ")));
+            travelPolicy = new Reise();
 
-            reiseForsikring.setPremieAnnum(reiseForsikring.prisPrÅr());
+            travelPolicy.setBetingelser("Betingelser shmetingelser");
+            travelPolicy.setAvtaleOpprettet(LocalDate.now());
+            travelPolicy.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
+            travelPolicy.setOmraade(reise_forsikringOmraade.getText().replace(","," "));
+            travelPolicy.setForsikringsSum(Double.parseDouble(reise_forsikringsSum.getText().replace(","," ")));
+            travelPolicy.setPremieAnnum(travelPolicy.prisPrÅr());
 
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        System.out.println(reiseForsikring.toString());
-        return reiseForsikring;
+        System.out.println(travelPolicy.toString());
+        return travelPolicy;
     }
 
     private Forsikring createBåtForsikring() {
