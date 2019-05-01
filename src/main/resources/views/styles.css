@@ -3,7 +3,6 @@
 }
 
 
-
 .bakgrun {
     -fx-background-color: #7da0ce;
     -fx-fill: #7da0ce;
@@ -11,12 +10,15 @@
 
 .knapper{
     -fx-background-color:#7da0ce;
+    -fx-font-size: 14px;
+    -jfx-unselected-color: #7da0ce;
 
 }
 
 .knapper:hover {
     -fx-background-color: white;
 }
+
 
 
 .radioKnapper {
@@ -30,7 +32,6 @@
 }
 
 .regNyForsikringRamme{
-    -fx-border-radius: 10 10 0 0;
-    -fx-background-radius: 10 10 0 0;
+
 }
 

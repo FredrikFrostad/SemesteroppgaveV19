@@ -27,31 +27,31 @@
                               <TableColumn fx:id="col2" onEditStart="#selectClient" prefWidth="121.0" text="Fornavn" />
                               <TableColumn fx:id="col3" onEditStart="#selectClient" prefWidth="142.0" text="Etternavn" />
                            </columns></TableView>
-                        <JFXTextField fx:id="k_fornavn" layoutX="350.0" layoutY="47.0" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn">
+                        <JFXTextField fx:id="k_fornavn" alignment="BOTTOM_LEFT" layoutX="350.0" layoutY="70.0" prefHeight="40.0" prefWidth="320.0" promptText="Fornavn">
                            <font>
                               <Font size="14.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="k_etternavn" layoutX="350.0" layoutY="73.0" prefWidth="320.0" promptText="Etternavn">
+                        <JFXTextField fx:id="k_etternavn" alignment="BOTTOM_LEFT" layoutX="350.0" layoutY="110.0" prefHeight="40.0" prefWidth="320.0" promptText="Etternavn">
                            <font>
                               <Font size="14.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="k_forsNr" layoutX="350.0" layoutY="99.0" prefWidth="320.0" promptText="Forsikringsnummer">
+                        <JFXTextField fx:id="k_forsNr" alignment="BOTTOM_LEFT" layoutX="350.0" layoutY="150.0" prefHeight="40.0" prefWidth="320.0" promptText="Forsikringsnummer">
                            <font>
                               <Font size="14.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="k_adr" layoutX="350.0" layoutY="125.0" prefWidth="320.0" promptText="Fakturaadresse">
+                        <JFXTextField fx:id="k_adr" alignment="BOTTOM_LEFT" layoutX="350.0" layoutY="190.0" prefHeight="40.0" prefWidth="320.0" promptText="Fakturaadresse">
                            <font>
                               <Font size="14.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="k_opDato" layoutX="350.0" layoutY="21.0" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato">
+                        <JFXTextField fx:id="k_opDato" alignment="BOTTOM_LEFT" layoutX="350.0" layoutY="30.0" prefHeight="40.0" prefWidth="320.0" promptText="Opprettet Dato">
                            <font>
                               <Font size="14.0" />
                            </font></JFXTextField>
-                        <JFXButton layoutX="383.0" layoutY="194.0" onAction="#saveChanges" prefHeight="39.0" prefWidth="117.0" styleClass="knapper" text="Store Changes">
+                        <JFXButton layoutX="379.0" layoutY="277.0" onAction="#saveChanges" prefHeight="39.0" prefWidth="117.0" styleClass="knapper" text="Store Changes">
                            <font>
                               <Font size="14.0" />
                            </font></JFXButton>
-                        <JFXButton layoutX="527.0" layoutY="194.0" onAction="#saveChangesToFile" prefHeight="39.0" prefWidth="117.0" styleClass="knapper" text="Save to file">
+                        <JFXButton layoutX="523.0" layoutY="277.0" onAction="#saveChangesToFile" prefHeight="39.0" prefWidth="117.0" styleClass="knapper" text="Save to file">
                            <font>
                               <Font size="14.0" />
                            </font></JFXButton>
