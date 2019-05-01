@@ -11,6 +11,8 @@ import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
+import com.programutvikling.models.utils.dbHandlers.DbExportHandlerCsv;
+import com.programutvikling.models.utils.dbHandlers.DbImportHandlerCsv;
 import com.programutvikling.models.utils.helpers.*;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.concurrent.Service;
@@ -222,7 +224,7 @@ public class mainPageController {
                                 writer.writeObjectDataToFile(threadfile, MainApp.getClientList());
                                 System.out.println("DONE");
                             } else {
-                                DbExportHelperCsv exporter = new DbExportHelperCsv(threadfile.getAbsolutePath());
+                                DbExportHandlerCsv exporter = new DbExportHandlerCsv(threadfile.getAbsolutePath());
                                 exporter.exportDbAsCsv();
                             }
                         } catch (InvalidFileFormatException e) {
@@ -271,7 +273,7 @@ public class mainPageController {
                                 // This implementation is fragile, and only works on files eksported using the
                                 // exportToFile method, insuring that the naming scheme of the exported csv files
                                 // are kept intact.
-                                DbImportHelperCsv importer = new DbImportHelperCsv();
+                                DbImportHandlerCsv importer = new DbImportHandlerCsv();
                                 importer.importDbFromCsv(threadfile.getParent());
                             }
                         } catch (Exception e) {
@@ -395,7 +397,7 @@ public class mainPageController {
      * Loads db data into program
      */
     private void initDb() {
-        DbImportHelperCsv importer = new DbImportHelperCsv();
+        DbImportHandlerCsv importer = new DbImportHandlerCsv();
         try {
             importer.importDbFromCsv(null);
         } catch (Exception e) {

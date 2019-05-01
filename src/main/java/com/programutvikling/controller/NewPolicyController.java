@@ -4,8 +4,7 @@ import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.forsikring.*;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.exceptions.InvalidNumberFormatException;
-import com.programutvikling.models.filehandlers.writer.JobjWriter;
-import com.programutvikling.models.inputhandlers.Inputvalidator;
+import com.programutvikling.models.utils.inputhandlers.Inputvalidator;
 import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.fxml.FXML;
@@ -15,8 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class NewPolicyController{

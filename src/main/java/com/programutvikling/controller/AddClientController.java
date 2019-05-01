@@ -8,7 +8,7 @@ import com.programutvikling.models.exceptions.InvalidNumberFormatException;
 import com.programutvikling.models.filehandlers.writer.CsvWriter;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
-import com.programutvikling.models.inputhandlers.Inputvalidator;
+import com.programutvikling.models.utils.inputhandlers.Inputvalidator;
 import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;

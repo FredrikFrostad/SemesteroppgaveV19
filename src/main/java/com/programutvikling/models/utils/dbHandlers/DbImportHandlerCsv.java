@@ -1,4 +1,4 @@
-package com.programutvikling.models.utils.helpers;
+package com.programutvikling.models.utils.dbHandlers;
 
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.forsikring.Forsikring;
@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class DbImportHelperCsv{
+public class DbImportHandlerCsv {
 
 
     /**

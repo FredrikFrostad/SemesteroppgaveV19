@@ -4,13 +4,12 @@ import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.data.skademelding.Skademelding;
 import com.programutvikling.models.exceptions.InvalidNumberFormatException;
-import com.programutvikling.models.inputhandlers.Inputvalidator;
+import com.programutvikling.models.utils.inputhandlers.Inputvalidator;
 import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 
 public class NewInjuryReportController {
 
