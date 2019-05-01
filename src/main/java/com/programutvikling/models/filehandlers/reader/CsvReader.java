@@ -38,7 +38,6 @@ public class CsvReader extends FileReader{
             while ((line = reader.readLine()) != null) {
                 String[] dataFields = line.split(",");
                 objLst.add(dataFields);
-                break;
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -114,9 +114,10 @@ public class CsvObjectBuilder {
         return b;
     }
 
-    //TODO: finish this
     private Reise buildReiseFromcsv(String[] objData) throws Exception {
         Reise r = new Reise();
+
+
         throw new Exception();
     }
 

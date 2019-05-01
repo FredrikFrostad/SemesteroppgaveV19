@@ -2,6 +2,8 @@ package com.programutvikling.models.data.forsikring;
 
 import com.programutvikling.models.data.ObjectType;
 
+import java.time.LocalDate;
+
 public class Reise extends Forsikring{
 
     private static ObjectType type = ObjectType.REISE;
@@ -31,6 +33,12 @@ public class Reise extends Forsikring{
     @Override
     public void setForsikringsSum(double forsikringsSum) {
         super.setForsikringsSum(forsikringsSum);
+    }
+
+    public void setForsikrNr(int nr) {super.setForsikrNr(nr);}
+
+    public void setAvtaleOpprettet(LocalDate avtaleOpprettet) throws IllegalAccessException{
+        super.setAvtaleOpprettet(avtaleOpprettet);
     }
 
     @Override
