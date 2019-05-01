@@ -307,6 +307,7 @@ public class FormatPolicyTableHelper {
             r.setForsikringsSum(forsikringDoubleCellEditEvent.getNewValue());
             controller.refreshTable();
         });
+        tableView.getColumns().addAll(col4, col5);
     }
 
 }
