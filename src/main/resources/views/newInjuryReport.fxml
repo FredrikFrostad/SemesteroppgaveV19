@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -12,8 +13,8 @@
    <top>
       <AnchorPane minWidth="30.0" prefHeight="12.0" prefWidth="800.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
-           <JFXButton layoutX="6.0" layoutY="4.0" maxWidth="100.0" minHeight="-Infinity" onAction="#registererSkademelding" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: grey;" text="Oppret skademelding" AnchorPane.leftAnchor="6.0" />
-           <JFXButton layoutX="106.0" layoutY="2.0" maxWidth="100.0" minHeight="-Infinity" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: grey;" text="Avbryt" />
+           <JFXButton layoutX="6.0" layoutY="4.0" maxWidth="170.0" minHeight="-Infinity" onAction="#registererSkademelding" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: grey;" text="Oppret skademelding" AnchorPane.leftAnchor="6.0" />
+           <JFXButton layoutX="641.0" layoutY="4.0" maxWidth="159.0" minHeight="-Infinity" prefHeight="40.0" prefWidth="159.0" style="-fx-background-color: grey;" text="Avbryt" />
          </children>
       </AnchorPane>
    </top>
@@ -25,42 +26,52 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <JFXTextField fx:id="typeSkade" text="Type skade:" />
+                  <JFXTextField fx:id="typeSkade" disable="true" text="Type skade:" />
+                  <JFXTextArea />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <VBox>
                      <children>
+                        <JFXTextField disable="true" text="Skade dato:" />
                         <JFXDatePicker fx:id="skadeDato" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="83.0" prefWidth="201.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <JFXTextField text="takseringsbeløp: 100000" fx:id="takseringsbeløp" />
+                        <JFXTextField disable="true" text="Forsikring:" />
+                        <JFXComboBox prefHeight="27.0" prefWidth="201.0" fx:id="comboBox" />
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" />
+            <VBox prefHeight="83.0" prefWidth="201.0">
+               <children>
+                  <JFXTextField fx:id="takseringsbeløp" />
+                  <JFXTextField disable="true" text="Takseringsbeløp:" />
+               </children>
+            </VBox>
          </children></VBox>
    </left>
    <center>
       <VBox>
          <children>
-            <VBox prefHeight="68.0" prefWidth="599.0">
+            <VBox prefHeight="28.0" prefWidth="599.0">
                <children>
-                  <JFXTextField text="KUNDE: Navn" fx:id="name"/>
+                  <JFXTextField fx:id="name" disable="true" text="KUNDE: Navn" />
                </children>
             </VBox>
-            <VBox prefHeight="234.0" prefWidth="599.0">
+            <VBox prefHeight="284.0" prefWidth="599.0">
                <children>
-                  <JFXTextArea fx:id="skadeBeskrivelse" prefHeight="232.0" prefWidth="599.0" text="skriv noe random her&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;hit" />
+                  <JFXTextField disable="true" text="Skade beskrivelse:" />
+                  <JFXTextArea fx:id="skadeBeskrivelse" prefHeight="255.0" prefWidth="599.0" text="&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="196.0" prefWidth="599.0">
                <children>
-                  <JFXTextArea text="Kontakt informasjon til vitner:&#10;&#10;" fx:id="kontaktinfoVitner"/>
+                  <JFXTextField disable="true" text="Kontaktinformasjon til vitner:" />
+                  <JFXTextArea fx:id="kontaktinfoVitner" prefHeight="88.0" prefWidth="599.0" text="&#10;&#10;" />
                </children>
             </VBox>
          </children>

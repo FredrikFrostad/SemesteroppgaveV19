@@ -125,6 +125,6 @@ public class Båt extends Forsikring{
                 ", effekt=" + effekt;
     }
     public int prisPrÅr(int rate){
-        return (int)((getForsikringsSum())/rate);
+        return (int)((this.getForsikringsSum())/rate);
     }
 }
