@@ -185,7 +185,7 @@ public class NewPolicyController{
             reiseForsikring.setBetingelser("Betingelser shmetingelser");
             reiseForsikring.setAvtaleOpprettet(LocalDate.now());
             reiseForsikring.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
-            reiseForsikring.setforsikringOmraade(reise_forsikringOmraade.getText());
+            reiseForsikring.setOmraade(reise_forsikringOmraade.getText());
             reiseForsikring.setForsikringsSum(Double.parseDouble(reise_forsikringsSum.getText()));
 
             reiseForsikring.setPremieAnnum(reiseForsikring.prisPrÅr());
@@ -195,6 +195,7 @@ public class NewPolicyController{
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+        System.out.println(reiseForsikring.toString());
         return reiseForsikring;
     }
 
