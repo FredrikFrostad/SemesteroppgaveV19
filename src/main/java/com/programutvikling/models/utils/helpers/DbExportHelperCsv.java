@@ -90,12 +90,9 @@ public class DbExportHelperCsv {
             filePath = MainApp.getDatabaseFilePath().getAbsolutePath() + File.separator;
         } else {
             String[] path = filePath.split("\\.");
-            System.out.println("Path til mappe er: " + path[0]);
             path[0] = path[0] + File.separator;
             new File(path[0]).mkdir();
-            System.out.println("Created directory.........writing files");
             filePath = path[0];
-            System.out.println("Filsti er: " + filePath);
 
         }
         System.out.println(filePath);
