@@ -109,4 +109,5 @@ public class Kunde implements Serializable {
                 ", forsikrNr=" + forsikrNr +
                 ", Fakturaadresse=" + Fakturaadresse;
     }
+
 }

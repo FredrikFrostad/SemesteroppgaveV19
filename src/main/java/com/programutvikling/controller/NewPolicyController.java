@@ -69,6 +69,7 @@ public class NewPolicyController{
 
     private Node active;
 
+
     @FXML
     private void initialize() {
         active = togglePage;
@@ -126,9 +127,7 @@ public class NewPolicyController{
 
         if (active.getId().equals("fritidsPage")) {
             forsikring = createFritidsBolig();
-        }/*else if(active.getId().equals("bilPage")){
-            forsikring = createBilForsikring();
-        }*/else if(active.getId().equals("båtPage")){
+        }else if(active.getId().equals("båtPage")){
             forsikring = createBåtForsikring();
         }else if(active.getId().equals("reisePage")){
             forsikring = createReiseForsikring();
@@ -203,6 +202,8 @@ public class NewPolicyController{
             båtForsikring.setÅrsmodell(Integer.parseInt(båt_årsmodell.getText()));
             båtForsikring.setMotorType(båt_motorType.getText());
 
+
+
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
         }
@@ -232,8 +233,7 @@ public class NewPolicyController{
             fritidsbolig.setForsikringsbeløpByggning(Double.parseDouble(fritid_beløpBygning.getText()));
             fritidsbolig.setForsikringsbeløpInnbo(Double.parseDouble(fritid_beløpInnbo.getText()));
 
-            fritid_beløp.setText(String.valueOf(fritidsbolig.calculateForsikringssum()));
-            fritid_prÅr.setText(String.valueOf(fritidsbolig.prisPrÅr(300)));
+            fritidsbolig.setPremieAnnum(fritidsbolig.prisPrÅr(200));
 
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
