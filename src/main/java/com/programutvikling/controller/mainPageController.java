@@ -24,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -251,42 +252,14 @@ public class mainPageController {
      */
     @FXML private void importFromFile() {
         try {
-            threadfile = FileReader.getFile();
+            new ThreadHelper().importFileThread(FileReader.getFile(), progressBar, progressText, this);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Finner ikke fil", e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
         }
-
-
-        Service<Void> thread = new Service<Void>() {
-            @Override
-            protected Task<Void> createTask() {
-                return new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        try {
-                            System.out.println("Starting file import task!");
-                            if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
-                                JobjReader reader = new JobjReader();
-                                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(threadfile);
-                                MainApp.getClientList().addAll(list);
-                            } else {
-                                // This implementation is fragile, and only works on files eksported using the
-                                // exportToFile method, insuring that the naming scheme of the exported csv files
-                                // are kept intact.
-                                DbImportHandlerCsv importer = new DbImportHandlerCsv();
-                                importer.importDbFromCsv(threadfile.getParent());
-                            }
-                        } catch (Exception e) {
-                            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
-                        }
-                        System.out.println("File import task completed");
-                        refreshTable();
-                        return null;
-                    }
-                };
-            }
-        };
-        thread.start();
     }
 
     @FXML
