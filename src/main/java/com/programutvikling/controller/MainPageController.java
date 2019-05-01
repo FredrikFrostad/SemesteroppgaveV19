@@ -113,8 +113,6 @@ public class MainPageController {
         }
     }
 
-
-
     /**
      * When a row containing client data is selected, the corresponding client object is set as activive in MainApp.
      * A string describing the selected clien object is also set in the Insurance policies tab.
@@ -150,13 +148,10 @@ public class MainPageController {
         if (tableOverviewSkademeldinger.getSelectionModel().getSelectedItem() != null){
             Skademelding skademelding = tableOverviewSkademeldinger.getSelectionModel().getSelectedItem();
             tableDeatailsSkademelding.getColumns().clear();
-
         }
     }
 
 
-
-    
     /**
      * Method for reacting to a selectionchange in this views tabpane. The method response is
      * based on the tab selected
@@ -197,6 +192,12 @@ public class MainPageController {
      */
     @FXML
     private void exportToFile() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
         try {
             new ThreadHelper().exportFileThread(FileWriter.getFile(), progressBar, progressText, this);
         } catch (Exception e) {
@@ -210,6 +211,12 @@ public class MainPageController {
      * The file import is threaded  to keep the gui responsive
      */
     @FXML private void importFromFile() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
         try {
             new ThreadHelper().importFileThread(FileReader.getFile(), progressBar, progressText, this);
         } catch (FileNotFoundException e) {
@@ -274,6 +281,12 @@ public class MainPageController {
 
     @FXML
     private void deleteClient() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
         Kunde k = MainApp.getSelectedKunde();
         Optional<ButtonType> result = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
                 "Er du sikker på at du vil slette kunde " + k.getFornavn() + " " + k.getEtternavn() + "?",
@@ -288,6 +301,12 @@ public class MainPageController {
 
     @FXML
     private void deletePolicy() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
         if (tableOverviewForsikring.getSelectionModel().getSelectedItem() != null) {
             Forsikring f = tableOverviewForsikring.getSelectionModel().getSelectedItem();
 
@@ -304,9 +323,14 @@ public class MainPageController {
         }
     }
 
+    // TODO: fiks denne metoden, skal gjøre det samme som ved programslutt
     @FXML
     private void saveChangesToFile() {
-
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
     }
 
     /**
