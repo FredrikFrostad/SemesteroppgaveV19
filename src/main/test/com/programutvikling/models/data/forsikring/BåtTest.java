@@ -29,17 +29,12 @@ public class BåtTest {
 
         JobjWriter writer = new JobjWriter();
         File file = new File("testfile.jobj");
-        JobjReader reader = new JobjReader(file);
-        System.out.println(reader.file + "det er her");
-        Thread thread = (new Thread(reader));
-        thread.start();
+        JobjReader reader = new JobjReader();
 
 
         try {
             writer.writeObjectDataToFile(file, b1);
-            //b2 = (Båt)reader.readDataFromFile(file);
-            System.out.println((Båt)reader.getReturnValue());
-            b2 = (Båt)reader.getReturnValue();
+            b2 = (Båt)reader.readDataFromFile(file);
         } catch (Exception e) {
             e.printStackTrace();
         }
