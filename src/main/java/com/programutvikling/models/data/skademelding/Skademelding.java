@@ -1,9 +1,12 @@
 package com.programutvikling.models.data.skademelding;
 
+import com.programutvikling.models.data.ObjectType;
+
 import java.util.Date;
 
 public class Skademelding {
 
+    private static ObjectType type = ObjectType.SKADEMELDING;
     private String skadeDato;
     private int skadeNr;
     private String typeSkade;
@@ -80,6 +83,8 @@ public class Skademelding {
     public void setUtbetaltErstatning(double utbetaltErstatning) {
         this.utbetaltErstatning = utbetaltErstatning;
     }
+
+    public ObjectType getType() {return type;}
 
     @Override
     public String toString() {
