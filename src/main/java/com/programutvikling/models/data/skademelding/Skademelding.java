@@ -104,4 +104,7 @@ public class Skademelding implements Serializable {
                 ", takseringsBelop=" + takseringsBelop +
                 ", utbetaltErstatning=" + utbetaltErstatning;
     }
+    public void utbetalt(){
+        utbetaltErstatning = (takseringsBelop*0.8);
+    }
 }
