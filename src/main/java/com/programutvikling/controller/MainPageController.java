@@ -5,18 +5,11 @@ import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.data.skademelding.Skademelding;
-import com.programutvikling.models.exceptions.InvalidFileFormatException;
-import com.programutvikling.models.filehandlers.ExtensionHandler;
 import com.programutvikling.models.filehandlers.reader.FileReader;
-import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
-import com.programutvikling.models.filehandlers.writer.JobjWriter;
-import com.programutvikling.models.utils.dbHandlers.DbExportHandlerCsv;
 import com.programutvikling.models.utils.dbHandlers.DbImportHandlerCsv;
 import com.programutvikling.models.utils.helpers.*;
 import com.programutvikling.models.viewChanger.ViewChanger;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -25,8 +18,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Optional;
 
 
