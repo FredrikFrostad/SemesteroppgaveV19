@@ -103,4 +103,7 @@ public class Skademelding {
                 ", takseringsBelop=" + takseringsBelop +
                 ", utbetaltErstatning=" + utbetaltErstatning;
     }
+    public void utbetalt(){
+        utbetaltErstatning = (takseringsBelop*0.8);
+    }
 }
