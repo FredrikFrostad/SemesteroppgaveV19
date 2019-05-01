@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 
-public class mainPageController {
+public class MainPageController {
 
     @FXML
     private BorderPane rootPane;

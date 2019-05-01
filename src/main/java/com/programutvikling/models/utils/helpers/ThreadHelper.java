@@ -1,6 +1,6 @@
 package com.programutvikling.models.utils.helpers;
 
-import com.programutvikling.controller.mainPageController;
+import com.programutvikling.controller.MainPageController;
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.filehandlers.ExtensionHandler;
@@ -8,7 +8,6 @@ import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.utils.dbHandlers.DbImportHandlerCsv;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.text.Text;
 
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 
 public class ThreadHelper {
 
-    public void importFileThread(File threadfile, ProgressBar progressBar, Text progressText, mainPageController controller) throws Exception{
+    public void importFileThread(File threadfile, ProgressBar progressBar, Text progressText, MainPageController controller) throws Exception{
         Service<Void> threadService = new Service<Void>() {
             @Override
             protected Task<Void> createTask() {
@@ -52,5 +51,9 @@ public class ThreadHelper {
             }
         };
         threadService.start();
+    }
+
+    public void exportFileThread(File file, ProgressBar progressBar, Text progressText, MainPageController controller){
+
     }
 }

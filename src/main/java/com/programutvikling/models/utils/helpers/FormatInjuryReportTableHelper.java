@@ -1,7 +1,6 @@
 package com.programutvikling.models.utils.helpers;
 
-import com.programutvikling.controller.mainPageController;
-import com.programutvikling.models.data.ObjectType;
+import com.programutvikling.controller.MainPageController;
 import com.programutvikling.models.data.skademelding.Skademelding;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,12 +35,12 @@ public class FormatInjuryReportTableHelper {
     };
 
 
-    public static void formatCollumns(mainPageController controller, TableView<Skademelding> tableView,
+    public static void formatCollumns(MainPageController controller, TableView<Skademelding> tableView,
                                       Skademelding skademelding){
 
     }
     public static void formatSkademelding(TableView<Skademelding> tableView,
-                                          mainPageController controller){
+                                          MainPageController controller){
         TableColumn<Skademelding, String> col4 = new TableColumn<>("");
 
     }

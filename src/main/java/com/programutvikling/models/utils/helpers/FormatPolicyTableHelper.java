@@ -1,6 +1,6 @@
 package com.programutvikling.models.utils.helpers;
 
-import com.programutvikling.controller.mainPageController;
+import com.programutvikling.controller.MainPageController;
 import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Båt;
 import com.programutvikling.models.data.forsikring.Forsikring;
@@ -44,7 +44,7 @@ public class FormatPolicyTableHelper {
     };
 
 
-    public static void formatCollumns(mainPageController controller, TableView<Forsikring> tableView, Forsikring f) {
+    public static void formatCollumns(MainPageController controller, TableView<Forsikring> tableView, Forsikring f) {
         ObjectType type = f.getType();
 
         formatCommonCells(tableView, controller);
@@ -71,7 +71,7 @@ public class FormatPolicyTableHelper {
      * @param tableView Parent node to Tablecolumns
      * @param controller This is used to refresh the view if an editevent is triggered
      */
-    private static void formatCommonCells(TableView<Forsikring> tableView, mainPageController controller) {
+    private static void formatCommonCells(TableView<Forsikring> tableView, MainPageController controller) {
         TableColumn<Forsikring,Integer> col1 = new TableColumn<>("Polisenummer");
         col1.setCellValueFactory(new PropertyValueFactory<>("forsikrNr"));
 
@@ -104,7 +104,7 @@ public class FormatPolicyTableHelper {
      * Defines all eventhandlers and cellproperties when a boat insurance policy is displayed
      * @param tableView Parent node to Tablecolumns
      */
-    private static void formatBoat(TableView<Forsikring> tableView, mainPageController controller) {
+    private static void formatBoat(TableView<Forsikring> tableView, MainPageController controller) {
         TableColumn<Forsikring,String> col4 = new TableColumn<>("Eier");
         col4.setCellValueFactory(new PropertyValueFactory<>("eier"));
         col4.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -211,7 +211,7 @@ public class FormatPolicyTableHelper {
      * @param tableView
      * @param controller
      */
-    private static void formatHomeowner(TableView<Forsikring> tableView, mainPageController controller) {
+    private static void formatHomeowner(TableView<Forsikring> tableView, MainPageController controller) {
         TableColumn<Forsikring,String> col4 = new TableColumn<>("Adresse");
         col4.setCellValueFactory(new PropertyValueFactory<>("adresse"));
         col4.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -288,7 +288,7 @@ public class FormatPolicyTableHelper {
     }
 
     //Todo: implement this
-    private static void formatTravel (TableView <Forsikring> tableView, mainPageController controller) {
+    private static void formatTravel (TableView <Forsikring> tableView, MainPageController controller) {
         TableColumn<Forsikring, String> col4 = new TableColumn<>("Område");
         col4.setCellValueFactory(new PropertyValueFactory<>("omraade"));
         col4.setOnEditCommit(forsikringStringCellEditEvent -> {
