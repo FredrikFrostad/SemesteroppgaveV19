@@ -4,7 +4,33 @@
 
 
 
-.jfx-radio-button {
-    -fx-selected-color:  #7da0ce;
-    -fx-unselected-color: blue;
+.bakgrun {
+    -fx-background-color: #7da0ce;
+    -fx-fill: #7da0ce;
 }
+
+.knapper{
+    -fx-background-color:#7da0ce;
+
+}
+
+.knapper:hover {
+    -fx-background-color: white;
+}
+
+
+.radioKnapper {
+    -jfx-selected-color: #7da0ce;
+}
+
+.clientRamme{
+    -fx-border-color: #7da0ce;
+    -fx-border-width: 0.8em;
+
+}
+
+.regNyForsikringRamme{
+    -fx-border-radius: 10 10 0 0;
+    -fx-background-radius: 10 10 0 0;
+}
+

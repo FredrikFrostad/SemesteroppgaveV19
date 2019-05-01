@@ -12,12 +12,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="newPolicyRoot" stylesheets="styles.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.NewPolicyController">
+<BorderPane fx:id="newPolicyRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.NewPolicyController">
    <top>
-      <AnchorPane minWidth="30.0" prefHeight="12.0" prefWidth="800.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <AnchorPane minWidth="30.0" prefHeight="12.0" prefWidth="800.0" styleClass="bakgrun" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton layoutY="2.0" onAction="#back" prefHeight="40.0" prefWidth="100.0" text="Tilbake" />
-            <JFXButton fx:id="topRightButton" layoutX="700.0" layoutY="6.0" onAction="#next" prefHeight="40.0" prefWidth="100.0" text="Neste" AnchorPane.rightAnchor="0.0" />
+            <JFXButton layoutY="2.0" onAction="#back" prefHeight="40.0" prefWidth="100.0" styleClass="knapper" text="Tilbake">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="topRightButton" layoutX="700.0" layoutY="2.0" onAction="#next" prefHeight="40.0" prefWidth="100.0" styleClass="knapper" text="Neste" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
             <Text layoutX="253.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrer ny forsikring" textAlignment="CENTER" wrappingWidth="295.0">
                <font>
                   <Font size="26.0" />
@@ -27,33 +33,52 @@
       </AnchorPane>
    </top>
    <bottom>
-      <AnchorPane prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="0.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
       <StackPane fx:id="stack" BorderPane.alignment="CENTER">
          <children>
-
+      
             <AnchorPane fx:id="togglePage" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="279.0" AnchorPane.rightAnchor="278.0" AnchorPane.topAnchor="98.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="372.0" layoutX="263.0" layoutY="81.0" stroke="#7da0ce" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="302.0" AnchorPane.bottomAnchor="101.0" AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="81.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <JFXRadioButton fx:id="båt" layoutX="346.0" layoutY="150.0" selected="true" text="Båtforsikring">
+                  <JFXRadioButton fx:id="båt" layoutX="317.0" layoutY="153.0" selected="true" styleClass="radioKnapper" text="Båtforsikring">
                      <toggleGroup>
                         <ToggleGroup fx:id="choosePolicy" />
                      </toggleGroup>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </JFXRadioButton>
-                  <JFXRadioButton fx:id="bil" layoutX="346.0" layoutY="200.0" text="Bilforsikring" toggleGroup="$choosePolicy" />
-                  <JFXRadioButton fx:id="reise" layoutX="346.0" layoutY="250.0" text="Reiseforsikring" toggleGroup="$choosePolicy" />
-                  <JFXRadioButton fx:id="fritid" layoutX="346.0" layoutY="350.0" text="Fritidsboligforsikring" toggleGroup="$choosePolicy" />
-                  <JFXRadioButton fx:id="villa" layoutX="346.0" layoutY="300.0" text="Villa-Innboforsikring" toggleGroup="$choosePolicy" />
+                  <JFXRadioButton fx:id="reise" layoutX="317.0" layoutY="253.0" styleClass="radioKnapper" text="Reiseforsikring" toggleGroup="$choosePolicy">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="fritid" layoutX="317.0" layoutY="353.0" styleClass="radioKnapper" text="Fritidsboligforsikring" toggleGroup="$choosePolicy">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="villa" layoutX="317.0" layoutY="303.0" styleClass="radioKnapper" text="Villa-Innboforsikring" toggleGroup="$choosePolicy">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="bil" layoutX="317.0" layoutY="203.0" styleClass="radioKnapper" text="Bilforsikring" toggleGroup="$choosePolicy">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXRadioButton>
                </children>
             </AnchorPane>
-
-
-            <AnchorPane fx:id="villaPage" prefHeight="200.0" prefWidth="200.0" visible="false" >
+      
+      
+            <AnchorPane fx:id="villaPage" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
                      <effect>
@@ -70,8 +95,8 @@
                   <JFXTextField fx:id="villa_beløpInnbo" layoutX="323.0" layoutY="279.0" promptText="Beløp innbo" />
                </children>
             </AnchorPane>
-
-
+      
+      
             <AnchorPane fx:id="reisePage" prefHeight="200.0" prefWidth="200.0" visible="false">
             <children>
                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
@@ -83,8 +108,8 @@
                <JFXTextField fx:id="reise_forsikringsSum" layoutX="323.0" layoutY="279.0" promptText="Beløp reiseforsikring" />
             </children>
          </AnchorPane>
-
-
+      
+      
             <AnchorPane fx:id="bilPage" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
@@ -102,8 +127,8 @@
                   <JFXTextField fx:id="bil_effekt" layoutX="323.0" layoutY="279.0" promptText="Effekt" />
                </children>
             </AnchorPane>
-
-
+      
+      
             <AnchorPane fx:id="båtPage" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
@@ -121,8 +146,8 @@
                   <JFXTextField fx:id="båt_effekt" layoutX="323.0" layoutY="279.0" promptText="Effekt" />
                </children>
             </AnchorPane>
-
-
+      
+      
             <AnchorPane fx:id="fritidsPage" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
