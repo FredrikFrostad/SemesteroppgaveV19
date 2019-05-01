@@ -99,6 +99,7 @@
                   <JFXTextField fx:id="båt_motorType" layoutX="323.0" layoutY="253.0" promptText="Motor type" />
                   <JFXTextField fx:id="båt_regNr" layoutX="323.0" layoutY="305.0" promptText="Registrerings nummer" />
                   <JFXTextField fx:id="båt_typebåt" layoutX="323.0" layoutY="279.0" promptText="Båt type" />
+                  <JFXTextField fx:id="båt_forsikringssum" layoutX="323.0" layoutY="336.0" promptText="Forsikringssum" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="reisePage" prefHeight="200.0" prefWidth="200.0" visible="false">

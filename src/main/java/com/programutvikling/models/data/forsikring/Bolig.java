@@ -121,7 +121,7 @@ public class Bolig extends Forsikring {
     }
 
     public int calculateForsikringssum(){
-        return (int) (this.getForsikringsbeløpByggning() + this.getForsikringsSum());
+        return (int) (this.getForsikringsbeløpByggning() + this.getForsikringsbeløpInnbo());
     }
 
     /**

@@ -63,6 +63,7 @@ public class NewPolicyController{
             båt_årsmodell,
             båt_motorType,
             båt_effekt,
+            båt_forsikringssum,
             reise_forsikringOmraade,
             reise_forsikringsSum,
             reise_beløp;
@@ -152,7 +153,10 @@ public class NewPolicyController{
             Inputvalidator.checkIfValidNumber(villa_beløpInnbo.getText());
             Inputvalidator.checkIfValidNumber(villa_beløpBygning.getText());
 
+            villa.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
+            villa.setBetingelser("Betingelser shmetingelser");
             villa.setAdresse(villa_adresse.getText());
+            villa.setAvtaleOpprettet(LocalDate.now());
             villa.setByggeaar(Integer.parseInt(villa_byggeår.getText()));
             villa.setBoligtype(villa_boligtype.getText());
             villa.setByggemateriale(villa_byggemateriale.getText());
@@ -161,13 +165,15 @@ public class NewPolicyController{
             villa.setForsikringsbeløpByggning(Double.parseDouble(villa_beløpBygning.getText()));
             villa.setForsikringsbeløpInnbo(Double.parseDouble(villa_beløpInnbo.getText()));
 
-            villa_beløp.setText(String.valueOf(villa.calculateForsikringssum()));
-            villa_prÅr.setText(String.valueOf(villa.prisPrÅr(200)));
+            villa.setPremieAnnum(villa.prisPrÅr(200));
+            villa.setForsikringsSum(villa.calculateForsikringssum());
 
         } catch (InvalidNumberFormatException e) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Ugyldig byggeår", e.getMessage());
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
-       return villa;
+        return villa;
     }
 
     private Forsikring createReiseForsikring() {
@@ -176,11 +182,17 @@ public class NewPolicyController{
         try{
             Inputvalidator.checkIfValidNumber(reise_forsikringsSum.getText());
 
+            reiseForsikring.setBetingelser("Betingelser shmetingelser");
+            reiseForsikring.setAvtaleOpprettet(LocalDate.now());
+            reiseForsikring.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
             reiseForsikring.setforsikringOmraade(reise_forsikringOmraade.getText());
             reiseForsikring.setForsikringsSum(Double.parseDouble(reise_forsikringsSum.getText()));
 
-            reise_beløp.setText(String.valueOf(reiseForsikring.prisPrÅr()));
+            reiseForsikring.setPremieAnnum(reiseForsikring.prisPrÅr());
+
         } catch (InvalidNumberFormatException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
         return reiseForsikring;
@@ -192,7 +204,11 @@ public class NewPolicyController{
         try {
             Inputvalidator.checkIfValidNumber(båt_lengde.getText());
             Inputvalidator.checkIfValidNumber(båt_årsmodell.getText());
+            Inputvalidator.checkIfValidNumber(båt_forsikringssum.getText());
 
+            båtForsikring.setBetingelser("Betingelser shmetingelser");
+            båtForsikring.setAvtaleOpprettet(LocalDate.now());
+            båtForsikring.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
             båtForsikring.setEier(båt_eier.getText());
             båtForsikring.setTypeBåt(båt_typebåt.getText());
             båtForsikring.setRegNr(båt_regNr.getText());
@@ -202,9 +218,12 @@ public class NewPolicyController{
             båtForsikring.setÅrsmodell(Integer.parseInt(båt_årsmodell.getText()));
             båtForsikring.setMotorType(båt_motorType.getText());
 
-
+            båtForsikring.setForsikringsSum(Double.parseDouble(båt_forsikringssum.getText()));
+            båtForsikring.setPremieAnum(30000);
 
         } catch (InvalidNumberFormatException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
         return båtForsikring;
@@ -234,6 +253,7 @@ public class NewPolicyController{
             fritidsbolig.setForsikringsbeløpInnbo(Double.parseDouble(fritid_beløpInnbo.getText()));
 
             fritidsbolig.setPremieAnnum(fritidsbolig.prisPrÅr(200));
+            fritidsbolig.setForsikringsSum(fritidsbolig.calculateForsikringssum());
 
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
