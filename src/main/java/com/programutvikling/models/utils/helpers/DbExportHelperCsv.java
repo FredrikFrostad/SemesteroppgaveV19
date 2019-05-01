@@ -4,6 +4,7 @@ import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.*;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.data.skademelding.Skademelding;
 import com.programutvikling.models.filehandlers.writer.CsvWriter;
 
 import java.io.File;
@@ -12,12 +13,14 @@ import java.util.*;
 
 public class DbExportHelperCsv {
 
-    private ArrayList<Forsikring> exportList;
+    private ArrayList<Forsikring> exportListPolicy;
+    private ArrayList<Skademelding> exportListDamage;
     private ArrayList<Object>  boatList;
     private ArrayList<Object> holidayResiddenceList;
     private ArrayList<Object> travelList;
     private ArrayList<Object> villaList;
     private ArrayList<Object> clients;
+    private ArrayList<Object> injuryReportList;
     private String filePath;
 
     public DbExportHelperCsv() {
@@ -25,8 +28,10 @@ public class DbExportHelperCsv {
         this.holidayResiddenceList = new ArrayList<>();
         this.travelList = new ArrayList<>();
         this.villaList = new ArrayList<>();
-        this.exportList = new ArrayList<>();
+        this.exportListPolicy = new ArrayList<>();
+        this.exportListDamage = new ArrayList<>();
         this.clients = new ArrayList<>();
+        this.injuryReportList = new ArrayList<>();
     }
 
     public DbExportHelperCsv(String filePath) {
@@ -34,8 +39,10 @@ public class DbExportHelperCsv {
         this.holidayResiddenceList = new ArrayList<>();
         this.travelList = new ArrayList<>();
         this.villaList = new ArrayList<>();
-        this.exportList = new ArrayList<>();
+        this.exportListPolicy = new ArrayList<>();
+        this.exportListDamage = new ArrayList<>();
         this.clients = new ArrayList<>();
+        this.injuryReportList = new ArrayList<>();
         this.filePath = filePath;
     }
 
@@ -47,11 +54,12 @@ public class DbExportHelperCsv {
 
         // Iterating over all clients and adding policies to list
         for (Kunde k : MainApp.getClientList()) {
-            exportList.addAll(k.getForsikringer());
+            exportListPolicy.addAll(k.getForsikringer());
+            exportListDamage.addAll(k.getSkademeldinger());
         }
 
         // Sorting policy list for cleaner looking export
-        sortPolicyList(exportList);
+        sortPolicyList(exportListPolicy);
 
         // Making separate arraylists for each policy type
         populatePolicyLists();
@@ -63,7 +71,6 @@ public class DbExportHelperCsv {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -71,7 +78,7 @@ public class DbExportHelperCsv {
      * policy objects contained inside in separate lists
      */
     private void populatePolicyLists() {
-        for (Forsikring f : exportList) {
+        for (Forsikring f : exportListPolicy) {
             if (f.getType().equals(ObjectType.BÅT)) boatList.add(f);
             else if (f.getType().equals(ObjectType.FRITIDSBOLIG)) holidayResiddenceList.add(f);
             else if (f.getType().equals(ObjectType.REISE)) travelList.add(f);
@@ -112,6 +119,9 @@ public class DbExportHelperCsv {
         }
         if (villaList.size() > 0) {
             new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_villa.csv"), villaList);
+        }
+        if (injuryReportList.size() > 0) {
+            new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_injuryReport.csv"), injuryReportList);
         }
     }
 

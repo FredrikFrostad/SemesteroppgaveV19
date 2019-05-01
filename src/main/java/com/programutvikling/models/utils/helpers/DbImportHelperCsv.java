@@ -3,6 +3,7 @@ package com.programutvikling.models.utils.helpers;
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.data.skademelding.Skademelding;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import java.io.File;
@@ -58,6 +59,10 @@ public class DbImportHelperCsv{
                     ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
                     buldClientObjects(list, startUp, clientList);
 
+                }
+                else if (file.getName().equals("policy_injuryReport.csv")){
+                    ArrayList<String[]>  reportList = reader.readDataFromFile(new File(file.getAbsolutePath()));
+                    buildInjuryReportObjects(reportList, clientList);
                 } else {
                     ArrayList<String[]> policyList = reader.readDataFromFile(new File(file.getAbsolutePath()));
                     buildPolicyObjects(policyList, clientList);
@@ -122,6 +127,19 @@ public class DbImportHelperCsv{
                 if (k.getForsikrNr() == f.getForsikrNr()) {
                     k.getForsikringer().add(f);
                     break;
+                }
+            }
+        }
+    }
+
+    private void buildInjuryReportObjects(ArrayList<String[]> reportList, ArrayList<Kunde> clientList) throws Exception {
+        for (String [] s : reportList) {
+
+            Skademelding skade = (Skademelding)new CsvObjectBuilder().buildObjectFromString(s);
+
+            for (Kunde k : clientList) {
+                if (k.getForsikrNr() == skade.getForsikrNr()) {
+                    k.getSkademeldinger().add(skade);
                 }
             }
         }
