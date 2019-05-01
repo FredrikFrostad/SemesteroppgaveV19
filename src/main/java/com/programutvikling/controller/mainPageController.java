@@ -4,6 +4,7 @@ import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.data.skademelding.Skademelding;
 import com.programutvikling.models.exceptions.InvalidFileFormatException;
 import com.programutvikling.models.filehandlers.ExtensionHandler;
 import com.programutvikling.models.filehandlers.reader.FileReader;
@@ -36,6 +37,9 @@ public class mainPageController {
 
     @FXML
     private TableView<Forsikring> tableOverviewForsikring, tableDetailsForsikring;
+
+    @FXML
+    private TableView<Skademelding> tableOverviewSkademeldinger, tableDeatailsSkademelding;
 
     @FXML
     private TableColumn<Forsikring, String> overviewCol1;
@@ -137,6 +141,14 @@ public class mainPageController {
             FormatPolicyTableHelper.formatCollumns(this, tableDetailsForsikring, f);
             tableDetailsForsikring.getItems().clear();
             tableDetailsForsikring.getItems().add(f);
+        }
+    }
+    @FXML
+    private void selectedInjuryReport(){
+        if (tableOverviewSkademeldinger.getSelectionModel().getSelectedItem() != null){
+            Skademelding skademelding = tableOverviewSkademeldinger.getSelectionModel().getSelectedItem();
+            tableDeatailsSkademelding.getColumns().clear();
+
         }
     }
 

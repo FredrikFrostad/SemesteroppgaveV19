@@ -51,6 +51,11 @@ public class NewInjuryReportController {
         }
     }
 
+    public void cancel(){
+        ViewChanger viewChanger = new ViewChanger();
+        viewChanger.setView(newInjuryRoot,"mainPage", "views/mainPage.fxml");
+        viewChanger.resetView("newInjuryReport");
+    }
 
 
     public void registererSkademelding(){
@@ -78,6 +83,7 @@ public class NewInjuryReportController {
             skademelding.setSkadeBeskrivelse(skadeBeskrivelse.getText());
             skademelding.setSkadeNr(skadeNr);
             skademelding.setTypeSkade(typeSkade.getText());
+            skademelding.setSkadeDato(skadeDato.toString());
             //skademelding.setTakseringsBelop();
             //skademelding.setUtbetaltErstatning();
 

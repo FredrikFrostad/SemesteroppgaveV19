@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Skademelding {
 
-    private Date skadeDato;
+    private String skadeDato;
     private int skadeNr;
     private String typeSkade;
     private String skadeBeskrivelse;
@@ -14,7 +14,7 @@ public class Skademelding {
 
     public Skademelding(){}
 
-    public Skademelding(Date skadeDato, int skadeNr, String typeSkade, String skadeBeskrivelse, String kontaktinfoVitner, double takseringsBelop, double utbetaltErstatning) {
+    public Skademelding(String skadeDato, int skadeNr, String typeSkade, String skadeBeskrivelse, String kontaktinfoVitner, double takseringsBelop, double utbetaltErstatning) {
         this.skadeDato = skadeDato;
         this.skadeNr = skadeNr;
         this.typeSkade = typeSkade;
@@ -25,11 +25,11 @@ public class Skademelding {
     }
 
 
-    public Date getSkadeDato() {
+    public String getSkadeDato() {
         return skadeDato;
     }
 
-    public void setSkadeDato(Date skadeDato) {
+    public void setSkadeDato(String skadeDato) {
         this.skadeDato = skadeDato;
     }
 
