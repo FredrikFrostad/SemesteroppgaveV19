@@ -5,51 +5,50 @@ import com.programutvikling.models.data.ObjectType;
 public class Reise extends Forsikring{
 
     private static ObjectType type = ObjectType.REISE;
-    private String forsikringOmraade;
-    private double forsikringsSum;
+    private String omraade;
 
-    public Reise() {};
+    public Reise() {}
 
     public Reise(int forsNr, double premieAnnum, double forsikringsSum, String betingelser,
-                 String forsikringOmraade, double forsikringsSum1) {
+                 String omraade) {
         super(type, forsNr,premieAnnum, forsikringsSum, betingelser);
-        this.forsikringOmraade = forsikringOmraade;
-        this.forsikringsSum = forsikringsSum1;
+        this.omraade = omraade;
     }
 
-    public String getforsikringOmraade() {
-        return forsikringOmraade;
+    public String getOmraade() {
+        return omraade;
     }
 
-    public void setforsikringOmraade(String forsikringOmraade) {
-        this.forsikringOmraade = forsikringOmraade;
+    public void setOmraade(String omraade) {
+        this.omraade = omraade;
     }
 
     @Override
     public double getForsikringsSum() {
-        return forsikringsSum;
+        return super.getForsikringsSum();
     }
 
     @Override
     public void setForsikringsSum(double forsikringsSum) {
-        this.forsikringsSum = forsikringsSum;
+        super.setForsikringsSum(forsikringsSum);
     }
 
     @Override
     public ObjectType getType() {
-        return type;
+        return this.type;
+    }
+
+    public int prisPrÅr(){
+        return (int) (this.getForsikringsSum()/100);
     }
 
     @Override
     public String toString() {
         return "type=" + type +
                 "," + super.toString() +
-                ", forsikringOmraade=" + forsikringOmraade +
-                ", forsikringsSum=" + forsikringsSum;
+                ", omraade=" + omraade;
     }
 
 
-    public int prisPrÅr(){
-        return (int) (this.getForsikringsSum()/100);
-    }
+
 }

@@ -290,24 +290,15 @@ public class FormatPolicyTableHelper {
 
     //Todo: implement this
     private static void formatTravel (TableView <Forsikring> tableView, mainPageController controller) {
-        TableColumn<Forsikring,String> col4 = new TableColumn<>("Område Forsikring Gjelder");
-        col4.setCellValueFactory(new PropertyValueFactory<>("forsikringOmraade"));
-        col4.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn<Forsikring, String> col4 = new TableColumn<>("Område");
+        col4.setCellValueFactory(new PropertyValueFactory<>("omraade"));
         col4.setOnEditCommit(forsikringStringCellEditEvent -> {
             Reise r = (Reise)tableView.getSelectionModel().getSelectedItem();
-            r.setforsikringOmraade(forsikringStringCellEditEvent.getNewValue());
+            r.setOmraade(forsikringStringCellEditEvent.getNewValue());
             controller.refreshTable();
         });
 
-        TableColumn<Forsikring,Double> col5 = new TableColumn<>("Forsikringssum");
-        col5.setCellValueFactory(new PropertyValueFactory<>("forsikringsSum"));
-        col5.setCellFactory(TextFieldTableCell.forTableColumn(doubleConverter));
-        col5.setOnEditCommit(forsikringDoubleCellEditEvent -> {
-            Reise r = (Reise) tableView.getSelectionModel().getSelectedItem();
-            r.setForsikringsSum(forsikringDoubleCellEditEvent.getNewValue());
-            controller.refreshTable();
-        });
-        tableView.getColumns().addAll(col4, col5);
+        tableView.getColumns().add(col4);
     }
 
 }
