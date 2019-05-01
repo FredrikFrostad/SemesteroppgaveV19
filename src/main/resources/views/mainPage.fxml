@@ -75,7 +75,7 @@
                         <children>
                             <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valgt kunde:" />
                             <TextField fx:id="selectedKundeField" editable="false" layoutX="108.0" prefHeight="26.0" prefWidth="1920.0" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="3.0" />
-                            <TableView fx:id="tableOverviewForsikring" layoutY="28.0" onMouseClicked="#selectPolicy" prefHeight="298.0" prefWidth="263.0">
+                            <TableView fx:id="tableOverviewForsikring" layoutY="28.0"  prefHeight="298.0" prefWidth="263.0">
                                 <columns>
                                     <TableColumn fx:id="overviewCol1" prefWidth="153.0" text="Type Forsikring" />
                                     <TableColumn fx:id="overviewCol2" prefWidth="108.0" text="Pris pr år" />
