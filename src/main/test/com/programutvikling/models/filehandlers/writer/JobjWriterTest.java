@@ -17,17 +17,14 @@ public class JobjWriterTest {
     @Test
     public void writeDataToFile() {
 
+        ArrayList<Kunde> original = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
             String name = "Knut" + i;
-            MainApp.getClientList().add(new Kunde(
-                    name,
-                    "Hagen",
-                    123456,
-                    "Testerudbakke 3 9989 Nordpå"));
+            original.add(new Kunde(name, "Etternavn" + i, i, "Adresse" + i));
         }
 
-        for (Kunde k : MainApp.getClientList()) {
+        for (Kunde k : original) {
             k.getForsikringer().add(new Båt(
                     123456,
                     12000,
@@ -43,26 +40,28 @@ public class JobjWriterTest {
                     "150"));
         }
 
-        File file = new File("testfile.txt");
+        File file = new File("testfile.jobj");
 
 
         FileWriter writer = new JobjWriter();
         FileReader reader = new JobjReader();
         ArrayList<?> deserialized = null;
-        ArrayList<Kunde> original = MainApp.getClientList();
+
 
         System.out.println(file.getAbsolutePath());
         System.out.println(file.exists());
 
         try {
-            writer.writeObjectDataToFile(file, MainApp.getClientList());
+            writer.writeObjectDataToFile(file, original);
         } catch (Exception e) {}
 
         assertTrue(file.exists());
 
         try {
            deserialized = (ArrayList<?>) reader.readDataFromFile(file);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         assertTrue(deserialized.get(0) instanceof Kunde);
 

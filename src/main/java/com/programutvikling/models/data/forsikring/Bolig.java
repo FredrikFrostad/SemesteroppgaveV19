@@ -107,19 +107,6 @@ public class Bolig extends Forsikring {
     @Override
     public ObjectType getType() { return type;}
 
-    @Override
-    public String toString() {
-        return  super.toString() +
-                ", adresse=" + adresse +
-                ", byggeaar=" + byggeaar +
-                ", boligtype=" + boligtype +
-                ", byggemateriale=" + byggemateriale +
-                ", standard=" + standard +
-                ", areal=" + areal +
-                ", forsikringsbeløpByggning=" + forsikringsbeløpByggning +
-                ", forsikringsbeløpInnbo=" + forsikringsbeløpInnbo;
-    }
-
     public int calculateForsikringssum(){
         return (int) (this.getForsikringsbeløpByggning() + this.getForsikringsbeløpInnbo());
     }
@@ -134,5 +121,19 @@ public class Bolig extends Forsikring {
 
     public String customStringForSkademelding(){
         return (this.getType() + " " + this.adresse);
+    }
+
+
+    @Override
+    public String toString() {
+        return  super.toString() +
+                ", adresse=" + adresse +
+                ", byggeaar=" + byggeaar +
+                ", boligtype=" + boligtype +
+                ", byggemateriale=" + byggemateriale +
+                ", standard=" + standard +
+                ", areal=" + areal +
+                ", forsikringsbeløpByggning=" + forsikringsbeløpByggning +
+                ", forsikringsbeløpInnbo=" + forsikringsbeløpInnbo;
     }
 }

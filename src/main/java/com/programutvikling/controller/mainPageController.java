@@ -244,6 +244,7 @@ public class mainPageController {
             e.printStackTrace();
         }
 
+
         Service<Void> thread = new Service<Void>() {
             @Override
             protected Task<Void> createTask() {
@@ -378,11 +379,6 @@ public class mainPageController {
         }
     }
 
-    //TODO: testfunksjon fjern når ferdig med den!
-    @FXML
-    private void testfunksjon(ActionEvent event){
-        System.out.println(MainApp.getSelectedKunde().getSkademeldinger().get(0).toString());
-    }
 
     /**
      * Loads db data into program
