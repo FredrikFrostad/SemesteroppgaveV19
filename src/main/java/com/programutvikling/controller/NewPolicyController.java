@@ -210,7 +210,7 @@ public class NewPolicyController{
         return båtForsikring;
     }
 
-    // todo: DET MANGLER FELTER I FXML - PRIS PR ÅR OG FORSIKRINGSSUM (fORSIKRINGSSUM ER KOMBINASJONEN AV INNBO OG bYGNING, MÅ BEREGNES I KLASSEN!!)
+
     private Fritidsbolig createFritidsBolig() {
 
         Fritidsbolig fritidsbolig = new Fritidsbolig();

@@ -242,7 +242,6 @@ public class mainPageController {
                             System.out.println("Starting file import task!");
                             if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
                                 JobjReader reader = new JobjReader();
-
                                 ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(threadfile);
                                 MainApp.getClientList().addAll(list);
                             } else {

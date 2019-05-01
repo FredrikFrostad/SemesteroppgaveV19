@@ -9,12 +9,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-//TODO: skriv dokumentasjon på denne klassen!
+
 
 public class JobjReader extends FileReader{
 
-    public JobjReader() {}
-
+    /**
+     * Reads a serialized object from file and returns the deserialized object
+     * @param file Serialized file to be read
+     * @return Deserialized object
+     * @throws Exception When deserialisation fails
+     */
     @Override
     public Object readDataFromFile(File file) throws Exception {
         FileInputStream fileIn = new FileInputStream(file);

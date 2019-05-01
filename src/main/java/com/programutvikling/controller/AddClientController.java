@@ -63,8 +63,6 @@ public class AddClientController {
 
             kunde.setForsikrNr(Integer.parseInt(fx_forsikringsnummer.getText()));
 
-            //TODO: Denne metoden funker ikke, fiks - test - moveon
-            //Inputvalidator.checkValidFakturaAdresse(fx_fakturaadresse.getText());
             kunde.setFakturaadresse(fx_fakturaadresse.getText());
 
 

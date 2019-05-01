@@ -170,6 +170,7 @@ public class MainApp extends Application {
         });
     }
 
+
     public static ArrayList<Kunde> getClientList() {
         return clientList;
     }
