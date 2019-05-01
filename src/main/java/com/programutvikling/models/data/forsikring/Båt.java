@@ -124,4 +124,7 @@ public class Båt extends Forsikring{
                 ", motorType=" + motorType +
                 ", effekt=" + effekt;
     }
+    public int prisPrÅr(int rate){
+        return (int)((getForsikringsSum())/rate);
+    }
 }
