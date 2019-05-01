@@ -87,4 +87,5 @@ public abstract class Forsikring implements Serializable {
                 ", avtaleOpprettet=" + avtaleOpprettet +
                 ", betingelser=" + betingelser;
     }
+    public abstract String customStringForSkademelding();
 }

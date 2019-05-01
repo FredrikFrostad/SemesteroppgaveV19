@@ -127,4 +127,7 @@ public class Båt extends Forsikring{
     public int prisPrÅr(int rate){
         return (int)((this.getForsikringsSum())/rate);
     }
+    public String customStringForSkademelding(){
+        return (this.getType() + " " + this.getRegNr());
+    }
 }

@@ -47,12 +47,15 @@ public class NewInjuryReportController {
         name.setDisable(true);
 
         for (int i = 0; i < k.getForsikringer().size(); i++) {
-            comboBox.getItems().add(k.getForsikringer().get(i).getType());
+            comboBox.getItems().add(k.getForsikringer().get(i).customStringForSkademelding());
         }
-
-
     }
 
+    public void cancel(){
+        ViewChanger viewChanger = new ViewChanger();
+        viewChanger.setView(newInjuryRoot,"mainPage", "views/mainPage.fxml");
+        viewChanger.resetView("newInjuryReport");
+    }
 
 
     public void registererSkademelding(){
@@ -80,6 +83,7 @@ public class NewInjuryReportController {
             skademelding.setSkadeBeskrivelse(skadeBeskrivelse.getText());
             skademelding.setSkadeNr(skadeNr);
             skademelding.setTypeSkade(typeSkade.getText());
+            skademelding.setSkadeDato(skadeDato.toString());
             //skademelding.setTakseringsBelop();
             //skademelding.setUtbetaltErstatning();
 
