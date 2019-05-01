@@ -8,10 +8,7 @@ import com.programutvikling.models.inputhandlers.Inputvalidator;
 import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -19,8 +16,6 @@ public class NewInjuryReportController {
 
     @FXML
     BorderPane newInjuryRoot;
-    @FXML
-    StackPane stack;
 
     @FXML
     DatePicker skadeDato;
@@ -35,6 +30,10 @@ public class NewInjuryReportController {
             skadeBeskrivelse,
             kontaktinfoVitner;
 
+    @FXML
+    private ComboBox
+            comboBox;
+
     Kunde k;
 
     private int skadeNr;
@@ -46,6 +45,10 @@ public class NewInjuryReportController {
 
         name.setText("Kunde: " + k.getFornavn() + " " + k.getEtternavn() + "                  " + "Forsikrings nummer: " + skadeNr);
         name.setDisable(true);
+
+        for (int i = 0; i < k.getForsikringer().size(); i++) {
+            comboBox.getItems().add(k.getForsikringer().get(i).getType());
+        }
 
 
     }

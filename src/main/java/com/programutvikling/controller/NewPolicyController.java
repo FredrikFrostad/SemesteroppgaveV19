@@ -219,7 +219,7 @@ public class NewPolicyController{
             båtForsikring.setMotorType(båt_motorType.getText());
 
             båtForsikring.setForsikringsSum(Double.parseDouble(båt_forsikringssum.getText()));
-            båtForsikring.setPremieAnum(30000);
+            båtForsikring.setPremieAnum(båtForsikring.prisPrÅr(200));
 
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();
