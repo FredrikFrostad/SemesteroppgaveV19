@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="startpageparent" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.StartPageController"><children>
+<AnchorPane fx:id="startpageparent" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.StartPageController" stylesheets="styles.css"><children>
       <Button layoutX="45.0" layoutY="219.0" onAction="#listClients" prefWidth="120.0" text="Clients" />
       <Button layoutX="45.0" layoutY="257.0" onAction="#newClient" prefWidth="120.0" text="New Client" />
       <Button layoutX="45.0" layoutY="295.0" onAction="#newPolicy" prefWidth="120.0" text="New Policy" />

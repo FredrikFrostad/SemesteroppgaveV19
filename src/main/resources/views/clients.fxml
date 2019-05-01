@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane fx:id="clientsInclude" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.ClientsController">
+<AnchorPane fx:id="clientsInclude" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programutvikling.controller.ClientsController" stylesheets="styles.css">
    <children>
       <ListView fx:id="listOfClients" layoutX="183.0" layoutY="183.0" prefHeight="417.0" prefWidth="829.0" />
       <Text layoutX="509.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients">

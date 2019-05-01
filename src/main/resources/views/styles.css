@@ -1,3 +1,10 @@
 .button {
     -fx-font-weight: bold;
 }
+
+
+
+.jfx-radio-button {
+    -fx-selected-color:  #7da0ce;
+    -fx-unselected-color: blue;
+}
