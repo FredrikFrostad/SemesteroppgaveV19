@@ -56,6 +56,9 @@ public class Reise extends Forsikring{
                 "," + super.toString() +
                 ", omraade=" + omraade;
     }
+    public String customStringForSkademelding(){
+        return (this.getType() + " " + this.getOmraade());
+    }
 
 
 

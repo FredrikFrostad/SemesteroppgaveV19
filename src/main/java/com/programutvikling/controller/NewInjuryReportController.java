@@ -47,10 +47,8 @@ public class NewInjuryReportController {
         name.setDisable(true);
 
         for (int i = 0; i < k.getForsikringer().size(); i++) {
-            comboBox.getItems().add(k.getForsikringer().get(i).getType());
+            comboBox.getItems().add(k.getForsikringer().get(i).customStringForSkademelding());
         }
-
-
     }
 
 
