@@ -3,6 +3,7 @@ package com.programutvikling.models.filehandlers.reader;
 import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.*;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.data.skademelding.Skademelding;
 import com.programutvikling.models.exceptions.InvalidObjectTypeException;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 
@@ -38,6 +39,8 @@ public class CsvObjectBuilder {
             case ("VILLAINNBO"):
                 out = buildHomeOwnerFromCsv(objData);
                 break;
+            case ("SKADEMELDING"):
+                out = buildSkademeldingFromCSV(objData);
             default:
                 System.out.println("The type is: " + type);
                 throw new InvalidObjectTypeException("Object type not found.");
@@ -45,6 +48,15 @@ public class CsvObjectBuilder {
         }
 
         return out;
+    }
+
+    private Skademelding buildSkademeldingFromCSV(String[] objData) {
+        Skademelding s = new Skademelding();
+        s.setSkadeDato(objData[0]);
+        s.setSkadeNr(Integer.parseInt(objData[1]));
+        s.setTypeSkade(objData[2]);
+        s.setSkadeBeskrivelse(objData[4]);
+        return null;
     }
 
     /**

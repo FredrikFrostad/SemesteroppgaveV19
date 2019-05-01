@@ -88,14 +88,13 @@ public class Skademelding {
 
     @Override
     public String toString() {
-        return "Skademelding{" +
-                "skadeDato=" + skadeDato +
+        return "type=" + type +
+                ", skadeDato=" + skadeDato +
                 ", skadeNr=" + skadeNr +
-                ", typeSkade='" + typeSkade + '\'' +
-                ", skadeBeskrivelse='" + skadeBeskrivelse + '\'' +
-                ", kontaktinfoVitner='" + kontaktinfoVitner + '\'' +
+                ", typeSkade=" + typeSkade +
+                ", skadeBeskrivelse=" + skadeBeskrivelse +
+                ", kontaktinfoVitner=" + kontaktinfoVitner +
                 ", takseringsBelop=" + takseringsBelop +
-                ", utbetaltErstatning=" + utbetaltErstatning +
-                '}';
+                ", utbetaltErstatning=" + utbetaltErstatning;
     }
 }
