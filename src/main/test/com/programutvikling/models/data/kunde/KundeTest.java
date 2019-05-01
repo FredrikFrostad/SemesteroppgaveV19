@@ -40,17 +40,11 @@ public class KundeTest {
         Kunde kundeFromFile = null;
         JobjWriter writer = new JobjWriter();
         File file = new File("testfile.jobj");
-        JobjReader reader = new JobjReader(file);
-        Thread thread_JobjReader = new Thread(reader);
-            thread_JobjReader.start();
-            try {
-                thread_JobjReader.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        JobjReader reader = new JobjReader();
+
         try {
             writer.writeObjectDataToFile(file, kunde);
-            kundeFromFile = (Kunde)reader.getReturnValue();
+            kundeFromFile = (Kunde)reader.readDataFromFile(file);
         } catch (Exception e) {
             e.printStackTrace();
         }
