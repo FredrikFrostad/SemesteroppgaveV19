@@ -14,13 +14,12 @@ import java.util.*;
 public class DbExportHelperCsv {
 
     private ArrayList<Forsikring> exportListPolicy;
-    private ArrayList<Skademelding> exportListDamage;
+    private ArrayList<Object> exportListDamage;
     private ArrayList<Object>  boatList;
     private ArrayList<Object> holidayResiddenceList;
     private ArrayList<Object> travelList;
     private ArrayList<Object> villaList;
     private ArrayList<Object> clients;
-    private ArrayList<Object> injuryReportList;
     private String filePath;
 
     public DbExportHelperCsv() {
@@ -31,7 +30,6 @@ public class DbExportHelperCsv {
         this.exportListPolicy = new ArrayList<>();
         this.exportListDamage = new ArrayList<>();
         this.clients = new ArrayList<>();
-        this.injuryReportList = new ArrayList<>();
     }
 
     public DbExportHelperCsv(String filePath) {
@@ -42,7 +40,6 @@ public class DbExportHelperCsv {
         this.exportListPolicy = new ArrayList<>();
         this.exportListDamage = new ArrayList<>();
         this.clients = new ArrayList<>();
-        this.injuryReportList = new ArrayList<>();
         this.filePath = filePath;
     }
 
@@ -120,8 +117,8 @@ public class DbExportHelperCsv {
         if (villaList.size() > 0) {
             new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_villa.csv"), villaList);
         }
-        if (injuryReportList.size() > 0) {
-            new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_injuryReport.csv"), injuryReportList);
+        if (exportListDamage.size() > 0) {
+            new CsvWriter().writeDatabaseToFile(new File(filePath + "policy_injuryReport.csv"), exportListDamage);
         }
     }
 

@@ -78,13 +78,13 @@ public class NewInjuryReportController {
 
         try{
             Inputvalidator.checkIfValidNumber(takseringsbeløp.getText());
-
+            skademelding.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
             skademelding.setKontaktinfoVitner(kontaktinfoVitner.getText());
             skademelding.setSkadeBeskrivelse(skadeBeskrivelse.getText());
             skademelding.setSkadeNr(skadeNr);
             skademelding.setTypeSkade(typeSkade.getText());
-            skademelding.setSkadeDato(skadeDato.toString());
-            //skademelding.setTakseringsBelop();
+            skademelding.setSkadeDato(skadeDato.getValue().toString());
+            skademelding.setTakseringsBelop(Double.parseDouble(takseringsbeløp.getText()));
             //skademelding.setUtbetaltErstatning();
 
         } catch (InvalidNumberFormatException e) {

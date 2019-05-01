@@ -2,9 +2,10 @@ package com.programutvikling.models.data.skademelding;
 
 import com.programutvikling.models.data.ObjectType;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Skademelding {
+public class Skademelding implements Serializable {
 
     private static ObjectType type = ObjectType.SKADEMELDING;
     private int forsikrNr;

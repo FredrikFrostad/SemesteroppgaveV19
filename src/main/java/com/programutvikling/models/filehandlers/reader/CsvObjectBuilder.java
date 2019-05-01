@@ -41,6 +41,7 @@ public class CsvObjectBuilder {
                 break;
             case ("SKADEMELDING"):
                 out = buildSkademeldingFromCSV(objData);
+                break;
             default:
                 System.out.println("The type is: " + type);
                 throw new InvalidObjectTypeException("Object type not found.");
@@ -65,7 +66,6 @@ public class CsvObjectBuilder {
         s.setKontaktinfoVitner(objData[6]);
         s.setKontaktinfoVitner(objData[7]);
         s.setTakseringsBelop(Double.parseDouble(objData[8]));
-        s.setUtbetaltErstatning(Double.parseDouble(objData[9]));
         return s;
     }
 

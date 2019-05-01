@@ -111,6 +111,14 @@ public class mainPageController {
         refreshTable();
     }
 
+    //TODO: fjern når ferdig
+    @FXML
+    private void TESTSKADE() {
+        for (Skademelding s : MainApp.getSelectedKunde().getSkademeldinger()) {
+            System.out.println(s.toString());
+        }
+    }
+
 
 
     /**
@@ -209,8 +217,10 @@ public class mainPageController {
                         try
                         {
                             if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
+                                System.out.println("Writing jobj");
                                 JobjWriter writer = new JobjWriter();
                                 writer.writeObjectDataToFile(threadfile, MainApp.getClientList());
+                                System.out.println("DONE");
                             } else {
                                 DbExportHelperCsv exporter = new DbExportHelperCsv(threadfile.getAbsolutePath());
                                 exporter.exportDbAsCsv();
