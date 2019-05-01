@@ -1,16 +1,9 @@
 package com.programutvikling.models.filehandlers.reader;
 
-import com.programutvikling.mainapp.MainApp;
-import com.programutvikling.models.data.kunde.Kunde;
-import javafx.stage.FileChooser;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
 
 public class CsvReader extends FileReader{
 

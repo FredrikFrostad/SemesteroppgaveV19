@@ -50,13 +50,23 @@ public class CsvObjectBuilder {
         return out;
     }
 
+    /**
+     * Helper method for creating a damagereport object from a string array
+     * @param objData String array containing object datafields
+     * @return Damagereport object
+     */
     private Skademelding buildSkademeldingFromCSV(String[] objData) {
         Skademelding s = new Skademelding();
-        s.setSkadeDato(objData[0]);
-        s.setSkadeNr(Integer.parseInt(objData[1]));
-        s.setTypeSkade(objData[2]);
-        s.setSkadeBeskrivelse(objData[4]);
-        return null;
+        s.setForsikrNr(Integer.parseInt(objData[1]));
+        s.setSkadeDato(objData[2]);
+        s.setSkadeNr(Integer.parseInt(objData[3]));
+        s.setTypeSkade(objData[4]);
+        s.setSkadeBeskrivelse(objData[5]);
+        s.setKontaktinfoVitner(objData[6]);
+        s.setKontaktinfoVitner(objData[7]);
+        s.setTakseringsBelop(Double.parseDouble(objData[8]));
+        s.setUtbetaltErstatning(Double.parseDouble(objData[9]));
+        return s;
     }
 
     /**

@@ -7,6 +7,7 @@ import java.util.Date;
 public class Skademelding {
 
     private static ObjectType type = ObjectType.SKADEMELDING;
+    private int forsikrNr;
     private String skadeDato;
     private int skadeNr;
     private String typeSkade;
@@ -86,9 +87,14 @@ public class Skademelding {
 
     public ObjectType getType() {return type;}
 
+    public int getForsikrNr() {return forsikrNr; }
+
+    public void setForsikrNr(int forsikrNr) {this.forsikrNr = forsikrNr;}
+
     @Override
     public String toString() {
         return "type=" + type +
+                ", forsikrNr=" + forsikrNr +
                 ", skadeDato=" + skadeDato +
                 ", skadeNr=" + skadeNr +
                 ", typeSkade=" + typeSkade +
