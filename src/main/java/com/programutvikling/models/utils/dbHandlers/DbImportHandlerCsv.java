@@ -7,8 +7,7 @@ import com.programutvikling.models.data.skademelding.Skademelding;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class DbImportHandlerCsv {
 
@@ -31,7 +30,8 @@ public class DbImportHandlerCsv {
         }
 
         File[] dbFiles = new File(filePath).listFiles();
-        ArrayList<Kunde> clientList = MainApp.getClientList();
+        //ArrayList<Kunde> clientList = MainApp.getClientList();
+        ArrayList<Kunde> clientList = new ArrayList<>();
         CsvReader reader = new CsvReader();
         CsvObjectBuilder builder = new CsvObjectBuilder();
 
@@ -45,25 +45,20 @@ public class DbImportHandlerCsv {
             System.out.println(file.getName());
             if (file.getName().split("\\.")[1].equals("csv")) {
 
+                //Building client objects
                 if (file.getName().equals("clients.csv")) {
-
-                    // This boolean is set to avoid doing an expensive check for duplicate imports when the database is
-                    // loaded at program start.
-                    // Ideally this should not be done in this way, and we should instead implement a more effective
-                    // way to check for duplicates. At the moment the check cost is at least n squared.
-                    boolean startUp = false;
-                    if (MainApp.getClientList().isEmpty()) {
-                        startUp = true;
-                    }
-
                     ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
-                    buldClientObjects(list, startUp, clientList);
-
+                    buildClientObjects(list, clientList);
+                    stripDuplicatesFromList(clientList);
+                    MainApp.getClientList().addAll(clientList);
                 }
+                // Building injuryReport Objects
                 else if (file.getName().equals("policy_injuryReport.csv")){
                     ArrayList<String[]>  reportList = reader.readDataFromFile(new File(file.getAbsolutePath()));
                     buildInjuryReportObjects(reportList, clientList);
-                } else {
+                }
+                // Building policy objects
+                else {
                     ArrayList<String[]> policyList = reader.readDataFromFile(new File(file.getAbsolutePath()));
                     buildPolicyObjects(policyList, clientList);
                 }
@@ -73,42 +68,54 @@ public class DbImportHandlerCsv {
 
     /**
      * Method for checking if an object is already loaded. This method works on
-     * the premise no two client objects can have the same policynumber
-     * This method is usually called in a loop, and is obviously very slow. If the parameter list
-     * is sorted this can be done using binary search to greatly improve performance. 
-     * @return true if the object is in the list
+     * the premise no two client objects can have the same policynumber.
+     * This method should probably be implemented using binary search, as it is very computationally
+     * expensive at this point
      */
-    private boolean clientListContains(ArrayList<Kunde> list, Kunde client) {
+    private void stripDuplicatesFromList(ArrayList<Kunde> clientList) {
+        ArrayList<Kunde> existingClients = MainApp.getClientList();
 
-        for (Kunde k : list) {
-            if (k.getForsikrNr() == client.getForsikrNr()) return true;
+        //Sorting arrays comparing forsikrNr
+        Collections.sort(clientList, Comparator.comparingInt(Kunde::getForsikrNr));
+        Collections.sort(existingClients, Comparator.comparingInt(Kunde::getForsikrNr));
+
+        // Getting index of last element in the list of existing clients, and checking that the list
+        // is not empty
+        int lastElement = existingClients.size()-1;
+        int i = 0;
+        if (lastElement >= 0) {
+
+            // Iterating over list of new elements. For each new element we need to loop over the list of old elements
+            // Since this can be computationally expensive, we break out of the nested loop as early as possible
+            Iterator<Kunde> itr = clientList.iterator();
+            while (itr.hasNext()) {
+                int newClient = itr.next().getForsikrNr();
+                if (newClient < existingClients.get(lastElement).getForsikrNr()) {
+                    for (;i <= lastElement; i++) {
+                        if (existingClients.get(i).getForsikrNr() == newClient) {
+                            itr.remove();
+                            break;
+                        } else if (existingClients.get(i).getForsikrNr() > newClient) {
+                            break;
+                        }
+                    }
+                }
+            }
         }
-        return false;
     }
 
     /**
      * Builds client objects read from a csv file and adds them to an arraylist.
      * @param list Arraylist containing string arrays. Each string array represents one dataobject
-     * @param startUp boolean used as a flag to skip duplicate check on program startup, as this is
-     *                extremely computationaly expensive on large datasets
      * @param clientList Arraylist where the objects genereated from the csv file are stored
      * @throws Exception when file cannot be read or when encountering invalid data
      */
-    private void buldClientObjects(ArrayList<String[]> list, boolean startUp, ArrayList<Kunde> clientList) throws Exception{
+    private void buildClientObjects(ArrayList<String[]> list, ArrayList<Kunde> clientList) throws Exception{
         CsvObjectBuilder builder = new CsvObjectBuilder();
 
         // Building customer object from string and adding them to list.
         for (String[] s : list) {
-            Kunde k = (Kunde) builder.buildObjectFromString(s);
-
-            // This procedure is horribly slow when adding large datasets.
-            // Using startUp flag to skip duplicate check when populating clientobject arraylist
-            // on program startup
-            if (startUp) {
                 clientList.add((Kunde) builder.buildObjectFromString(s));
-            } else if (!clientListContains(clientList, k)) {
-                clientList.add((Kunde) builder.buildObjectFromString(s));
-            }
         }
     }
 
