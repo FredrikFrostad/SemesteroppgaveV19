@@ -200,50 +200,18 @@ public class MainPageController {
     }
 
     /**
-     * Exports all data objects as a single jobj file or several csv files
+     * Exports all data objects as a single jobj file or several csv files. When selecting
+     * export as csv, a folder is created at the chosen path, and all csv files are written
+     * to this folder. The names of the csv files are predetermined by the application.
      */
     @FXML
     private void exportToFile() {
         try {
-            threadfile = FileWriter.getFile();
+            new ThreadHelper().exportFileThread(FileWriter.getFile(), progressBar, progressText, this);
         } catch (Exception e) {
             e.printStackTrace();
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil ved export", e.getMessage());
         }
-
-        Service<Void> threadService = new Service<Void>() {
-            @Override
-            protected Task<Void> createTask() {
-                return new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        try
-                        {
-                            if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
-                                System.out.println("Writing jobj");
-                                JobjWriter writer = new JobjWriter();
-                                writer.writeObjectDataToFile(threadfile, MainApp.getClientList());
-                                System.out.println("DONE");
-                            } else {
-                                DbExportHandlerCsv exporter = new DbExportHandlerCsv(threadfile.getAbsolutePath());
-                                exporter.exportDbAsCsv();
-                            }
-                        } catch (InvalidFileFormatException e) {
-                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-                            e.printStackTrace();
-                        } catch (Exception e) {
-                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-                            e.printStackTrace();
-                        }
-                        return null;
-                    }
-                };
-            }
-        };
-        threadService.start();
     }
 
     /**
