@@ -332,8 +332,9 @@ public class mainPageController {
     @FXML
     private void saveChanges(ActionEvent event) {
         Kunde k = MainApp.getSelectedKunde();
-        k.setFornavn(k_fornavn.getText());
-        k.setEtternavn(k_etternavn.getText());
+        k.setFornavn(k_fornavn.getText().replace(","," "));
+        k.setEtternavn(k_etternavn.getText().replace(","," "));
+        k.setFakturaadresse(k_adr.getText().replace(","," "));
         refreshTable();
     }
 

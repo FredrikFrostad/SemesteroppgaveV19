@@ -77,13 +77,13 @@ public class NewInjuryReportController {
         Skademelding skademelding = new Skademelding();
 
         try{
-            Inputvalidator.checkIfValidNumber(takseringsbeløp.getText());
+            Inputvalidator.checkIfValidNumber(takseringsbeløp.getText().replace(","," "));
             skademelding.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
-            skademelding.setKontaktinfoVitner(kontaktinfoVitner.getText());
-            skademelding.setSkadeBeskrivelse(skadeBeskrivelse.getText());
+            skademelding.setKontaktinfoVitner(kontaktinfoVitner.getText().replace(","," "));
+            skademelding.setSkadeBeskrivelse(skadeBeskrivelse.getText().replace(","," "));
             skademelding.setSkadeNr(skadeNr);
-            skademelding.setTypeSkade(typeSkade.getText());
-            skademelding.setSkadeDato(skadeDato.getValue().toString());
+            skademelding.setTypeSkade(typeSkade.getText().replace(","," "));
+            skademelding.setSkadeDato(skadeDato.getValue().toString().replace(","," "));
             skademelding.setTakseringsBelop(Double.parseDouble(takseringsbeløp.getText()));
             //skademelding.setUtbetaltErstatning();
 

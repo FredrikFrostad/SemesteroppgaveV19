@@ -54,16 +54,12 @@ public class AddClientController {
         Kunde kunde = new Kunde();
         try {
             kunde.setKundeOpprettet(LocalDate.now());
-
-            Inputvalidator.checkValidNameFormat(fx_fornavn.getText());
-            kunde.setFornavn(fx_fornavn.getText());
-
-            Inputvalidator.checkValidNameFormat(fx_etternavn.getText());
-            kunde.setEtternavn(fx_etternavn.getText());
-
-            kunde.setForsikrNr(Integer.parseInt(fx_forsikringsnummer.getText()));
-
-            kunde.setFakturaadresse(fx_fakturaadresse.getText());
+            Inputvalidator.checkValidNameFormat(fx_fornavn.getText().replace(","," "));
+            kunde.setFornavn(fx_fornavn.getText().replace(","," "));
+            Inputvalidator.checkValidNameFormat(fx_etternavn.getText().replace(","," "));
+            kunde.setEtternavn(fx_etternavn.getText().replace(","," "));
+            kunde.setForsikrNr(Integer.parseInt(fx_forsikringsnummer.getText().replace(","," ")));
+            kunde.setFakturaadresse(fx_fakturaadresse.getText().replace(","," "));
 
 
             File file = FileWriter.getFile();
