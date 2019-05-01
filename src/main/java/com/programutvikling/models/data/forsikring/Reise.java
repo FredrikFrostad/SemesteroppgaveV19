@@ -41,6 +41,9 @@ public class Reise extends Forsikring{
         super.setAvtaleOpprettet(avtaleOpprettet);
     }
 
+    public void setPremieAnum(double premieAnnum) {super.setPremieAnnum(premieAnnum);}
+
+
     @Override
     public ObjectType getType() {
         return this.type;

@@ -92,8 +92,7 @@ public class FormatPolicyTableHelper {
         col3.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Forsikring, Double>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<Forsikring, Double> forsikringDoubleCellEditEvent) {
-                Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
-                b.setForsikringsSum(forsikringDoubleCellEditEvent.getNewValue());
+                tableView.getSelectionModel().getSelectedItem().setForsikringsSum(forsikringDoubleCellEditEvent.getNewValue());
                 controller.refreshTable();
             }
         });

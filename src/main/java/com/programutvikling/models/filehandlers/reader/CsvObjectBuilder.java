@@ -116,9 +116,13 @@ public class CsvObjectBuilder {
 
     private Reise buildReiseFromcsv(String[] objData) throws Exception {
         Reise r = new Reise();
+        r.setForsikrNr(Integer.parseInt(objData[1]));
+        r.setPremieAnum(Double.parseDouble(objData[2]));
+        r.setForsikringsSum(Double.parseDouble(objData[3]));
+        r.setAvtaleOpprettet(LocalDate.parse(objData[4]));
+        r.setOmraade(objData[5]);
 
-
-        throw new Exception();
+        return r;
     }
 
 
