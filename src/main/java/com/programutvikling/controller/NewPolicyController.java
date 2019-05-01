@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
+
 public class NewPolicyController{
 
     @FXML
@@ -231,7 +232,6 @@ public class NewPolicyController{
             else if(Inputvalidator.checkValidNameFormat(villa_standard.getText())){
                 v.setStandard(villa_standard.getText());
             }
-
         }
 
         catch (InvalidNumberFormatException e) {

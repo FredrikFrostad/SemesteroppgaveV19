@@ -1,0 +1,4 @@
+.jfx-radio-button {
+    -fx-selected-color: yellow;
+    -fx-unselected-color: blue;
+}
