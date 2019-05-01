@@ -28,6 +28,8 @@ public class ThreadHelper {
                 return new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
+                        controller.setLock(true);
+
                         progressBar.setVisible(true);
                         progressText.setText("Loading data");
                         progressText.setVisible(true);
@@ -50,6 +52,8 @@ public class ThreadHelper {
                         progressBar.setVisible(false);
                         controller.refreshTable();
 
+                        controller.setLock(false);
+
                         System.out.println("File import task completed");
                         return null;
                     }
@@ -66,6 +70,8 @@ public class ThreadHelper {
                 return new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
+                        controller.setLock(true);
+
                         progressBar.setVisible(true);
                         progressText.setText("Exporting data");
                         progressText.setVisible(true);
@@ -85,7 +91,41 @@ public class ThreadHelper {
                         progressText.setVisible(false);
                         progressBar.setVisible(false);
 
+                        controller.setLock(false);
+
                         System.out.println("File export task completed");
+                        return null;
+                    }
+                };
+            }
+        };
+        threadService.start();
+    }
+
+    public void initDbThread(ProgressBar progressBar, Text progressText, MainPageController controller) {
+        Service<Void> threadService = new Service<Void>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        controller.setLock(true);
+
+                        progressBar.setVisible(true);
+                        progressText.setText("Importing database");
+                        progressText.setVisible(true);
+
+                        System.out.println("Starting database import task!");
+
+                        new DbImportHandlerCsv().importDbFromCsv(null);
+
+                        progressText.setVisible(false);
+                        progressBar.setVisible(false);
+
+                        controller.refreshTable();
+                        controller.setLock(false);
+
+                        System.out.println("Database import task completed");
                         return null;
                     }
                 };

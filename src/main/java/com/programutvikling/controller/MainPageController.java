@@ -59,7 +59,7 @@ public class MainPageController {
     @FXML
     private Text progressText;
 
-    private File threadfile;
+    private boolean lock = false;
 
 
     @FXML
@@ -329,15 +329,16 @@ public class MainPageController {
      * Loads db data into program
      */
     private void initDb() {
-        DbImportHandlerCsv importer = new DbImportHandlerCsv();
         try {
-            importer.importDbFromCsv(null);
+            new ThreadHelper().initDbThread(progressBar, progressText, this);
         } catch (Exception e) {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Kritisk feil", "Feil ved importering av database. " +
                     "Kan ikke garantere dataintegritet.");
         }
     }
+
+    public void setLock(boolean lock) {
+        this.lock = lock;
+    }
 }
-
-
