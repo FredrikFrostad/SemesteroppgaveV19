@@ -5,6 +5,7 @@ import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Båt;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.forsikring.Fritidsbolig;
+import com.programutvikling.models.data.forsikring.Reise;
 import javafx.event.EventHandler;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -289,7 +290,23 @@ public class FormatPolicyTableHelper {
 
     //Todo: implement this
     private static void formatTravel (TableView <Forsikring> tableView, mainPageController controller) {
+        TableColumn<Forsikring,String> col4 = new TableColumn<>("Område Forsikring Gjelder");
+        col4.setCellValueFactory(new PropertyValueFactory<>("forsikringOmraade"));
+        col4.setCellFactory(TextFieldTableCell.forTableColumn());
+        col4.setOnEditCommit(forsikringStringCellEditEvent -> {
+            Reise r = (Reise)tableView.getSelectionModel().getSelectedItem();
+            r.setforsikringOmraade(forsikringStringCellEditEvent.getNewValue());
+            controller.refreshTable();
+        });
 
+        TableColumn<Forsikring,Double> col5 = new TableColumn<>("Forsikringssum");
+        col5.setCellValueFactory(new PropertyValueFactory<>("forsikringsSum"));
+        col5.setCellFactory(TextFieldTableCell.forTableColumn(doubleConverter));
+        col5.setOnEditCommit(forsikringDoubleCellEditEvent -> {
+            Reise r = (Reise) tableView.getSelectionModel().getSelectedItem();
+            r.setForsikringsSum(forsikringDoubleCellEditEvent.getNewValue());
+            controller.refreshTable();
+        });
     }
 
 }

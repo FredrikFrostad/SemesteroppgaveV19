@@ -48,7 +48,7 @@ public class Reise extends Forsikring{
                 ", forsikringsSum=" + forsikringsSum;
     }
 
-    
+
     public int prisPrÅr(){
         return (int) (this.getForsikringsSum()/100);
     }
