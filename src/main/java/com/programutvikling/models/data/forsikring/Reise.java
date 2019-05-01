@@ -36,12 +36,19 @@ public class Reise extends Forsikring{
     }
 
     @Override
+    public ObjectType getType() {
+        return type;
+    }
+
+    @Override
     public String toString() {
         return "type=" + type +
                 "," + super.toString() +
                 ", forsikringOmraade=" + forsikringOmraade +
                 ", forsikringsSum=" + forsikringsSum;
     }
+
+    
     public int prisPrÅr(){
         return (int) (this.getForsikringsSum()/100);
     }
