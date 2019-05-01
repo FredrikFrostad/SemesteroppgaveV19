@@ -120,7 +120,7 @@ public class CsvObjectBuilder {
             b = new Fritidsbolig();
         }
         b.setForsikrNr(Integer.parseInt(objData[1]));
-        b.setPremieAnum(Double.parseDouble(objData[2]));
+        b.setPremieAnnum(Double.parseDouble(objData[2]));
         b.setForsikringsSum(Double.parseDouble(objData[3]));
         b.setAvtaleOpprettet(LocalDate.parse(objData[4]));
         b.setBetingelser(objData[5]);

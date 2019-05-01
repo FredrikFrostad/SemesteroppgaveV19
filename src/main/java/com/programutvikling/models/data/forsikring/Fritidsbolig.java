@@ -13,14 +13,6 @@ public class Fritidsbolig extends Bolig implements Serializable {
         super();
     }
 
-    public Fritidsbolig(int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String adresse, int byggeaar,
-                        String boligtype, String byggemateriale, String standard, int areal,
-                        double forsikringsbeløpByggning, double forsikringsbeløpInnbo) {
-        super(type, forsNr, premieAnnum, forsikringsSum, betingelser, adresse, byggeaar, boligtype,
-                byggemateriale, standard, areal, forsikringsbeløpByggning, forsikringsbeløpInnbo);
-    }
-
-
     @Override
     public ObjectType getType() { return type;}
 

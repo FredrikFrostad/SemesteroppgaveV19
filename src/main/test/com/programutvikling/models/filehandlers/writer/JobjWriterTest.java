@@ -8,6 +8,7 @@ import com.programutvikling.models.filehandlers.reader.JobjReader;
 import org.junit.Test;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -25,19 +26,22 @@ public class JobjWriterTest {
         }
 
         for (Kunde k : original) {
-            k.getForsikringer().add(new Båt(
-                    123456,
-                    12000,
-                    400000,
-                    "Betingelser",
-                    "Kjell Normann",
-                    "BD1234",
-                    "Daycriuser",
-                    "Ibiza",
-                    32,
-                    2014,
-                    "Utenbords",
-                    "150"));
+            Båt b1 = new Båt();
+            b1.setEffekt("120");
+            b1.setMotorType("Innenbords");
+            b1.setÅrsmodell(2003);
+            b1.setLengde(20);
+            b1.setModell("Princess");
+            b1.setTypeBåt("Jolle");
+            b1.setRegNr("BD4556");
+            b1.setEier("Kjell Pettersen");
+            b1.setForsikringsSum(43434);
+            b1.setPremieAnum(66666);
+            b1.setForsikrNr(1234);
+            try {
+                b1.setAvtaleOpprettet(LocalDate.now());
+            }catch (Exception e) {e.printStackTrace();}
+            k.getForsikringer().add(b1);
         }
 
         File file = new File("testfile.jobj");

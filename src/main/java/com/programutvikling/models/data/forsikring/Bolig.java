@@ -19,20 +19,6 @@ public class Bolig extends Forsikring {
         super();
     }
 
-    public Bolig(ObjectType type, int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String adresse, int byggeaar,
-                        String boligtype, String byggemateriale, String standard, int areal,
-                        double forsikringsbeløpByggning, double forsikringsbeløpInnbo) {
-        super(type, forsNr,premieAnnum, forsikringsSum, betingelser);
-        this.type = type;
-        this.adresse = adresse;
-        this.byggeaar = byggeaar;
-        this.boligtype = boligtype;
-        this.byggemateriale = byggemateriale;
-        this.standard = standard;
-        this.areal = areal;
-        this.forsikringsbeløpByggning = forsikringsbeløpByggning;
-        this.forsikringsbeløpInnbo = forsikringsbeløpInnbo;
-    }
 
     public String getAdresse() {
         return adresse;
@@ -98,7 +84,7 @@ public class Bolig extends Forsikring {
         this.forsikringsbeløpInnbo = forsikringsbeløpInnbo;
     }
 
-    public void setPremieAnum(double premieAnnum) {super.setPremieAnnum(premieAnnum);}
+    public void setPremieAnnum(double premieAnnum) {super.setPremieAnnum(premieAnnum);}
 
     public void setForsikringsSum(double sum) {super.setForsikringsSum(sum);}
 

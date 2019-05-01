@@ -11,11 +11,6 @@ public class Reise extends Forsikring{
 
     public Reise() {}
 
-    public Reise(int forsNr, double premieAnnum, double forsikringsSum, String betingelser,
-                 String omraade) {
-        super(type, forsNr,premieAnnum, forsikringsSum, betingelser);
-        this.omraade = omraade;
-    }
 
     public String getOmraade() {
         return omraade;

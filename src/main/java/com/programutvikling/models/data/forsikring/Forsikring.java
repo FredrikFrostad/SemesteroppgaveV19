@@ -18,14 +18,6 @@ public abstract class Forsikring implements Serializable {
     public Forsikring() {
     }
 
-    public Forsikring(ObjectType type, int forsNr, double premieAnnum, double forsikringsSum, String betingelser) {
-        this.forsikrNr = forsNr;
-        this.premieAnnum = premieAnnum;
-        this.forsikringsSum = forsikringsSum;
-        this.avtaleOpprettet = LocalDate.now();
-        this.betingelser = betingelser;
-        this.type = type;
-    }
 
     public double getPremieAnnum() {
         return premieAnnum;

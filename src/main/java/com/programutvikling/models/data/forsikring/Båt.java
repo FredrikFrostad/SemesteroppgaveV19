@@ -22,19 +22,6 @@ public class Båt extends Forsikring{
     }
 
 
-    public Båt(int forsNr, double premieAnnum, double forsikringsSum, String betingelser, String eier, String regNr,
-               String typeBåt, String modell, int lengde, int årsmodell, String motorType, String effekt) {
-        super(type, forsNr, premieAnnum, forsikringsSum, betingelser);
-        this.eier = eier;
-        this.regNr = regNr;
-        this.typeBåt = typeBåt;
-        this.modell = modell;
-        this.lengde = lengde;
-        this.årsmodell = årsmodell;
-        this.motorType = motorType;
-        this.effekt = effekt;
-    }
-
     public String getEier() {
         return eier;
     }
