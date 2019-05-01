@@ -42,6 +42,12 @@ public class MainPageController {
     private TableColumn<Forsikring, ObjectType> overviewCol2;
 
     @FXML
+    private TableColumn<Skademelding, String> skademeldingStringTableColumn1;
+
+    @FXML
+    private TableColumn<Skademelding, ObjectType> skademeldingObjectTypeTableColumn2;
+
+    @FXML
     private TableView<Kunde> clientTable;
 
     @FXML
@@ -51,7 +57,9 @@ public class MainPageController {
     private TextField k_fornavn, k_etternavn, k_forsNr, k_adr, k_opDato, policyCountField, yearlyAmountField;
 
     @FXML
-    private TextField selectedKundeField;
+    private TextField
+            selectedKundeFieldForsikring,
+            selectedKundeFieldSkademelding;
 
     @FXML
     private ProgressBar progressBar;
@@ -66,8 +74,10 @@ public class MainPageController {
     private void initialize() {
         initClientTable();
         initForsikringsTable();
+        initSkademeldingsTable();
         initDb();
         refreshTable();
+
     }
 
     /**
@@ -86,6 +96,10 @@ public class MainPageController {
     private void initForsikringsTable() {
         overviewCol1.setCellValueFactory(new PropertyValueFactory<>("type"));
         overviewCol2.setCellValueFactory(new PropertyValueFactory<>("premieAnnum"));
+    }
+    private void initSkademeldingsTable(){
+        skademeldingStringTableColumn1.setCellValueFactory(new PropertyValueFactory<>("type"));
+        skademeldingObjectTypeTableColumn2.setCellValueFactory(new PropertyValueFactory<>("skadeDato"));
     }
 
 
@@ -107,11 +121,17 @@ public class MainPageController {
 
     //TODO: fjern når ferdig
     @FXML
-    private void TESTSKADE() {
+    private void TESTSKADE(){
+        System.out.println(MainApp.getSelectedKunde().getSkademeldinger().toString());
+        if (MainApp.getSelectedKunde().getSkademeldinger() == null){
+            System.out.println("ingen objekter i skademeldinger");
+        }
         for (Skademelding s : MainApp.getSelectedKunde().getSkademeldinger()) {
             System.out.println(s.toString());
         }
     }
+
+
 
     /**
      * When a row containing client data is selected, the corresponding client object is set as activive in MainApp.
@@ -123,7 +143,8 @@ public class MainPageController {
         if (k != null) {
             MainApp.setSelectedKunde(k);
             populateClientFields(k);
-            selectedKundeField.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
+            selectedKundeFieldForsikring.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
+            selectedKundeFieldSkademelding.setText(k.getForsikrNr() + ": " + k.getFornavn() + " " + k.getEtternavn());
         }
 
     }
@@ -148,6 +169,9 @@ public class MainPageController {
         if (tableOverviewSkademeldinger.getSelectionModel().getSelectedItem() != null){
             Skademelding skademelding = tableOverviewSkademeldinger.getSelectionModel().getSelectedItem();
             tableDeatailsSkademelding.getColumns().clear();
+            FormatInjuryReportTableHelper.formatSkademelding(tableDeatailsSkademelding, this);
+            tableDeatailsSkademelding.getItems().clear();
+            tableDeatailsSkademelding.getItems().add(skademelding);
         }
     }
 
@@ -245,7 +269,7 @@ public class MainPageController {
         noCustomerSelected(k);
 
         ViewChanger vc = new ViewChanger();
-        vc.setView(rootPane, "newInjuryRepoert", "views/newInjuryReport.fxml");
+        vc.setView(rootPane, "newInjuryReport", "views/newInjuryReport.fxml");
     }
 
     /**
@@ -345,6 +369,11 @@ public class MainPageController {
         if (MainApp.getSelectedKunde() != null) {
             Kunde k = MainApp.getSelectedKunde();
             tableOverviewForsikring.getItems().addAll(k.getForsikringer());
+        }
+        tableOverviewSkademeldinger.getItems().clear();
+        if (MainApp.getSelectedKunde() != null){
+            Kunde k = MainApp.getSelectedKunde();
+            tableOverviewSkademeldinger.getItems().addAll(k.getSkademeldinger());
         }
     }
 
