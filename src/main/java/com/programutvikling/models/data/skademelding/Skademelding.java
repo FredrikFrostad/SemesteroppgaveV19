@@ -107,4 +107,6 @@ public class Skademelding implements Serializable {
     public void utbetalt(){
         utbetaltErstatning = (takseringsBelop*0.8);
     }
+
+
 }
