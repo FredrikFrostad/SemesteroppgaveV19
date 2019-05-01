@@ -5,7 +5,7 @@ import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
-import com.programutvikling.models.utils.helpers.DbExportHelperCsv;
+import com.programutvikling.models.utils.dbHandlers.DbExportHandlerCsv;
 import com.programutvikling.models.utils.osType.OSType;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.application.Application;
@@ -159,7 +159,7 @@ public class MainApp extends Application {
                     System.out.println("Stage is closing - writing data to disk");
                     Thread thread = new Thread(() -> {
                         System.out.println("Saving database to file");
-                        new DbExportHelperCsv().exportDbAsCsv();
+                        new DbExportHandlerCsv().exportDbAsCsv();
                         System.out.println("Save complete");
                     });
                     thread.run();

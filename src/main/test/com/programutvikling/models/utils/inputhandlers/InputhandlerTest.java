@@ -1,4 +1,4 @@
-package com.programutvikling.models.inputhandlers;
+package com.programutvikling.models.utils.inputhandlers;
 
 import org.junit.Test;
 

@@ -5,16 +5,11 @@ import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.data.skademelding.Skademelding;
-import com.programutvikling.models.exceptions.InvalidFileFormatException;
-import com.programutvikling.models.filehandlers.ExtensionHandler;
 import com.programutvikling.models.filehandlers.reader.FileReader;
-import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
-import com.programutvikling.models.filehandlers.writer.JobjWriter;
+import com.programutvikling.models.utils.dbHandlers.DbImportHandlerCsv;
 import com.programutvikling.models.utils.helpers.*;
 import com.programutvikling.models.viewChanger.ViewChanger;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -22,12 +17,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.util.Optional;
 
 
-public class mainPageController {
+public class MainPageController {
 
     @FXML
     private BorderPane rootPane;
@@ -73,7 +67,7 @@ public class mainPageController {
     @FXML
     private Text progressText;
 
-    private File threadfile;
+    private boolean lock = false;
 
 
     @FXML
@@ -182,8 +176,6 @@ public class mainPageController {
     }
 
 
-
-    
     /**
      * Method for reacting to a selectionchange in this views tabpane. The method response is
      * based on the tab selected
@@ -218,50 +210,24 @@ public class mainPageController {
     }
 
     /**
-     * Exports all data objects as a single jobj file or several csv files
+     * Exports all data objects as a single jobj file or several csv files. When selecting
+     * export as csv, a folder is created at the chosen path, and all csv files are written
+     * to this folder. The names of the csv files are predetermined by the application.
      */
     @FXML
     private void exportToFile() {
-        try {
-            threadfile = FileWriter.getFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
         }
 
-        Service<Void> threadService = new Service<Void>() {
-            @Override
-            protected Task<Void> createTask() {
-                return new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        try
-                        {
-                            if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
-                                System.out.println("Writing jobj");
-                                JobjWriter writer = new JobjWriter();
-                                writer.writeObjectDataToFile(threadfile, MainApp.getClientList());
-                                System.out.println("DONE");
-                            } else {
-                                DbExportHelperCsv exporter = new DbExportHelperCsv(threadfile.getAbsolutePath());
-                                exporter.exportDbAsCsv();
-                            }
-                        } catch (InvalidFileFormatException e) {
-                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-                            e.printStackTrace();
-                        } catch (Exception e) {
-                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Export feilet", e.getMessage());
-                            e.printStackTrace();
-                        }
-                        return null;
-                    }
-                };
-            }
-        };
-        threadService.start();
+        try {
+            new ThreadHelper().exportFileThread(FileWriter.getFile(), progressBar, progressText, this);
+        } catch (Exception e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil ved export", e.getMessage());
+        }
     }
 
     /**
@@ -269,43 +235,21 @@ public class mainPageController {
      * The file import is threaded  to keep the gui responsive
      */
     @FXML private void importFromFile() {
-        try {
-            threadfile = FileReader.getFile();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
         }
 
-
-        Service<Void> thread = new Service<Void>() {
-            @Override
-            protected Task<Void> createTask() {
-                return new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        try {
-                            System.out.println("Starting file import task!");
-                            if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
-                                JobjReader reader = new JobjReader();
-                                ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(threadfile);
-                                MainApp.getClientList().addAll(list);
-                            } else {
-                                // This implementation is fragile, and only works on files eksported using the
-                                // exportToFile method, insuring that the naming scheme of the exported csv files
-                                // are kept intact.
-                                DbImportHelperCsv importer = new DbImportHelperCsv();
-                                importer.importDbFromCsv(threadfile.getParent());
-                            }
-                        } catch (Exception e) {
-                            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
-                        }
-                        System.out.println("File import task completed");
-                        refreshTable();
-                        return null;
-                    }
-                };
-            }
-        };
-        thread.start();
+        try {
+            new ThreadHelper().importFileThread(FileReader.getFile(), progressBar, progressText, this);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Finner ikke fil", e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "En feil har oppstått", e.getMessage());
+        }
     }
 
     @FXML
@@ -361,6 +305,12 @@ public class mainPageController {
 
     @FXML
     private void deleteClient() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
         Kunde k = MainApp.getSelectedKunde();
         Optional<ButtonType> result = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
                 "Er du sikker på at du vil slette kunde " + k.getFornavn() + " " + k.getEtternavn() + "?",
@@ -375,6 +325,12 @@ public class mainPageController {
 
     @FXML
     private void deletePolicy() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
         if (tableOverviewForsikring.getSelectionModel().getSelectedItem() != null) {
             Forsikring f = tableOverviewForsikring.getSelectionModel().getSelectedItem();
 
@@ -391,9 +347,14 @@ public class mainPageController {
         }
     }
 
+    // TODO: fiks denne metoden, skal gjøre det samme som ved programslutt
     @FXML
     private void saveChangesToFile() {
-
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
     }
 
     /**
@@ -421,15 +382,16 @@ public class mainPageController {
      * Loads db data into program
      */
     private void initDb() {
-        DbImportHelperCsv importer = new DbImportHelperCsv();
         try {
-            importer.importDbFromCsv(null);
+            new ThreadHelper().initDbThread(progressBar, progressText, this);
         } catch (Exception e) {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Kritisk feil", "Feil ved importering av database. " +
                     "Kan ikke garantere dataintegritet.");
         }
     }
+
+    public void setLock(boolean lock) {
+        this.lock = lock;
+    }
 }
-
-

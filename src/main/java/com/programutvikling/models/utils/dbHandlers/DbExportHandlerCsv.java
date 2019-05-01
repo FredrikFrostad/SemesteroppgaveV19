@@ -1,4 +1,4 @@
-package com.programutvikling.models.utils.helpers;
+package com.programutvikling.models.utils.dbHandlers;
 
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.ObjectType;
@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class DbExportHelperCsv {
+public class DbExportHandlerCsv {
 
     private ArrayList<Forsikring> exportListPolicy;
     private ArrayList<Object> exportListDamage;
@@ -22,7 +22,7 @@ public class DbExportHelperCsv {
     private ArrayList<Object> clients;
     private String filePath;
 
-    public DbExportHelperCsv() {
+    public DbExportHandlerCsv() {
         this.boatList = new ArrayList<>();
         this.holidayResiddenceList = new ArrayList<>();
         this.travelList = new ArrayList<>();
@@ -32,7 +32,7 @@ public class DbExportHelperCsv {
         this.clients = new ArrayList<>();
     }
 
-    public DbExportHelperCsv(String filePath) {
+    public DbExportHandlerCsv(String filePath) {
         this.boatList = new ArrayList<>();
         this.holidayResiddenceList = new ArrayList<>();
         this.travelList = new ArrayList<>();
