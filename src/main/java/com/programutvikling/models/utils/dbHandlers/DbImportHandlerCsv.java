@@ -45,9 +45,13 @@ public class DbImportHandlerCsv {
         // data is imported first.
         //Arrays.sort(dbFiles);
 
+        dbFileSorter(dbFiles);
+
         for (File file : dbFiles) {
             System.out.println(file.getName());
             if (file.getName().split("\\.")[1].equals("csv")) {
+
+
 
                 //Building client objects
                 if (new CsvReader(true).readDataFromFile(file).get(0)[0].equals(ObjectType.KUNDE.toString())) {
@@ -76,6 +80,7 @@ public class DbImportHandlerCsv {
 
     private void dbFileSorter(ArrayList<File> dbFiles) throws IOException{
        // Removing non csv files from array
+        System.out.println("Removing non csv files");
         Iterator<File> iter = dbFiles.iterator();
         while (iter.hasNext()) {
             File file = iter.next();
@@ -84,6 +89,7 @@ public class DbImportHandlerCsv {
             }
         }
 
+        System.out.println("Sorting files");
         // Sorting files in array based on content, the file containing client data needs to be first in the array
         Collections.sort(dbFiles, (x,y) -> {
             int res = 0;
@@ -103,6 +109,8 @@ public class DbImportHandlerCsv {
 
             return res;
         });
+        System.out.println("Sort complete");
+        for (File file : dbFiles) System.out.println(file.getName());
     }
 
     /**
