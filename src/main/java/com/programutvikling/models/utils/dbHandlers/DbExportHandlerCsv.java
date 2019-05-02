@@ -47,7 +47,7 @@ public class DbExportHandlerCsv {
      * This method dumps all of the dataobjects in the program into separate csv files based on the object type.
      * The files are stored in a folder defined by the database filepath variable in the MainApp class.
      */
-    public void exportDbAsCsv() throws IOException{
+    public void exportDbAsCsv() {
 
         // Iterating over all clients and adding policies to list
         for (Kunde k : MainApp.getClientList()) {
@@ -62,7 +62,11 @@ public class DbExportHandlerCsv {
         populatePolicyLists();
 
         // Writing all data to files
-        writeListsToFile(filePath);
+        try {
+            writeListsToFile(filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
