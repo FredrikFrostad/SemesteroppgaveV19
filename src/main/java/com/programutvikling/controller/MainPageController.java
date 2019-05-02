@@ -244,7 +244,9 @@ public class MainPageController {
         }
 
         try {
-            new ThreadHelper().importFileThread(FileReader.getFile(), progressBar, progressText, this);
+            File file = FileReader.getFile();
+            if (file == null) return;
+            new ThreadHelper().importFileThread(file, progressBar, progressText, this);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Finner ikke fil", e.getMessage());

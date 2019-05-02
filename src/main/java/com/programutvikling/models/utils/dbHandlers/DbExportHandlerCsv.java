@@ -99,7 +99,6 @@ public class DbExportHandlerCsv {
             filePath = path[0];
 
         }
-        System.out.println(filePath);
         clients.addAll(MainApp.getClientList());
 
         if (MainApp.getClientList().size() > 0) {
@@ -122,18 +121,7 @@ public class DbExportHandlerCsv {
         }
     }
 
-
-    /**
-     * Sort clients based on policy Number.
-     * This is not necessary, but id done so that the exported files look cleaner
-     * @param list Arraylist of policy objects to be sorted
-     */
-    private void sortClientsList(ArrayList<Kunde> list) {
-        Collections.sort(list, (a,b) -> {
-            return  a.getForsikrNr() - b.getForsikrNr();
-        });
-    }
-
+    
     /**
      * Sorts policies based on type, then on policy number
      * This is not necessary, but is done so that the exported files look cleaner
