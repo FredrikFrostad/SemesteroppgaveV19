@@ -47,16 +47,13 @@ public class DbImportHandlerCsv {
         dbFileSorter(dbFiles);
 
         for (File file : dbFiles) {
-            System.out.println(file.getName());
+            //TODO: fjern denne ifen , den trengs ikke lenger (HUSK Å TESTE A DET FUNKER!!!)
             if (file.getName().split("\\.")[1].equals("csv")) {
-
-
 
                 //Building client objects
                 if (new CsvReader(true).readDataFromFile(file).get(0)[0].equals(ObjectType.KUNDE.toString())) {
                     ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
                     buildClientObjects(list, clientList);
-                    System.out.println("Stripping duplicates");
                     stripDuplicatesFromList(clientList);
                     MainApp.getClientList().addAll(clientList);
                 }
@@ -80,7 +77,6 @@ public class DbImportHandlerCsv {
 
     private void dbFileSorter(ArrayList<File> dbFiles) throws IOException{
        // Removing non csv files from array
-        System.out.println("Removing non csv files");
         Iterator<File> iter = dbFiles.iterator();
         while (iter.hasNext()) {
             File file = iter.next();
@@ -89,7 +85,6 @@ public class DbImportHandlerCsv {
             }
         }
 
-        System.out.println("Sorting files");
         // Sorting files in array based on content, the file containing client data needs to be first in the array
         Collections.sort(dbFiles, (x,y) -> {
             int res = 0;
@@ -109,8 +104,6 @@ public class DbImportHandlerCsv {
 
             return res;
         });
-        System.out.println("Sort complete");
-        for (File file : dbFiles) System.out.println(file.getName());
     }
 
     /**
@@ -125,7 +118,6 @@ public class DbImportHandlerCsv {
         //Sorting arrays comparing forsikrNr
         Collections.sort(clientList, Comparator.comparingInt(Kunde::getForsikrNr));
         Collections.sort(existingClients, Comparator.comparingInt(Kunde::getForsikrNr));
-        System.out.println("Lists are sorted");
 
         // Getting index of last element in the list of existing clients, and checking that the list
         // is not empty
@@ -216,38 +208,3 @@ public class DbImportHandlerCsv {
         }
     }
 }
-
-/*
-    private void stripDuplicatesFromList(ArrayList<Kunde> clientList) {
-        ArrayList<Kunde> existingClients = MainApp.getClientList();
-
-        //Sorting arrays comparing forsikrNr
-        Collections.sort(clientList, Comparator.comparingInt(Kunde::getForsikrNr));
-        Collections.sort(existingClients, Comparator.comparingInt(Kunde::getForsikrNr));
-        System.out.println("Lists are sorted");
-
-        // Getting index of last element in the list of existing clients, and checking that the list
-        // is not empty
-        int lastElement = existingClients.size()-1;
-        int i = 0;
-        if (lastElement >= 0) {
-
-            // Iterating over list of new elements. For each new element we need to loop over the list of old elements
-            // Since this can be computationally expensive, we break out of the nested loop as early as possible
-            Iterator<Kunde> itr = clientList.iterator();
-            while (itr.hasNext()) {
-                int newClient = itr.next().getForsikrNr();
-                if (newClient < existingClients.get(lastElement).getForsikrNr()) {
-                    for (;i <= lastElement; i++) {
-                        if (existingClients.get(i).getForsikrNr() == newClient) {
-                            itr.remove();
-                            break;
-                        } else if (existingClients.get(i).getForsikrNr() > newClient) {
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    */
