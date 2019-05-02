@@ -195,6 +195,13 @@ public class DbImportHandlerCsv {
         }
     }
 
+
+    /**
+     * Boilds injuryReport objects read from a csv feil and adds them to an arraylist
+     * @param reportList Arraylist containing string arrays. Each string array represents one dataobject
+     * @param clientList Arraylist where the objects genereated from the csv file are stored
+     * @throws Exception when file cannot be read or when encountering invalid data
+     */
     private void buildInjuryReportObjects(ArrayList<String[]> reportList, ArrayList<Kunde> clientList) throws Exception {
         for (String [] s : reportList) {
 
