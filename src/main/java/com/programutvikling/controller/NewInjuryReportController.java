@@ -81,7 +81,7 @@ public class NewInjuryReportController {
             skademelding.setTypeSkade(typeSkade.getText().replace(",", " "));
             skademelding.setSkadeDato(skadeDato.getValue().toString().replace(",", " "));
             skademelding.setTakseringsBelop(Double.parseDouble(takseringsbeløp.getText()));
-            //skademelding.setUtbetaltErstatning();
+            skademelding.setUtbetaltErstatning(200);
 
         } catch (InvalidNumberFormatException e) {
             e.printStackTrace();

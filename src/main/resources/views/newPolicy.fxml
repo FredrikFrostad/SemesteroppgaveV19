@@ -39,15 +39,13 @@
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <JFXRadioButton fx:id="båt" layoutX="346.0" layoutY="150.0" selected="true" text="Båtforsikring">
+                  <JFXRadioButton fx:id="reise" layoutX="331.0" layoutY="218.0" text="Reiseforsikring">
                      <toggleGroup>
                         <ToggleGroup fx:id="choosePolicy" />
-                     </toggleGroup>
-                  </JFXRadioButton>
-                  <JFXRadioButton fx:id="bil" layoutX="346.0" layoutY="200.0" text="Bilforsikring" toggleGroup="$choosePolicy" />
-                  <JFXRadioButton fx:id="reise" layoutX="346.0" layoutY="250.0" text="Reiseforsikring" toggleGroup="$choosePolicy" />
-                  <JFXRadioButton fx:id="fritid" layoutX="346.0" layoutY="350.0" text="Fritidsboligforsikring" toggleGroup="$choosePolicy" />
-                  <JFXRadioButton fx:id="villa" layoutX="346.0" layoutY="300.0" text="Villa-Innboforsikring" toggleGroup="$choosePolicy" />
+                     </toggleGroup></JFXRadioButton>
+                  <JFXRadioButton fx:id="båt" layoutX="330.0" layoutY="185.0" selected="true" text="Båtforsikring" toggleGroup="$choosePolicy" />
+                  <JFXRadioButton fx:id="fritid" layoutX="330.0" layoutY="294.0" text="Fritidsboligforsikring" toggleGroup="$choosePolicy" />
+                  <JFXRadioButton fx:id="villa" layoutX="331.0" layoutY="254.0" text="Villa-Innboforsikring" toggleGroup="$choosePolicy" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="fritidsPage" prefHeight="200.0" prefWidth="200.0" visible="false">
