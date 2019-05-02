@@ -26,8 +26,8 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <JFXTextField fx:id="typeSkade" disable="true" text="Type skade:" />
-                  <JFXTextArea />
+                  <JFXTextField disable="true" text="Type skade:" />
+                  <JFXTextArea fx:id="typeSkade"/>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">

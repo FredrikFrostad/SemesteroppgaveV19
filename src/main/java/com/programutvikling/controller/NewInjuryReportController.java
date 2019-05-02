@@ -21,11 +21,11 @@ public class NewInjuryReportController {
     Kunde k;
     @FXML
     private TextField
-            typeSkade,
             name,
             takseringsbeløp;
     @FXML
     private TextArea
+            typeSkade,
             skadeBeskrivelse,
             kontaktinfoVitner;
     @FXML
