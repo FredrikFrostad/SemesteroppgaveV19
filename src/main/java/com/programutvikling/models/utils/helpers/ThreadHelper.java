@@ -67,7 +67,6 @@ public class ThreadHelper {
                     @Override
                     protected Void call() throws Exception {
                         controller.setLock(true);
-
                         progressBar.setVisible(true);
                         progressText.setText("Exporting data");
                         progressText.setVisible(true);
@@ -75,10 +74,8 @@ public class ThreadHelper {
                         System.out.println("Starting file export task!");
 
                         if (ExtensionHandler.getExtension(threadfile).equals(".jobj")) {
-                            System.out.println("Writing jobj");
                             JobjWriter writer = new JobjWriter();
                             writer.writeObjectDataToFile(threadfile, MainApp.getClientList());
-                            System.out.println("DONE");
                         } else {
                             DbExportHandlerCsv exporter = new DbExportHandlerCsv(threadfile.getAbsolutePath());
                             exporter.exportDbAsCsv();
@@ -86,7 +83,6 @@ public class ThreadHelper {
 
                         progressText.setVisible(false);
                         progressBar.setVisible(false);
-
                         controller.setLock(false);
 
                         System.out.println("File export task completed");

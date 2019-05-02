@@ -11,6 +11,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * @author 576
+ */
+
 public class DbImportHandlerCsv {
 
 
@@ -47,7 +51,7 @@ public class DbImportHandlerCsv {
         dbFileSorter(dbFiles);
 
         for (File file : dbFiles) {
-            //TODO: fjern denne ifen , den trengs ikke lenger (HUSK Å TESTE A DET FUNKER!!!)
+
             if (file.getName().split("\\.")[1].equals("csv")) {
 
                 //Building client objects
