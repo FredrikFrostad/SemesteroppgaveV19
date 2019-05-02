@@ -43,7 +43,6 @@ public class DbImportHandlerCsv {
         // always come first when the file array is sorted. This is obviously a naive aproach.....
         // This could be improved by looking at the file content and making sure that the file containing client
         // data is imported first.
-        //Arrays.sort(dbFiles);
 
         dbFileSorter(dbFiles);
 
@@ -57,6 +56,7 @@ public class DbImportHandlerCsv {
                 if (new CsvReader(true).readDataFromFile(file).get(0)[0].equals(ObjectType.KUNDE.toString())) {
                     ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
                     buildClientObjects(list, clientList);
+                    System.out.println("Stripping duplicates");
                     stripDuplicatesFromList(clientList);
                     MainApp.getClientList().addAll(clientList);
                 }
@@ -125,6 +125,7 @@ public class DbImportHandlerCsv {
         //Sorting arrays comparing forsikrNr
         Collections.sort(clientList, Comparator.comparingInt(Kunde::getForsikrNr));
         Collections.sort(existingClients, Comparator.comparingInt(Kunde::getForsikrNr));
+        System.out.println("Lists are sorted");
 
         // Getting index of last element in the list of existing clients, and checking that the list
         // is not empty
@@ -134,21 +135,37 @@ public class DbImportHandlerCsv {
 
             // Iterating over list of new elements. For each new element we need to loop over the list of old elements
             // Since this can be computationally expensive, we break out of the nested loop as early as possible
-            Iterator<Kunde> itr = clientList.iterator();
-            while (itr.hasNext()) {
-                int newClient = itr.next().getForsikrNr();
-                if (newClient < existingClients.get(lastElement).getForsikrNr()) {
-                    for (;i <= lastElement; i++) {
-                        if (existingClients.get(i).getForsikrNr() == newClient) {
-                            itr.remove();
-                            break;
-                        } else if (existingClients.get(i).getForsikrNr() > newClient) {
-                            break;
-                        }
-                    }
+            Iterator<Kunde> iter = clientList.iterator();
+            while (iter.hasNext()) {
+                int newClientNr = iter.next().getForsikrNr();
+                if (binSrch(existingClients, newClientNr)) {
+                    iter.remove();
                 }
             }
         }
+    }
+
+    /**
+     * Binary search algoritm used to find matching identifiers when importing clients
+     * @param existingClients List of clients already loaded
+     * @param value the identifier to check against list of existing clients
+     * @return True if match is found, false if not
+     */
+    public boolean binSrch(ArrayList<Kunde> existingClients, int value) {
+
+        int v = 0;
+        int h = existingClients.size()-1;
+        int m = h / 2;
+
+        while (v <= h) {
+
+            if (value == existingClients.get(m).getForsikrNr()) return true;
+            if (value < existingClients.get(m).getForsikrNr()) h = m - 1;
+            if (value > existingClients.get(m).getForsikrNr()) v = m + 1;
+
+            m = (v + h) / 2;
+        }
+        return false;
     }
 
     /**
@@ -199,3 +216,38 @@ public class DbImportHandlerCsv {
         }
     }
 }
+
+/*
+    private void stripDuplicatesFromList(ArrayList<Kunde> clientList) {
+        ArrayList<Kunde> existingClients = MainApp.getClientList();
+
+        //Sorting arrays comparing forsikrNr
+        Collections.sort(clientList, Comparator.comparingInt(Kunde::getForsikrNr));
+        Collections.sort(existingClients, Comparator.comparingInt(Kunde::getForsikrNr));
+        System.out.println("Lists are sorted");
+
+        // Getting index of last element in the list of existing clients, and checking that the list
+        // is not empty
+        int lastElement = existingClients.size()-1;
+        int i = 0;
+        if (lastElement >= 0) {
+
+            // Iterating over list of new elements. For each new element we need to loop over the list of old elements
+            // Since this can be computationally expensive, we break out of the nested loop as early as possible
+            Iterator<Kunde> itr = clientList.iterator();
+            while (itr.hasNext()) {
+                int newClient = itr.next().getForsikrNr();
+                if (newClient < existingClients.get(lastElement).getForsikrNr()) {
+                    for (;i <= lastElement; i++) {
+                        if (existingClients.get(i).getForsikrNr() == newClient) {
+                            itr.remove();
+                            break;
+                        } else if (existingClients.get(i).getForsikrNr() > newClient) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    */
