@@ -42,6 +42,8 @@ public class ViewChanger {
             }
 
             Scene scene = new Scene(parent);
+            //TODO: sjekk at dette virker!!
+            scene.getStylesheets().add(getClass().getResource("/views/styles.css").toExternalForm());
             stage.setScene(scene);
             viewMap.putIfAbsent(viewName, scene);
         }
