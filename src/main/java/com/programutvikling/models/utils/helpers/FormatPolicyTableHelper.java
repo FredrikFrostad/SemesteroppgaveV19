@@ -112,7 +112,7 @@ public class FormatPolicyTableHelper {
             @Override
             public void handle(TableColumn.CellEditEvent<Forsikring, String> forsikringStringCellEditEvent) {
                 Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
-                b.setEier(forsikringStringCellEditEvent.getNewValue());
+                b.setEier(forsikringStringCellEditEvent.getNewValue() != null ? forsikringStringCellEditEvent.getNewValue() : forsikringStringCellEditEvent.getOldValue());
                 controller.refreshTable();
             }
         });

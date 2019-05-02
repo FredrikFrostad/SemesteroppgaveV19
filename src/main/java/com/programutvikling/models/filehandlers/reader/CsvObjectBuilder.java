@@ -45,7 +45,6 @@ public class CsvObjectBuilder {
             default:
                 System.out.println("The type is: " + type);
                 throw new InvalidObjectTypeException("Object type not found.");
-
         }
 
         return out;
@@ -92,6 +91,12 @@ public class CsvObjectBuilder {
     }
 
 
+    /**
+     * Helper method for creating a boatInsurance object from a string array
+     * @param objData String array containing object datafields
+     * @return Boat policy object
+     * @throws IllegalAccessException if new date is set on already existing clientobject
+     */
     private Båt buildBåtFromCsv(String[] objData) throws IllegalAccessException{
         Båt b = new Båt();
         b.setForsikrNr(Integer.parseInt(objData[1]));
@@ -112,6 +117,12 @@ public class CsvObjectBuilder {
     }
 
 
+    /**
+     * Helper method for creating a homeowners Insurance object from a string array
+     * @param objData String array containing object datafields
+     * @return Homeowner policy object
+     * @throws IllegalAccessException if new date is set on already existing clientobject
+     */
     private Bolig buildHomeOwnerFromCsv(String[] objData) throws Exception {
         Bolig b = null;
         if (objData[0].equals(ObjectType.VILLAINNBO.toString())) {
@@ -136,6 +147,13 @@ public class CsvObjectBuilder {
         return b;
     }
 
+
+    /**
+     * Helper method for creating a Travel Insurance object from a string array
+     * @param objData String array containing object datafields
+     * @return Travel policy object
+     * @throws IllegalAccessException if new date is set on already existing clientobject
+     */
     private Reise buildReiseFromcsv(String[] objData) throws Exception {
         Reise r = new Reise();
         r.setForsikrNr(Integer.parseInt(objData[1]));

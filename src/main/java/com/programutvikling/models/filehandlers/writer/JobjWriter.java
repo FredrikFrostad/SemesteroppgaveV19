@@ -7,7 +7,7 @@ import javafx.stage.FileChooser;
 import java.io.*;
 import java.util.ArrayList;
 
-public class JobjWriter extends FileWriter implements Runnable{
+public class JobjWriter extends FileWriter implements Runnable {
 
     File file;
     Object objectArray[];
@@ -27,7 +27,6 @@ public class JobjWriter extends FileWriter implements Runnable{
         objOut.writeObject(obj);
         objOut.flush();
         objOut.close();
-        System.out.println("Data written to file, stream closed");
     }
 
     @Override

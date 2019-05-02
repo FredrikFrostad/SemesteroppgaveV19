@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Optional;
@@ -97,7 +98,8 @@ public class MainPageController {
         overviewCol1.setCellValueFactory(new PropertyValueFactory<>("type"));
         overviewCol2.setCellValueFactory(new PropertyValueFactory<>("premieAnnum"));
     }
-    private void initSkademeldingsTable(){
+
+    private void initSkademeldingsTable() {
         skademeldingStringTableColumn1.setCellValueFactory(new PropertyValueFactory<>("type"));
         skademeldingObjectTypeTableColumn2.setCellValueFactory(new PropertyValueFactory<>("skadeDato"));
     }
@@ -121,16 +123,15 @@ public class MainPageController {
 
     //TODO: fjern når ferdig
     @FXML
-    private void TESTSKADE(){
+    private void TESTSKADE() {
         System.out.println(MainApp.getSelectedKunde().getSkademeldinger().toString());
-        if (MainApp.getSelectedKunde().getSkademeldinger() == null){
+        if (MainApp.getSelectedKunde().getSkademeldinger() == null) {
             System.out.println("ingen objekter i skademeldinger");
         }
         for (Skademelding s : MainApp.getSelectedKunde().getSkademeldinger()) {
             System.out.println(s.toString());
         }
     }
-
 
 
     /**
@@ -164,9 +165,10 @@ public class MainPageController {
             tableDetailsForsikring.getItems().add(f);
         }
     }
+
     @FXML
-    private void selectedInjuryReport(){
-        if (tableOverviewSkademeldinger.getSelectionModel().getSelectedItem() != null){
+    private void selectedInjuryReport() {
+        if (tableOverviewSkademeldinger.getSelectionModel().getSelectedItem() != null) {
             Skademelding skademelding = tableOverviewSkademeldinger.getSelectionModel().getSelectedItem();
             tableDeatailsSkademelding.getColumns().clear();
             FormatInjuryReportTableHelper.formatSkademelding(tableDeatailsSkademelding, this);
@@ -185,12 +187,10 @@ public class MainPageController {
         if (tabForsikring.isSelected()) {
             System.out.println("EVENT FORSIKRING TRIGGERED!!");
             refreshTable();
-        }
-        else if (tabKunder.isSelected()) {
+        } else if (tabKunder.isSelected()) {
             refreshTable();
             System.out.println("EVENT KUNDER TRIGGERED");
-        }
-        else if (tabSkademeldinger.isSelected()) {
+        } else if (tabSkademeldinger.isSelected()) {
             refreshTable();
             System.out.println("EVENT SKADEMELDINGER TRIGGERED");
         }
@@ -199,6 +199,7 @@ public class MainPageController {
 
     /**
      * Methode for populating textfields with client data
+     *
      * @param k The client objects containing the data
      */
     private void populateClientFields(Kunde k) {
@@ -236,7 +237,8 @@ public class MainPageController {
      * Imports data objects from either jobj or csv files.
      * The file import is threaded  to keep the gui responsive
      */
-    @FXML private void importFromFile() {
+    @FXML
+    private void importFromFile() {
         if (lock) {
             AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
                     "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
@@ -267,7 +269,7 @@ public class MainPageController {
     }
 
     @FXML
-    private void nySkademelding(ActionEvent event){
+    private void nySkademelding(ActionEvent event) {
         Kunde k = clientTable.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
         noCustomerSelected(k);
@@ -278,9 +280,10 @@ public class MainPageController {
 
     /**
      * Checks if a client is selected for operations that rewuire this to be done.
+     *
      * @param k selected client object or null if nothing is selected.
      */
-    private void noCustomerSelected(Kunde k){
+    private void noCustomerSelected(Kunde k) {
         if (k == null) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
             return;
@@ -289,6 +292,7 @@ public class MainPageController {
 
     /**
      * Changes to the view for adding a client.
+     *
      * @param event
      */
     @FXML
@@ -301,9 +305,9 @@ public class MainPageController {
     @FXML
     private void saveChanges(ActionEvent event) {
         Kunde k = MainApp.getSelectedKunde();
-        k.setFornavn(k_fornavn.getText().replace(","," "));
-        k.setEtternavn(k_etternavn.getText().replace(","," "));
-        k.setFakturaadresse(k_adr.getText().replace(","," "));
+        k.setFornavn(k_fornavn.getText().replace(",", " "));
+        k.setEtternavn(k_etternavn.getText().replace(",", " "));
+        k.setFakturaadresse(k_adr.getText().replace(",", " "));
         refreshTable();
     }
 
@@ -339,8 +343,8 @@ public class MainPageController {
             Forsikring f = tableOverviewForsikring.getSelectionModel().getSelectedItem();
 
             Optional<ButtonType> result = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
-                        "Er du sikker på at du vil slette forsikring " + f.getType() + ", opprettet: " + f.getAvtaleOpprettet() + "?",
-                            "Slett Forsikring", "Avbryt");
+                    "Er du sikker på at du vil slette forsikring " + f.getType() + ", opprettet: " + f.getAvtaleOpprettet() + "?",
+                    "Slett Forsikring", "Avbryt");
             if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
                 MainApp.getSelectedKunde().getForsikringer().remove(f);
                 tableDetailsForsikring.getColumns().clear();
@@ -375,7 +379,7 @@ public class MainPageController {
             tableOverviewForsikring.getItems().addAll(k.getForsikringer());
         }
         tableOverviewSkademeldinger.getItems().clear();
-        if (MainApp.getSelectedKunde() != null){
+        if (MainApp.getSelectedKunde() != null) {
             Kunde k = MainApp.getSelectedKunde();
             tableOverviewSkademeldinger.getItems().addAll(k.getSkademeldinger());
         }
