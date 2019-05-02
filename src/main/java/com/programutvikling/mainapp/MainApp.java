@@ -151,7 +151,7 @@ public class MainApp extends Application {
     private void initOnExitHandler(Stage stage) {
         // For catching program exit via OS native close button
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
+            public void handle(WindowEvent we){
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lagre før lukking");
                 alert.setContentText("Lagre endringer før programmet avsluttes?");
@@ -161,12 +161,9 @@ public class MainApp extends Application {
                     System.out.println("Stage is closing - writing data to disk");
                     Thread thread = new Thread(() -> {
                         System.out.println("Saving database to file");
-                        try {
+                        
                             new DbExportHandlerCsv().exportDbAsCsv();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Achtung", e.getMessage());
-                        }
+
                         System.out.println("Save complete");
                     });
                     thread.run();
