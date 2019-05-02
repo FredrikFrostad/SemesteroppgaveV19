@@ -110,7 +110,7 @@
          </AnchorPane>
       
       
-            <AnchorPane fx:id="bilPage" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <AnchorPane fx:id="bilPage" prefHeight="200.0" prefWidth="200.0" visible="false" >
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="329.0" layoutX="279.0" layoutY="98.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0" width="243.0">
                      <effect>
