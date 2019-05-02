@@ -187,9 +187,11 @@ public class MainPageController {
             refreshTable();
         }
         else if (tabKunder.isSelected()) {
+            refreshTable();
             System.out.println("EVENT KUNDER TRIGGERED");
         }
         else if (tabSkademeldinger.isSelected()) {
+            refreshTable();
             System.out.println("EVENT SKADEMELDINGER TRIGGERED");
         }
     }
@@ -379,7 +381,7 @@ public class MainPageController {
 
 
     /**
-     * Loads db data into program
+     * Loads db data into program at program start
      */
     private void initDb() {
         try {

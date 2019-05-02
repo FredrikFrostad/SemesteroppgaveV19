@@ -1,12 +1,14 @@
 package com.programutvikling.models.utils.dbHandlers;
 
 import com.programutvikling.mainapp.MainApp;
+import com.programutvikling.models.data.ObjectType;
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
 import com.programutvikling.models.data.skademelding.Skademelding;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class DbImportHandlerCsv {
@@ -29,7 +31,9 @@ public class DbImportHandlerCsv {
             filePath = path;
         }
 
-        File[] dbFiles = new File(filePath).listFiles();
+        File[] dirFiles = new File(filePath).listFiles();
+        ArrayList<File> dbFiles = new ArrayList<>();
+        dbFiles.addAll(Arrays.asList(dirFiles));
         //ArrayList<Kunde> clientList = MainApp.getClientList();
         ArrayList<Kunde> clientList = new ArrayList<>();
         CsvReader reader = new CsvReader();
@@ -39,31 +43,66 @@ public class DbImportHandlerCsv {
         // always come first when the file array is sorted. This is obviously a naive aproach.....
         // This could be improved by looking at the file content and making sure that the file containing client
         // data is imported first.
-        Arrays.sort(dbFiles);
+        //Arrays.sort(dbFiles);
 
         for (File file : dbFiles) {
             System.out.println(file.getName());
             if (file.getName().split("\\.")[1].equals("csv")) {
 
                 //Building client objects
-                if (file.getName().equals("clients.csv")) {
+                if (new CsvReader(true).readDataFromFile(file).get(0)[0].equals(ObjectType.KUNDE.toString())) {
                     ArrayList<String[]> list = reader.readDataFromFile(new File(file.getAbsolutePath()));
                     buildClientObjects(list, clientList);
                     stripDuplicatesFromList(clientList);
                     MainApp.getClientList().addAll(clientList);
                 }
                 // Building injuryReport Objects
-                else if (file.getName().equals("policy_injuryReport.csv")){
+                else if (new CsvReader(true).readDataFromFile(file).get(0)[0].equals(ObjectType.SKADEMELDING.toString())){
                     ArrayList<String[]>  reportList = reader.readDataFromFile(new File(file.getAbsolutePath()));
                     buildInjuryReportObjects(reportList, clientList);
                 }
                 // Building policy objects
-                else {
+                else if (new CsvReader(true).readDataFromFile(file).get(0)[0].equals(ObjectType.BÅT.toString()) ||
+                        new CsvReader(true).readDataFromFile(file).get(0)[0].equals(ObjectType.VILLAINNBO.toString()) ||
+                        new CsvReader(true).readDataFromFile(file).get(0)[0].equals(ObjectType.FRITIDSBOLIG.toString()) ||
+                        new CsvReader(true).readDataFromFile(file).get(0)[0].equals(ObjectType.REISE.toString())){
                     ArrayList<String[]> policyList = reader.readDataFromFile(new File(file.getAbsolutePath()));
                     buildPolicyObjects(policyList, clientList);
                 }
             }
         }
+    }
+
+
+    private void dbFileSorter(ArrayList<File> dbFiles) throws IOException{
+       // Removing non csv files from array
+        Iterator<File> iter = dbFiles.iterator();
+        while (iter.hasNext()) {
+            File file = iter.next();
+            if (!file.getName().split("\\.")[1].equals("csv")) {
+                iter.remove();
+            }
+        }
+
+        // Sorting files in array based on content, the file containing client data needs to be first in the array
+        Collections.sort(dbFiles, (x,y) -> {
+            int res = 0;
+            String typeX = null, typeY = null;
+            typeX = null;
+
+            try {
+                typeX = new CsvReader(true).readDataFromFile(x).get(0)[0];
+                typeY = new CsvReader(true).readDataFromFile(y).get(0)[0];
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (typeX.equals(ObjectType.KUNDE.toString())) {
+                res = -1;
+            } else res = 0;
+
+            return res;
+        });
     }
 
     /**

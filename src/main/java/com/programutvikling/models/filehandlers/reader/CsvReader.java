@@ -7,7 +7,13 @@ import java.util.ArrayList;
 
 public class CsvReader extends FileReader{
 
+    private boolean onlyReadFirstLine = false;
+
     public CsvReader() {}
+
+    public CsvReader(boolean onlyReadFirstLine) {
+        this.onlyReadFirstLine = onlyReadFirstLine;
+    }
 
     /**
      * Method for reading data from a CSV-file.
@@ -31,6 +37,10 @@ public class CsvReader extends FileReader{
             while ((line = reader.readLine()) != null) {
                 String[] dataFields = line.split(",");
                 objLst.add(dataFields);
+                if (onlyReadFirstLine) {
+                    reader.close();
+                    return objLst;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
