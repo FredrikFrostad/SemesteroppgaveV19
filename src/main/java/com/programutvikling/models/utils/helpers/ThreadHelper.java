@@ -37,9 +37,6 @@ public class ThreadHelper {
                             ArrayList<Kunde> list = (ArrayList<Kunde>) reader.readDataFromFile(threadfile);
                             MainApp.getClientList().addAll(list);
                         } else {
-                            // This implementation is fragile, and only works on files eksported using the
-                            // exportToFile method, insuring that the naming scheme of the exported csv files
-                            // are kept intact.
                             DbImportHandlerCsv importer = new DbImportHandlerCsv();
                             importer.importDbFromCsv(threadfile.getParent());
                         }

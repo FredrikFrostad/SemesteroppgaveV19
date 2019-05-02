@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @author 576
+ */
+
 public class ViewChanger {
 
     // Denne listen skal inneholde instanser av views i applikasjonen

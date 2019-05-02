@@ -5,11 +5,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CsvReader extends FileReader{
+public class CsvReader extends FileReader {
 
     private boolean onlyReadFirstLine = false;
 
-    public CsvReader() {}
+    public CsvReader() {
+    }
 
     public CsvReader(boolean onlyReadFirstLine) {
         this.onlyReadFirstLine = onlyReadFirstLine;

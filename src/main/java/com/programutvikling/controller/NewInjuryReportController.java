@@ -18,7 +18,7 @@ public class NewInjuryReportController {
 
     @FXML
     DatePicker skadeDato;
-
+    Kunde k;
     @FXML
     private TextField
             typeSkade,
@@ -28,17 +28,13 @@ public class NewInjuryReportController {
     private TextArea
             skadeBeskrivelse,
             kontaktinfoVitner;
-
     @FXML
     private ComboBox
             comboBox;
-
-    Kunde k;
-
     private int skadeNr;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         k = MainApp.getSelectedKunde();
         skadeNr = k.getForsikrNr();
 
@@ -50,14 +46,14 @@ public class NewInjuryReportController {
         }
     }
 
-    public void cancel(){
+    public void cancel() {
         ViewChanger viewChanger = new ViewChanger();
-        viewChanger.setView(newInjuryRoot,"mainPage", "views/mainPage.fxml");
+        viewChanger.setView(newInjuryRoot, "mainPage", "views/mainPage.fxml");
         viewChanger.resetView("newInjuryReport");
     }
 
 
-    public void registererSkademelding(){
+    public void registererSkademelding() {
         Kunde k = MainApp.getSelectedKunde();
         Skademelding skademelding = createSkademelding();
         k.getSkademeldinger().add(skademelding);
@@ -69,20 +65,21 @@ public class NewInjuryReportController {
 
     /**
      * må lages en bedre håndtering for hvordan man gjør feil testingen
+     *
      * @return
      */
-    public Skademelding createSkademelding(){
+    public Skademelding createSkademelding() {
 
         Skademelding skademelding = new Skademelding();
 
-        try{
-            Inputvalidator.checkIfValidNumber(takseringsbeløp.getText().replace(","," "));
+        try {
+            Inputvalidator.checkIfValidNumber(takseringsbeløp.getText().replace(",", " "));
             skademelding.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
-            skademelding.setKontaktinfoVitner(kontaktinfoVitner.getText().replace(","," ").replace("\n"," "));
-            skademelding.setSkadeBeskrivelse(skadeBeskrivelse.getText().replace(","," ").replace("\n"," "));
+            skademelding.setKontaktinfoVitner(kontaktinfoVitner.getText().replace(",", " ").replace("\n", " "));
+            skademelding.setSkadeBeskrivelse(skadeBeskrivelse.getText().replace(",", " ").replace("\n", " "));
             skademelding.setSkadeNr(skadeNr);
-            skademelding.setTypeSkade(typeSkade.getText().replace(","," "));
-            skademelding.setSkadeDato(skadeDato.getValue().toString().replace(","," "));
+            skademelding.setTypeSkade(typeSkade.getText().replace(",", " "));
+            skademelding.setSkadeDato(skadeDato.getValue().toString().replace(",", " "));
             skademelding.setTakseringsBelop(Double.parseDouble(takseringsbeløp.getText()));
             //skademelding.setUtbetaltErstatning();
 
