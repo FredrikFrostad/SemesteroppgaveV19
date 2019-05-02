@@ -78,8 +78,8 @@ public class NewInjuryReportController {
         try{
             Inputvalidator.checkIfValidNumber(takseringsbeløp.getText().replace(","," "));
             skademelding.setForsikrNr(MainApp.getSelectedKunde().getForsikrNr());
-            skademelding.setKontaktinfoVitner(kontaktinfoVitner.getText().replace(","," "));
-            skademelding.setSkadeBeskrivelse(skadeBeskrivelse.getText().replace(","," "));
+            skademelding.setKontaktinfoVitner(kontaktinfoVitner.getText().replace(","," ").replace("\n"," "));
+            skademelding.setSkadeBeskrivelse(skadeBeskrivelse.getText().replace(","," ").replace("\n"," "));
             skademelding.setSkadeNr(skadeNr);
             skademelding.setTypeSkade(typeSkade.getText().replace(","," "));
             skademelding.setSkadeDato(skadeDato.getValue().toString().replace(","," "));
