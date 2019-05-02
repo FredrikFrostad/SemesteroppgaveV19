@@ -2,6 +2,7 @@ package com.programutvikling.mainapp;
 
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -159,7 +161,12 @@ public class MainApp extends Application {
                     System.out.println("Stage is closing - writing data to disk");
                     Thread thread = new Thread(() -> {
                         System.out.println("Saving database to file");
-                        new DbExportHandlerCsv().exportDbAsCsv();
+                        try {
+                            new DbExportHandlerCsv().exportDbAsCsv();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            AlertHelper.createAlert(Alert.AlertType.ERROR, "Achtung", e.getMessage());
+                        }
                         System.out.println("Save complete");
                     });
                     thread.run();
