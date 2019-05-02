@@ -3,7 +3,6 @@ package com.programutvikling.models.utils.helpers;
 import com.programutvikling.controller.MainPageController;
 import com.programutvikling.mainapp.MainApp;
 import com.programutvikling.models.data.kunde.Kunde;
-import com.programutvikling.models.exceptions.InvalidFileFormatException;
 import com.programutvikling.models.filehandlers.ExtensionHandler;
 import com.programutvikling.models.filehandlers.reader.JobjReader;
 import com.programutvikling.models.filehandlers.writer.JobjWriter;
@@ -11,12 +10,9 @@ import com.programutvikling.models.utils.dbHandlers.DbExportHandlerCsv;
 import com.programutvikling.models.utils.dbHandlers.DbImportHandlerCsv;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.text.Text;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class ThreadHelper {

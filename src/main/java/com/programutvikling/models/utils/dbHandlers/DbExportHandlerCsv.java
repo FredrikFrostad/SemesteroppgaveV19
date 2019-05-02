@@ -121,7 +121,7 @@ public class DbExportHandlerCsv {
         }
     }
 
-    
+
     /**
      * Sorts policies based on type, then on policy number
      * This is not necessary, but is done so that the exported files look cleaner
