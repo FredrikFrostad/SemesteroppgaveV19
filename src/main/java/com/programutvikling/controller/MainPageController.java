@@ -305,15 +305,6 @@ public class MainPageController {
 
 
     @FXML
-    private void saveChanges(ActionEvent event) {
-        Kunde k = MainApp.getSelectedKunde();
-        k.setFornavn(k_fornavn.getText().replace(",", " "));
-        k.setEtternavn(k_etternavn.getText().replace(",", " "));
-        k.setFakturaadresse(k_adr.getText().replace(",", " "));
-        refreshTable();
-    }
-
-    @FXML
     private void deleteClient() {
         if (lock) {
             AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
@@ -379,7 +370,9 @@ public class MainPageController {
         }
     }
 
-    // TODO: fiks denne metoden, skal gjøre det samme som ved programslutt
+    /**
+     * Saves the database state to file
+     */
     @FXML
     private void saveChangesToFile() {
         if (lock) {
@@ -387,6 +380,25 @@ public class MainPageController {
                     "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
             return;
         }
+            new ThreadHelper().saveDbThread(progressBar, progressText, this);
+    }
+
+
+    /**
+     * Updates client object with changes made to the editable datafields
+     */
+    @FXML
+    private void updateClient() {
+        Kunde k = MainApp.getSelectedKunde();
+        if (k != null) {
+            k.setFornavn(k_fornavn.getText().replace(",", " "));
+            k.setEtternavn(k_etternavn.getText().replace(",", " "));
+            k.setFakturaadresse(k_adr.getText().replace(",", " "));
+            refreshTable();
+        } else {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil", "Kunde ikke valgt, vennligst velg en kunde");
+        }
+
     }
 
     /**
