@@ -12,6 +12,12 @@ Målet for denne oppgaven har vært å implementere et java-program for et forsi
 
 Kort oppsummert er vi særdeles fornøyd med ferdigstilt produkt da vi mener det overholder alle tekniske krav fastsatt i oppgaveteksten.Vi har opplevd det å jobbe i gruppe som noe uproblematisk og svært lærrerikt da vi har vokst på hverandres innspill og forslag. Semesteroppgaven har stilt høye krav til oss både som enkelpersoner og som gruppe, men vi har håndtert knutepunkt og problemstillinger på en oppriktig og løsningsorientert måte utifra kollektive avgjørelser. 
 
+#### Kjøring av prosjekt
+
+Vi har kjørt test av kilde koden i prosjektet ved å kompilere prosjektet i intellij med maven.
+
+
+
 ### EVALUERING AV PROSJEKTARBEIDET:
 
 Etter endt prosjektperiode har vi opparbeidet oss god og relevant erfaring innen teambasert arbeide innen programutvikling. Vi opplever at vi har hatt en god gruppedynamikk og at vi har dratt nytte av de individuelle gruppemedlemmenes styrker i løpet av prosjektperioden.
@@ -97,9 +103,12 @@ Bolig, Båt, Forsikring, Fritidsbolig, ObjectType, CsvObjectBuilde, CsvReader, F
 
 
 
+Kandidat 761:
 
+Har jobbet hovesakelig med GUI og Controller klassene.
 
-| 761  | 576  | 811  |
-| ---- | ---- | ---- |
-|      |      |      |
+hovedsaklig jobbet med:
+
+AddClientController, MainPageController, NewInjuryReportController, NewPolicyController, FormatInjuryReportTableHelper, Skademelding, VillaInnbo, mainPage.fxml, newPolicy.fxml, newInjuryReport.fxml
+
 
