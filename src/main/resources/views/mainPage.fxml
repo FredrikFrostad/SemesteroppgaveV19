@@ -44,6 +44,11 @@
                               <JFXButton layoutX="202.490234375" layoutY="416.0" onAction="#saveChangesToFile" prefWidth="114.0" style="-fx-background-color: grey;" text="Save database" />
                               <JFXButton layoutX="201.0" layoutY="227.0" onAction="#updateClient" prefWidth="115.0" style="-fx-background-color: grey;" text="Update Client" />
                               <JFXButton layoutX="201.0" layoutY="380.0" onAction="#deleteClient" prefWidth="115.0" style="-fx-background-color: grey;" text="Delete Client" />
+                              <JFXButton layoutX="79.0" layoutY="415.0" onAction="#exportClient" prefWidth="115.0" style="-fx-background-color: grey;" text="Exporter Kunde" />
+                              <JFXButton layoutX="79.0" layoutY="380.0" onAction="#importClient" prefWidth="115.0" style="-fx-background-color: grey;" text="Importer Kunde" />
+                              <JFXButton layoutX="8.0" layoutY="342.0" onAction="#searchClient" prefHeight="26.0" prefWidth="42.0" style="-fx-background-color: grey;" text="Søk" />
+                              <JFXButton layoutX="52.0" layoutY="342.0" onAction="#resetSearchClient" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: grey;" text="Nullstill" />
+                              <TextField fx:id="searchField" layoutX="137.0" layoutY="342.0" prefHeight="26.0" prefWidth="184.0" />
                            </children>
                         </Group>
                      </children>

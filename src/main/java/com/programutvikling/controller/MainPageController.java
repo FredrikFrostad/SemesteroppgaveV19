@@ -63,6 +63,9 @@ public class MainPageController {
             selectedKundeFieldSkademelding;
 
     @FXML
+    private TextField searchField;
+
+    @FXML
     private ProgressBar progressBar;
 
     @FXML
@@ -398,6 +401,54 @@ public class MainPageController {
         } else {
             AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil", "Kunde ikke valgt, vennligst velg en kunde");
         }
+    }
+
+    @FXML
+    private void exportClient() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
+        Kunde k = MainApp.getSelectedKunde();
+        if (k != null) {
+            try {
+                new ThreadHelper().exportObjectThread(FileWriter.getFile(), k, progressBar, progressText, this);
+            } catch (Exception e) {
+                AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil", e.getMessage());
+            }
+        }
+    }
+
+    @FXML
+    private void importClient() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
+        try {
+            new ThreadHelper().importObjectThread(FileReader.getFile(), progressBar, progressText, this);
+        } catch (FileNotFoundException e) {
+            AlertHelper.createAlert(Alert.AlertType.ERROR, "Feil", "Finner ikke fil");
+        }
+
+    }
+
+    @FXML
+    private void searchClient() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
+    }
+
+    @FXML
+    private void resetSearchClient() {
 
     }
 
