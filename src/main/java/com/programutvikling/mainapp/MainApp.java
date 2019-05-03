@@ -116,11 +116,11 @@ public class MainApp extends Application {
                 }
 
                 //Adding dummy boat policies for testing
-                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
+                list = reader.readDataFromFile(new File(getClass().getResource("../testObjects/testBoatPolicies.csv").getFile()));
                 readPoliciesFromFile(list);
 
                 // Adding dummy Homeowners policies for evaluation
-                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
+                list = reader.readDataFromFile(new File(getClass().getResource("../testObjects/testVillaPolicies.csv").getFile()));
                 readPoliciesFromFile(list);
 
             } catch (Exception e) {
