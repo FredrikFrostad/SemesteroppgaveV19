@@ -5,6 +5,9 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.time.LocalDate;
 
+/**
+ * @author 576
+ */
 public class Båt extends Forsikring{
 
     private static ObjectType type = ObjectType.BÅT;

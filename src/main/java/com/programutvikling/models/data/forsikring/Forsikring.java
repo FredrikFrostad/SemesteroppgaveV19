@@ -15,6 +15,9 @@ public abstract class Forsikring implements Serializable {
     private String betingelser;
     private transient String filePath;
 
+    /**
+     * @author 576
+     */
     public Forsikring() {
     }
 

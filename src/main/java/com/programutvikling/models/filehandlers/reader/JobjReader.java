@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 
-
+/**
+ * @author 576
+ */
 public class JobjReader extends FileReader{
 
     /**

@@ -4,6 +4,9 @@ import com.programutvikling.mainapp.MainApp;
 
 import java.io.*;
 
+/**
+ * @author 576
+ */
 public class ClientNrHelper {
 
     private static final String CLIENTREGFILE = ".clientNumbers";

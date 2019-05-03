@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 /**
- * Klassen finner ut av hvilket os som maskinen kjører på.
- * Klassen har statiske metoder, da det kun er et kjørende OS der spillet kjører.
+ * @author 576
  */
 public class OSType {
     private static OS osType;

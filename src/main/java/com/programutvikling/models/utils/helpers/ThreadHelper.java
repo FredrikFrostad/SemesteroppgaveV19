@@ -15,6 +15,9 @@ import javafx.scene.text.Text;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * @author 576
+ */
 public class ThreadHelper {
 
     public void importFileThread(File threadfile, ProgressBar progressBar, Text progressText, MainPageController controller) throws Exception {

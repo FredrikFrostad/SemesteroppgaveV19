@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringJoiner;
 
+/**
+ * @author 576
+ */
 public class CsvWriter extends FileWriter {
 
     /**

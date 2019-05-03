@@ -4,6 +4,9 @@ import com.programutvikling.models.data.ObjectType;
 
 import java.io.Serializable;
 
+/**
+ * @author 576
+ */
 public class Fritidsbolig extends Bolig implements Serializable {
 
 
@@ -21,13 +24,4 @@ public class Fritidsbolig extends Bolig implements Serializable {
         return "type=" + type +
                 "," + super.toString();
     }
-    
-
-    public static void main(String[] args) {
-        Fritidsbolig fritid = new Fritidsbolig();
-        String s = fritid.type.toString();
-        System.out.println(s);
-    }
-
-
 }

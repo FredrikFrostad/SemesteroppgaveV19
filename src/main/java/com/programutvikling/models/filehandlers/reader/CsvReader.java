@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * @author 576
+ */
 public class CsvReader extends FileReader {
 
     private boolean onlyReadFirstLine = false;

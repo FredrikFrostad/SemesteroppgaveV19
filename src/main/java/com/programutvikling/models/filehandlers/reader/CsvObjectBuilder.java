@@ -9,6 +9,9 @@ import com.programutvikling.models.utils.helpers.ClientNrHelper;
 
 import java.time.LocalDate;
 
+/**
+ * @author 576
+ */
 public class CsvObjectBuilder {
 
     /**

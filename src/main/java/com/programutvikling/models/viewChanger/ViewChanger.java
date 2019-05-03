@@ -12,7 +12,6 @@ import java.util.HashMap;
 /**
  * @author 576
  */
-
 public class ViewChanger {
 
     // Denne listen skal inneholde instanser av views i applikasjonen

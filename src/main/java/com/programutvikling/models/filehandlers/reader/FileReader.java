@@ -7,6 +7,9 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * @author 576
+ */
 public abstract class FileReader extends ExtensionHandler {
 
     /**

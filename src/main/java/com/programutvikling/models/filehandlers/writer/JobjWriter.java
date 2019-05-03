@@ -7,6 +7,9 @@ import javafx.stage.FileChooser;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * @author 576
+ */
 public class JobjWriter extends FileWriter implements Runnable {
 
     File file;

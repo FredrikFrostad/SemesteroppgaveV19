@@ -14,6 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
 
+/**
+ * @author 576
+ */
 public class FormatPolicyTableHelper {
 
     private static  StringConverter<Integer> intConverter = new StringConverter<Integer>() {

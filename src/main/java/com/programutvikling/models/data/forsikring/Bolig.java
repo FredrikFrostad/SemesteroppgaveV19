@@ -2,6 +2,9 @@ package com.programutvikling.models.data.forsikring;
 
 import com.programutvikling.models.data.ObjectType;
 
+/**
+ * @author 576
+ */
 public class Bolig extends Forsikring {
 
 

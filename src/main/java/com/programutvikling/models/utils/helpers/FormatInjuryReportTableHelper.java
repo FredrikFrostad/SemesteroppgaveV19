@@ -7,6 +7,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.StringConverter;
 
+/**
+ * @author 576
+ */
 public class FormatInjuryReportTableHelper {
 
     private static StringConverter<Integer> integerStringConverter

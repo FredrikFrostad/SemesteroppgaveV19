@@ -8,6 +8,9 @@ import javafx.scene.layout.Region;
 
 import java.util.Optional;
 
+/**
+ * @author 576
+ */
 public class AlertHelper {
 
     /**

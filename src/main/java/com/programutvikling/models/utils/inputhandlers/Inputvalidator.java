@@ -2,6 +2,9 @@ package com.programutvikling.models.utils.inputhandlers;
 
 import com.programutvikling.models.exceptions.*;
 
+/**
+ * @author 576
+ */
 public class Inputvalidator {
 
     /**

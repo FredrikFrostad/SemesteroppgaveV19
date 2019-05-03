@@ -11,6 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * @author 576
+ */
 public class DbExportHandlerCsv {
 
     private ArrayList<Forsikring> exportListPolicy;
