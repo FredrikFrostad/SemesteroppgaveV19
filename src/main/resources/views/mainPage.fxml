@@ -109,10 +109,10 @@
    <bottom>
       <AnchorPane prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="735.0" layoutY="1.0" mnemonicParsing="false" onAction="#CLEAR" text="CLEAR" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="14.0" />
-            <Button layoutX="684.0" layoutY="1.0" mnemonicParsing="false" onAction="#BIG" text="BIG" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="75.0" />
+            <Button disable="true" focusTraversable="false" layoutX="735.0" layoutY="1.0" mnemonicParsing="false" onAction="#CLEAR" text="CLEAR" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="14.0" />
+            <Button disable="true" focusTraversable="false" layoutX="684.0" layoutY="1.0" mnemonicParsing="false" onAction="#BIG" text="BIG" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="75.0" />
             <HBox layoutX="13.9619140625" layoutY="7.0" visible="false" />
-            <Button layoutX="534.0" layoutY="2.0" mnemonicParsing="false" onAction="#TESTSKADE" text="TESTSKADE" />
+            <Button disable="true" focusTraversable="false" layoutX="534.0" layoutY="2.0" mnemonicParsing="false" onAction="#TESTSKADE" text="TESTSKADE" visible="false" />
             <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="13.0" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
             <Text fx:id="progressText" fill="WHITE" layoutX="253.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" wrappingWidth="159.7294921875" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="253.0" />
          </children></AnchorPane>

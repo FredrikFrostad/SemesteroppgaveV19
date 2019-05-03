@@ -89,6 +89,12 @@ Vi kunne vært flinkere til å predefinere spesifikke arbeids områder slik at h
 
 ### **BESKRIVELSE AV ARBEIDET SOM HAR BLITT UTFØRT FOR HVERT MEDLEM.**
 
+Kandidat 576:
+
+Har utarbeidet mesteparten av programmets overordnede arkitektur. Jobbet med GUI og laget følgende av programmets klasser i sin helhet:
+
+Bolig, Båt, Forsikring, Fritidsbolig, ObjectType, CsvObjectBuilde, CsvReader, FileReader, JobjReader, CsvWriter, FileWriter, JobjWriter, ExtensionHandler, DbExportHandlerCsv, DbImportHandlerCsv, AlertHelper, ClientNrHelper, FormatPolicyTableHelper, ThreadHelper, InputValidator, OSType, ViewChanger
+
 
 
 
