@@ -5,7 +5,7 @@ import com.programutvikling.models.data.kunde.Kunde;
 import java.util.ArrayList;
 
 /**
- * @author 576
+ * @author 811
  */
 public class TextSearch {
 
