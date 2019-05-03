@@ -34,7 +34,7 @@
                            <children>
                               <JFXTextField fx:id="k_opDato" disable="true" editable="false" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
                               <JFXTextField fx:id="k_forsNr" disable="true" editable="false" layoutX="-4.0" layoutY="26.0" prefWidth="320.0" promptText="Forsikringsnummer" />
-                              <JFXTextField fx:id="k_fornavn" layoutX="-4.0" layoutY="52.0" onInputMethodTextChanged="#saveChanges" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
+                              <JFXTextField fx:id="k_fornavn" layoutX="-4.0" layoutY="52.0" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
                               <JFXTextField fx:id="k_etternavn" layoutX="-2.0" layoutY="78.0" prefWidth="320.0" promptText="Etternavn" />
                               <JFXTextField fx:id="k_adr" layoutY="104.0" prefWidth="320.0" promptText="Fakturaadresse" />
                               <JFXTextField fx:id="policyCountField" editable="false" layoutX="181.0" layoutY="160.0" prefHeight="26.0" prefWidth="135.0" />
@@ -42,7 +42,7 @@
                               <JFXTextField fx:id="yearlyAmountField" editable="false" layoutX="181.0" layoutY="189.0" prefHeight="26.0" prefWidth="135.0" />
                               <Text layoutX="88.0" layoutY="190.8662109375" strokeType="OUTSIDE" strokeWidth="0.0" text="Årlig premie:" />
                               <JFXButton layoutX="202.490234375" layoutY="416.0" onAction="#saveChangesToFile" prefWidth="114.0" style="-fx-background-color: grey;" text="Save database" />
-                              <JFXButton layoutX="201.0" layoutY="227.0" onAction="#saveChanges" prefWidth="115.0" style="-fx-background-color: grey;" text="Store Edit" />
+                              <JFXButton layoutX="201.0" layoutY="227.0" onAction="#updateClient" prefWidth="115.0" style="-fx-background-color: grey;" text="Update Client" />
                               <JFXButton layoutX="201.0" layoutY="380.0" onAction="#deleteClient" prefWidth="115.0" style="-fx-background-color: grey;" text="Delete Client" />
                            </children>
                         </Group>

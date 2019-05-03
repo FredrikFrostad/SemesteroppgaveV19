@@ -122,4 +122,36 @@ public class ThreadHelper {
         };
         threadService.start();
     }
+
+    public void saveDbThread(ProgressBar progressBar, Text progressText, MainPageController controller) {
+        Service<Void> threadService = new Service<Void>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        controller.setLock(true);
+
+                        progressBar.setVisible(true);
+                        progressText.setText("Saving database");
+                        progressText.setVisible(true);
+
+                        System.out.println("Starting database save task!");
+
+                        new DbExportHandlerCsv().exportDbAsCsv();
+
+                        progressText.setVisible(false);
+                        progressBar.setVisible(false);
+
+                        controller.refreshTable();
+                        controller.setLock(false);
+
+                        System.out.println("Database save task completed");
+                        return null;
+                    }
+                };
+            }
+        };
+        threadService.start();
+    }
 }

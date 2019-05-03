@@ -174,7 +174,6 @@ public class NewPolicyController{
         } catch (InvalidNumberFormatException e) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Ugyldig byggeår", e.getMessage());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
         }
         return villa;
     }
@@ -195,21 +194,23 @@ public class NewPolicyController{
             travelPolicy.setPremieAnnum(travelPolicy.prisPrÅr());
 
         } catch (InvalidNumberFormatException e) {
-            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil input", e.getMessage());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil input", e.getMessage());
         }
-        System.out.println(travelPolicy.toString());
         return travelPolicy;
     }
 
     private Forsikring createBåtForsikring() {
-        Båt båtForsikring = new Båt();
+        Båt båtForsikring = null;
 
         try {
             Inputvalidator.checkIfValidNumber(båt_lengde.getText().replace(","," "));
             Inputvalidator.checkIfValidNumber(båt_årsmodell.getText().replace(","," "));
             Inputvalidator.checkIfValidNumber(båt_forsikringssum.getText().replace(","," "));
+            Inputvalidator.checkIfValidNumber(båt_effekt.getText().replace(","," "));
+
+            båtForsikring = new Båt();
 
             båtForsikring.setBetingelser("Betingelser shmetingelser");
             båtForsikring.setAvtaleOpprettet(LocalDate.now());
@@ -222,14 +223,13 @@ public class NewPolicyController{
             båtForsikring.setLengde(Integer.parseInt(båt_lengde.getText().replace(","," ")));
             båtForsikring.setÅrsmodell(Integer.parseInt(båt_årsmodell.getText().replace(","," ")));
             båtForsikring.setMotorType(båt_motorType.getText().replace(","," "));
-
             båtForsikring.setForsikringsSum(Double.parseDouble(båt_forsikringssum.getText().replace(","," ")));
             båtForsikring.setPremieAnum(båtForsikring.prisPrÅr(200));
 
         } catch (InvalidNumberFormatException e) {
-            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil input", e.getMessage());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil input", e.getMessage());
         }
         return båtForsikring;
     }
@@ -261,11 +261,10 @@ public class NewPolicyController{
             fritidsbolig.setForsikringsSum(fritidsbolig.calculateForsikringssum());
 
         } catch (InvalidNumberFormatException e) {
-            e.printStackTrace();
             AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Ugyldig inndata", "Ett eller flere felter inneholder ugyldige data");
             return null;
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil input", e.getMessage());
         }
         return fritidsbolig;
     }
