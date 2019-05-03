@@ -81,6 +81,8 @@ Dette inkulderer **Git** versjons kontroll som er det vi har brukt til deling og
 
 Vi har også lært hvordan vi bruker et ¨kanbann brett¨ ved bruk av **Trello** som verktøy for å få oversikt over hva som må gjøres og hva som er gjort. Dette var med på å strukturere hvordan prosjketet ble gjennomført, vi hadde 4 separate faser som vi brukte til å kvalitetssikkre kode før det ble satt i produksjon. 
 
+**Maven** har vært en fint verktøy vi har lært oss iløpet av utviklingsprosessen og har vært et svært behagelig og nyttig verktøy for å "Build automation" og avhenginghets håndtering. 
+
 Vi gjorde oss en observasjon ved lagringen hvor vi er overasket over hvor hurtig og godt filhåndtering til og fra .csv filer fungerer og hvor tregt serializering av jobj fungerer i forhold. Dette overasket oss i utviklingsprossesen og gjorde oss oppmerksom på tidsforskjellene ved begge løsningene.
 
 
