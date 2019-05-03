@@ -9,6 +9,7 @@ import com.programutvikling.models.filehandlers.reader.FileReader;
 import com.programutvikling.models.filehandlers.writer.FileWriter;
 import com.programutvikling.models.utils.dbHandlers.DbImportHandlerCsv;
 import com.programutvikling.models.utils.helpers.*;
+import com.programutvikling.models.utils.search.TextSearch;
 import com.programutvikling.models.viewChanger.ViewChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -444,12 +445,19 @@ public class MainPageController {
                     "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
             return;
         }
-
+        clientTable.getItems().clear();
+        clientTable.getItems().addAll(TextSearch.textSearch(searchField.getText(), MainApp.getClientList()));
     }
 
     @FXML
     private void resetSearchClient() {
-
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+        clientTable.getItems().clear();
+        refreshTable();
     }
 
     /**
