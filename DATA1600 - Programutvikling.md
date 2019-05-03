@@ -20,7 +20,7 @@ Vi sitter igjen med en følelse av at gruppearbeidet har fungert godt, og at ver
 
 Vi har også tillegnet oss erfaring med bruk av JUnit biblioteket for enhetstesting. Dette har vært et svært godt verktøy for å sikre codebasens integritet ved større endringer og refaktorering. Vi skulle gjerne ha brukt enhetstesting i enda større grad enn det vi har gjort, og dermed tilnærmet oss prinsippene for testdrevet utvikling, men grunnet noe begrenset tid har ikke dette vært mulig å fult ut gjennomføre i denne omgang. 
 
-Valg av programkode er utviklet på grunnlag av et løsningsorientert ståsted, hvor alternative løsninger har blitt veid opp mot hverandre utifra effektivitet og kvalitet. Vi mener derfor vi har valgt de mest oppriktige løsningene på ulike knutepunkt som dukket opp underveis og generelt kommet opp med en så og si feilfri applikasjon. Koden er skrevet basert på hva vi mener gir mest mening både for oss og andre som skal lese og forstå koden.
+Valg av programkode er utviklet på grunnlag av et løsningsorientert ståsted, hvor alternative løsninger har blitt veid opp mot hverandre utifra effektivitet og kvalitet. Vi mener derfor vi har valgt de mest oppriktige løsningene på ulike knutepunkt som dukket opp underveis og generelt kommet opp med en så og si feilfri applikasjon. Koden er skrevet basert på hva vi mener gir mest mening både for oss og andre som skal lese og forstå koden. 
 
 
 ### DELER AV OPPGAVEN VI ER MEST FORNØYD MED:
@@ -35,7 +35,12 @@ Vi mener at vi i denne oppgaven i stor grad har oppnådd bruk av objektorienteri
 Vi har delt opp applikasjonens views i flere forskjellige fxml-filer som hver benytter sin egen controller. Dette holder komplekstiteten på et håndterbart nivå otg gjør det enkelt å skille komponenter fra hverandre. 
 
 
+
 #### "OPPBEVARING" AV INSTANTIERTE VIEWS FOR Å BEHOLDE STATE:
 
 Det kan være ønskelig å ta vare på state i et view som man har byttet bort fra. Dette har vi løst ved å lage en klasse for håndtering av view-changes, der instantierte views lagres i et hashmap slik at de enkelt kan hentes ut igjen.
+
+Kort oppsummert er vi særdeles fornøyd med ferdigstilt produkt da vi mener det overholder alle tekniske krav fastsatt i oppgaveteksten. I tillegg har vi også implimentert en del tillegseffekter som f.eks (FYLL INN!!!!!)
+Vi har opplevd det å jobbe i gruppe som noe uproblematisk og svært lærrerikt da vi har vokst på hverandres innspill og forslag. Semesteroppgaven har stilt høye krav til oss både som enkelpersoner og som gruppe, men vi har håndtert knutepunkt og problemstillinger på en oppriktig og løsningsorientert måte utifra kollektive avgjørelser. 
+
 
