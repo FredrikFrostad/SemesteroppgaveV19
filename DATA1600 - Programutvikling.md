@@ -95,18 +95,21 @@ Vi kunne vært flinkere til å predefinere spesifikke arbeids områder slik at h
 
 ### **BESKRIVELSE AV ARBEIDET SOM HAR BLITT UTFØRT FOR HVERT MEDLEM.**
 
-Kandidat 576:
+**Kandidat 576:**
 
 Har utarbeidet mesteparten av programmets overordnede arkitektur. Jobbet med GUI og laget følgende av programmets klasser i sin helhet:
 
 Bolig, Båt, Forsikring, Fritidsbolig, ObjectType, CsvObjectBuilde, CsvReader, FileReader, JobjReader, CsvWriter, FileWriter, JobjWriter, ExtensionHandler, DbExportHandlerCsv, DbImportHandlerCsv, AlertHelper, ClientNrHelper, FormatPolicyTableHelper, ThreadHelper, InputValidator, OSType, ViewChanger
 
+**Kandidat 811:**
 
-Kandidat 811:
+Har for det meste holdt meg til controller, tilhørende fxml-filer og CSS, da dette fanger mest interesse hos meg. 
 
-Jeg har for det meste holdt meg til controller, tilhørende fxml-filer og CSS, da dette fanger mest interesse hos meg. Klasser jeg har utarbeidet er newPolicy.fxml, NewPolicyController.java og TextSearch.java. 
+Klasser jeg har utarbeidet:
 
-Kandidat 761:
+newPolicy.fxml, NewPolicyController.java og TextSearch.java. 
+
+**Kandidat 761:**
 
 Har jobbet hovesakelig med GUI og Controller klassene.
 
