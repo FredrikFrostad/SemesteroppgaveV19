@@ -110,7 +110,7 @@ public class MainApp extends Application {
             try {
 
                 // Adding dummy clients for evaluation
-                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testClients.csv").getFile()));
+                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("../testObjects/testClients.csv").getFile()));
                 for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
