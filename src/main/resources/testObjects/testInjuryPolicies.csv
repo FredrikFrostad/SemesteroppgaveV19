@@ -1,0 +1,15 @@
+type,forsikrNr,skadeDato,skadeNr,typeSkade,skadeBeskrivelse,kontaktinfoVitner,takseringsBelop,utbetaltErstatning
+SKADEMELDING,1,2019-05-08,1,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35000,30000
+SKADEMELDING,2,2019-05-09,2,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35001,30001
+SKADEMELDING,3,2019-05-10,3,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35002,30002
+SKADEMELDING,4,2019-05-11,4,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35003,30003
+SKADEMELDING,5,2019-05-12,5,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35004,30004
+SKADEMELDING,6,2019-05-13,6,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35005,30005
+SKADEMELDING,7,2019-05-14,7,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35006,30006
+SKADEMELDING,8,2019-05-15,8,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35007,30007
+SKADEMELDING,9,2019-05-16,9,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35008,30008
+SKADEMELDING,10,2019-05-17,10,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35009,30009
+SKADEMELDING,11,2019-05-18,11,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35010,30010
+SKADEMELDING,12,2019-05-19,12,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35011,30011
+SKADEMELDING,13,2019-05-20,13,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35012,30012
+SKADEMELDING,14,2019-05-21,14,Det sjedde en ulykke, Bendbrudd og krasj, Ingen vitner,35013,30013

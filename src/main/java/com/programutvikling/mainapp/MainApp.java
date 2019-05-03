@@ -2,6 +2,7 @@ package com.programutvikling.mainapp;
 
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
+import com.programutvikling.models.data.skademelding.Skademelding;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
@@ -125,6 +126,11 @@ public class MainApp extends Application {
                 list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testTravelPolicy.csv").getFile()));
                 readPoliciesFromFile(list);
 
+                // Adding dummy injury reports for evaluation
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testInjuryPolicies.csv").getFile()));
+                readInjuryPoliciesFromFile(list);
+
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -134,13 +140,30 @@ public class MainApp extends Application {
 
     private static void readPoliciesFromFile(ArrayList<String[]> list) {
 
-        Thread thread = new Thread();
         for (String[] s : list) {
             try {
                 Forsikring f = (Forsikring) new CsvObjectBuilder().buildObjectFromString(s);
                 for (Kunde k : clientList) {
                     if (k.getForsikrNr() == f.getForsikrNr()) {
                         k.getForsikringer().add(f);
+                        break;
+                        //System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
+                    }
+                }
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void readInjuryPoliciesFromFile(ArrayList<String[]> list) {
+
+        for (String[] s : list) {
+            try {
+                Skademelding skade = (Skademelding) new CsvObjectBuilder().buildObjectFromString(s);
+                for (Kunde k : clientList) {
+                    if (k.getForsikrNr() == skade.getForsikrNr()) {
+                        k.getSkademeldinger().add(skade);
                         break;
                         //System.out.println("Added forsikring " + f.getForsikrNr() + " to " + k.toString());
                     }
