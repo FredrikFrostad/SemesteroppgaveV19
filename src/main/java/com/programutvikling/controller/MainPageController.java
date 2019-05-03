@@ -334,6 +334,28 @@ public class MainPageController {
     }
 
     @FXML
+    private void deleteReport() {
+        if (lock) {
+            AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
+                    "Denne funksjonen er ikke tilgjengelig så lenge en annen filoperasjon er underveis");
+            return;
+        }
+
+        Skademelding skade = tableOverviewSkademeldinger.getSelectionModel().getSelectedItem();
+        if (skade != null) {
+            Optional<ButtonType> result = AlertHelper.createOptionAlert(Alert.AlertType.WARNING, "Bekreft sletting",
+                    "Er du sikker på at du vil slette skademelding " + skade.getSkadeNr() + " " + skade.getSkadeBeskrivelse() + "?",
+                    "Slett skademelding ", "Avbryt");
+
+
+            if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
+                MainApp.getSelectedKunde().getSkademeldinger().remove(skade);
+                refreshTable();
+            }
+        }
+    }
+
+    @FXML
     private void deletePolicy() {
         if (lock) {
             AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Filoperasjon pågår",
