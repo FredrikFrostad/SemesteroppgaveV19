@@ -32,17 +32,17 @@
                            </columns></TableView>
                         <Group layoutX="355.509765625" layoutY="21.0" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="24.490234375" AnchorPane.topAnchor="21.0">
                            <children>
-                              <JFXTextField fx:id="k_fornavn" layoutY="26.0" onInputMethodTextChanged="#saveChanges" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
-                              <JFXTextField fx:id="k_etternavn" layoutY="52.0" prefWidth="320.0" promptText="Etternavn" />
-                              <JFXTextField fx:id="k_forsNr" disable="true" editable="false" layoutY="78.0" prefWidth="320.0" promptText="Forsikringsnummer" />
-                              <JFXTextField fx:id="k_adr" layoutY="104.0" prefWidth="320.0" promptText="Fakturaadresse" />
                               <JFXTextField fx:id="k_opDato" disable="true" editable="false" prefHeight="26.0" prefWidth="320.0" promptText="Opprettet Dato" />
+                              <JFXTextField fx:id="k_forsNr" disable="true" editable="false" layoutX="-4.0" layoutY="26.0" prefWidth="320.0" promptText="Forsikringsnummer" />
+                              <JFXTextField fx:id="k_fornavn" layoutX="-4.0" layoutY="52.0" onInputMethodTextChanged="#saveChanges" prefHeight="26.0" prefWidth="320.0" promptText="Fornavn" />
+                              <JFXTextField fx:id="k_etternavn" layoutX="-2.0" layoutY="78.0" prefWidth="320.0" promptText="Etternavn" />
+                              <JFXTextField fx:id="k_adr" layoutY="104.0" prefWidth="320.0" promptText="Fakturaadresse" />
                               <JFXTextField fx:id="policyCountField" editable="false" layoutX="181.0" layoutY="160.0" prefHeight="26.0" prefWidth="135.0" />
                               <Text layoutX="52.0" layoutY="160.93310546875" strokeType="OUTSIDE" strokeWidth="0.0" text="Antall forsikringer:" />
                               <JFXTextField fx:id="yearlyAmountField" editable="false" layoutX="181.0" layoutY="189.0" prefHeight="26.0" prefWidth="135.0" />
                               <Text layoutX="88.0" layoutY="190.8662109375" strokeType="OUTSIDE" strokeWidth="0.0" text="Årlig premie:" />
                               <JFXButton layoutX="202.490234375" layoutY="416.0" onAction="#saveChangesToFile" prefWidth="114.0" style="-fx-background-color: grey;" text="Save to file" />
-                              <JFXButton layoutX="201.490234375" layoutY="381.0" onAction="#saveChanges" prefWidth="115.0" style="-fx-background-color: grey;" text="Store Changes" />
+                              <JFXButton layoutX="201.490234375" layoutY="381.0" onAction="#saveChanges" prefWidth="115.0" style="-fx-background-color: grey;" text="Store Edit" />
                               <JFXButton layoutX="201.490234375" layoutY="346.0" onAction="#deleteClient" prefWidth="115.0" style="-fx-background-color: grey;" text="Delete Client" />
                            </children>
                         </Group>
@@ -74,7 +74,7 @@
                         <children>
                             <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valgt kunde:" />
                             <TextField fx:id="selectedKundeFieldSkademelding" editable="false" layoutX="108.0" prefHeight="26.0" prefWidth="1920.0" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="3.0" />
-                            <TableView layoutY="28.0" fx:id="tableOverviewSkademeldinger" onMouseClicked="#selectedInjuryReport" prefHeight="298.0" prefWidth="263.0">
+                            <TableView fx:id="tableOverviewSkademeldinger" layoutY="28.0" onMouseClicked="#selectedInjuryReport" prefHeight="298.0" prefWidth="263.0">
                                 <columns>
                                     <TableColumn fx:id="skademeldingStringTableColumn1" prefWidth="153.0" text="Type Skade" />
                                     <TableColumn fx:id="skademeldingObjectTypeTableColumn2" prefWidth="108.0" text="Utbetalt" />
