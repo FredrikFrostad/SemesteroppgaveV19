@@ -31,7 +31,7 @@ public class MainApp extends Application {
     private static File projectFilePath;
     private static File databaseFilePath;
     private static File userSaveFilepath;
-    private static final String PROJECTFOLDER = "SemesteroppgaveV19";
+    private static final String PROJECTFOLDER = "Semesteroppgave_g1349";
     private static ArrayList<Kunde> clientList;
     private static Kunde selectedKunde = null;
 

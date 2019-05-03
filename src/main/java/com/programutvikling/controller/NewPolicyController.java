@@ -18,7 +18,6 @@ import java.time.LocalDate;
 
 public class NewPolicyController{
 
-    //TODO: Javadoc!!!!!!
 
     @FXML
     BorderPane newPolicyRoot;

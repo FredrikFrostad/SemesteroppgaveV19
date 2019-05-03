@@ -109,33 +109,8 @@ public class MainPageController {
     }
 
 
-    // TODO: fjernes når denne ikke trengs mere - FOR TESTING
-    @FXML
-    private void CLEAR() {
-        MainApp.getClientList().clear();
-        refreshTable();
-    }
 
-    // TODO: fjernes når denne ikke trengs mere - FOR TESTING
-    @FXML
-    private void BIG() {
-        for (int i = 0; i < 1E6; i++) {
-            MainApp.getClientList().add(new Kunde("Test" + Integer.toString(i), "Testesen" + Integer.toString(i), i + 500, "Fakturaadresse"));
-        }
-        refreshTable();
-    }
 
-    //TODO: fjern når ferdig
-    @FXML
-    private void TESTSKADE() {
-        System.out.println(MainApp.getSelectedKunde().getSkademeldinger().toString());
-        if (MainApp.getSelectedKunde().getSkademeldinger() == null) {
-            System.out.println("ingen objekter i skademeldinger");
-        }
-        for (Skademelding s : MainApp.getSelectedKunde().getSkademeldinger()) {
-            System.out.println(s.toString());
-        }
-    }
 
 
     /**
@@ -501,5 +476,32 @@ public class MainPageController {
 
     public void setLock(boolean lock) {
         this.lock = lock;
+    }
+
+    @FXML
+    private void CLEAR() {
+        MainApp.getClientList().clear();
+        refreshTable();
+    }
+
+
+    @FXML
+    private void BIG() {
+        for (int i = 0; i < 1E6; i++) {
+            MainApp.getClientList().add(new Kunde("Test" + Integer.toString(i), "Testesen" + Integer.toString(i), i + 500, "Fakturaadresse"));
+        }
+        refreshTable();
+    }
+
+
+    @FXML
+    private void TESTSKADE() {
+        System.out.println(MainApp.getSelectedKunde().getSkademeldinger().toString());
+        if (MainApp.getSelectedKunde().getSkademeldinger() == null) {
+            System.out.println("ingen objekter i skademeldinger");
+        }
+        for (Skademelding s : MainApp.getSelectedKunde().getSkademeldinger()) {
+            System.out.println(s.toString());
+        }
     }
 }
