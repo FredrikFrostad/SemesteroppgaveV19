@@ -10,6 +10,8 @@ Kandidater: 761, 576, 811
 
 Målet for denne oppgaven har vært å implementere et java-program for et forsikringsselskap. Vi har under arbeidet benyttet oss av git som versjonskontroll og Trello som oppgavehånderingsverktøy. Vi har under implementeringen av prosjektet fokusert på å overholde **OOP**-prinsipper i så stor grad som mulig. 
 
+Kort oppsummert er vi særdeles fornøyd med ferdigstilt produkt da vi mener det overholder alle tekniske krav fastsatt i oppgaveteksten.Vi har opplevd det å jobbe i gruppe som noe uproblematisk og svært lærrerikt da vi har vokst på hverandres innspill og forslag. Semesteroppgaven har stilt høye krav til oss både som enkelpersoner og som gruppe, men vi har håndtert knutepunkt og problemstillinger på en oppriktig og løsningsorientert måte utifra kollektive avgjørelser. 
+
 ### EVALUERING AV PROSJEKTARBEIDET:
 
 Etter endt prosjektperiode har vi opparbeidet oss god og relevant erfaring innen teambasert arbeide innen programutvikling. Vi opplever at vi har hatt en god gruppedynamikk og at vi har dratt nytte av de individuelle gruppemedlemmenes styrker i løpet av prosjektperioden.
@@ -26,8 +28,6 @@ Valg av programkode er utviklet på grunnlag av et løsningsorientert ståsted, 
 
 ### DELER AV OPPGAVEN VI ER MEST FORNØYD MED:
 
-MERK: Kodeblokkene i rapporten er laget ved bruk av typora. Dette fører til at formatering av kode blir noe annerledes enn i en IDE / teksteditor mtp. linjeskift etc.
-
 Vi mener at vi i denne oppgaven i stor grad har oppnådd bruk av objektorienteringsprinsipper, og **MVC**-designmønster. Vi har i stor grad skilt GUI fra backend-kode, og  mener vi har skrevet godt definerte klasser, med tydelig funksjonalitet og gjenbrukbarhet. 
 
 #### Eksempler på kode vi er godt fornøyd med:
@@ -35,15 +35,11 @@ Vi mener at vi i denne oppgaven i stor grad har oppnådd bruk av objektorienteri
 **Oppdeling av controllere for å unngå en, uhåndterlig "gudekontroller":**
 Vi har delt opp applikasjonens views i flere forskjellige fxml-filer som hver benytter sin egen controller. Dette holder komplekstiteten på et håndterbart nivå og gjør det enkelt å skille komponenter fra hverandre. 
 
-
-
-#### "OPPBEVARING" AV INSTANTIERTE VIEWS FOR Å BEHOLDE STATE:
+**"OPPBEVARING" AV INSTANTIERTE VIEWS FOR Å BEHOLDE STATE:**
 
 Det kan være ønskelig å ta vare på state i et view som man har byttet bort fra. Dette har vi løst ved å lage en klasse for håndtering av view-changes, der instantierte views lagres i et hashmap slik at de enkelt kan hentes ut igjen.
 
 **TESTER AV FUNKSJONALITET OG BRUKBARHET:**
-
-enhets tester, bruker tester og stress tester med 1 million brukere ved lesning og skriving av 1 million elementer, denne prossesn tar tid men gui fungerer responsivt
 
 Testing var en sentral del av utviklings prossesn hvor vi brukte enhets tester, bruker tester og stress tester for å validere funksjonalitet og kapasiteten til programmet.
 
@@ -69,7 +65,7 @@ Vi som gruppe har prøvd å balanser arbeidsoppgaver melllom de forskjellige del
 
 
 
-**UTDYP HVA DERE HAR LÆRT I HENDHOLD TIL PROSJEKTARBEID OG HVA DERE VIL GJØRE ANNERLEDES FOR DERES NESTE STORE GRUPPE PROSJEKT.**
+### UTDYP HVA DERE HAR LÆRT I HENDHOLD TIL PROSJEKTARBEID OG HVA DERE VIL GJØRE ANNERLEDES FOR DERES NESTE STORE GRUPPE PROSJEKT.
 
 **Hva vi har lært:**
 
@@ -91,7 +87,7 @@ Vi kunne vært flinkere til å predefinere spesifikke arbeids områder slik at h
 
 
 
-**BESKRIVELSE AV ARBEIDET SOM HAR BLITT UTFØRT FOR HVERT MEDLEM.**
+### **BESKRIVELSE AV ARBEIDET SOM HAR BLITT UTFØRT FOR HVERT MEDLEM.**
 
 
 
@@ -101,21 +97,3 @@ Vi kunne vært flinkere til å predefinere spesifikke arbeids områder slik at h
 | ---- | ---- | ---- |
 |      |      |      |
 
-
-
-RANDOM TING
-
-I dette prosjektet har vi fått spesifikke kravspesifikasjoner som vi har fulgt og dermerd lært prinsippene bak disse.
-
-Dette er i stor grad prinsipper som designmønsterert MVC (Model View Controller) som gjør koden mer gjennbrukbar og øker lesbarhet ved å splitte opp koden i tre deler:
-
-1. Model: holder data (Data modellene) 
-2. View: viser data (frontenden)
-3. Controller: flytter og henter data (Controllerne)
-
-Videre har vi lært hvordan vi kan bruke tester for å bruke en test dreven utviklings metodikk (TDD) til å finne feil og kvalitetskikkre at koden som er skrevet fungerer på den tiltenkte måte i henhold til vårt bruk og få informasjon om eventuelle side effekter med metoder og klasser. Vi skulle gjerne brukt TDD i større grad en vi fikk mulighet til i men på grunn av manglende tid må vi ta å bruke dette konseptet senere i et annet prosjekt.
-
-enhets tester, bruker tester og stress tester med 1 million brukere ved lesning og skriving av 1 million elementer, denne prossesn tar tid men gui fungerer responsivt
-=======
-Kort oppsummert er vi særdeles fornøyd med ferdigstilt produkt da vi mener det overholder alle tekniske krav fastsatt i oppgaveteksten. I tillegg har vi også implimentert en del tillegseffekter som f.eks (FYLL INN!!!!!)
-Vi har opplevd det å jobbe i gruppe som noe uproblematisk og svært lærrerikt da vi har vokst på hverandres innspill og forslag. Semesteroppgaven har stilt høye krav til oss både som enkelpersoner og som gruppe, men vi har håndtert knutepunkt og problemstillinger på en oppriktig og løsningsorientert måte utifra kollektive avgjørelser. 
