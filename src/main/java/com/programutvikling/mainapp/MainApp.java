@@ -161,7 +161,7 @@ public class MainApp extends Application {
                     System.out.println("Stage is closing - writing data to disk");
                     Thread thread = new Thread(() -> {
                         System.out.println("Saving database to file");
-                        
+
                             new DbExportHandlerCsv().exportDbAsCsv();
 
                         System.out.println("Save complete");

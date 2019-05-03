@@ -262,8 +262,9 @@ public class MainPageController {
     private void nyForsikring(ActionEvent event) {
         Kunde k = clientTable.getSelectionModel().getSelectedItem();
         MainApp.setSelectedKunde(k);
-        noCustomerSelected(k);
-
+        if (noCustomerSelected(k)) {
+            return;
+        }
         ViewChanger vc = new ViewChanger();
         vc.setView(rootPane, "newPolicy", "views/newPolicy.fxml");
     }
@@ -279,15 +280,16 @@ public class MainPageController {
     }
 
     /**
-     * Checks if a client is selected for operations that rewuire this to be done.
+     * Checks if a client is selected for operations that require this to be done.
      *
      * @param k selected client object or null if nothing is selected.
      */
-    private void noCustomerSelected(Kunde k) {
+    private boolean noCustomerSelected(Kunde k) {
         if (k == null) {
             AlertHelper.createAlert(Alert.AlertType.ERROR, "Kunder ikke valgt", "Vennligst velg en kunde først");
-            return;
+            return true;
         }
+        return false;
     }
 
     /**

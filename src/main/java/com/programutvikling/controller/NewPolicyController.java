@@ -81,9 +81,7 @@ public class NewPolicyController{
         if (active.getId().equals("togglePage")) {
             active.setVisible(false);
 
-            if (bil.isSelected()) {
-                active = bilPage;
-            } else if (båt.isSelected()) {
+            if (båt.isSelected()) {
                 active = båtPage;
             } else if (reise.isSelected()) {
                 active = reisePage;
