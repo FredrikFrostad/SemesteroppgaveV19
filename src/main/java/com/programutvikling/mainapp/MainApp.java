@@ -110,17 +110,17 @@ public class MainApp extends Application {
             try {
 
                 // Adding dummy clients for evaluation
-                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("../../../resources/testObjects/testClients.csv").getFile()));
+                ArrayList<String[]> list = reader.readDataFromFile(new File(getClass().getResource("../../../testObjects/testClients.csv").getFile()));
                 for (String[] s : list) {
                     clientList.add((Kunde) new CsvObjectBuilder().buildObjectFromString(s));
                 }
 
                 //Adding dummy boat policies for testing
-                list = reader.readDataFromFile(new File(getClass().getResource("../../../resources/testObjects/testBoatPolicies.csv").getFile()));
+                list = reader.readDataFromFile(new File(getClass().getResource("../../../testObjects/testBoatPolicies.csv").getFile()));
                 readPoliciesFromFile(list);
 
                 // Adding dummy Homeowners policies for evaluation
-                list = reader.readDataFromFile(new File(getClass().getResource("../../../resources/estObjects/testVillaPolicies.csv").getFile()));
+                list = reader.readDataFromFile(new File(getClass().getResource("../../../testObjects/testVillaPolicies.csv").getFile()));
                 readPoliciesFromFile(list);
 
             } catch (Exception e) {
