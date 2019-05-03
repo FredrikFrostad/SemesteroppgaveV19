@@ -1,0 +1,18 @@
+type,forsikringsNummer,premieAnnum,forsikringsSum,avtaleOpprettet,betingelser,omraade
+REISE,1,4000,400000,2019-05-03,Betingelser shmetingelser,Verden
+REISE,2,4001,400001,2019-05-03,Betingelser shmetingelser,Verden
+REISE,3,4002,400002,2019-05-03,Betingelser shmetingelser,Verden
+REISE,4,4003,400003,2019-05-03,Betingelser shmetingelser,Verden
+REISE,5,4004,400004,2019-05-03,Betingelser shmetingelser,Verden
+REISE,6,4005,400005,2019-05-03,Betingelser shmetingelser,Europa
+REISE,7,4006,400006,2019-05-03,Betingelser shmetingelser,Europa
+REISE,8,4007,400007,2019-05-03,Betingelser shmetingelser,Europa
+REISE,9,4008,400008,2019-05-03,Betingelser shmetingelser,Europa
+REISE,10,4009,400009,2019-05-03,Betingelser shmetingelser,Europa
+REISE,11,4010,400010,2019-05-03,Betingelser shmetingelser,Russland
+REISE,12,4011,400011,2019-05-03,Betingelser shmetingelser,Russland
+REISE,13,4012,400012,2019-05-03,Betingelser shmetingelser,Russland
+REISE,14,4013,400013,2019-05-03,Betingelser shmetingelser,Russland
+REISE,15,4014,400014,2019-05-03,Betingelser shmetingelser,Russland
+REISE,16,4015,400015,2019-05-03,Betingelser shmetingelser,Russland
+REISE,17,4016,400016,2019-05-03,Betingelser shmetingelser,Russland

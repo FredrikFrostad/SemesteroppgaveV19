@@ -2,7 +2,6 @@ package com.programutvikling.mainapp;
 
 import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.kunde.Kunde;
-import com.programutvikling.models.utils.helpers.AlertHelper;
 import com.programutvikling.models.utils.helpers.ClientNrHelper;
 import com.programutvikling.models.filehandlers.reader.CsvObjectBuilder;
 import com.programutvikling.models.filehandlers.reader.CsvReader;
@@ -22,7 +21,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -119,9 +117,14 @@ public class MainApp extends Application {
                 list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testBoatPolicies.csv").getFile()));
                 readPoliciesFromFile(list);
 
-                // Adding dummy Homeowners policies for evaluation
-                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testVillaPolicies.csv").getFile()));
+                // Adding dummy cabin policies for evaluation
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testLeisurePolicies.csv").getFile()));
                 readPoliciesFromFile(list);
+
+                // Adding dummy cabin policies for evaluation
+                list = reader.readDataFromFile(new File(getClass().getResource("/testObjects/testTravelPolicy.csv").getFile()));
+                readPoliciesFromFile(list);
+
 
             } catch (Exception e) {
                 e.printStackTrace();
