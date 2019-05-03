@@ -7,6 +7,7 @@ import com.programutvikling.models.data.forsikring.Forsikring;
 import com.programutvikling.models.data.forsikring.Fritidsbolig;
 import com.programutvikling.models.data.forsikring.Reise;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,15 +18,24 @@ public class FormatPolicyTableHelper {
 
     private static  StringConverter<Integer> intConverter = new StringConverter<Integer>() {
         @Override
-        public String toString(Integer integer) {
-            return Integer.toString(integer);
+        public String toString (Integer integer) {
+            try {
+                return Integer.toString(integer);
+            } catch (NullPointerException e) {
+                AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil input", "Input er ikke gyldig type for dette feltet");
+                return null;
+            }
         }
 
 
         @Override
         public Integer fromString(String s) {
-            return Integer.parseInt(s);
-
+            try {
+                return Integer.parseInt(s);
+            } catch (NumberFormatException e) {
+                AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil input", "Input er ikke gyldig type for dette feltet");
+                return null;
+            }
         }
     };
 
@@ -33,13 +43,22 @@ public class FormatPolicyTableHelper {
     private static StringConverter<Double> doubleConverter = new StringConverter<Double>() {
         @Override
         public String toString(Double aDouble) {
-            return Double.toString(aDouble);
+            try {
+                return Double.toString(aDouble);
+            } catch (NullPointerException e) {
+                AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil input", "Input er ikke gyldig type for dette feltet");
+                return null;
+            }
         }
 
         @Override
         public Double fromString(String s) {
-
-            return Double.parseDouble(s);
+            try {
+                return Double.parseDouble(s);
+            } catch (NumberFormatException e) {
+                AlertHelper.createAlert(Alert.AlertType.INFORMATION, "Feil input", "Input er ikke gyldig type for dette feltet");
+                return null;
+            }
         }
     };
 
@@ -81,8 +100,9 @@ public class FormatPolicyTableHelper {
         col2.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Forsikring, Double>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<Forsikring, Double> forsikringDoubleCellEditEvent) {
-                tableView.getSelectionModel().getSelectedItem().setPremieAnnum(forsikringDoubleCellEditEvent.getNewValue());
-                controller.refreshTable();
+                tableView.getSelectionModel().getSelectedItem().setPremieAnnum(forsikringDoubleCellEditEvent.getNewValue() != null
+                        ? forsikringDoubleCellEditEvent.getNewValue() : forsikringDoubleCellEditEvent.getOldValue());
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -92,8 +112,9 @@ public class FormatPolicyTableHelper {
         col3.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Forsikring, Double>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<Forsikring, Double> forsikringDoubleCellEditEvent) {
-                tableView.getSelectionModel().getSelectedItem().setForsikringsSum(forsikringDoubleCellEditEvent.getNewValue());
-                controller.refreshTable();
+                tableView.getSelectionModel().getSelectedItem().setForsikringsSum(forsikringDoubleCellEditEvent.getNewValue() != null
+                ? forsikringDoubleCellEditEvent.getNewValue() : forsikringDoubleCellEditEvent.getOldValue());
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -113,7 +134,7 @@ public class FormatPolicyTableHelper {
             public void handle(TableColumn.CellEditEvent<Forsikring, String> forsikringStringCellEditEvent) {
                 Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
                 b.setEier(forsikringStringCellEditEvent.getNewValue() != null ? forsikringStringCellEditEvent.getNewValue() : forsikringStringCellEditEvent.getOldValue());
-                controller.refreshTable();
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -126,7 +147,7 @@ public class FormatPolicyTableHelper {
             public void handle(TableColumn.CellEditEvent<Forsikring, String> forsikringStringCellEditEvent) {
                 Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
                 b.setRegNr(forsikringStringCellEditEvent.getNewValue());
-                controller.refreshTable();
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -139,7 +160,7 @@ public class FormatPolicyTableHelper {
             public void handle(TableColumn.CellEditEvent<Forsikring, String> forsikringStringCellEditEvent) {
                 Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
                 b.setTypeBåt(forsikringStringCellEditEvent.getNewValue());
-                controller.refreshTable();
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -151,7 +172,7 @@ public class FormatPolicyTableHelper {
             public void handle(TableColumn.CellEditEvent<Forsikring, String> forsikringStringCellEditEvent) {
                 Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
                 b.setModell(forsikringStringCellEditEvent.getNewValue());
-                controller.refreshTable();
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -162,8 +183,9 @@ public class FormatPolicyTableHelper {
             @Override
             public void handle(TableColumn.CellEditEvent<Forsikring, Integer> forsikringIntegerCellEditEvent) {
                 Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
-                b.setLengde(forsikringIntegerCellEditEvent.getNewValue());
-                controller.refreshTable();
+                b.setLengde(forsikringIntegerCellEditEvent.getNewValue() != null
+                        ? forsikringIntegerCellEditEvent.getNewValue() : forsikringIntegerCellEditEvent.getOldValue());
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -174,8 +196,9 @@ public class FormatPolicyTableHelper {
             @Override
             public void handle(TableColumn.CellEditEvent<Forsikring, Integer> forsikringIntegerCellEditEvent) {
                 Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
-                b.setÅrsmodell(forsikringIntegerCellEditEvent.getNewValue());
-                controller.refreshTable();
+                b.setÅrsmodell(forsikringIntegerCellEditEvent.getNewValue() != null
+                        ? forsikringIntegerCellEditEvent.getNewValue() : forsikringIntegerCellEditEvent.getOldValue());
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -187,7 +210,7 @@ public class FormatPolicyTableHelper {
             public void handle(TableColumn.CellEditEvent<Forsikring, String> forsikringStringCellEditEvent) {
                 Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
                 b.setMotorType(forsikringStringCellEditEvent.getNewValue());
-                controller.refreshTable();
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -199,7 +222,7 @@ public class FormatPolicyTableHelper {
             public void handle(TableColumn.CellEditEvent<Forsikring, String> forsikringStringCellEditEvent) {
                 Båt b = (Båt)tableView.getSelectionModel().getSelectedItem();
                 b.setEffekt(forsikringStringCellEditEvent.getNewValue());
-                controller.refreshTable();
+                controller.refreshForsikringDetails();
             }
         });
 
@@ -218,7 +241,7 @@ public class FormatPolicyTableHelper {
         col4.setOnEditCommit(forsikringStringCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setAdresse(forsikringStringCellEditEvent.getNewValue());
-            controller.refreshTable();
+            controller.refreshForsikringDetails();
         });
 
         TableColumn<Forsikring,Integer> col5 = new TableColumn<>("ByggeÅr");
@@ -226,8 +249,9 @@ public class FormatPolicyTableHelper {
         col5.setCellFactory(TextFieldTableCell.forTableColumn(intConverter));
         col5.setOnEditCommit(forsikringIntegerCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
-            f.setByggeaar(forsikringIntegerCellEditEvent.getNewValue());
-            controller.refreshTable();
+            f.setByggeaar(forsikringIntegerCellEditEvent.getNewValue() != null
+            ? forsikringIntegerCellEditEvent.getNewValue() : forsikringIntegerCellEditEvent.getOldValue());
+            controller.refreshForsikringDetails();
         });
 
         TableColumn<Forsikring,String> col6 = new TableColumn<>("Boligtype");
@@ -236,7 +260,7 @@ public class FormatPolicyTableHelper {
         col6.setOnEditCommit(forsikringStringCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setBoligtype(forsikringStringCellEditEvent.getNewValue());
-            controller.refreshTable();
+            controller.refreshForsikringDetails();
         });
 
         TableColumn<Forsikring,String> col7 = new TableColumn<>("Materiale");
@@ -245,7 +269,7 @@ public class FormatPolicyTableHelper {
         col7.setOnEditCommit(forsikringStringCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setByggemateriale(forsikringStringCellEditEvent.getNewValue());
-            controller.refreshTable();
+            controller.refreshForsikringDetails();
         });
 
         TableColumn<Forsikring,String> col8 = new TableColumn<>("Standard");
@@ -254,7 +278,7 @@ public class FormatPolicyTableHelper {
         col8.setOnEditCommit(forsikringStringCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
             f.setStandard(forsikringStringCellEditEvent.getNewValue());
-            controller.refreshTable();
+            controller.refreshForsikringDetails();
         });
 
         TableColumn<Forsikring,Integer> col9 = new TableColumn<>("areal");
@@ -262,8 +286,9 @@ public class FormatPolicyTableHelper {
         col9.setCellFactory(TextFieldTableCell.forTableColumn(intConverter));
         col9.setOnEditCommit(forsikringIntegerCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
-            f.setAreal(forsikringIntegerCellEditEvent.getNewValue());
-            controller.refreshTable();
+            f.setAreal(forsikringIntegerCellEditEvent.getNewValue() != null
+            ? forsikringIntegerCellEditEvent.getNewValue() : forsikringIntegerCellEditEvent.getOldValue());
+            controller.refreshForsikringDetails();
         });
 
         TableColumn<Forsikring,Double> col10 = new TableColumn<>("Beløp Bygning");
@@ -271,8 +296,9 @@ public class FormatPolicyTableHelper {
         col10.setCellFactory(TextFieldTableCell.forTableColumn(doubleConverter));
         col10.setOnEditCommit(forsikringDoubleCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
-            f.setForsikringsbeløpByggning(forsikringDoubleCellEditEvent.getNewValue());
-            controller.refreshTable();
+            f.setForsikringsbeløpByggning(forsikringDoubleCellEditEvent.getNewValue() != null
+            ? forsikringDoubleCellEditEvent.getNewValue() : forsikringDoubleCellEditEvent.getOldValue());
+            controller.refreshForsikringDetails();
         });
 
         TableColumn<Forsikring,Double> col11 = new TableColumn<>("Beløp Innbo");
@@ -280,21 +306,21 @@ public class FormatPolicyTableHelper {
         col11.setCellFactory(TextFieldTableCell.forTableColumn(doubleConverter));
         col11.setOnEditCommit(forsikringDoubleCellEditEvent -> {
             Fritidsbolig f = (Fritidsbolig)tableView.getSelectionModel().getSelectedItem();
-            f.setForsikringsbeløpInnbo(forsikringDoubleCellEditEvent.getNewValue());
-            controller.refreshTable();
+            f.setForsikringsbeløpInnbo(forsikringDoubleCellEditEvent.getNewValue() != null
+            ? forsikringDoubleCellEditEvent.getNewValue() : forsikringDoubleCellEditEvent.getOldValue());
+            controller.refreshForsikringDetails();
         });
 
         tableView.getColumns().addAll(col4, col5, col6, col7, col8, col9, col10, col11);
     }
 
-    //Todo: implement this
     private static void formatTravel (TableView <Forsikring> tableView, MainPageController controller) {
         TableColumn<Forsikring, String> col4 = new TableColumn<>("Område");
         col4.setCellValueFactory(new PropertyValueFactory<>("omraade"));
         col4.setOnEditCommit(forsikringStringCellEditEvent -> {
             Reise r = (Reise)tableView.getSelectionModel().getSelectedItem();
             r.setOmraade(forsikringStringCellEditEvent.getNewValue());
-            controller.refreshTable();
+            controller.refreshForsikringDetails();
         });
 
         tableView.getColumns().add(col4);

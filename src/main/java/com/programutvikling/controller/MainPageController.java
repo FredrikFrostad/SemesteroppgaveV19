@@ -421,6 +421,11 @@ public class MainPageController {
         }
     }
 
+    public void refreshForsikringDetails() {
+        tableDetailsForsikring.getItems().clear();
+        tableDetailsForsikring.getItems().add(tableOverviewForsikring.getSelectionModel().getSelectedItem());
+    }
+
 
     /**
      * Loads db data into program at program start
