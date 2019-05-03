@@ -61,25 +61,10 @@ public class AddClientController {
             kunde.setForsikrNr(Integer.parseInt(fx_forsikringsnummer.getText().replace(","," ")));
             kunde.setFakturaadresse(fx_fakturaadresse.getText().replace(","," "));
 
-
-            File file = FileWriter.getFile();
-            if (FileWriter.getExtension(file).equals(".csv")) new CsvWriter().writeObjectDataToFile(file, kunde);
-            else new JobjWriter().writeObjectDataToFile(file, kunde);
-
+        } catch (IllegalAccessException e) {
 
         } catch (InvalidNameFormatException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-            AlertHelper.createAlert(Alert.AlertType.ERROR,"Invalid name", "Wrong name, plz try again");
-        } catch (InvalidNumberFormatException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        } catch (InvalidAddressException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
+
         }
 
         //Legger til kunde i arrayliste som bor i mainapp
