@@ -96,6 +96,9 @@ Har utarbeidet mesteparten av programmets overordnede arkitektur. Jobbet med GUI
 Bolig, Båt, Forsikring, Fritidsbolig, ObjectType, CsvObjectBuilde, CsvReader, FileReader, JobjReader, CsvWriter, FileWriter, JobjWriter, ExtensionHandler, DbExportHandlerCsv, DbImportHandlerCsv, AlertHelper, ClientNrHelper, FormatPolicyTableHelper, ThreadHelper, InputValidator, OSType, ViewChanger
 
 
+Kandidat 811:
+
+Jeg har for det meste holdt meg til controller, tilhørende fxml-filer og CSS, da dette fanger mest interesse hos meg. Klasser jeg har utarbeidet er newPolicy.fxml, NewPolicyController.java og TextSearch.java. 
 
 
 
